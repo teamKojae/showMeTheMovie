@@ -37,11 +37,11 @@
 
 			<nav id="gnb" class="">
 				<ul class="gnb-depth1">
-					<li class=""><a href="/movie" class="gnb-txt-movie" title="영화">영화</a>
+					<li class=""><a href="/movie" class="gnb-txt-movies" title="영화">영화</a>
 					</li>
-					<li class=""><a href="/booking" class="gnb-txt-reserve"
+					<li class=""><a href="/booking" class="gnb-txt-ticketting"
 						title="예매">예매</a></li>
-					<li class=""><a href="/theater/list" class="gnb-txt-theater"
+					<li class=""><a href="/theater/list" class="gnb-txt-theaters"
 						title="극장">극장</a></li>
 					<li><a href="/login" class="gnb-txt-login" title="로그인">로그인</a></li>
 					<li><a href="/signUp" class="gnb-txt-sighup" title="회원가입">회원가입</a></li>

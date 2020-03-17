@@ -38,3 +38,16 @@
 	background-image: url(/images/myPage.png);
 	width:10%;
 	}
+.gnb-txt-movies{
+	background-image: url(/images/movie.PNG);
+	width:10%;
+}
+
+.gnb-txt-ticketting{
+	background-image: url(/images/ticketting.PNG);
+	width:10%;
+}
+.gnb-txt-theaters{
+	background-image: url(/images/theater.PNG);
+	width:10%;
+}

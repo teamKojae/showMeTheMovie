@@ -23,24 +23,11 @@
 							</div>
 
 							<div class="cell">
-								<a href="/support/rent" title="단체/대관문의 페이지로 이동"> <i
-									class="iconset ico-main-group"></i> <span>단체/대관문의</span>
-								</a>
-							</div>
-
-							<div class="cell">
 								<a href="/support/lost" title="분실물 문의/접수 페이지로 이동"> <i
 									class="iconset ico-main-lost"></i> <span>분실물 문의/접수</span>
 								</a>
 							</div>
 
-							<div class="cell">
-								<a href="/booking/privatebooking"
-									title="더 부티크 프라이빗 대관예매 페이지로 이동"> <i
-									class="iconset ico-main-boutique"></i> <span>더 부티크 프라이빗<br>대관예매
-								</span>
-								</a>
-							</div>
 						</div>
 					</div>
 				</div>

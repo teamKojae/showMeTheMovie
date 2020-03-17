@@ -17,7 +17,7 @@
 <body>
 	<div class="container">
 
-		<div id="wrap">
+		<div id="wrap" class="wrap">
 
 			<header class="layer-header" >
 				<h3 class="tit">로그인</h3>

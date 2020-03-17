@@ -84,20 +84,6 @@
 					</div>
 					<!--// 클래식소사이어티 -->
 
-					<!-- 장르모아보기 -->
-					<div class="topSort" style="display: none;">
-						<div class="movie-sorting sortTab">
-							<span><button type="button" class="btn on"
-									sort-type="ticketing">예매율순</button></span> <span><button
-									type="button" class="btn" sort-type="accmAdnc">누적관객순</button></span> <span><button
-									type="button" class="btn" sort-type="megaScore">메가스코어순</button></span>
-						</div>
-
-						<div class="onair-condition">
-							<button type="button" title="개봉작만 보기" class="btn-onair btnOnAir">개봉작만</button>
-						</div>
-					</div>
-					<!--// 장르모아보기 -->
 
 					<!-- 검색결과 없을 때 -->
 					<p class="no-result-count">
@@ -167,7 +153,7 @@
 									2020.03.11</span>
 							</div>
 							<div class="btn-util">
-								<div class="case col-2 movieStat3" style="">
+								<div class="case movieStat4" style="">
 									<a href="#" class="button purple bokdBtn" data-no="20003000"
 										title="영화 예매하기">예매</a>
 								</div>

@@ -112,7 +112,7 @@ h2.tit {color:#351f66 !important;}
 .main-movie-list > ol li .movie-list-info .wrap .score .sign.small {background-image:url('../images/common/bg/bg-arr-white-right.png');}
 .main-movie-list > ol li .movie-list-info .wrap .score .sign.big {background-image:url('../images/common/bg/bg-arr-white-left.png');}
 .main-movie-list > ol li .movie-list-info .wrap .score .sign.equal {background-image:url('../images/movie/bg-arr-score-equal.png');}
-.main-movie-list > ol li .btn-util {overflow:hidden; position:relative; margin-top:10px; padding:0 0 0 85px; text-align:left;}
+.main-movie-list > ol li .btn-util {overflow:hidden; position:relative; margin-top:10px; text-align:left;}
 .main-movie-list > ol li .btn-util .btn-like {position:absolute; left:0; top:0; width:80px; height:36px; line-height:34px; margin:0; padding:0 5px; color:#fff; font-size:0.8667em; border-color:#555; background-color:rgba(0,0,0,0.4)}
 .main-movie-list > ol li .btn-util .btn-like .ico-heart-toggle-gray {background-image:url('../images/common/ico/ico-heart-toggle-main.png');}
 .main-movie-list > ol li .btn-util .case {}
