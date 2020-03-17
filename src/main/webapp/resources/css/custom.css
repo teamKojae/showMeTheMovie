@@ -7,4 +7,34 @@
 	font-size:18px;
 }
 
+#contents{
+    width: 80%;
+    margin: auto;
+    padding-bottom: 100px;
+}
 
+#wrap{
+	 width: 430px;
+    margin: auto;
+    margin-top: 210px;
+    border: 2px solid #efeef1;
+}
+
+.layer-header{
+	 position: flex  !important;
+}
+
+.gnb-txt-login{
+	background-image: url(/images/login.png);
+	width:10%;
+}
+
+.gnb-txt-sighup{
+	background-image: url(/images/sighup.png);
+	width:10%;
+	}
+	
+.gnb-txt-myPage{
+	background-image: url(/images/myPage.png);
+	width:10%;
+	}

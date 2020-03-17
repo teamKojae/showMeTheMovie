@@ -27,10 +27,29 @@ public class HomeController {
 		return "index";
 	}
 	
+	@RequestMapping(value="/login")
+	public String login(Model model) {
+		return "login";
+	}
+	
+	@RequestMapping(value="/movie")
+	public String movie(Model model) {
+		return "movie";
+	}
+	
+	
 	@RequestMapping(value="/movieDetail")
 	public String movieDetail(Model model) {
 		return "movieDetail";
 	}
 	
+	@RequestMapping(value="/ticketList")
+	public String ticketList(Model model) {
+		return "ticketList";
+	}
 	
+	@RequestMapping(value="/ticketing")
+	public String ticketing(Model model) {
+		return "ticketing";
+	}
 }
