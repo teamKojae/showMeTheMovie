@@ -17,6 +17,7 @@
 <script src="/js/jquery-3.4.1.min.js"></script>
 
 <script src="/js/common.js"></script>
+<script src="/js/ticketting.js"></script>
 </head>
 <body class="body-iframe">
 	<div class="container">
@@ -268,6 +269,7 @@
 								<div class="all-list">
 									<button type="button" class="btn-tab on" id="movieAll">전체</button>
 									<div class="list">
+									<input type="hidden" value="${movie.movieName}" id="ticketMovieName">
 										<div class="scroll m-scroll mCustomScrollbar _mCS_1"
 											id="movieList">
 											<div id="mCSB_1"
@@ -277,10 +279,7 @@
 													style="position: relative; top: -57px; left: 0px;"
 													dir="ltr">
 													<ul>
-														<li><button type="button" class="btn"
-																movie-nm="다크 워터스" movie-no="20003000"
-																img-path="/SharedImg/2020/02/21/lczdtI1vz3Dd1ShuXb0iXj8pTJGbh4wa_150.jpg"
-																movie-popup-at="N" movie-popup-no="0" form-at="Y">
+														<li><button type="button" class="btn">
 																<span class="movie-grade small age-12">12세이상관람가</span><i
 																	class="iconset ico-heart-small">보고싶어 설정안함</i><span
 																	class="txt">다크 워터스</span>
@@ -300,6 +299,14 @@
 																<span class="movie-grade small age-15">15세이상관람가</span><i
 																	class="iconset ico-heart-small">보고싶어 설정안함</i><span
 																	class="txt">1917</span>
+															</button></li>
+																<li><button type="button" class="btn" movie-nm="레토"
+																movie-no="01492400"
+																img-path="/SharedImg/asis/system/mop/poster/2018/FB/2BAA70-3391-4FB0-A22C-F4476AA2BADB.small.jpg"
+																movie-popup-at="N" movie-popup-no="0" form-at="N">
+																<span class="movie-grade small age-15">15세이상관람가</span><i
+																	class="iconset ico-heart-small">보고싶어 설정안함</i><span
+																	class="txt">Dark Waters</span>
 															</button></li>
 														<li><button type="button" class="btn" movie-nm="레토"
 																movie-no="01492400"
@@ -629,7 +636,7 @@
 														<span calss="txt">서울(20)</span>
 													</button>
 													<%--  실제 구현할때 style 빼세요 --%>
-													<div class="depth" style="display:flex; top:auto" >
+													<div class="depth" style="display:flex; " >
 														<div
 															class="detail-list m-scroll area-cd10 mCustomScrollbar _mCS_4 mCS_no_scrollbar">
 															<div id="mCSB_4"
