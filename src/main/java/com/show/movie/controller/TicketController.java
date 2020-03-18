@@ -29,22 +29,54 @@ public class TicketController {
 		String movieParam=movieLocation.split("\\(")[0];
 		System.out.println("param[0]   "+  movieParam);
 //		HashMap<String, Object> result= new HashMap<String, Object>();
-//		result.put("status", "success");
-//		result.put("location", "아아아가야가야");
-		List<String> a = new ArrayList<String>();
+		List<String> list = new ArrayList<String>();
 		if(movieParam.equals("서울")) {
-			a.add("강남구쇼미");
-			a.add("강남구강말자");
-			a.add("강남자");
+			list.add("강남구쇼미");
+			list.add("강남구강말자");
+			list.add("강남자");
+		}else if(movieParam.equals("경기")){
+			list.add("경기장");
+			list.add("경기일으킨");
+			list.add("경기구");
+		}else if(movieParam.equals("강원")){
+			list.add("강원쟝");
+			list.add("강원장님");
+			list.add("강원유치원");
+		}else if(movieParam.equals("제주")){
+			list.add("제주한라봉");
+			list.add("천혜향");
+			list.add("제주황색");
 		}else {
-			a.add("경기장");
-			a.add("경기일으킨");
-			a.add("경기구");
+			list.add("디비만들자");
+			list.add("영화관이닷");
+			list.add("ajax시렁");
 		}
+		return new Gson().toJson(list);
+	}
+	
+	@RequestMapping(value="/getMovieInfoAndTime",  produces = "application/json; charset=utf8")
+	@ResponseBody
+	public String getMovieInfoAndTime(String theater, Model model) {
+		List<HashMap<String, Object>> list = new ArrayList<HashMap<String, Object>>();
+		HashMap<String, Object> result = new HashMap<String, Object>();
+		if(theater.equals("강남구쇼미")) {
+		result.put("movieTimeStart", "12:10");
+		result.put("movieTimeEnd", "14:27");
+		result.put("movieName", "다크 워터스");
+		result.put("theater", "강남");
+		result.put("resideSeat", "117");
+		result.put("allSeat", "232");
+		}else {
+			result.put("movieTimeStart", "16:40");
+			result.put("movieTimeEnd", "18:37");
+			result.put("movieName", "시원찮은 그녀를 위한 육성방법 피날레");
+			result.put("theater", "강남");
+			result.put("resideSeat", "14");
+			result.put("allSeat", "180");
+		}
+		list.add(result);
 		
-		
-		
-		return new Gson().toJson(a);
+		return new Gson().toJson(list);
 	}
 	
 }
