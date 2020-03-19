@@ -30,6 +30,7 @@ public class MovieController {
 	@RequestMapping(value="/movieDetail")
 	public String movieDetail(Model model, Movie movie) {
 		movie.setMovieName("Dark Waters");
+		
 		movie.setTicketRate("1");
 		movie.setTicketRatePersent("10.9");
 		movie.setAudience("67612");

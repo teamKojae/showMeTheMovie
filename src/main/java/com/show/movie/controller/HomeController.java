@@ -41,5 +41,11 @@ public class HomeController {
 		return "myPage";
 	}
 	
+	@RequestMapping(value="/screen")
+	public String getScreen(Model model) {
+		return "screen";
+	}
+	
+	
 	
 }

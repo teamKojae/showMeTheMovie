@@ -6,18 +6,6 @@
 				<a href="/" title="MEGABOX 메인으로 가기">SHOW ME THE MOVIE ^^*!</a>
 			</h1>
 
-			<!-- 브라우저 다운로드 -->
-
-			<!-- ie-update : ie 9 이하 일때만 출력 -->
-
-			<!--// ie-update : ie 9 이하 일때만 출력 -->
-			<!--// 브라우저 다운로드 -->
-
-			<!-- topGnb -->
-
-
-
-
 			<!-- 2019-04-15 마크업 수정 : 고객요청  -->
 			<div class="util-area">
 				<div class="link-area"></div>
