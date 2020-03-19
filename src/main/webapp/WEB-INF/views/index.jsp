@@ -22,9 +22,14 @@
 	<div class="container main-container area-ad">
 		<div class="container">
 			<c:import url="/resources/common/header.jsp"></c:import>
-
+			
 			<div class="main-page">
 				<div id="main_section01" class="section main-movie">
+				<h1>${userId }</h1>
+				<h1>${info.amount.total}</h1>
+				<h1>${info}</h1>
+				
+				
 					<div class="bg">
 						<div class="bg-pattern"></div>
 						<img

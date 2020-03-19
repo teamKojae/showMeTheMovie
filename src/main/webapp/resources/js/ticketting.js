@@ -10,6 +10,11 @@
 //			$('.mCSB_container').click(function(event){
 //				addOnClass(event);
 //			})
+			console.log('aa');
+			$('.button').on('click',function(event){
+				console.log('bb');
+				$('#kakaoPay').submit();
+			})
 		
 		})
 		

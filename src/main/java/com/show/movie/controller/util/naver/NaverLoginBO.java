@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.UUID;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import com.github.scribejava.core.builder.ServiceBuilder;
@@ -13,7 +15,7 @@ import com.github.scribejava.core.model.Response;
 import com.github.scribejava.core.model.Verb;
 import com.github.scribejava.core.oauth.OAuth20Service;
 
-@Component
+@Configuration
 public class NaverLoginBO {
 	/* 인증 요청문을 구성하는 파라미터 */
 //client_id: 애플리케이션 등록 후 발급받은 클라이언트 아이디
@@ -27,6 +29,11 @@ public class NaverLoginBO {
 	/* 프로필 조회 API URL */
 	private final static String PROFILE_API_URL = "https://openapi.naver.com/v1/nid/me";
 
+	@Bean
+	public NaverLoginBO setNaverLoginBO() {
+		return new NaverLoginBO();
+	}
+	
 	/* 네이버 아이디로 인증 URL 생성 Method */
 	public String getAuthorizationUrl(HttpSession session) {
 		/* 세션 유효성 검증을 위하여 난수를 생성 */

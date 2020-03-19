@@ -23,6 +23,10 @@ public class MovieController {
 		log.info(getClass());
 		return "movie";
 	}
+//	@RequestMapping(value="/payment")
+//	public String payment(Model model) {
+//		return "index";
+//	}
 	
 	@RequestMapping(value="/movieDetail")
 	public String movieDetail(Model model, Movie movie) {

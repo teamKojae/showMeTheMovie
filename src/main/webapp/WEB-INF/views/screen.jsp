@@ -10,7 +10,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="/js/jquery-3.4.1.min.js"></script>
-
+<script src="/js/ticketting.js"></script>
 <link href="/css/component.css" rel="stylesheet">
 <link href="/css/megabox.min.css" rel="stylesheet">
 <link href="/css/main.css" rel="stylesheet">
@@ -28,9 +28,7 @@
 					<div class="seat-select-section">
 						<div class="seat-section">
 							<div class="tit-util">
-								<h3 class="tit small">
-									관람인원선택
-								</h3>
+								<h3 class="tit small">관람인원선택</h3>
 							</div>
 							<div class="seat-layout">
 								<div class="plan plan--shown">
@@ -444,8 +442,11 @@
 								</div>
 								<div class="btn-group">
 									<a href="javaScript:void(0)" class="button" id="pagePrevious"
-										title="이전">이전</a> <a href="javaScript:void(0)"
-										class="button active" id="pageNext" title="다음">다음</a>
+										title="이전">이전</a>
+									<form action="/kakaoPay" method="post" id="kakaoPay">
+										<a href=""  class="button active" onclick="return false"
+											id="pageNext" title="다음">다음</a>
+									</form>
 								</div>
 							</div>
 						</div>

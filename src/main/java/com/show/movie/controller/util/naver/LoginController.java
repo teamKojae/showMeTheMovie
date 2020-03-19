@@ -23,13 +23,11 @@ import lombok.extern.log4j.Log4j;
 @Controller
 public class LoginController {
 	/* NaverLoginBO */
+	@Autowired
 	private NaverLoginBO naverLoginBO;
 	private String apiResult = null;
 
-	@Autowired
-	private void setNaverLoginBO(NaverLoginBO naverLoginBO) {
-		this.naverLoginBO = naverLoginBO;
-	}
+	
 
 	
 	@RequestMapping(value="/login", method = { RequestMethod.GET, RequestMethod.POST })
@@ -44,7 +42,7 @@ public class LoginController {
 
 	//네이버 로그인 성공시 callback호출 메소드
 	@RequestMapping(value = "/naverCallback", method = { RequestMethod.GET, RequestMethod.POST })
-	public String callback(Model model, @RequestParam String code, @RequestParam String state, HttpSession session)
+	public String naverNallback(Model model, @RequestParam String code, @RequestParam String state, HttpSession session)
 			throws IOException, ParseException {
 		System.out.println("여기는 callback");
 		OAuth2AccessToken oauthToken;
@@ -67,10 +65,8 @@ public class LoginController {
 		String nickname = (String) response_obj.get("nickname");
 		System.out.println(nickname);
 		//4.파싱 닉네임 세션으로 저장
-		session.setAttribute("sessionId", nickname); // 세션 생성
-		model.addAttribute("result", apiResult);
-		model.addAttribute("obj", obj);
-		return "index";
+		session.setAttribute("userId", nickname); // 세션 생성
+		return "redirect:/";
 	}
 
 	//로그아웃
@@ -78,6 +74,6 @@ public class LoginController {
 	public String logout(HttpSession session) throws IOException {
 		System.out.println("여기는 logout");
 		session.invalidate();
-		return "redirect:index.jsp";
+		return "redirect:/";
 	}
 }
