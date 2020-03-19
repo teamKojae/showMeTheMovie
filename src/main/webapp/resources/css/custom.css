@@ -51,3 +51,16 @@
 	background-image: url(/images/theater.PNG);
 	width:10%;
 }
+
+.sighUpLogo{
+	cursor: pointer;
+	display: block;
+    width: 147px;
+    height: 60px;
+    margin: auto;
+    padding: 0;
+    font-size: 0;
+    line-height: 0;
+    background: url(/images/movieLogo.PNG) center center no-repeat; !important
+}
+
