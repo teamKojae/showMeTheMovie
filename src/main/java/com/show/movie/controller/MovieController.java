@@ -17,7 +17,7 @@ public class MovieController {
 	//private static final Logger logger = LoggerFactory.getLogger(MovieController.class);
 	@Autowired
 	Movie movie;
-	
+
 	@RequestMapping(value="/movie")
 	public String movie(Model model) {
 		log.info(getClass());
