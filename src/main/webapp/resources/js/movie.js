@@ -29,5 +29,10 @@ function slidSynopsis(){
 			$('.btn-more').addClass('on');
 		}
 		
+		
 	})
 }
+
+
+
+
