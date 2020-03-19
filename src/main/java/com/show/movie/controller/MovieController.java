@@ -45,6 +45,9 @@ public class MovieController {
 		System.out.println(movie);
 		return "ticketing";
 	}
-	
+	@RequestMapping(value="/screen")
+	public String getScreen(Model model) {
+		return "screen";
+	}
 	
 }
