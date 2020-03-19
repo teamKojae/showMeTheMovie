@@ -52,4 +52,10 @@ public class HomeController {
 	public String ticketing(Model model) {
 		return "ticketing";
 	}
+	
+	@RequestMapping(value="/signUp")
+	public String signUp(Model model) {
+		return "signUp";
+	}
+	
 }
