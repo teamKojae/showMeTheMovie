@@ -74,7 +74,7 @@
 										</div>
 
 										<div class="sns-login">
-											<a href="javaScript:void(0)" lnkgty="NAVER"
+											<a href="${naverAuthUrl}" lnkgty="NAVER"
 												title="네이버로 로그인 선택"><img src="/images/ico-naver.png"
 												alt="네이버"> <!--네이버--> 네이버로 로그인<!--네이버로 로그인--></a> <a
 												href="javaScript:void(0)" lnkgty="KAKAO"
