@@ -34,7 +34,9 @@ public class MovieController {
 		movie.setTicketRatePersent("10.9");
 		movie.setAudience("67612");
 		movie.setMovieTitle("인류의 99는 이미 중독되었다.");
-		movie.setSynopsis("젖소 190마리의 떼죽음<br>메스꺼움과 고열에 시달리는 사람들<br>젖소 190마리의 떼죽음<br>메스꺼움과 고열에 시달리는 사람들<br>");
+		movie.setSynopsis("젖소 190마리의 떼죽음<br>메스꺼움과 고열에 시달리는 사람들<br>젖소 190마리의 떼죽음<br>메스꺼움과 고열에 시달리는 사람들<br>"
+				+ "젖소 190마리의 떼죽음<br>메스꺼움과 고열에 시달리는 사람들<br>젖소 190마리의 떼죽음<br>메스꺼움과 고열에 시달리는 사람들<br>"
+				+ "젖소 190마리의 떼죽음<br>메스꺼움과 고열에 시달리는 사람들<br>젖소 190마리의 떼죽음<br>메스꺼움과 고열에 시달리는 사람들<br>");
 		model.addAttribute("movie",movie);
 		
 		return "movieDetail";

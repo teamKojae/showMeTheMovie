@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%request.setCharacterEncoding("UTF-8");%>
 <%@ page trimDirectiveWhitespaces="true" %>
 <!DOCTYPE html>
@@ -16,6 +17,7 @@
 <script src="/js/jquery-3.4.1.min.js"></script>
 
 <script src="/js/common.js"></script>
+<script src="/js/movie.js"></script>
 
 
 <link rel="stylesheet"
@@ -93,13 +95,18 @@
 				</ul>
 
 			</div>
-			<div class="movie-summary infoContent on" id="info">
+			<div class="movie-summary infoContent" id="info">
 
 				<div class="txt">
 					${movie.movieTitle}<br>
+					 <c:if test="${fn:length(movie.synopsis) gt 200 }">
+					<div class="synopsis">
+						${movie.synopsis }
+					</div>
+					</c:if> 
 					${movie.synopsis }
 				</div>
-				<div class="btn-more toggle on">
+				<div class="btn-more toggle">
 					<button type="button" class="btn">
 						<span>닫기</span> <i class="iconset ico-btn-more-arr"></i>
 					</button>

@@ -646,11 +646,7 @@
 																	class="mCSB_container mCS_no_scrollbar_y"
 																	style="position: relative; top: 0; left: 0;" dir="ltr">
 																	<ul>
-																		<li><button id="btn" type="button" brch-no="1372"
-																				brch-nm="강남" brch-eng-nm="Gangnam" form-at="Y"
-																				area-cd="10" area-cd-nm="서울" spclb-yn="N"
-																				brch-bokd-unable-at="N" brch-popup-at="Y"
-																				brch-popup-no="998">강남</button></li>
+																		
 
 																	</ul>
 																</div>
@@ -738,7 +734,7 @@
 															</div>
 														</div>
 													</div></li>
-												<li><button type="button" class="btn has-issue" id="45">
+												<li><button type="button" class="btn" id="45">
 														<span calss="txt">대전/충청/세종(13)</span>
 													</button>
 													<div class="depth">
@@ -1155,91 +1151,7 @@
 												class="mCSB_container mCS_no_scrollbar_y"
 												style="position: relative; top: 0; left: 0;" dir="ltr">
 												<ul>
-													<li><button type="button" class="btn"
-															play-start-time="1210" play-de="20200318" play-seq="1"
-															rpst-movie-no="20003001" brch-no="1372" theab-no="01"
-															play-schdl-no="2003181372036" rest-seat-cnt="118"
-															ctts-ty-div-cd="MVCT01" theab-popup-at="Y"
-															theab-popup-no="1054">
-															<div class="legend"></div>
-															<span class="time"><strong title="상영 시작">12:10</strong><em
-																title="상영 종료">~14:27</em></span><span class="title"><strong
-																title="다크 워터스">다크 워터스</strong><em>2D(자막)</em></span>
-															<div class="info">
-																<span class="theater" title="극장">강남<br>1관
-																</span><span class="seat"><strong class="now"
-																	title="잔여 좌석">118</strong><span>/</span><em class="all"
-																	title="전체 좌석">232</em></span>
-															</div>
-														</button></li>
-													<li><button type="button" class="btn"
-															play-start-time="1445" play-de="20200318" play-seq="2"
-															rpst-movie-no="20003001" brch-no="1372" theab-no="01"
-															play-schdl-no="2003181372037" rest-seat-cnt="116"
-															ctts-ty-div-cd="MVCT01" theab-popup-at="Y"
-															theab-popup-no="1054">
-															<div class="legend"></div>
-															<span class="time"><strong title="상영 시작">14:45</strong><em
-																title="상영 종료">~17:02</em></span><span class="title"><strong
-																title="다크 워터스">다크 워터스</strong><em>2D(자막)</em></span>
-															<div class="info">
-																<span class="theater" title="극장">강남<br>1관
-																</span><span class="seat"><strong class="now"
-																	title="잔여 좌석">116</strong><span>/</span><em class="all"
-																	title="전체 좌석">232</em></span>
-															</div>
-														</button></li>
-													<li><button type="button" class="btn"
-															play-start-time="1720" play-de="20200318" play-seq="3"
-															rpst-movie-no="20003001" brch-no="1372" theab-no="01"
-															play-schdl-no="2003181372038" rest-seat-cnt="117"
-															ctts-ty-div-cd="MVCT01" theab-popup-at="Y"
-															theab-popup-no="1054">
-															<div class="legend"></div>
-															<span class="time"><strong title="상영 시작">17:20</strong><em
-																title="상영 종료">~19:37</em></span><span class="title"><strong
-																title="다크 워터스">다크 워터스</strong><em>2D(자막)</em></span>
-															<div class="info">
-																<span class="theater" title="극장">강남<br>1관
-																</span><span class="seat"><strong class="now"
-																	title="잔여 좌석">117</strong><span>/</span><em class="all"
-																	title="전체 좌석">232</em></span>
-															</div>
-														</button></li>
-													<li><button type="button" class="btn"
-															play-start-time="1955" play-de="20200318" play-seq="4"
-															rpst-movie-no="20003001" brch-no="1372" theab-no="01"
-															play-schdl-no="2003181372039" rest-seat-cnt="110"
-															ctts-ty-div-cd="MVCT01" theab-popup-at="Y"
-															theab-popup-no="1054">
-															<div class="legend"></div>
-															<span class="time"><strong title="상영 시작">19:55</strong><em
-																title="상영 종료">~22:12</em></span><span class="title"><strong
-																title="다크 워터스">다크 워터스</strong><em>2D(자막)</em></span>
-															<div class="info">
-																<span class="theater" title="극장">강남<br>1관
-																</span><span class="seat"><strong class="now"
-																	title="잔여 좌석">110</strong><span>/</span><em class="all"
-																	title="전체 좌석">232</em></span>
-															</div>
-														</button></li>
-													<li><button type="button" class="btn"
-															play-start-time="2230" play-de="20200318" play-seq="5"
-															rpst-movie-no="20003001" brch-no="1372" theab-no="01"
-															play-schdl-no="2003181372040" rest-seat-cnt="119"
-															ctts-ty-div-cd="MVCT01" theab-popup-at="Y"
-															theab-popup-no="1054">
-															<div class="legend"></div>
-															<span class="time"><strong title="상영 시작">22:30</strong><em
-																title="상영 종료">~24:47</em></span><span class="title"><strong
-																title="다크 워터스">다크 워터스</strong><em>2D(자막)</em></span>
-															<div class="info">
-																<span class="theater" title="극장">강남<br>1관
-																</span><span class="seat"><strong class="now"
-																	title="잔여 좌석">119</strong><span>/</span><em class="all"
-																	title="전체 좌석">232</em></span>
-															</div>
-														</button></li>
+													
 												</ul>
 											</div>
 											
