@@ -18,9 +18,6 @@ public class MovieController {
 	@Autowired
 	Movie movie;
 	
-	
-	
-	
 	@RequestMapping(value="/movie")
 	public String movie(Model model) {
 		log.info(getClass());
