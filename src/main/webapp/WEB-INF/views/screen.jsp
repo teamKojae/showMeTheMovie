@@ -403,12 +403,16 @@
 									<button class="action action--buy">예매하기</button>
 								</div>
 							</div>
+							
 						</div>
+						<form action="/kakaoPay" method="post" id="kakaoPay">
 						<div class="seat-result">
 							<div class="wrap">
 								<div class="tit-area">
+								<input type="hidden" name="movieName" value="1917">
+								<input type="hidden" name="moviePrice" value="1917">
 									<span class="movie-grade small age-all age-15">15세이상관람가</span>
-									<p class="tit">1917</p>
+									<p class="tit" >1917</p>
 									<p class="cate">2D(자막)</p>
 								</div>
 								<div class="info-area">
@@ -443,13 +447,12 @@
 								<div class="btn-group">
 									<a href="javaScript:void(0)" class="button" id="pagePrevious"
 										title="이전">이전</a>
-									<form action="/kakaoPay" method="post" id="kakaoPay">
 										<a href=""  class="button active" onclick="return false"
 											id="pageNext" title="다음">다음</a>
-									</form>
+											</div>
 								</div>
 							</div>
-						</div>
+						</form>
 					</div>
 				</div>
 			</div>

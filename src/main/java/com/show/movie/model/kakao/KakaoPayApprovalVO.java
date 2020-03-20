@@ -1,11 +1,20 @@
-package com.show.movie.controller.util.kakao.VO;
+package com.show.movie.model.kakao;
 
 import java.util.Date;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 import lombok.Data;
 
 @Data
-public class kakaoPayApprovalVO {
+@Configuration
+public class KakaoPayApprovalVO {
+	
+		@Bean(name = "kakaoPayVO")
+		public KakaoPayApprovalVO kakaoPayApprovalVO(){
+			return new KakaoPayApprovalVO();
+		}
 	    //response
 	    private String aid, tid, cid, sid;
 	    private String partner_order_id, partner_user_id, payment_method_type;

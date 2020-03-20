@@ -1,4 +1,4 @@
-package com.show.movie.controller.util.kakao.VO;
+package com.show.movie.model.kakao;
 
 import lombok.Data;
 

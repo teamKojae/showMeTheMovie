@@ -36,7 +36,7 @@
 
 		<div class="movie-detail-page">
 			<div class="bg-img"
-				style="background-image: url('https://img.megabox.co.kr/SharedImg/2020/02/14/BJ4fa4uF619oFERjOyuxvVYzvOeYDSYV_570.jpg');"></div>
+				style="background-image: url('${movie.moviePoster}');"></div>
 			<div class="bg-pattern"></div>
 			<div class="bg-mask"></div>
 
@@ -73,7 +73,7 @@
 				<div class="poster">
 					<div class="wrap">
 						<img
-							src="https://img.megabox.co.kr/SharedImg/2020/02/21/lczdtI1vz3Dd1ShuXb0iXj8pTJGbh4wa_420.jpg"
+							src="${movie.moviePoster}"
 							onerror="noImg(this)" alt="다크 워터스">
 					</div>
 				</div>

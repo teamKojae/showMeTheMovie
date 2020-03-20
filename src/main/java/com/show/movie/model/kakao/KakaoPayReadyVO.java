@@ -1,4 +1,4 @@
-package com.show.movie.controller.util.kakao.VO;
+package com.show.movie.model.kakao;
 
 import java.util.Date;
 
@@ -19,7 +19,7 @@ public class KakaoPayReadyVO {
     //response
     private String tid;
     private String next_redirect_pc_url;
- //   private Date created_at;
+    private Date created_at;
     
     
     

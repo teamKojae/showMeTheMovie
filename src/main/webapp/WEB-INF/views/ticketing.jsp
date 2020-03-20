@@ -276,7 +276,7 @@
 												class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside"
 												style="max-height: none;" tabindex="0">
 												<div id="mCSB_1_container" class="mCSB_container"
-													style="position: relative; top: -57px; left: 0px;"
+													style="position: relative; left: 0px;"
 													dir="ltr">
 													<ul>
 														<li><button type="button" class="btn">

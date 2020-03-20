@@ -13,8 +13,10 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
-import com.show.movie.controller.util.kakao.VO.KakaoPayReadyVO;
-import com.show.movie.controller.util.kakao.VO.kakaoPayApprovalVO;
+import com.show.movie.model.Movie;
+import com.show.movie.model.User;
+import com.show.movie.model.kakao.KakaoPayReadyVO;
+import com.show.movie.model.kakao.KakaoPayApprovalVO;
 
 import lombok.extern.log4j.Log4j;
 
@@ -25,41 +27,44 @@ public class KakaoPay {
 	    
 	 	@Autowired
 	    private KakaoPayReadyVO kakaoPayReadyVO;
-	    private kakaoPayApprovalVO kakaoPayApprovalVO;
+	    private KakaoPayApprovalVO kakaoPayApprovalVO;
 	    
-	    public String kakaoPayReady() {
+	    public String kakaoPayReady(Movie movie, User user) {
 	 
 	        RestTemplate restTemplate = new RestTemplate();
 	 
 	        // 서버로 요청할 Header
 	        HttpHeaders headers = new HttpHeaders();
+	        //카카오 개발자 인증. 꼭 Admin Key로 !
 	        headers.add("Authorization", "KakaoAK " + "5b50c16bc9b2c25a434fa19f62c330f9");
+	        //response.body를 JSON 타입으로 주기때문에 타입지정
 	        headers.add("Accept", MediaType.APPLICATION_JSON_UTF8_VALUE);
+	        //보낼때 JSON으로 보낸다.
 	        headers.add("Content-Type", MediaType.APPLICATION_FORM_URLENCODED_VALUE + ";charset=UTF-8");
 	        
 	        
 	        // 서버로 요청할 Body
-
 	        MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
-	        params.add("cid", "TC0ONETIME");
-	        params.add("partner_order_id", "1");
-	        params.add("partner_user_id", "kojae");
-	        params.add("item_name", "galaxy");
-	        params.add("quantity", "2");
-	        params.add("total_amount", "100");
-	        params.add("tax_free_amount", "50");
-	        params.add("approval_url", "http://localhost:5000/kakaoPaySuccess");
+	        params.add("cid", "TC0ONETIME");					//카카오페이 테스트버전 명시
+	        params.add("partner_order_id", "1001");    			//관리자번호
+	        params.add("partner_user_id", user.getUserId());	//유저아이디
+	        params.add("item_name", movie.getMovieName());		//영화이름
+	        params.add("quantity", "2");						//영화표 몇 개 구매
+	        params.add("total_amount", "100");					//총액
+	        params.add("tax_free_amount", "50");				//현금영수증용 
+																// ↑ 모두 필수
+	        // ↓고정
+	        params.add("approval_url", "http://localhost:5000/kakaoPaySuccess");		
 	        params.add("cancel_url", "http://localhost:5000/kakaoPayCancel");
 	        params.add("fail_url", "http://localhost:5000/kakaoPaySuccessFail");
 	        HttpEntity<MultiValueMap<String, String>> body = 
 	        		 new HttpEntity<MultiValueMap<String, String>>(params, headers);
 	         System.out.println(body);
 	        try {
-	        	System.out.println("ee");
-	            kakaoPayReadyVO = restTemplate.postForObject(new URI("https://kapi.kakao.com/v1/payment/ready"), body, KakaoPayReadyVO.class);
-	            System.out.println("dd");
-	            log.info("" + kakaoPayReadyVO);
+	            kakaoPayReadyVO = restTemplate.postForObject(new URI(HOST + "/v1/payment/ready"), body, KakaoPayReadyVO.class);
+	            log.info("kakao결제창 url요청 " + kakaoPayReadyVO);
 	           
+	            //결제창 url return
 	            return kakaoPayReadyVO.getNext_redirect_pc_url();
 	 
 	        } catch (RestClientException e) {
@@ -74,7 +79,7 @@ public class KakaoPay {
 	        
 	    }
 	    
-	    public kakaoPayApprovalVO kakaoPayInfo(String pg_token) {
+	    public KakaoPayApprovalVO kakaoPayInfo(String pg_token, String userId) {
 	 
 	        log.info("KakaoPayInfoVO............................................");
 	        log.info("-----------------------------");
@@ -83,35 +88,38 @@ public class KakaoPay {
 	 
 	        // 서버로 요청할 Header
 	        HttpHeaders headers = new HttpHeaders();
-	        headers.add("Authorization", "KakaoAK " + "e7a638f0535094326fe38f8ae0fc6bde");
+	        //카카오 개발자 인증. 꼭 Admin Key로 !
+	        headers.add("Authorization", "KakaoAK " + "5b50c16bc9b2c25a434fa19f62c330f9");
+	        //response.body를 JSON 타입으로 주기때문에 타입지정
 	        headers.add("Accept", MediaType.APPLICATION_JSON_UTF8_VALUE);
+	        //보낼때 JSON으로 보낸다.
 	        headers.add("Content-Type", MediaType.APPLICATION_FORM_URLENCODED_VALUE + ";charset=UTF-8");
 	 
 	        // 서버로 요청할 Body
 	        MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
-	        params.add("cid", "TC0ONETIME");
-	        params.add("tid", kakaoPayReadyVO.getTid());
-	        params.add("partner_order_id", "1001");
-	        params.add("partner_user_id", "gorany");
-	        params.add("pg_token", pg_token);
-	        params.add("total_amount", "2100");
+	        params.add("cid", "TC0ONETIME");					//카카오페이 테스트버전 명시
+	        params.add("tid", kakaoPayReadyVO.getTid());		//결제완료시 받는 Tid (Ok 표시라고 보면됨)
+	        params.add("partner_order_id", "1001");				//관리자번호
+	        params.add("partner_user_id", userId);				//유저아이디
+	        params.add("pg_token", pg_token);					//결제정보가 담겨있는 url Token
 	        
+	        													// ↑ 모두 필수
 	        HttpEntity<MultiValueMap<String, String>> body = new HttpEntity<MultiValueMap<String, String>>(params, headers);
-	        
 	        try {
-	            kakaoPayApprovalVO = restTemplate.postForObject(new URI(HOST + "/v1/payment/approve"), body, kakaoPayApprovalVO.class);
-	            log.info("" + kakaoPayApprovalVO);
-	          
+	            kakaoPayApprovalVO = restTemplate.postForObject(new URI(HOST + "/v1/payment/approve"), body, KakaoPayApprovalVO.class);
+	            log.info("결제한 정보 가져오기   : " + kakaoPayApprovalVO);
+	            
+	            //결제정보 return
 	            return kakaoPayApprovalVO;
 	        
 	        } catch (RestClientException e) {
-	            // TODO Auto-generated catch block
+	        	log.info("여기는 kakaoPayInfo ReslClientException   : ");
 	            e.printStackTrace();
 	        } catch (URISyntaxException e) {
 	            // TODO Auto-generated catch block
 	            e.printStackTrace();
 	        }
-	        
+	        log.info("null return해유 ㅠㅠ");
 	        return null;
 	    }
 }
