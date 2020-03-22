@@ -64,7 +64,7 @@
 								<li name="li_boxoRankList" class="first"><a
 									href="" onclick="return false"
 									class="movie-list-info" title="영화상세 보기">
-									<input type="hidden"  name="movieName" value="darkWater" class="movie-info-hidden">
+									<input type="hidden"  name="movieName" value="다크워터스" class="movie-info-hidden">
 										<p class="rank">
 											1<span class="ir">위</span>
 										</p> <!-- to 개발 : alt 값에 영화 제목 출력 --> <img
@@ -125,7 +125,7 @@
 										<div class="case">
 											<!-- 개봉 예매가능 기본-->
 											<!-- <input type="button" class="button gblue" value="darkWater"> -->
-											<button class="button gblue" name="movieName" value="Dark Waters">예매</button>
+											<button class="button gblue" name="movieName" value="다크워터스">예매</button>
 											<!-- <a href="javascript:moveBokdPage('20003000');"
 												class="button gblue" title="영화 예매하기">예매</a> -->
 										</div>

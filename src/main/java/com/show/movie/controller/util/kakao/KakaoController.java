@@ -15,8 +15,9 @@
 	
 	import com.show.movie.model.Movie;
 	import com.show.movie.model.User;
-	
-	import lombok.extern.log4j.Log4j;
+import com.show.movie.model.kakao.KakaoPayApprovalVO;
+
+import lombok.extern.log4j.Log4j;
 	
 	@Controller
 	@Log4j
@@ -27,7 +28,9 @@
 		KakaoPay kakaoPay;
 		@Autowired(required = false)
 		User user;
-	
+		@Autowired
+		KakaoPayApprovalVO kakaoInfo;
+		
 		@RequestMapping(value = "/kakaoCallback")
 		public String kakaoLogin(Model model, String code, HttpSession session) {
 			String access_Token = kakaoAPI.getAccessToken(code);
@@ -41,20 +44,26 @@
 			}
 			return "redirect:/";
 		}
-	
+		// 카카오 페이 결제 완료 후 정보 갖고오기
 		@GetMapping("/kakaoPaySuccess")
 		public String kakaoPay(Model model, @RequestParam("pg_token") String pg_token, HttpSession session) {
 			log.info("kakaoPaySuccess get............................................");
 			log.info("kakaoPaySuccess pg_token : " + pg_token);
-			model.addAttribute("info", kakaoPay.kakaoPayInfo(pg_token,(String)session.getAttribute("userId")));
-			//총 구매가격 : info.total 
-			//갯수 : info.quantity
-			//예매일 : info.approved_at  -->Date 타입
-			//결제한 유저아이디 : info.partner_user_id
-			//log에 info 찍혀있으니 필요한 것 쓰세요 
-			//myPage에 url갖고가고 싶으면 redirect 빼세요.
-			// 값 가져가고 싶으면 model에 넣으세요 (model.addAttribute(key,value);
-			// ↓ 밑에 예매내역 insert 하면 됩니다.
+//			JSP 기준
+//			총 구매가격 : info.total 
+//			갯수 : info.quantity
+//			예매일 : info.approved_at  -->Date 타입
+//			결제한 유저아이디 : info.partner_user_id
+//			log에 info 찍혀있으니 필요한 것 쓰세요 
+//			myPage에 url갖고가고 싶으면 redirect 빼세요.
+//			 값 가져가고 싶으면 model에 넣으세요 (model.addAttribute(key,value);
+			kakaoInfo = kakaoPay.kakaoPayInfo(pg_token,(String)session.getAttribute("userId"));
+			model.addAttribute("kakaoInfo", kakaoInfo);
+//			 kakaoInfo에서 꺼내 쓰면 됩니다.
+//			 kakaoInfo.getPartner_user_id()
+//			 kakaoInfo.getAmount() 등등..
+//			 ↓ 밑에 예매내역 insert 하면 됩니다.
+			
 			return "redirect:/myPage";
 		}
 	
@@ -62,9 +71,13 @@
 		@PostMapping("/kakaoPay")
 		public String kakaoPay(@ModelAttribute Movie movie,HttpSession session) {
 			log.info("kakaoPay post............................................");
-
+			User user = (User)session.getAttribute("user");
+			// 유저아이디 없으면 메인페이지로 리턴
+			if(user.getUserId() == null) 
+				return "redirect:/notLogin";
+			
 			//유저에 다른 정보 넣어주려면 User로 파라미터를 받고 필요없으면 session.userId쓰기
-			user.setUserId((String)session.getAttribute("userId"));
+			user.setUserId(user.getUserId());
 								//↓	필요한 parameter : 유저아이디, 영화이름, 표개수, 총액
 			return "redirect:" + kakaoPay.kakaoPayReady(movie, user);
 		}

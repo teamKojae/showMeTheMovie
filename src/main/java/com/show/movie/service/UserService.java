@@ -6,5 +6,8 @@ import com.show.movie.model.User;
 
 public interface UserService {
 	
-	List<User> selectUser();
+	public List<User> selectUser(String userId);
+	public void insertNewUser(User user);
+	public User isUser(String userId);
+	
 }

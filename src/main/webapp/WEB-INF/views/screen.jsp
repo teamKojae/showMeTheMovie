@@ -396,11 +396,10 @@
 									</div>
 									<!-- /rows -->
 									<ul class="legend">
-										<li class="legend__item legend__item--free">선택불가</li>
-										<li class="legend__item legend__item--reserved">선택가능</li>
+										<li class="legend__item legend__item--free">선택가능</li>
+										<li class="legend__item legend__item--reserved">선택불가</li>
 										<li class="legend__item legend__item--selected">선택된 좌석</li>
 									</ul>
-									<button class="action action--buy">예매하기</button>
 								</div>
 							</div>
 							
@@ -409,25 +408,26 @@
 						<div class="seat-result">
 							<div class="wrap">
 								<div class="tit-area">
-								<input type="hidden" name="movieName" value="1917">
-								<input type="hidden" name="moviePrice" value="1917">
+								<input type="hidden" name="movieName" value="${movie.movieName}">
+								<input type="hidden" name="moviePrice" value="8000">
 									<span class="movie-grade small age-all age-15">15세이상관람가</span>
-									<p class="tit" >1917</p>
+									<p class="tit" name="movieName">${movie.movieName}</p>
 									<p class="cate">2D(자막)</p>
 								</div>
 								<div class="info-area">
-									<p class="theater">강남</p>
+									<p class="theater">${movie.branchName }</p>
 									<p class="special">5관</p>
 									<p class="date">
 										<span>2020.03.19</span><em>(목)</em>
 									</p>
 									<div class="other-time">
 										<button type="button" class="now">
-											21:50~23:59<i class="arr"></i>
+											${movieInfo.movieStartTime}~${movieInfo.movieEndTime}<i class="arr"></i>
 										</button>
 										<ul class="other">
 											<li><button type="button" choicnt="48"
-													playschdlno="2003191372070" class="btn on ">21:50~23:59</button></li>
+													playschdlno="2003191372070" class="btn on ">
+													${movieInfo.movieStartTime}~${movieInfo.movieEndTime}</button></li>
 										</ul>
 									</div>
 									<p class="poster">

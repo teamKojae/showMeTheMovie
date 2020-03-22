@@ -9,8 +9,8 @@ import lombok.Data;
 @Configuration
 public class Booking {
 	private int bookingPrice;
-	@Bean
-	public Booking setBooking() {
+	@Bean("bookingVO")
+	public Booking getBooking() {
 		return new Booking();
 	}
 }

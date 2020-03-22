@@ -1,5 +1,6 @@
 package com.show.movie.model;
 
+import org.apache.ibatis.type.Alias;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -8,20 +9,23 @@ import lombok.Data;
 
 @Configuration
 @Data
+@Alias("movie")
 public class Movie {
-	@Bean
-	public Movie movieVO() {
+	@Bean("movieVO")
+	public Movie getMovie() {
 		return new Movie();
 	}
+
 	private String movieName;
-	private String audience;
-	private String ticketRate;
-	private String ticketRatePersent;
+	private String movieAudience;
+	private String movieTicketRate;
+	private String movieTicketRatePersent;
 	private String movieTitle;
-	private String synopsis;
+	private String movieSynopsis;
 	private String moviePrice;
 	private String moviePoster;
-	@Autowired(required = false)
-	private Booking booking;
+	private String moviePosterBG;
+	private String branchName;
+
 	
 }

@@ -51,6 +51,11 @@
 	background-image: url(/images/theater.PNG);
 	width:10%;
 }
+.gnb-txt-logout{
+	background-image: url(/images/logOut.PNG);
+	width:10%;
+}
+
 
 .sighUpLogo{
 	cursor: pointer;
@@ -64,3 +69,12 @@
     background: url(/images/movieLogo.PNG) center center no-repeat; !important
 }
 
+.gnb-txt-user{
+	right: 310px;
+    position: absolute;
+    top: -38px;
+    height: 38px;
+    background-position: center 0;
+    background-repeat: no-repeat;
+    width:10%;
+}

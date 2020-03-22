@@ -20,10 +20,6 @@
 <script src="/js/movie.js"></script>
 
 
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-	crossorigin="anonymous">
 
 
 </head>
@@ -36,7 +32,7 @@
 
 		<div class="movie-detail-page">
 			<div class="bg-img"
-				style="background-image: url('${movie.moviePoster}');"></div>
+				style="background-image: url('${movie.moviePosterBG}');"></div>
 			<div class="bg-pattern"></div>
 			<div class="bg-mask"></div>
 
@@ -51,7 +47,7 @@
 					<div class="rate">
 						<p class="tit">예매율</p>
 						<p class="cont">
-							<em>${movie.ticketRate}</em>위 (${movie.ticketRatePersent})
+							<em>${movie.movieTicketRate}</em>위 (${movie.movieTicketRatePersent})
 						</p>
 					</div>
 
@@ -64,7 +60,7 @@
 							</span>
 						</div>
 						<p class="cont">
-							<em>${movie.audience}</em> 명
+							<em>${movie.movieAudience}</em> 명
 						</p>
 					</div>
 
@@ -98,13 +94,8 @@
 			<div class="movie-summary infoContent" id="info">
 
 				<div class="txt">
-					${movie.movieTitle}<br>
-					 <c:if test="${fn:length(movie.synopsis) gt 200 }">
-					<div class="synopsis">
-						${movie.synopsis }
-					</div>
-					</c:if> 
-					${movie.synopsis }
+					
+					${movie.movieSynopsis }
 				</div>
 				<div class="btn-more toggle">
 					<button type="button" class="btn">
