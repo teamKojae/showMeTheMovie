@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.show.movie.dao.MovieDao;
+import com.show.movie.model.Branch;
 import com.show.movie.model.Movie;
 import com.show.movie.model.MovieInfo;
 import com.show.movie.service.MovieService;
@@ -27,8 +28,8 @@ public class MovieServiceImpl implements MovieService {
 	}
 
 	@Override
-	public List<MovieInfo> getMovieInfo(String movieName, String branchName) {
-		log.info(movieDao.getMovieInfo(movieName,branchName));
-		return movieDao.getMovieInfo(movieName,branchName);
+	public List<MovieInfo> getMovieInfo(Movie movie, Branch branch) {
+		log.info(movieDao.getMovieInfo(movie,branch));
+		return movieDao.getMovieInfo(movie,branch);
 	}
 }
