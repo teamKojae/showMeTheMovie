@@ -28,7 +28,7 @@ public class HomeController {
 	
 	@RequestMapping(value="/")
 	public String mainPage( Model model, HttpSession session) {
-		log.info(session.getAttribute("user"));
+		
 		return "index";
 	}
 

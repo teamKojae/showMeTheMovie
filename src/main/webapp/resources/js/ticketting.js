@@ -30,7 +30,7 @@ function clickMovie() {
 
 function clickTheater() {
 	$('.theater-choice .mCSB_container').bind('click', function(event) {
-		addOnClass(event);
+		
 		getMovieInfoAndTime(event);
 	})
 }
@@ -83,7 +83,7 @@ function getTheater(event) {
 									result,
 									function(index, item) {
 										theater
-												.append('<li><button class="locationForTheater" id="btn" type="button">'
+												.append('<li><button class="locationForTheater" id="btn" type="button" value="'+item+'">'
 														+ '<span>'+item+'</span>'
 														+ '</button></li>');
 									})
@@ -110,33 +110,45 @@ function getMovieInfoAndTime(event) {
 	console.log(locationName.text());
 	console.log(branchName.text());*/
 	
-	
-	
 	//var data = $('.on').find('span').text();
 	//console.log(data);
 	
+	var dataArray = new Array();
+	$.each($(".on"), function(key, value){
+		if($(this).val() != ""){
+		dataArray.push($(this).val());
+		}
+	})
+	
+		if(dataArray.length < 3){
+			alert('영화, 극장을 모두 선택해주세요');
+			return;
+		}
+		
+		addOnClass(event);
+		dataArray.push($(event.target).closest('button').val());
+		console.log(dataArray);
 	$
 			.ajax({
 				url : "/getMovieInfoAndTime",
 				type : 'GET',
 				contentType : "application/x-www-form-urlencoded; charset=UTF-8",
 				dataType : 'JSON',
+			
 				data : {
-//					movieDate : '2020-03-20',
-					'movieName' : '다크워터스',
-					'branchName' : '강북무비1'
+					'movieDate' : dataArray[0],
+					'movieName' : dataArray[1],
+					'locationName' : dataArray[2],
+					'branchName' : dataArray[3]
 				},
+			
+				
 				success : function(result) {
 					$('#playScheduleNonList').attr('style', 'display:none');
-					$
-							.each(
-									result,
-									function(index, item) {
+					$('.result').find('ul').empty();
+					$.each(result,function(index, item) {
 										console.log(item);
-										$('.result').find('ul').empty();
-										$('.result')
-												.find('ul')
-												.append(
+										$('.result').find('ul').append(
 														'<li>'
 														+'<form action="/getSelectScreen" method="post">'
 														+'<button type="submit" class="btn" >'

@@ -43,14 +43,13 @@
 	<bean id="sqlSessionFactory"
 		class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="mapperLocations"
-			value="classpath*:sql/*Dao.xml"></property>
+		<property name="mapperLocations" value="classpath*:sql/**/*Dao.xml"></property>
 		<property name="typeAliasesPackage" value="com/show/movie/model" />
 		<!-- <property name="configLocation" value="classpath:/mybatis-config.xml"></property> -->
 	</bean>
 
-	<!-- <mybatis-spring:scan base-package="com.show.movie.mapper" /> <mybatis-spring:scan 
-		base-package="classpath*:sql" /> -->
+<!-- 	<mybatis-spring:scan base-package="com.show.movie.mapper" />  -->
+	<mybatis-spring:scan base-package="com.show.movie.dao" />  
 
 	<!-- 트랜잭션 설정 -->
 
@@ -58,13 +57,21 @@
 	<!-- 트랜잭션 관련 AOP설정 -->
 	<bean id="pojoAspectJ" class="com.show.movie.service.PojoAspectJ" />
 
-
+	
+	<aop:config>
+		<aop:aspect ref="pojoAspectJ">
+			<aop:around method="invoke"
+				pointcut="execution(* com.show.movie.dao..*(..))" />
+		</aop:aspect>
+	</aop:config>
+<!-- 
 	<aop:config>
 		<aop:aspect ref="pojoAspectJ">
 			<aop:around method="invoke"
 				pointcut="execution(* com.show.movie.service.impl.*ServiceImpl*.*(..))" />
 		</aop:aspect>
-	</aop:config>
+	</aop:config> -->
+
 
 	<bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
@@ -76,10 +83,18 @@
 		<tx:attributes>
 			<!-- <tx:method name="get*" read-only="true"/> -->
 			<!-- 실험용 .. -->
-			<tx:method name="addUser" />
+			<tx:method name="insertNewUser" />
 		</tx:attributes>
 	</tx:advice>
 
+	<aop:config>
+		<aop:pointcut
+			expression="execution(* com.show.movie.dao..*(..))"
+			id="requiredTx" />
+		<aop:advisor advice-ref="txAdvice"
+			pointcut-ref="requiredTx" />
+	</aop:config>
+<!-- 
 	<aop:config>
 		<aop:pointcut
 			expression="execution(* com.show.movie.service.*.*(..))"
@@ -87,8 +102,7 @@
 		<aop:advisor advice-ref="txAdvice"
 			pointcut-ref="requiredTx" />
 	</aop:config>
-
-
+ -->
 
 
 </beans>

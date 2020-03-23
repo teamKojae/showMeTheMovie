@@ -2,18 +2,16 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.show.movie.UserDao">
+<mapper namespace="com.show.movie.dao.UserDao">
 
-
-		
-	<resultMap id="user" type="userVO">
+	<resultMap id="user" type="user">
 		<id column="id" property="userId" />
 		<result column="password" property="userPassword" />
 		<result column="name" property="userName" />
 		<result column="phoneNumber" property="userPhoneNumber" />
 		<result column="birth" property="userBirth" />
 		<result column="code" property="userCode" />
-	</resultMap>
+	</resultMap> 
 
 	<!-- 
 		private String userId;
@@ -24,17 +22,20 @@
 	private int userCode;
 	 -->
 
+
+	<select id="getTime" resultType="string">
+		SELECT sysdate() FROM dual
+	</select>
     <!-- 로그인  -->
 	
-	<!-- <select id="selectUser" resultMap="user" parameterType="string">
+	<select id="getUser" resultMap="user" parameterType="string">
 		SELECT * FROM user WHERE userId = #{id}
 	</select>
- -->
+ 
 
-<!--  	<insert id="insertNewUser" parameterType="userVO">
-		INSERT INTO user(userId, userPassword, userName, userPhoneNumber, userBirth, userCode)
-		VALUES ( #{userId}, #{userPassword},#{userName},
-				#{userPhoneNumber}, #{userBirth}, #{userCode} )
+  	<insert id="insertNewUser" parameterType="user">
+		INSERT INTO user(userId,  userName, userBirth, userCode)
+		VALUES ( #{user.userId}, #{user.userName},  #{user.userBirth}, #{user.userCode} )
 	</insert> 
- --> 
+  
 </mapper>

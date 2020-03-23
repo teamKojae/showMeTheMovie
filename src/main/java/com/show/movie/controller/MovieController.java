@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.show.movie.dao.MovieDao;
 import com.show.movie.model.Movie;
+import com.show.movie.service.MovieService;
 
 import lombok.extern.java.Log;
 import lombok.extern.log4j.Log4j;
@@ -18,7 +19,7 @@ public class MovieController {
 	@Autowired(required = false)
 	Movie movie;
 	@Autowired
-	MovieDao movieDao;
+	MovieService movieService;
 	
 	@RequestMapping(value="/movie")
 	public String movie(Model model) {
@@ -32,7 +33,7 @@ public class MovieController {
 	
 	@GetMapping(value="/movieDetail")
 	public String movieDetail(Model model, Movie movie) {
-		model.addAttribute("movie",  movieDao.getMovie(movie.getMovieName() ) );
+		model.addAttribute("movie",  movieService.getMovie(movie.getMovieName() ) );
 		return "movieDetail";
 	}
 	

@@ -8,7 +8,7 @@ import lombok.Data;
 
 @Data
 @Configuration
-@Alias("user")
+@Alias("user") 
 public class User {
 	@Bean(name="userVO")
 	public User getUser() {

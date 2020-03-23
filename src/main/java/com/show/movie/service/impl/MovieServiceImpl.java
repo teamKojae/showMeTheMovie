@@ -2,7 +2,9 @@ package com.show.movie.service.impl;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.show.movie.dao.MovieDao;
 import com.show.movie.model.Branch;
@@ -13,6 +15,7 @@ import com.show.movie.service.MovieService;
 import lombok.extern.log4j.Log4j;
 
 @Log4j
+@Service
 public class MovieServiceImpl implements MovieService {
 	@Autowired
 	MovieDao movieDao;

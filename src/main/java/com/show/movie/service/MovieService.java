@@ -2,6 +2,8 @@ package com.show.movie.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.show.movie.model.Branch;
 import com.show.movie.model.Movie;
 import com.show.movie.model.MovieInfo;

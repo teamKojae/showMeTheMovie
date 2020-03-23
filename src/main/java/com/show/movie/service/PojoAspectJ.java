@@ -1,7 +1,10 @@
 package com.show.movie.service;
 
 import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Aspect;
 
+
+@Aspect
 public class PojoAspectJ {
 	public PojoAspectJ(){
 		System.out.println("::" + getClass() + " default Construct");

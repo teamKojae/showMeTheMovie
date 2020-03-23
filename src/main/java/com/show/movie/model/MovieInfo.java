@@ -1,7 +1,6 @@
 package com.show.movie.model;
 
-import java.util.Date;
-
+import org.apache.ibatis.type.Alias;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,6 +9,7 @@ import lombok.Data;
 
 @Data
 @Configuration
+@Alias("movieInfo")
 public class MovieInfo {
 	@Bean("getMovieInfoVO")
 	public MovieInfo getMovieInfo() {

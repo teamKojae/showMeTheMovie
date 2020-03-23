@@ -8,11 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
-import com.show.movie.dao.MovieDao;
 import com.show.movie.model.Branch;
 import com.show.movie.model.Location;
 import com.show.movie.model.Movie;
-import com.show.movie.model.MovieInfo;
+import com.show.movie.service.MovieService;
 
 import lombok.extern.log4j.Log4j;
 
@@ -21,14 +20,16 @@ import lombok.extern.log4j.Log4j;
 public class TicketController {
 	
 	@Autowired
-	MovieDao movieDao;
+	MovieService movieService;
 	
 	@RequestMapping(value="/getBranch",  produces = "application/json; charset=utf8")
 	@ResponseBody
 	public String ticketGetBranch(Location location, Model model) {
 //		String message = new String(message.getBytes("ISO-8859-1"), "UTF-8");
+		log.info("getBranch :  "+location.getLocationName().split("\\(")[0]);
+		log.info("DB:    "+movieService.getBranch(location.getLocationName().split("\\(")[0]));
 		return new Gson().toJson(
-				movieDao.getBranch(location.getLocationName().split("\\(")[0])
+				movieService.getBranch(location.getLocationName().split("\\(")[0])
 				);
 	}
 	
@@ -38,8 +39,8 @@ public class TicketController {
 		log.info("movieNAme :   "+movie.getMovieName());
 		log.info("BranchName :   "+branch.getBranchName());
 //		log.info("DB "+movieDao.getMovieInfo(movieInfo.getMovie().getMovieName(), movieInfo.getBranch().getBranchName()));
-		log.info("DB "+movieDao.getMovieInfo(movie , branch) );
-		return new Gson().toJson(movieDao.getMovieInfo(movie , branch));
+		log.info("DB "+movieService.getMovieInfo(movie , branch) );
+		return new Gson().toJson(movieService.getMovieInfo(movie , branch));
 	}
 	
 	@PostMapping("/getSelectScreen" )

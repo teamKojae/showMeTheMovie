@@ -15,7 +15,7 @@ public class Movie {
 	public Movie getMovie() {
 		return new Movie();
 	}
-
+	private int movieCode;
 	private String movieName;
 	private String movieAudience;
 	private String movieTicketRate;

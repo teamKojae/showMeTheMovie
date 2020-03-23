@@ -77,11 +77,13 @@ public class LoginController {
 		System.out.println(userId);
 		
 		
-		System.out.println(" isUser   :  "+ userService.isUser(userId));
+		System.out.println(" isUser   :  "+ userService.getUser(userId));
 		//DB저장
 		user = getLoginUserInfo(user, response_obj);
-		if(userService.isUser(userId) == null ) {
-			userDao.insertNewUser(user);
+		if(userService.getUser(userId) == null ) {
+			System.out.println("insert로 왔어염 " + user);
+			
+			userService.insertNewUser(user);
 		}
 		
 		//4.파싱 닉네임 세션으로 저장

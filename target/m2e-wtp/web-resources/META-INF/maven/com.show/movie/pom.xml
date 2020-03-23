@@ -149,6 +149,13 @@
 			<version>${org.springframework-version}</version>
 		</dependency>
 
+		<!-- AOP -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+
 		<!-- AspectJ -->
 		<dependency>
 			<groupId>org.aspectj</groupId>

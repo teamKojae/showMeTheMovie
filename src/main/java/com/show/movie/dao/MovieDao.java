@@ -10,10 +10,12 @@ import com.show.movie.model.Movie;
 import com.show.movie.model.MovieInfo;
 
 public interface MovieDao {
-	@Select("SELECT branch.branchName FROM branch, location " + 
-			"WHERE location.locationCode = branch.locationCode "+
-			"AND location.locationName= #{locationName} ")
-	public List<String> getBranch(String locationName);
+	/*
+	 * @Select("SELECT branch.branchName FROM branch, location " +
+	 * "WHERE location.locationCode = branch.locationCode "+
+	 * "AND location.locationName= #{locationName} ")
+	 */
+	public List<String> getBranch(@Param("locationName")  String locationName);
 	
 	
 	@Select("SELECT movie.movieName as 'movie.movieName'  FROM theater, movieInfo, movie , branch " + 
@@ -24,7 +26,7 @@ public interface MovieDao {
 			"AND branch.branchName=  #{branch.branchName} ")
 	public List<MovieInfo> getMovieInfo(@Param("movie") Movie movie, @Param("branch") Branch branch);
 	
-	@Select("SELECT * FROM movie WHERE movieName = #{movieName}")
+	/* @Select("SELECT * FROM movie WHERE movieName = #{movieName}") */
 	public Movie getMovie(String movieName);
 	
 	//순위까지 가져오는 쿼리문

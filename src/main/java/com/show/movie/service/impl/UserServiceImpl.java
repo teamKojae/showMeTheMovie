@@ -19,9 +19,14 @@ public class UserServiceImpl implements UserService {
 	UserDao userDao;
 	
 	@Override
-	public List<User> selectUser(String userId) {
+	public User getUser(String userId) {
 		return userDao.getUser(userId);
 	}
+	
+	/*
+	 * @Override public User selectUser(String userId) { return
+	 * userDao.getUser(userId); }
+	 */
 
 	@Override
 	public void insertNewUser(User user) {
@@ -30,8 +35,10 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User isUser(String userId) {
-		return userDao.isUser(userId);
+		return null;/*userDao.isUser(userId);*/
 	}
+
+
 
 
 

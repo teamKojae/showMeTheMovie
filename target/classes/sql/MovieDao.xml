@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.show.movie.dao.MovieDao">
+ 
+ 	<resultMap id="movie" type="movie">
+		<id column="movieCode" property="movieCode" />
+		<result column="movieName" property="movieName" />
+		<result column="movieAudience" property="movieAudience" />
+		<result column="movieTicketRate" property="movieTicketRate" />
+		<result column="movieTitle" property="movieTitle" />
+		<result column="movieSynopsis" property="movieSynopsis" />
+		<result column="moviePrice" property="moviePrice" />
+		<result column="moviePoster" property="moviePoster" />
+		<result column="moviePosterBG" property="moviePosterBG" />
+	</resultMap> 
+ 
+	<select id="getMovie" resultMap="movie">
+		SELECT * FROM movie WHERE movieName = #{movieName}
+	</select>
+	
+	<select id="getBranch" resultType="string" >
+		SELECT branch.branchName FROM branch, location
+		WHERE location.locationCode = branch.locationCode 
+		AND location.locationName = #{locationName} 
+	</select>
+	
+
+ </mapper> 
+  
+  
