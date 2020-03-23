@@ -30,8 +30,8 @@
  
 
   	<insert id="insertNewUser" parameterType="user">
-		INSERT INTO user(userId,  userName, userBirth, userCode)
-		VALUES ( #{userId}, #{userName},  #{userBirth}, #{userCode} )
+		INSERT INTO user(userId,  userName,  userCode)
+		VALUES ( #{userId}, #{userName},   #{userCode} )
 	</insert> 
   
 </mapper>

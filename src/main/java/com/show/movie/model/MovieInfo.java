@@ -1,5 +1,7 @@
 package com.show.movie.model;
 
+import java.util.Date;
+
 import org.apache.ibatis.type.Alias;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -22,7 +24,7 @@ public class MovieInfo {
 	@Autowired(required = false)
 	private Branch branch;
 	
-	private int moiveCode;
+	private int moiveInfoCode;
 	//Date는 다른사람이 구현하면 하자.. ㅠ ㅠ 
 	//private Date movieDate;
 	private String movieStartTime;

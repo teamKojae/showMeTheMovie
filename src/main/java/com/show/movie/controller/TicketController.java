@@ -11,6 +11,7 @@ import com.google.gson.Gson;
 import com.show.movie.model.Branch;
 import com.show.movie.model.Location;
 import com.show.movie.model.Movie;
+import com.show.movie.model.MovieInfo;
 import com.show.movie.service.MovieService;
 
 import lombok.extern.log4j.Log4j;
@@ -35,18 +36,21 @@ public class TicketController {
 	
 	@RequestMapping(value="/getMovieInfoAndTime",  produces = "application/json; charset=utf8")
 	@ResponseBody
-	public String getMovieInfoAndTime(Model model,  Movie movie, Branch branch) {
-		log.info("movieNAme :   "+movie.getMovieName());
-		log.info("BranchName :   "+branch.getBranchName());
+	public String getMovieInfoAndTime(Model model, MovieInfo movieInfo) {
+		//log.info("movieInfo :   "+movieInfo);
+		//log.info("DB 후 : "+ movieService.getMovieInfo(movieInfo));
 //		log.info("DB "+movieDao.getMovieInfo(movieInfo.getMovie().getMovieName(), movieInfo.getBranch().getBranchName()));
-		log.info("DB "+movieService.getMovieInfo(movie , branch) );
-		return new Gson().toJson(movieService.getMovieInfo(movie , branch));
+		return new Gson().toJson(movieService.getMovieInfo(movieInfo));
 	}
+//	
+//	'movieDate' : dataArray[0],
+//	'movieName' : dataArray[1],
+//	'locationName' : dataArray[2],
+//	'branchName' : dataArray[3]
+	
 	
 	@PostMapping("/getSelectScreen" )
-	public String getSelectScreen(Model model, Movie movie) {
-		
-		
+	public String getSelectScreen(Model model, MovieInfo movieInfo) {
 //		log.info(movie.getMovieInfo());
 //		movie.setMovieInfo(movieInfo);
 //		model.addAttribute("movie",movie);

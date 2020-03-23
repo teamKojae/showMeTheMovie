@@ -106,12 +106,18 @@ public class KakaoAPI {
 			JsonObject properties = element.getAsJsonObject().get("properties").getAsJsonObject();
 			JsonObject kakao_account = element.getAsJsonObject().get("kakao_account").getAsJsonObject();
 
-			String nickname = properties.getAsJsonObject().get("nickname").getAsString();
-			String email = kakao_account.getAsJsonObject().get("email").getAsString();
+			System.out.println("kakaoAccount :  " + kakao_account);
 
-			userInfo.put("nickname", nickname);
-			userInfo.put("email", email);
-
+			
+			  String nickname = properties.getAsJsonObject().get("nickname").getAsString(); 
+			  String email =  kakao_account.getAsJsonObject().get("email").getAsString();
+			 System.out.println("nick "+nickname);
+			 System.out.println("email "+email);
+			  
+			userInfo.put("id", email);
+			userInfo.put("userName", nickname);
+			userInfo.put("userCode", 2);
+			System.out.println("userInfo    " + userInfo);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -120,4 +126,8 @@ public class KakaoAPI {
 		return userInfo;
 	}
 
+	public String getKakaoInfo(JsonObject kakao_account, String prop) {
+		System.out.println("property :  " + prop);
+		return kakao_account.getAsJsonObject().get(prop).getAsString();
+	}
 }

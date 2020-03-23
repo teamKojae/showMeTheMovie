@@ -408,15 +408,15 @@
 						<div class="seat-result">
 							<div class="wrap">
 								<div class="tit-area">
-								<input type="hidden" name="movieName" value="${movie.movieName}">
+								<input type="hidden" name="movieName" value="${movieInfo.movie.movieName}">
 								<input type="hidden" name="moviePrice" value="8000">
 									<span class="movie-grade small age-all age-15">15세이상관람가</span>
-									<p class="tit" name="movieName">${movie.movieName}</p>
+									<p class="tit" name="movieName">${movieInfo.movie.movieName}</p>
 									<p class="cate">2D(자막)</p>
 								</div>
 								<div class="info-area">
-									<p class="theater">${movie.branchName }</p>
-									<p class="special">5관</p>
+									<p class="theater">${movieInfo.branch.branchName }</p>
+									<p class="special">${movieInfo.theater.theaterCode }관</p>
 									<p class="date">
 										<span>2020.03.19</span><em>(목)</em>
 									</p>

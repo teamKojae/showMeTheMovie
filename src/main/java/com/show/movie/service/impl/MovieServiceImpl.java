@@ -31,8 +31,8 @@ public class MovieServiceImpl implements MovieService {
 	}
 
 	@Override
-	public List<MovieInfo> getMovieInfo(Movie movie, Branch branch) {
-		log.info(movieDao.getMovieInfo(movie,branch));
-		return movieDao.getMovieInfo(movie,branch);
+	public List<MovieInfo> getMovieInfo(MovieInfo movieInfo) {
+		log.info(movieDao.getMovieInfo(movieInfo));
+		return movieDao.getMovieInfo(movieInfo);
 	}
 }

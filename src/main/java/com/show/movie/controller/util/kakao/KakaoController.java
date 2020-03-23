@@ -16,6 +16,7 @@
 	import com.show.movie.model.Movie;
 	import com.show.movie.model.User;
 import com.show.movie.model.kakao.KakaoPayApprovalVO;
+import com.show.movie.service.UserService;
 
 import lombok.extern.log4j.Log4j;
 	
@@ -26,21 +27,27 @@ import lombok.extern.log4j.Log4j;
 		private KakaoAPI kakaoAPI;
 		@Autowired(required = false)
 		KakaoPay kakaoPay;
+		@Autowired
+		KakaoPayApprovalVO kakaoInfo;
 		@Autowired(required = false)
 		User user;
 		@Autowired
-		KakaoPayApprovalVO kakaoInfo;
+		UserService userService;
 		
 		@RequestMapping(value = "/kakaoCallback")
 		public String kakaoLogin(Model model, String code, HttpSession session) {
 			String access_Token = kakaoAPI.getAccessToken(code);
+			System.out.println("access_Token  "+ access_Token);
 			HashMap<String, Object> userInfo = kakaoAPI.getUserInfo(access_Token);
-			System.out.println("login Controller : " + userInfo);
-	
+			user.setUserId((String)userInfo.get("id"));
+			user.setUserName((String)userInfo.get("userName"));
+			user.setUserCode(2);
+			if( userService.getUser(user.getUserId()) == null) {
+				userService.insertNewUser(user);
+			}
 			// 클라이언트의 이메일이 존재할 때 세션에 해당 이메일과 토큰 등록
-			if (userInfo.get("email") != null) {
-				session.setAttribute("userId", userInfo.get("nickname"));
-				session.setAttribute("access_Token", access_Token);
+			if (user.getUserId() != null) {
+				session.setAttribute("user", user);
 			}
 			return "redirect:/";
 		}
@@ -58,6 +65,8 @@ import lombok.extern.log4j.Log4j;
 //			myPage에 url갖고가고 싶으면 redirect 빼세요.
 //			 값 가져가고 싶으면 model에 넣으세요 (model.addAttribute(key,value);
 			kakaoInfo = kakaoPay.kakaoPayInfo(pg_token,(String)session.getAttribute("userId"));
+			log.info("kakaoInfo :  "+kakaoInfo);
+			
 			model.addAttribute("kakaoInfo", kakaoInfo);
 //			 kakaoInfo에서 꺼내 쓰면 됩니다.
 //			 kakaoInfo.getPartner_user_id()

@@ -30,7 +30,6 @@ function clickMovie() {
 
 function clickTheater() {
 	$('.theater-choice .mCSB_container').bind('click', function(event) {
-		
 		getMovieInfoAndTime(event);
 	})
 }
@@ -38,7 +37,7 @@ function clickTheater() {
 function clickLocation() {
 	$('.theater-choice .list-area .btn').on('click', function(event) {
 		getTheater(event);
-		addOnClass(event);
+		
 	})
 }
 
@@ -56,6 +55,7 @@ function addOnClass(event) {
 
 function getTheater(event) {
 	event.preventDefault();
+	addOnClass(event);
 	$
 			.ajax({
 				url : "/getBranch",
@@ -124,10 +124,10 @@ function getMovieInfoAndTime(event) {
 			alert('영화, 극장을 모두 선택해주세요');
 			return;
 		}
-		
 		addOnClass(event);
 		dataArray.push($(event.target).closest('button').val());
 		console.log(dataArray);
+		
 	$
 			.ajax({
 				url : "/getMovieInfoAndTime",
@@ -136,10 +136,11 @@ function getMovieInfoAndTime(event) {
 				dataType : 'JSON',
 			
 				data : {
-					'movieDate' : dataArray[0],
-					'movieName' : dataArray[1],
-					'locationName' : dataArray[2],
-					'branchName' : dataArray[3]
+					/*'movieDate' : dataArray[0],*/
+					'movieDate' : '2020-03-20',
+					'movie.movieName' : dataArray[1],
+					'branch.location.locationName' : dataArray[2],
+					'branch.branchName' : dataArray[3]
 				},
 			
 				
@@ -166,21 +167,22 @@ function getMovieInfoAndTime(event) {
 																+ '</strong><em>2D(자막)</em></span>'
 																+ '<div class="info">'
 																+ '<span class="theater" title="'
-																+ item.branchName
+																+ item.branch.branchName
 																+ '">'
-																+ item.branchName
-																+ '<br>1관'
+																+ item.branch.branchName
+																+ '<br>'+item.theater.theaterCode+'관'
 																+ '</span><span class="seat"><strong class="now" title="잔여 좌석">'
-																+ item.resideSeat
+																+ item.theater.theaterLeftSeat
 																+ '</strong>'
 																+ '<span>/</span><em class="all" title="전체 좌석">'
-																+ item.allSeat
+																+ item.theater.theaterAllSeat
 																+ '</em></span>'
 																+ '</div></button>'
-																+'<input type="hidden" name="movieName" value="'+item.movieName+'" >'
+																+'<input type="hidden" name="movie.movieName" value="'+item.movie.movieName+'" >'
 																+'<input type="hidden" name="movieStartTime" value="'+item.movieStartTime+'" >'
 																+'<input type="hidden" name="movieEndTime" value="'+item.movieEndTime+'" >'
-																+'<input type="hidden" name="branchName" value="'+item.branchName+'" ></form>'
+																+'<input type="hidden" name="branch.branchName" value="'+item.branch.branchName+'" >'
+																+'<input type="hidden" name="theater.theaterCode" value="'+item.theater.theaterCode+'" ></form>'
 																+'</li>'
 												);
 									})
