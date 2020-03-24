@@ -60,8 +60,7 @@
 	
 	<aop:config>
 		<aop:aspect ref="pojoAspectJ">
-			<aop:around method="invoke"
-				pointcut="execution(* com.show.movie.dao..*(..))" />
+			<aop:around method="invoke" pointcut="execution(* com.show.movie.dao..*(..))" />
 		</aop:aspect>
 	</aop:config>
 <!-- 

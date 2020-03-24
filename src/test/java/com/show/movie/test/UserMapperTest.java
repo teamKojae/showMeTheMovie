@@ -1,8 +1,11 @@
 package com.show.movie.test;
 
+import javax.servlet.ServletContext;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -16,16 +19,16 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 public class UserMapperTest {
 		
+	@Autowired(required = false)
+	ServletContext context;
 	
 	@Autowired(required = false)
 	UserDao userDao;
 	
 	@Test
 	public void testGet() {
-		log.info("getTime");
-		User user = new User();
-		log.info("userGet TIME : "+userDao.getUser("49022295"));
-		//log.info(userMapper.getUser());
+		String filePath =context.getRealPath("/");
+		System.out.println("aaaaa "+filePath);
 	}
 	
 }
