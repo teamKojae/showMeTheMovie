@@ -3,6 +3,7 @@ package com.show.movie.service.impl;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +20,7 @@ import lombok.extern.log4j.Log4j;
 public class MovieServiceImpl implements MovieService {
 	@Autowired
 	MovieDao movieDao;
+	
 	
 	@Override
 	public List<String> getBranch(String locationName) {

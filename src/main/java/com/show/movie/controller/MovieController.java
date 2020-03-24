@@ -33,6 +33,7 @@ public class MovieController {
 	
 	@GetMapping(value="/movieDetail")
 	public String movieDetail(Model model, Movie movie) {
+		log.info("영화이름 : "+movie.getMovieName());
 		model.addAttribute("movie",  movieService.getMovie(movie.getMovieName() ) );
 		return "movieDetail";
 	}

@@ -207,6 +207,7 @@
 								<li name="li_boxoRankList" class=""><a
 									href="javascript:gfn_moveDetail('01685000')"
 									class="movie-list-info" title="영화상세 보기">
+									<input type="hidden"  name="movieName" value="1917" class="movie-info-hidden">
 										<p class="rank">
 											3<span class="ir">위</span>
 										</p> <!-- to 개발 : alt 값에 영화 제목 출력 --> <img
@@ -264,8 +265,7 @@
 
 										<div class="case">
 											<!-- 개봉 예매가능 기본-->
-											<a href="javascript:moveBokdPage('01685000');"
-												class="button gblue" title="영화 예매하기">예매</a>
+										<button class="button gblue" name="movieName" value="1917">예매</button>
 										</div>
 									</div></li>
 								<!-- 각 map 별 첫번째 li 에 first클래스 추가 -->

@@ -12,6 +12,16 @@ function requestKakaoPay() {
 	})
 }
 
+function changeChoiseMovie(){
+	$('#mCSB_1_container').find('button').bind('click',function(event){
+		$('.theater-choice .on').removeClass('on has-issue');
+		$('.result').find('ul').empty();
+		$('#movie-schedule-area').attr('style', 'display:none');
+		$('#playScheduleNonList').attr('style', 'display:block');
+		
+	})
+}
+
 function getMovieName() {
 	var movieName = $('#ticketMovieName').val();
 	if ($('#ticketMovieName').val() != "") {
@@ -24,6 +34,7 @@ function getMovieName() {
 function clickMovie() {
 	$('.movie-choice .btn').bind('click', function(event) {
 		addOnClass(event);
+		changeChoiseMovie();
 	})
 }
 
@@ -37,7 +48,6 @@ function clickTheater() {
 function clickLocation() {
 	$('.theater-choice .list-area .btn').on('click', function(event) {
 		getTheater(event);
-		
 	})
 }
 
@@ -113,20 +123,26 @@ function getMovieInfoAndTime(event) {
 	//var data = $('.on').find('span').text();
 	//console.log(data);
 	
+	
 	var dataArray = new Array();
 	$.each($(".on"), function(key, value){
 		if($(this).val() != ""){
 		dataArray.push($(this).val());
 		}
 	})
+	if(dataArray.length < 3){
+		alert('영화, 극장을 모두 선택해주세요');
+		return;
+	}
 	
-		if(dataArray.length < 3){
-			alert('영화, 극장을 모두 선택해주세요');
-			return;
-		}
-		addOnClass(event);
-		dataArray.push($(event.target).closest('button').val());
-		console.log(dataArray);
+	addOnClass(event);
+	
+	if(dataArray.length > 3 ){
+	dataArray.pop();
+	}
+	
+	dataArray.push($(event.target).closest('button').val());
+	console.log(dataArray);
 		
 	$
 			.ajax({

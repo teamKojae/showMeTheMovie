@@ -64,13 +64,15 @@ import lombok.extern.log4j.Log4j;
 //			log에 info 찍혀있으니 필요한 것 쓰세요 
 //			myPage에 url갖고가고 싶으면 redirect 빼세요.
 //			 값 가져가고 싶으면 model에 넣으세요 (model.addAttribute(key,value);
-			kakaoInfo = kakaoPay.kakaoPayInfo(pg_token,(String)session.getAttribute("userId"));
+			log.info("pgtoken :  "+pg_token);
+			log.info( ( (User)session.getAttribute("user") ).getUserId());
+			kakaoInfo = kakaoPay.kakaoPayInfo(pg_token, ( (User)session.getAttribute("user") ).getUserId());
 			log.info("kakaoInfo :  "+kakaoInfo);
 			
 			model.addAttribute("kakaoInfo", kakaoInfo);
 //			 kakaoInfo에서 꺼내 쓰면 됩니다.
 //			 kakaoInfo.getPartner_user_id()
-//			 kakaoInfo.getAmount() 등등..
+//			 kakaoInfo.getAmount().total() 등등..
 //			 ↓ 밑에 예매내역 insert 하면 됩니다.
 			
 			return "redirect:/myPage";
@@ -82,8 +84,14 @@ import lombok.extern.log4j.Log4j;
 			log.info("kakaoPay post............................................");
 			User user = (User)session.getAttribute("user");
 			// 유저아이디 없으면 메인페이지로 리턴
-			if(user.getUserId() == null) 
+			try{
+				if( user.getUserId() == null) 
 				return "redirect:/notLogin";
+			}catch (NullPointerException e) {
+				return "redirect:/screen";
+			}
+				
+			
 			
 			//유저에 다른 정보 넣어주려면 User로 파라미터를 받고 필요없으면 session.userId쓰기
 			user.setUserId(user.getUserId());

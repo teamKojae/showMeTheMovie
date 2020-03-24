@@ -47,7 +47,7 @@
 					<div class="rate">
 						<p class="tit">예매율</p>
 						<p class="cont">
-							<em>${movie.movieTicketRate}</em>위 (${movie.movieTicketRatePersent})
+							<em>${movie.movieTicketRate}</em>위 (${movie.movieTicketRatePersent}%)
 						</p>
 					</div>
 
