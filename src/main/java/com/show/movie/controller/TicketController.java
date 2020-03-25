@@ -47,7 +47,6 @@ public class TicketController {
 //	'locationName' : dataArray[2],
 //	'branchName' : dataArray[3]
 	
-	
 	@PostMapping("/getSelectScreen" )
 	public String getSelectScreen(Model model, MovieInfo movieInfo) {
 //		log.info(movie.getMovieInfo());

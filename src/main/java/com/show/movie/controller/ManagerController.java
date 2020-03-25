@@ -11,9 +11,12 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.google.gson.Gson;
 
 
 @Controller
@@ -25,11 +28,12 @@ public class ManagerController {
 		
 	}
 
-	@RequestMapping("/fileUpload")
+	@RequestMapping(value = "/fileUpload" ,  produces = "application/json; charset=utf8")
+	@ResponseBody
 	public String fileUpload(MultipartHttpServletRequest multipartHttpServletRequest, Model model) throws IOException {
 		//파일경로
 		
-		String filePath = "D://uploadImage/";
+		String filePath = "D:/uploadImage/";
 		System.out.println(filePath);
 		//파일들을 List형식으로 보관
 		List<MultipartFile> files = multipartHttpServletRequest.getFiles("files");
@@ -56,7 +60,7 @@ public class ManagerController {
 			files.get(i).transferTo(file);	
 			System.out.println(file.getName() + " : 이미지 업로드 완료");
 		}		
-		return "/";
+		return new Gson().toJson(file.getName());
 	}
 
 }
