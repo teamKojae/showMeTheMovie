@@ -76,8 +76,8 @@
 	<select id="getMovieInfo" resultMap="mvInfo" parameterType="movieInfo">
 	<!--  getMovieInfo는 View Table -->
 		SELECT * FROM getMovieInfo		
-		WHERE movieName = #{movie.movieName}
-		AND branchName=  #{branch.branchName}
+		WHERE movie.movieName = #{movie.movieName}
+		AND branch.branchName=  #{branch.branchName}
 	</select>
 	
 	
@@ -89,16 +89,16 @@
 	
 	<!--  return : void  -->
 	<select id="createViewGetMovieInfo">
-			CREATE VIEW getMovieInfo AS 
-			SELECT movie.movieName, movieInfo.movieStartTime, movieInfo.movieEndTime, 
-			branch.branchName, theater.theaterleftSeat,
-			 theater.theaterAllSeat,
-			 theater.theaterCode
-			FROM movie AS movie , movieInfo AS movieInfo, theater AS theater, branch AS branch
-			WHERE theater.theaterCode = movieinfo.theaterCode
-			AND movieinfo.movieCode = movie.movieCode 
-			AND theater.branchCode = branch.branchCode 
-			ORDER BY movieStartTime ASC;
+		CREATE VIEW getMovieInfo AS 
+		SELECT movie.movieName, movieInfo.movieStartTime, movieInfo.movieEndTime, 
+		branch.branchName, theater.theaterleftSeat,
+		 theater.theaterAllSeat,
+		 theater.theaterCode
+		FROM movie AS movie , movieInfo AS movieInfo, theater AS theater, branch AS branch
+		WHERE theater.theaterCode = movieinfo.theaterCode
+		AND movieinfo.movieCode = movie.movieCode 
+		AND theater.branchCode = branch.branchCode 
+		ORDER BY movieStartTime ASC;
 	</select>
 	
 <!-- 	

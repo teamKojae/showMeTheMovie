@@ -6,10 +6,12 @@ $(function() {
 	clickMovie();
 })
 
+
 function requestKakaoPay() {
 	$('.button').on('click', function(event) {
 		$('#kakaoPay').submit();
 	})
+	
 }
 
 function changeChoiseMovie(){

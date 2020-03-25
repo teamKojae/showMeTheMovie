@@ -33,8 +33,9 @@ $(function() {
       data : formData,
       cache : false,
       contentType : false,
-      processData : false,
-      xhr: function(){
+      processData : false
+    })
+    /*   xhr: function(){
         //Get XmlHttpRequest object
          var xhr = $.ajaxSettings.xhr() ;
         
@@ -52,7 +53,7 @@ $(function() {
     		$('#progressBar').text('');
     		$('#progressBar').css('width','0%');
               }
-    });
+    }); */
   
     // Called on success of file upload
     ajaxReq.done(function(msg) {
