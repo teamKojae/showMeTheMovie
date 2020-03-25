@@ -17,6 +17,7 @@
 <script src="/js/jquery-3.4.1.min.js"></script>
 
 <script src="/js/common.js"></script>
+<script src="/js/movie.js"></script>
 </head>
 <body>
 	<c:import url="/resources/common/header.jsp"></c:import>

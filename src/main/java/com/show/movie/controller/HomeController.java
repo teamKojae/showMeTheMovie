@@ -1,14 +1,14 @@
 package com.show.movie.controller;
 
+
 import javax.servlet.http.HttpSession;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.show.movie.service.UserService;
 
 import lombok.extern.log4j.Log4j;
 
@@ -20,14 +20,17 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 @Controller
 public class HomeController {
-	//private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
+	@Autowired
+	UserService userService;
+	
+	/*  ※   login은 LoginController에  있어요   */
 	@RequestMapping(value="/")
-	public String mainPage( Model model) {
-		log.info(getClass());
+	public String mainPage( Model model, HttpSession session) {
 		
 		return "index";
 	}
+
 	
 	
 	@RequestMapping(value="/myPage")
@@ -35,5 +38,9 @@ public class HomeController {
 		return "myPage";
 	}
 	
+	@RequestMapping(value="/signUp")
+	public String sighUpPage(Model model) {
+		return "signUp";
+	}
 	
 }

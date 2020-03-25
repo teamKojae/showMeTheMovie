@@ -7,7 +7,12 @@
 		and Filters -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>/WEB-INF/spring/root-context.xml</param-value>
+		<param-value>/WEB-INF/spring/root-context.xml
+					 classpath:/config/mybatis-contextxml.xml</param-value>
+		<!-- classpath:/config/root-context.xml
+        classpath:/config/mybatis-contextxml.xml -->
+		
+		<!-- <param-value>classpath*:config/context-*.xml</param-value> -->
 	</context-param>
 
 	<!-- Creates the Spring Container shared by all Servlets and Filters -->
@@ -32,7 +37,16 @@
 	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>/</url-pattern>
+		<url-pattern>*.js</url-pattern>
+		<url-pattern>*.css</url-pattern>
+		<url-pattern>*.jpg</url-pattern>
+		<url-pattern>*.gif</url-pattern>
+		<url-pattern>*.png</url-pattern>
+		<url-pattern>*.woff2</url-pattern>
+		<url-pattern>*.woff</url-pattern>
+		<url-pattern>*.ttf</url-pattern>
 	</servlet-mapping>
+
 
 	<filter>
 		<filter-name>encodingFilter</filter-name>
@@ -58,7 +72,7 @@
 			<page-encoding>UTF-8</page-encoding>
 		</jsp-property-group>
 	</jsp-config>
-	
 
+	
 
 </web-app>

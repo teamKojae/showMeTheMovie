@@ -1,39 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 		<header id="header" class="none-ad">
 			<h1 class="ci">
 				<a href="/" title="MEGABOX 메인으로 가기">SHOW ME THE MOVIE ^^*!</a>
 			</h1>
 
-			<!-- 브라우저 다운로드 -->
-
-			<!-- ie-update : ie 9 이하 일때만 출력 -->
-
-			<!--// ie-update : ie 9 이하 일때만 출력 -->
-			<!--// 브라우저 다운로드 -->
-
-			<!-- topGnb -->
-
-
-
-
-			<!-- 2019-04-15 마크업 수정 : 고객요청  -->
+			<!-- 공간확보용  -->
 			<div class="util-area">
 				<div class="link-area"></div>
-				
 			</div>
-			<!--// 2019-04-15 마크업 수정 : 고객요청  -->
-
-
-
-			<!-- gnb -->
-			<!--
-        2019-04-15 마크업 수정 : 고객요청
-        1뎁스 a 태그에 각각 다른 class 추가
-    -->
-
-
 
 			<nav id="gnb" class="">
 				<ul class="gnb-depth1">
@@ -43,10 +19,20 @@
 						title="예매">예매</a></li>
 					<li class=""><a href="/ticketing" class="gnb-txt-theaters"
 						title="극장">극장</a></li>
+						<c:choose>
+							<c:when test="${empty user.userId}">
 					<li><a href="/login" class="gnb-txt-login" title="로그인">로그인</a></li>
 					<li><a href="/signUp" class="gnb-txt-sighup" title="회원가입">회원가입</a></li>
-					<li><a href="/myPage" class="gnb-txt-myPage"
+							</c:when>
+							<c:otherwise>
+							<li><h3 class="gnb-txt-user" title="${user.userName }">${user.userName}</h3></li>
+						<li><a href="/myPage" class="gnb-txt-myPage"
 						title="마이페이지">마이페이지</a></li>
+						<li><a href="/logout" class="gnb-txt-logout"
+						title="마이페이지">로그아웃</a></li>
+							</c:otherwise>
+						</c:choose>
+						
 				</ul>
 			</nav>
 		</header>
