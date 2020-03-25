@@ -78,3 +78,10 @@
     background-repeat: no-repeat;
     width:10%;
 }
+
+.getMovieImages{
+	display:block;
+}
+.width300{
+	width:300px;
+}

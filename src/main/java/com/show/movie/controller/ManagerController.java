@@ -2,6 +2,7 @@ package com.show.movie.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletContext;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -21,6 +23,13 @@ import com.google.gson.Gson;
 
 @Controller
 public class ManagerController {
+	
+	
+	@GetMapping("/addMovie")
+	public String addMovie(Model model) {
+		return "addMovie";
+	}
+	
 	
 	@RequestMapping(value = "/progress2")
 	public String progress2(Model model) {
@@ -37,6 +46,7 @@ public class ManagerController {
 		System.out.println(filePath);
 		//파일들을 List형식으로 보관
 		List<MultipartFile> files = multipartHttpServletRequest.getFiles("files");
+		System.out.println(files.get(0).getOriginalFilename());
 		
 		File file = new File(filePath);
 		//파일이 없다면 디렉토리를 생성
@@ -52,15 +62,17 @@ public class ManagerController {
 //		InputStream getInputStream() : InputStrem을 구한다. 
 //		void transferTo(File dest) : 업로드 한 파일 데이터를 지정한 파일에 저장한다. --> 요고도 파일쓰는거다.
 
-		
+		List<String> imageList = new ArrayList<String>();
 		for (int i = 0; i < files.size(); i++) {
 			System.out.println(files.get(i).getOriginalFilename() +" : 이미지 업로드 시도 ");
 			//파일 업로드 소스 여기에 삽입
 			file = new File(filePath+files.get(i).getOriginalFilename());
 			files.get(i).transferTo(file);	
+			imageList.add(file.getName());
 			System.out.println(file.getName() + " : 이미지 업로드 완료");
 		}		
-		return new Gson().toJson(file.getName());
+		System.out.println(new Gson().toJson(imageList));
+		return new Gson().toJson(imageList);
 	}
 
 }

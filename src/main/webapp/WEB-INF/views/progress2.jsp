@@ -35,10 +35,11 @@
 				contentType : false,
 				processData : false,
 				success : function(result) {
-					$('#alertMsg').append(
-							'<img src = "/img/'+result+'" alt="이미지경로띠"></img>'
-					)
-					
+					$.each(result, function(key,value){
+						$('#alertMsg').append(
+								'<img src = "/img/'+result+'" alt="이미지경로띠"></img>'
+						)	
+					})
 				}
 			})
 			/*   xhr: function(){
