@@ -29,12 +29,6 @@ public class HomeController {
 		return "index";
 	}
 	
-	//  login은 LoginController에
-	
-
-	
-	
-
 	
 	@RequestMapping(value="/myPage")
 	public String ticketList(Model model) {
