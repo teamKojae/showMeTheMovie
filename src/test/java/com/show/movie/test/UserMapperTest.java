@@ -9,8 +9,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.show.movie.dao.UserDao;
-import com.show.movie.model.User;
+import com.show.movie.model.dao.UserDao;
+import com.show.movie.model.domain.User;
 
 import lombok.extern.log4j.Log4j;
 

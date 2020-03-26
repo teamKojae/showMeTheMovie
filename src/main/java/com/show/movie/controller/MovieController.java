@@ -6,9 +6,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.show.movie.dao.MovieDao;
-import com.show.movie.model.Movie;
-import com.show.movie.service.MovieService;
+import com.show.movie.model.dao.MovieDao;
+import com.show.movie.model.domain.Movie;
+import com.show.movie.model.service.MovieService;
 
 import lombok.extern.java.Log;
 import lombok.extern.log4j.Log4j;
@@ -23,7 +23,6 @@ public class MovieController {
 	
 	@RequestMapping(value="/movie")
 	public String movie(Model model) {
-		log.info(getClass());
 		return "movie";
 	}
 //	@RequestMapping(value="/payment")
@@ -33,15 +32,12 @@ public class MovieController {
 	
 	@GetMapping(value="/movieDetail")
 	public String movieDetail(Model model, Movie movie) {
-		log.info("영화이름 : "+movie.getMovieName());
 		model.addAttribute("movie",  movieService.getMovie(movie.getMovieName() ) );
 		return "movieDetail";
 	}
 	
 	@GetMapping("/ticketing")
 	public String ticketing(Model model,Movie movie) {
-		//model.addAttribute("movie",movie);
-		System.out.println(movie);
 		return "ticketing";
 	}
 	@RequestMapping(value="/screen")

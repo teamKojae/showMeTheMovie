@@ -44,23 +44,23 @@
 		class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="mapperLocations" value="classpath*:sql/**/*Dao.xml"></property>
-		<property name="typeAliasesPackage" value="com/show/movie/model" />
+		<property name="typeAliasesPackage" value="com/show/movie/model/domain" />
 		<!-- <property name="configLocation" value="classpath:/mybatis-config.xml"></property> -->
 	</bean>
 
 <!-- 	<mybatis-spring:scan base-package="com.show.movie.mapper" />  -->
-	<mybatis-spring:scan base-package="com.show.movie.dao" />  
+	<mybatis-spring:scan base-package="com.show.movie.model.dao" />  
 
 	<!-- 트랜잭션 설정 -->
 
 	<tx:annotation-driven />
 	<!-- 트랜잭션 관련 AOP설정 -->
-	<bean id="pojoAspectJ" class="com.show.movie.service.PojoAspectJ" />
+	<bean id="pojoAspectJ" class="com.show.movie.model.service.PojoAspectJ" />
 
 	
 	<aop:config>
 		<aop:aspect ref="pojoAspectJ">
-			<aop:around method="invoke" pointcut="execution(* com.show.movie.dao..*(..))" />
+			<aop:around method="invoke" pointcut="execution(* com.show.movie.model.dao..*(..))" />
 		</aop:aspect>
 	</aop:config>
 <!-- 
@@ -89,7 +89,7 @@
 
 	<aop:config>
 		<aop:pointcut
-			expression="execution(* com.show.movie.dao..*(..))"
+			expression="execution(* com.show.movie.dao.model..*(..))"
 			id="requiredTx" />
 		<aop:advisor advice-ref="txAdvice"
 			pointcut-ref="requiredTx" />

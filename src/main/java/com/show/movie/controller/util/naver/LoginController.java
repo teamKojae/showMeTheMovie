@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.github.scribejava.core.model.OAuth2AccessToken;
-import com.show.movie.dao.UserDao;
-import com.show.movie.model.User;
-import com.show.movie.service.UserService;
+import com.show.movie.model.dao.UserDao;
+import com.show.movie.model.domain.User;
+import com.show.movie.model.service.UserService;
 
 /**
  * Handles requests for the application home page.

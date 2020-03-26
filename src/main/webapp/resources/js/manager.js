@@ -21,7 +21,8 @@ $(function() {
 						console.log(key);
 						console.log(value);
 						$('.form-group').append(
-								'<img src = "/img/'+result[key]+'" alt="Oops..!o!" class="width300"></img>'
+								'<input type="checkbox" name="moviePoster" >'
+								+'<img src = "/img/'+result[key]+'" alt="Oops..!o!" class="width350"></img>'
 						)	
 					})
 				}
