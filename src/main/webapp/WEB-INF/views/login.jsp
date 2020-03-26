@@ -20,7 +20,7 @@
 		<div id="wrap" class="wrap">
 
 			<header class="layer-header" >
-				<h3 class="tit">로그인</h3>
+				<h3 class="tit"><a href="/" style="color: #fff;">로그인</a></h3>
 			</header>
 
 			<div class="layer-con" style="height: 439px;">
