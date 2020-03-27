@@ -28,7 +28,6 @@ public class HomeController {
 	
 	@RequestMapping(value="/")
 	public String mainPage( Model model, HttpSession session) {
-		
 		return "index";
 	}
 

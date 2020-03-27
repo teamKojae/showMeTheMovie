@@ -25,6 +25,7 @@ public class Movie {
 	private String moviePrice;
 	private String moviePoster;
 	private String moviePosterBG;
+	private String movieImages;
 	private String branchName;
 
 	

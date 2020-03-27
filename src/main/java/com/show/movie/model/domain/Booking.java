@@ -13,4 +13,5 @@ public class Booking {
 	public Booking getBooking() {
 		return new Booking();
 	}
+
 }

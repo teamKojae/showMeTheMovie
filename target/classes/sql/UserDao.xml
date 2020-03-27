@@ -24,6 +24,7 @@
 
     <!-- 로그인  -->
 	
+	
 	<select id="getUser" resultMap="user">
 		SELECT * FROM user WHERE userId = #{userId}
 	</select>
