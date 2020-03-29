@@ -22,18 +22,21 @@
 						<div class="movie-choice-area">
 							<div class="tab-left-area">
 								<ul>
-									<li class=""><a href="#masterMovie" onclick = "return false;"  title="극장등록"
-										class="btn"><i class="iconset ico-tab-theater"></i>극장등록</a></li>
-									<li class="on"><a href="#masterBrch" onclick = "return false;" title="상영관 등록"
-										class="btn"><i class="iconset ico-tab-special"></i>상영관 등록</a></li>
-									<li class=""><a href=""  onclick = "return false;" title="시간 등록" 
-										class="btn"><i class="iconset ico-tab-movie"></i>시간 등록</a></li>
+									<li class="on"><a href="#masterMovie"
+										onclick="return false;" title="영화선택" class="btn"><i
+											class="iconset ico-tab-movie"></i>영화선택</a></li>
+									<li class=""><a href="#masterBrch" onclick="return false;"
+										title="극장등록" class="btn"><i
+											class="iconset ico-tab-theater"></i>극장등록</a></li>
+									<li class=""><a href="" onclick="return false;"
+										title="상영관 선택" class="btn"><i class="iconset ico-tab-special">
+										</i>상영관 선택</a></li>
 								</ul>
 							</div>
 
 							<div class="ltab-layer-wrap">
 
-								<div id="masterMovie" class="ltab-layer-cont has-img<%-- on --%>">
+								<div id="masterMovie" class="ltab-layer-cont has-img on">
 									<a href="" class="ir"> 영화별 탭 화면 입니다.</a>
 									<div class="wrap tab-area">
 										<div class="tab-list-choice">
@@ -42,16 +45,15 @@
 													class="btn on">전체영화</a></li>
 											</ul>
 										</div>
-										<div class="list-section">
-											<div id="masterMovie_AllMovie" class="tab-layer-cont <%-- on --%>">
+										<div class="list-section on">
+											<div id="masterMovie_AllMovie" class="tab-layer-cont on">
 												<a href="" class="ir"> 영화별 탭 화면 입니다.</a>
 												<div class="scroll m-scroll mCustomScrollbar _mCS_2">
 													<div id="mCSB_2"
-														class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside"
+														class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside on"
 														style="max-height: none;" tabindex="0">
-														<div id="mCSB_2_container" class="mCSB_container"
-															style="position: relative;  left: 0px;"
-															dir="ltr">
+														<div id="mCSB_2_container" class="mCSB_container on"
+															style="position: relative; left: 0px;" dir="ltr">
 															<ul class="list">
 																<li><button type="button" class="btn on"
 																		data-movie-nm="라라랜드" data-movie-no="20007800"
@@ -113,10 +115,11 @@
 														<div id="mCSB_2_scrollbar_vertical"
 															class="mCSB_scrollTools mCSB_2_scrollbar mCS-light mCSB_scrollTools_vertical"
 															style="display: block;">
-															<div class="mCSB_draggerContainer">
-																<div id="mCSB_2_dragger_vertical" class="mCSB_dragger"
+															<div class="mCSB_draggerContainer on">
+																<div id="mCSB_2_dragger_vertical"
+																	class="mCSB_dragger on"
 																	style="position: absolute; min-height: 30px; display: block; height: 55px; max-height: 190px; top: 0px;">
-																	<div class="mCSB_dragger_bar"
+																	<div class="mCSB_dragger_bar on"
 																		style="line-height: 30px;"></div>
 																</div>
 																<div class="mCSB_draggerRail"></div>
@@ -138,7 +141,7 @@
 									</div>
 								</div>
 
-								<div id="masterBrch" class="ltab-layer-cont on">
+								<div id="masterBrch" class="ltab-layer-cont">
 									<a href="" class="ir"> 극장별 탭 화면 입니다.</a>
 									<div class="wrap tab-area">
 										<div class="tab-list-choice">
@@ -158,7 +161,7 @@
 											</ul>
 										</div>
 										<div class="list-section">
-											<div id="tab10" class="tab-layer-cont on">
+											<div id="tab10" class="tab-layer-cont">
 												<div class="scroll m-scroll">
 													<ul class="list">
 														<li><button type="button" class="btn on"
@@ -836,6 +839,6 @@
 			</div>
 		</div>
 	</div>
-	<script src ="/js/manager.js" type="text/javascript"></script>
+	<script src="/js/manager.js" type="text/javascript"></script>
 </body>
 </html>
