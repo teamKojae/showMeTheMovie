@@ -82,10 +82,15 @@
 .getMovieImages{
 	display:block;
 }
-.width330{
-	width:330px;
+.widthImage{
+	width:400px;
 }
 
 .selectThumbnail{
 	margin: 20px;
 }
+
+.thumbNailImages{
+	margin:auto;
+}
+

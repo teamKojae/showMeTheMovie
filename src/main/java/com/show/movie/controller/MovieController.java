@@ -6,7 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.show.movie.model.dao.MovieDao;
+import com.show.movie.model.dao.MovieDAO;
 import com.show.movie.model.domain.Movie;
 import com.show.movie.model.service.MovieService;
 
@@ -25,10 +25,6 @@ public class MovieController {
 	public String movie(Model model) {
 		return "movie";
 	}
-//	@RequestMapping(value="/payment")
-//	public String payment(Model model) {
-//		return "index";
-//	}
 	
 	@GetMapping(value="/movieDetail")
 	public String movieDetail(Model model, Movie movie) {

@@ -10,9 +10,6 @@
 <link href="/css/custom.css" rel="stylesheet">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="/js/jquery-3.4.1.min.js"></script>
-
-<script src="/js/common.js"></script>
 </head>
 <body>
 	<div class="container">
@@ -52,9 +49,6 @@
 
 										<!-- chk-util -->
 										<div class="chk-util">
-											<div class="left">
-												<input id="chkIdSave" type="checkbox"> <label
-													for="chkIdSave">아이디 저장<!--아이디 저장--></label>
 											</div>
 
 
@@ -91,6 +85,6 @@
 			</div>
 		</div>
 	</div>
-
+	<script src="/js/common.js"></script>
 </body>
 </html>

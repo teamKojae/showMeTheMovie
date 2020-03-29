@@ -11,7 +11,6 @@
 <link href="/css/custom.css" rel="stylesheet">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="/js/manager.js"></script>
 </head>
 <body>
 	<c:import url="/resources/common/header.jsp"></c:import>
@@ -19,12 +18,6 @@
 		<div class="inner-wrap">
 			<div id="contents" class="">
 				<h2 class="tit">영화 등록</h2>
-				<!-- <form name="regFrm" method="post"> -->
-
-				<input type="hidden" name="inqLclCd" value="INQD02"> <input
-					type="hidden" name="custInqStatCd" value="INQST1"> <input
-					type="hidden" name="cdLvl" value="1">
-
 				<p class="reset mt30 a-r font-orange">* 필수</p>
 
 				<div class="table-wrap mt10">
@@ -50,7 +43,7 @@
 								<tr>
 									<th scope="row"><label for="hpNum1">영화 상영 시간</label> <em
 										class="font-orange">*</em></th>
-									<td><input type="text" name="movieAudience"
+									<td><input type="text" name="movieTime"
 										class="input-text width100  numType" maxlength="7"
 										title="상영끝시간" placeholder="상영시간을 적어주세용"></td>
 
@@ -76,7 +69,7 @@
 								<tr>
 									<th scope="row"><label for="pw">관리자 아이디</label> <em
 										class="font-orange">*</em></th>
-									<td colspan="3"><input type="text" id="pw"
+									<td colspan="3"><input type="text" id="managerId" name="manager.managerId"
 										class="input-text w150px pwnew" placeholder="관리자 아이디"></td>
 								</tr>
 
@@ -88,8 +81,12 @@
 
 
 										<div class="form-group">
-											<label>영화 이미지를 등록해주세요</label> <input class="form-control"
+											<label>영화 이미지를 등록해주세요</label> 
+											<input class="form-control"
 												type="file" name="files" multiple>
+												<h2 class="selectThumbnail"></h2>
+												<input type="hidden" name="moviePoster" value="">
+												<input type="hidden" name="moviePosterBG" value="">
 										</div>
 
 
@@ -110,6 +107,7 @@
 		</div>
 		<c:import url="/resources/common/footer.jsp"></c:import>
 	</div>
+<script src="/js/manager.js"></script>	
 </body>
 </html>
 

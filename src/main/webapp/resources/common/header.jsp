@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 		<header id="header" class="none-ad">
 			<h1 class="ci">
-				<a href="/" title="MEGABOX 메인으로 가기">SHOW ME THE MOVIE ^^*!</a>
+				<a href="/" title="SHOW ME THE MOVIE 메인으로 가기">SHOW ME THE MOVIE ^^*!</a>
 			</h1>
 
 			<!-- 공간확보용  -->

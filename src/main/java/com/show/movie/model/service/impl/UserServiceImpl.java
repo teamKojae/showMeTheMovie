@@ -7,7 +7,7 @@ import org.mybatis.spring.SqlSessionFactoryBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.show.movie.model.dao.UserDao;
+import com.show.movie.model.dao.UserDAO;
 import com.show.movie.model.domain.User;
 import com.show.movie.model.service.UserService;
 
@@ -18,21 +18,16 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 public class UserServiceImpl implements UserService {
 	@Autowired
-	UserDao userDao;
+	UserDAO userDAO;
 	
 	@Override
 	public User getUser(String userId) {
-		return userDao.getUser(userId);
+		return userDAO.getUser(userId);
 	}
-	
-	/*
-	 * @Override public User selectUser(String userId) { return
-	 * userDao.getUser(userId); }
-	 */
 
 	@Override
 	public void insertNewUser(User user) {
-		userDao.insertNewUser(user);
+		userDAO.insertNewUser(user);
 	}
 
 	@Override

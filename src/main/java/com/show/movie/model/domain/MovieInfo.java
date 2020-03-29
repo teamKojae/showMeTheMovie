@@ -7,16 +7,29 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
-@Data
+
 @Configuration
 @Alias("movieInfo")
+@Getter @Setter @ToString
 public class MovieInfo {
 	@Bean("getMovieInfoVO")
 	public MovieInfo getMovieInfo() {
 		return new MovieInfo();
 	}
+	public MovieInfo() {}
+	@Builder
+	public MovieInfo(Movie movie, Theater theater, Branch branch) {
+		this.movie = movie;
+		this.theater = theater;
+		this.branch = branch;
+	}
+	
 	@Autowired(required = false)
 	private Movie movie;
 	@Autowired(required = false)

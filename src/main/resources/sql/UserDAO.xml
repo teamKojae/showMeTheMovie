@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.show.movie.model.dao.UserDao">
+<mapper namespace="com.show.movie.model.dao.UserDAO">
 
 	<resultMap id="user" type="user">
 		<id column="userId" property="userId" />
@@ -13,14 +13,6 @@
 		<result column="userCode" property="userCode" />
 	</resultMap> 
 
-	<!-- 
-		private String userId;
-	private String userPassword;
-	private String userName;
-	private String userPhoneNumber;
-	private String userBirth;
-	private int userCode;
-	 -->
 
     <!-- 로그인  -->
 	
