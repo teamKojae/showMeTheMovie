@@ -7,6 +7,7 @@ $(function() {
 })
 
 
+
 function requestKakaoPay() {
 	$('.button').on('click', function(event) {
 		$('#kakaoPay').submit();
@@ -104,27 +105,7 @@ function getTheater(event) {
 			});
 }
 
-/*function getScreen(){
-	$('.result .btn').bind('click', function(event) {
-		event.preventDefault();
-		const data = $(event.target).find('form').serialize();
-		$(event.target).closet('form').submit();
-	})
-}
-*/
 function getMovieInfoAndTime(event) {
-	/*	var dataArray = new Array();
-	var movieName = $('.on span');
-	var locationName = $('.on span')[6];
-	var branchName = $('.on span')[7];
-	console.log(movieName);
-	console.log(movieName.text());
-	console.log(locationName.text());
-	console.log(branchName.text());*/
-	
-	//var data = $('.on').find('span').text();
-	//console.log(data);
-	
 	
 	var dataArray = new Array();
 	$.each($(".on"), function(key, value){

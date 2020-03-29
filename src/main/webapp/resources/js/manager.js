@@ -1,6 +1,7 @@
 $(function() {
 	imageUploadAjax();
-	checkThumbNailAndBG();
+	//checkThumbNailAndBG();
+	selectWhereRegiste();
 })
 
 /*
@@ -11,6 +12,28 @@ countChecked();
  
 $( "input[type=checkbox]" ).on( "click", countChecked );
 */
+
+function selectWhereRegiste(){
+	$('.tab-left-area').find('.btn').bind('click',function(event){
+		// 좌측 ~~등록의 on 제거 , 클릭한거 on 등록
+		$(event.target).closest('ul').find('li').removeClass('on');
+		$(this).closest('li').addClass('on');
+		console.log($(this).closest('li'));
+		
+		$('.ltab-layer-wrap').find('div').removeClass('on');
+		//#masterMovie ,  #masterBranch
+		var hrefTarget = $(event.target).closest('a').attr('href');
+		var sectionTarget = $('.ltab-layer-wrap').find(hrefTarget);
+		console.log(sectionTarget);
+		sectionTarget.addClass('on');
+		var contentsTarget = sectionTarget.find('.list-section');
+		console.log(contentsTarget);
+		contentsTarget.addClass('on');
+		contentsTarget.find('div:first-child').addClass('on');
+	})
+	
+}
+
 function checkThumbNailAndBG(){
 	console.log('클릭됬나염');
 	$("input[type=checkbox]").on('click',function(event){

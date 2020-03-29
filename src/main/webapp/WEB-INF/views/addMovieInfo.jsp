@@ -22,11 +22,11 @@
 						<div class="movie-choice-area">
 							<div class="tab-left-area">
 								<ul>
-									<li class=""><a href="#masterMovie" title="극장등록"
+									<li class=""><a href="#masterMovie" onclick = "return false;"  title="극장등록"
 										class="btn"><i class="iconset ico-tab-theater"></i>극장등록</a></li>
-									<li class="on"><a href="#masterBrch" title="상영관 등록"
+									<li class="on"><a href="#masterBrch" onclick = "return false;" title="상영관 등록"
 										class="btn"><i class="iconset ico-tab-special"></i>상영관 등록</a></li>
-									<li class=""><a href="#masterSpclBrch" title="시간 등록"
+									<li class=""><a href=""  onclick = "return false;" title="시간 등록" 
 										class="btn"><i class="iconset ico-tab-movie"></i>시간 등록</a></li>
 								</ul>
 							</div>
@@ -50,7 +50,7 @@
 														class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside"
 														style="max-height: none;" tabindex="0">
 														<div id="mCSB_2_container" class="mCSB_container"
-															style="position: relative; top: -249px; left: 0px;"
+															style="position: relative;  left: 0px;"
 															dir="ltr">
 															<ul class="list">
 																<li><button type="button" class="btn on"
@@ -836,5 +836,6 @@
 			</div>
 		</div>
 	</div>
+	<script src ="/js/manager.js" type="text/javascript"></script>
 </body>
 </html>
