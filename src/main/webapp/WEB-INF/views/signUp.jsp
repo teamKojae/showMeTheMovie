@@ -11,10 +11,6 @@
 <link href="/css/custom.css" rel="stylesheet">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="/js/jquery-3.4.1.min.js"></script>
-
-<script src="/js/common.js"></script>
-<script src="/js/sign.js"></script>
 </head>
 <body>
 <body class="bg-member">
@@ -104,5 +100,7 @@
 		</div>
 	</div>
 	<!--// body-wrap -->
+	<script src="/js/common.js"></script>
+	<script src="/js/sign.js"></script>
 </body>
 </html>

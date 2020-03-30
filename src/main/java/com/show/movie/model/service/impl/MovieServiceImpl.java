@@ -7,7 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.show.movie.model.dao.MovieDao;
+import com.show.movie.model.dao.MovieDAO;
 import com.show.movie.model.domain.Branch;
 import com.show.movie.model.domain.Movie;
 import com.show.movie.model.domain.MovieInfo;
@@ -19,22 +19,23 @@ import lombok.extern.log4j.Log4j;
 @Service
 public class MovieServiceImpl implements MovieService {
 	@Autowired
-	MovieDao movieDao;
+	MovieDAO movieDAO;
 	
 	
 	@Override
 	public List<String> getBranch(String locationName) {
-		return movieDao.getBranch(locationName);
+		return movieDAO.getBranch(locationName);
 	}
 
 	@Override
 	public Movie getMovie(String movieName) {
-		return movieDao.getMovie(movieName);
+		return movieDAO.getMovie(movieName);
 	}
 
 	@Override
 	public List<MovieInfo> getMovieInfo(MovieInfo movieInfo) {
-		log.info(movieDao.getMovieInfo(movieInfo));
-		return movieDao.getMovieInfo(movieInfo);
+		log.info(movieDAO.getMovieInfo(movieInfo));
+		return movieDAO.getMovieInfo(movieInfo);
 	}
+
 }

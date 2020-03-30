@@ -9,12 +9,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="/js/jquery-3.4.1.min.js"></script>
-<script src="/js/ticketting.js"></script>
+
 <link href="/css/component.css" rel="stylesheet">
 <link href="/css/megabox.min.css" rel="stylesheet">
 <link href="/css/main.css" rel="stylesheet">
 <link href="/css/custom.css" rel="stylesheet">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"> -->
 </head>
 <body>
@@ -458,5 +459,6 @@
 			</div>
 		</div>
 	</div>
+	<script src="/js/ticketting.js"></script>
 </body>
 </html>

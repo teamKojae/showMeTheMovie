@@ -26,7 +26,6 @@ public class TicketController {
 	@RequestMapping(value="/getBranch",  produces = "application/json; charset=utf8")
 	@ResponseBody
 	public String ticketGetBranch(Location location, Model model) {
-//		String message = new String(message.getBytes("ISO-8859-1"), "UTF-8");
 		return new Gson().toJson(
 				movieService.getBranch(location.getLocationName().split("\\(")[0])
 				);
@@ -35,21 +34,11 @@ public class TicketController {
 	@RequestMapping(value="/getMovieInfoAndTime",  produces = "application/json; charset=utf8")
 	@ResponseBody
 	public String getMovieInfoAndTime(Model model, MovieInfo movieInfo, Movie movie) {
-//		log.info("DB "+movieDao.getMovieInfo(movieInfo.getMovie().getMovieName(), movieInfo.getBranch().getBranchName()));
 		return new Gson().toJson(movieService.getMovieInfo(movieInfo));
 	}
-//	
-//	'movieDate' : dataArray[0],
-//	'movieName' : dataArray[1],
-//	'locationName' : dataArray[2],
-//	'branchName' : dataArray[3]
-	
+
 	@PostMapping("/getSelectScreen" )
 	public String getSelectScreen(Model model, MovieInfo movieInfo) {
-//		log.info(movie.getMovieInfo());
-//		movie.setMovieInfo(movieInfo);
-//		model.addAttribute("movie",movie);
-		
 		return "screen";
 	}
 }

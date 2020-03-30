@@ -5,11 +5,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 @Configuration
-@Data
 @Alias("movie")
+@Getter @Setter @ToString
 public class Movie {
 	@Bean("movieVO")
 	public Movie getMovie() {
@@ -27,6 +29,9 @@ public class Movie {
 	private String moviePosterBG;
 	private String movieImages;
 	private String branchName;
-
+	private int movieTime;
+	@Autowired(required = false)
+	private Manager manager; 
+	
 	
 }

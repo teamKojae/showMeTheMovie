@@ -5,12 +5,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 
-@Data
 @Configuration
 @Alias("branch")
+@Getter @Setter @ToString
 public class Branch {
 	@Bean(name="branchVO")
 	public Branch getBranch() {
