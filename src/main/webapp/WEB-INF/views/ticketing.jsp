@@ -87,7 +87,7 @@
 								<div class="date-area" id="formDeList">
 									<div class="wrap"
 										style="position: relative; width: 2100px; border: none; left: -70px;">
-										<button class="disabled" type="button" date-data="2020.03.16"
+										<button class="disabled" type="button" value="2020.03.16"
 											month="2" tabindex="-1">
 											<span class="ir">2020년 3월</span><em
 												style="pointer-events: none;">16<span
@@ -96,8 +96,7 @@
 												style="pointer-events: none; display: inline-block">월</span><span
 												class="day-en" style="pointer-events: none; display: none">Mon</span>
 										</button>
-										<button class="on" type="button" date-data="2020.03.17"
-											month="2">
+										<button class="on" type="button" value="2020.03.17">
 											<span class="ir">2020년 3월</span><em
 												style="pointer-events: none;">17<span
 												style="pointer-events: none;" class="ir">일</span></em><span
@@ -276,18 +275,16 @@
 												class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside"
 												style="max-height: none;" tabindex="0">
 												<div id="mCSB_1_container" class="mCSB_container"
-													style="position: relative; top: -57px; left: 0px;"
+													style="position: relative; left: 0px;"
 													dir="ltr">
 													<ul>
-														<li><button type="button" class="btn">
+														<li><button type="button" class="btn" value="다크워터스">
 																<span class="movie-grade small age-12">12세이상관람가</span><i
 																	class="iconset ico-heart-small">보고싶어 설정안함</i><span
-																	class="txt">다크 워터스</span>
+																	class="txt">다크워터스</span>
 															</button></li>
 														<li><button type="button" class="btn"
-																movie-nm="시원찮은 그녀를 위한 육성방법 피날레" movie-no="20000400"
-																img-path="/SharedImg/2020/02/07/jO2LnVNFJxLzAL62WxHjDUBKbtPcV8ET_150.jpg"
-																movie-popup-at="N" movie-popup-no="0" form-at="N">
+																value="시원찮은 그녀를 위한 육성방법 피날레" >
 																<span class="movie-grade small age-12">12세이상관람가</span><i
 																	class="iconset ico-heart-small">보고싶어 설정안함</i><span
 																	class="txt">시원찮은 그녀를 위한 육성방법 피날레</span>
@@ -632,8 +629,8 @@
 									<div class="list">
 										<div class="scroll" id="brchList">
 											<ul>
-												<li><button type="button" class="btn" id="10">
-														<span calss="txt">서울(20)</span>
+												<li><button type="button" class="btn" id="10" value="강북구">
+														<span calss="txt">강북구(20)</span>
 													</button>
 													<%--  실제 구현할때 style 빼세요 --%>
 													<div class="depth" style="display:flex; " >
@@ -665,7 +662,7 @@
 														</div>
 													</div></li>
 												<li><button type="button" class="btn" id="30">
-														<span calss="txt">경기(25)</span>
+														<span calss="txt">노원구(25)</span>
 													</button>
 													<div class="depth">
 														<div
@@ -700,7 +697,7 @@
 														</div>
 													</div></li>
 												<li><button type="button" class="btn" id="35">
-														<span calss="txt">인천(6)</span>
+														<span calss="txt">동대문구(6)</span>
 													</button>
 													<div class="depth">
 														<div
@@ -735,7 +732,7 @@
 														</div>
 													</div></li>
 												<li><button type="button" class="btn" id="45">
-														<span calss="txt">대전/충청/세종(13)</span>
+														<span calss="txt">성동구(5)</span>
 													</button>
 													<div class="depth">
 														<div
@@ -770,7 +767,7 @@
 														</div>
 													</div></li>
 												<li><button type="button" class="btn" id="55">
-														<span calss="txt">부산/대구/경상(24)</span>
+														<span calss="txt">강남구(23)</span>
 													</button>
 													<div class="depth">
 														<div
@@ -804,7 +801,7 @@
 														</div>
 													</div></li>
 												<li><button type="button" class="btn" id="65">
-														<span calss="txt">광주/전라(9)</span>
+														<span calss="txt">서초구(17)</span>
 													</button>
 													<div class="depth">
 														<div
@@ -839,7 +836,7 @@
 														</div>
 													</div></li>
 												<li><button type="button" class="btn" id="70">
-														<span calss="txt">강원(4)</span>
+														<span calss="txt">동작구(12)</span>
 													</button>
 													<div class="depth">
 														<div
@@ -875,7 +872,7 @@
 														</div>
 													</div></li>
 												<li><button type="button" class="btn" id="80">
-														<span calss="txt">제주(1)</span>
+														<span calss="txt">관악구(10)</span>
 													</button>
 													<div class="depth">
 														<div

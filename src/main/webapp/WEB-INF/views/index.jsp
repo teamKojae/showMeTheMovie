@@ -4,7 +4,6 @@
 <%request.setCharacterEncoding("UTF-8");%>
 
 
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,12 +17,13 @@
 <script src="/js/jquery-3.4.1.min.js"></script>
 
 <script src="/js/common.js"></script>
+<script src="/js/movie.js"></script>
 </head>
 <body>
 	<div class="container main-container area-ad">
 		<div class="container">
 			<c:import url="/resources/common/header.jsp"></c:import>
-
+			
 			<div class="main-page">
 				<div id="main_section01" class="section main-movie">
 					<div class="bg">
@@ -49,7 +49,9 @@
 
 						<!-- main-movie-list -->
 						<div class="main-movie-list">
+						
 							<ol class="list">
+							
 								<!-- 3개의 list를  loop 한다-->
 								<!-- 박스오피스 시작 -->
 								<!-- 각 map 별 첫번째 li 에 first클래스 추가 -->
@@ -58,9 +60,11 @@
 
 
 								<!-- 각 map 별 첫번째 li 에 first클래스 추가 -->
+								
 								<li name="li_boxoRankList" class="first"><a
-									href="javascript:gfn_moveDetail('20003000')"
+									href="" onclick="return false"
 									class="movie-list-info" title="영화상세 보기">
+									<input type="hidden"  name="movieName" value="다크워터스" class="movie-info-hidden">
 										<p class="rank">
 											1<span class="ir">위</span>
 										</p> <!-- to 개발 : alt 값에 영화 제목 출력 --> <img
@@ -77,6 +81,7 @@
 												커리어는 물론 아내 ‘사라’(앤 해서웨이)와 가족들,<br>모든 것을 건 용기 있는 싸움을
 												시작한다.<br> <br>대한민국에서도 일어나고 있는 현재진행형 실화가 공개된다
 											</div>
+											
 											<!--
 														관람 전이 더 높을 때
 														<div class="my-score small">
@@ -119,16 +124,19 @@
 
 										<div class="case">
 											<!-- 개봉 예매가능 기본-->
-											<a href="javascript:moveBokdPage('20003000');"
-												class="button gblue" title="영화 예매하기">예매</a>
+											<!-- <input type="button" class="button gblue" value="darkWater"> -->
+											<button class="button gblue" name="movieName" value="다크워터스">예매</button>
+											<!-- <a href="javascript:moveBokdPage('20003000');"
+												class="button gblue" title="영화 예매하기">예매</a> -->
 										</div>
 									</div></li>
 								<!-- 각 map 별 첫번째 li 에 first클래스 추가 -->
 
 								<!-- 각 map 별 첫번째 li 에 first클래스 추가 -->
 								<li name="li_boxoRankList" class=""><a
-									href="javascript:gfn_moveDetail('20000400')"
+									href="" onclick="return false"
 									class="movie-list-info" title="영화상세 보기">
+									<input type="hidden"  name="movieName" value="시원찮은 그녀를 위한 육성방법 피날레" class="movie-info-hidden">
 										<p class="rank">
 											2<span class="ir">위</span>
 										</p> <!-- to 개발 : alt 값에 영화 제목 출력 --> <img
@@ -187,8 +195,10 @@
 									<div class="btn-util">
 										<div class="case">
 											<!-- 개봉 예매가능 기본-->
-											<a href="javascript:moveBokdPage('20000400');"
-												class="button gblue" title="영화 예매하기">예매</a>
+											
+											<button class="button gblue" name="movieName" value="시원찮은 그녀를 위한 육성방법 피날레">예매</button>
+											<!-- <a href="javascript:moveBokdPage('20000400');"
+												class="button gblue" title="영화 예매하기">예매</a> -->
 										</div>
 									</div></li>
 								<!-- 각 map 별 첫번째 li 에 first클래스 추가 -->
@@ -197,6 +207,7 @@
 								<li name="li_boxoRankList" class=""><a
 									href="javascript:gfn_moveDetail('01685000')"
 									class="movie-list-info" title="영화상세 보기">
+									<input type="hidden"  name="movieName" value="1917" class="movie-info-hidden">
 										<p class="rank">
 											3<span class="ir">위</span>
 										</p> <!-- to 개발 : alt 값에 영화 제목 출력 --> <img
@@ -254,8 +265,7 @@
 
 										<div class="case">
 											<!-- 개봉 예매가능 기본-->
-											<a href="javascript:moveBokdPage('01685000');"
-												class="button gblue" title="영화 예매하기">예매</a>
+										<button class="button gblue" name="movieName" value="1917">예매</button>
 										</div>
 									</div></li>
 								<!-- 각 map 별 첫번째 li 에 first클래스 추가 -->
@@ -340,9 +350,7 @@
 									</button>
 								</div>
 							</div>
-
 						</div>
-						
 					</div>
 					<!--// cont-area  -->
 
