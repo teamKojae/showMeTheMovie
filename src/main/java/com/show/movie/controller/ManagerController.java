@@ -1,11 +1,7 @@
 package com.show.movie.controller;
 
-import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,11 +9,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.google.gson.Gson;
 import com.show.movie.controller.util.image.ImageParser;
+import com.show.movie.model.domain.Location;
 import com.show.movie.model.domain.Movie;
 import com.show.movie.model.service.ManagerService;
 
@@ -58,7 +54,16 @@ public class ManagerController {
 	}
 	
 	@GetMapping("/addMovieInfo")
-	public void addMovieInfo() {}
+	public String addMovieInfo(Model model) {
+		model.addAttribute("data",managerService.getMovieList());
+		return "addMovieInfo";
+	}
 	
+	@GetMapping(value = "/getBranchList" ,  produces = "application/json; charset=utf8")
+	@ResponseBody
+	public String getBranchList(Model model,Location location) {
+		log.info("getBranchList : "+managerService.getBranchList(location));
+		return new Gson().toJson(managerService.getBranchList(location));
+	}
 }
 

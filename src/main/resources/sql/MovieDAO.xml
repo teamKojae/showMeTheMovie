@@ -23,7 +23,7 @@
 	<resultMap id="mvInfo" type="movieInfo">
 				<!-- column : DB 컬럼명    property : POJO 클래스의 속성명-->
 		<result column="moiveInfoCode" property="moviePosterBG" />
-		<!-- <result column="movieDate" property="movieDate" /> Date타입 에러떠서 잠시..-->
+		 <result column="movieDate" property="movieDate" />
 		<result column="movieStartTime" property="movieStartTime" />
 		<result column="movieEndTime" property="movieEndTime" />
 		 		<!-- Collection은 ofType으로  -->

@@ -1,6 +1,6 @@
 package com.show.movie.model.domain;
 
-import java.util.Date;
+import java.sql.Date;
 
 import org.apache.ibatis.type.Alias;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +39,7 @@ public class MovieInfo {
 	
 	private int moiveInfoCode;
 	//Date는 다른사람이 구현하면 하자.. ㅠ ㅠ 
-	//private Date movieDate;
+	private Date movieDate;
 	private String movieStartTime;
 	private String movieEndTime;
 }
