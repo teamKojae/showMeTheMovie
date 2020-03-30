@@ -34,18 +34,18 @@
 								<div class="plan plan--shown">
 									<div class="rows rows--mini">
 										<div class="row">
-											<div class="row__seat A1">A1</div>
-											<div class="row__seat A2">A2</div>
-											<div class="row__seat A3">A3</div>
+											<div class="row__seat row__seat--reserved" id="A1">A1</div>
+											<div class="row__seat" id="A2">A2</div>
+											<div class="row__seat" id="A3">A3</div>
 											<div class="row__seat A4">A4</div>
 											<div class="row__seat A5">A5</div>
 											<div class="row__seat A6">A6</div>
 											<div class="row__seat A7">A7</div>
 											<div class="row__seat A8">A8</div>
 											<div class="row__seat A9">A9</div>
-											<div class="row__seat row__seat--reserved"></div>
-											<div class="row__seat row__seat--reserved"></div>
-											<div class="row__seat row__seat--reserved"></div>
+											<div class="row__seat" id="A10" ></div>
+											<div class="row__seat"></div>
+											<div class="row__seat"></div>
 											<div class="row__seat A13"></div>
 											<div class="row__seat A14"></div>
 											<div class="row__seat A15"></div>
