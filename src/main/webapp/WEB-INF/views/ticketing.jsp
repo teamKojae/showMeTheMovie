@@ -274,10 +274,10 @@
 													style="position: relative; left: 0px;"
 													dir="ltr">
 													<ul>
-														<li><button type="button" class="btn" value="다크워터스">
+														<li><button type="button" class="btn" value="라라랜드">
 																<span class="movie-grade small age-12">12세이상관람가</span><i
 																	class="iconset ico-heart-small">보고싶어 설정안함</i><span
-																	class="txt">다크워터스</span>
+																	class="txt">라라랜드</span>
 															</button></li>
 														<li><button type="button" class="btn"
 																value="시원찮은 그녀를 위한 육성방법 피날레" >
@@ -1190,7 +1190,6 @@
 
 		<c:import url="/resources/common/footer.jsp"></c:import>
 	</div>
-	<script src="/js/common.js"></script>
 	<script src="/js/ticketting.js"></script>
 </body>
 </html>

@@ -108,7 +108,7 @@
 											</div>
 
 											<button type="button" class="button gray-line small ml05"
-												name="search">
+												name="search"> 
 												<i class="iconset ico-search-gray"></i> 조회
 											</button></td>
 									</tr>
@@ -286,6 +286,5 @@
 		</div>
 		<c:import url="/resources/common/footer.jsp"></c:import>
 	</div>
-	<script src="/js/common.js"></script>
 </body>
 </html>
