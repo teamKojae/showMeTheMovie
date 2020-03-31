@@ -23,7 +23,7 @@
  
 
   	<insert id="insertNewUser" parameterType="user">
-		INSERT INTO user(userId,  userName,  userCode)
+		INSERT INTO user(userId,  userName,  userSignupCode)
 		VALUES ( #{userId}, #{userName},   #{userCode} )
 	</insert> 
   

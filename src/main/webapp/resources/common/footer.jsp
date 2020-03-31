@@ -5,7 +5,7 @@
 					<div class="info-link">
 						<div class="table">
 							<div class="cell">
-								<a href="/support" title="고객센터 페이지로 이동"> <i
+								<a href="/support" title="고객센터 페이지로 이동" > <i
 									class="iconset ico-main-customer"></i> <span>고객센터</span>
 								</a>
 							</div>

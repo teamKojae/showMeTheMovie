@@ -14,6 +14,8 @@ public interface MovieDAO {
 	public List<String> getBranch(@Param("locationName")  String locationName);
 	public List<MovieInfo> getMovieInfo(MovieInfo movieInfo);
 	public Movie getMovie(String movieName);
+	public String getMovieSynopsis();
+	public String getMovieImages(String movieName);
 	
 	//순위까지 가져오는 쿼리문
 	@Select("SELECT movie.movieName, movie.movieAudience, movieRank.rank FROM movie movie, \r\n" + 

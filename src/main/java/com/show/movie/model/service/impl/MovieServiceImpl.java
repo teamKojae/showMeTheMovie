@@ -44,4 +44,9 @@ public class MovieServiceImpl implements MovieService {
 		return null;
 	}
 
+	@Override
+	public String getMovieImages(String movieName) {
+		return movieDAO.getMovieImages(movieName);
+	}
+
 }
