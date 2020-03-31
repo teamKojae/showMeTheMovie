@@ -14,6 +14,10 @@ import lombok.extern.log4j.Log4j;
 
 @Log4j
 public class ImageParser {
+	
+	/**
+	 * return : List<String> -> JSON  
+	 */
 	public String fileParser(MultipartHttpServletRequest multipartHttpServletRequest) throws IOException {
 		String filePath = "D:/uploadImage/";
 		//파일들을 List형식으로 보관

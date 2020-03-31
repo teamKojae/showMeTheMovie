@@ -26,11 +26,11 @@
 										onclick="return false;" title="영화선택" class="btn"><i
 											class="iconset ico-tab-movie"></i>영화선택</a></li>
 									<li class=""><a href="#masterBrch" onclick="return false;"
-										title="극장등록" class="btn"><i
-											class="iconset ico-tab-theater"></i>극장등록</a></li>
-									<li class=""><a href="" onclick="return false;"
-										title="상영관 선택" class="btn"><i class="iconset ico-tab-special">
-										</i>상영관 선택</a></li>
+										title="극장선택" class="btn"><i
+											class="iconset ico-tab-theater"></i>극장선택</a></li>
+									<li class=""><a href="#masterTheater" onclick="return false;"
+										title="상영관 선택" class="btn"><i
+											class="iconset ico-tab-special"> </i>상영관 선택</a></li>
 								</ul>
 							</div>
 
@@ -55,61 +55,12 @@
 														<div id="mCSB_2_container" class="mCSB_container on"
 															style="position: relative; left: 0px;" dir="ltr">
 															<ul class="list">
-																<li><button type="button" class="btn on"
-																		data-movie-nm="라라랜드" data-movie-no="20007800"
-																		data-img-path="https://img.megabox.co.kr/SharedImg/2020/03/11/Qgl73W9FxEMYJnnaOYPFtyqSrqB3vmJ2_316.jpg">라라랜드</button></li>
-																<li><button type="button" class="btn disabled"
-																		data-movie-nm="킹 오브 프리즘 올 스타즈 -프리즘 쇼☆베스트10-"
-																		data-movie-no="20004100"
-																		data-img-path="https://img.megabox.co.kr/SharedImg/2020/02/12/uPvwgYBnTlO1fdZm8bzilwDoaQJ2F8uA_316.jpg">킹
-																		오브 프리즘 올 스타즈 -프리즘 쇼☆베스트10-</button></li>
-																<li><button type="button" class="btn"
-																		data-movie-nm="1917" data-movie-no="01685000"
-																		data-img-path="https://img.megabox.co.kr/SharedImg/2020/02/21/IyeZJvAzV3QgEoW4F7HzdS97zfLYfcni_316.jpg">1917</button></li>
-																<li><button type="button" class="btn"
-																		data-movie-nm="주디" data-movie-no="01687700"
-																		data-img-path="https://img.megabox.co.kr/SharedImg/2020/03/20/DR3GwlMyGWDPNqoX0E5ywhdqxrYSMSXi_316.jpg">주디</button></li>
-																<li><button type="button" class="btn disabled"
-																		data-movie-nm="[오페라] 리골레토" data-movie-no="20000100"
-																		data-img-path="https://img.megabox.co.kr/SharedImg/2020/02/18/JR4a3oWNNricpgDfDeGdrZP8bY2DZkLT_316.jpg">[오페라]
-																		리골레토</button></li>
-																<li><button type="button" class="btn"
-																		data-movie-nm="인비저블맨" data-movie-no="01694800"
-																		data-img-path="https://img.megabox.co.kr/SharedImg/2020/02/25/cH7qHYtiXhvrIwZVNraUkjfGPPUj4M5W_316.jpg">인비저블맨</button></li>
-																<li><button type="button" class="btn"
-																		data-movie-nm="바이올렛 에버가든 - 영원과 자동 수기 인형 -"
-																		data-movie-no="20006800"
-																		data-img-path="https://img.megabox.co.kr/SharedImg/2020/03/03/75uijLWJo1DGxC7zFNo0rZix01dXa3Ea_316.jpg">바이올렛
-																		에버가든 - 영원과 자동 수기 인형 -</button></li>
-																<li><button type="button" class="btn"
-																		data-movie-nm="페임" data-movie-no="20006000"
-																		data-img-path="https://img.megabox.co.kr/SharedImg/2020/03/05/vxKb6uRpY1ThTPxP8TW7jX86tPYdKeTN_316.jpg">페임</button></li>
-																<li><button type="button" class="btn"
-																		data-movie-nm="다크 워터스" data-movie-no="20003000"
-																		data-img-path="https://img.megabox.co.kr/SharedImg/2020/02/21/lczdtI1vz3Dd1ShuXb0iXj8pTJGbh4wa_316.jpg">다크
-																		워터스</button></li>
-																<li><button type="button" class="btn"
-																		data-movie-nm="작은 아씨들" data-movie-no="01680400"
-																		data-img-path="https://img.megabox.co.kr/SharedImg/asis/system/mop/poster/2020/73/C2E59B-7D34-4220-8D51-580299453B88.medium.jpg">작은
-																		아씨들</button></li>
-																<li><button type="button" class="btn disabled"
-																		data-movie-nm="[다시봄] 극장판 쿠로코의 농구 라스트 게임"
-																		data-movie-no="20009600"
-																		data-img-path="https://img.megabox.co.kr/SharedImg/2020/03/23/c6SWPeJVvbYs0nFSYZlla2vyrrFDPaF0_316.jpg">[다시봄]
-																		극장판 쿠로코의 농구 라스트 게임</button></li>
-																<li><button type="button" class="btn"
-																		data-movie-nm="모리의 정원" data-movie-no="20002200"
-																		data-img-path="https://img.megabox.co.kr/SharedImg/2020/03/18/KXUsaJc8U56TwsVpqc7dPbsnsBzjJop5_316.jpg">모리의
-																		정원</button></li>
-																<li><button type="button" class="btn disabled"
-																		data-movie-nm="패왕별희 디 오리지널" data-movie-no="20004800"
-																		data-img-path="https://img.megabox.co.kr/SharedImg/2020/02/21/wmC2DR1KajoKMds5hb683vDjgVxRaTwj_316.jpg">패왕별희
-																		디 오리지널</button></li>
-																<li><button type="button" class="btn disabled"
-																		data-movie-nm="[오페라] 마농 @ The Met"
-																		data-movie-no="20007900"
-																		data-img-path="https://img.megabox.co.kr/SharedImg/2020/03/12/yZRChDE2ZGDqoLxVrhPf9J21CgwUAGhr_316.jpg">[오페라]
-																		마농 @ The Met</button></li>
+																<c:forEach var="movie" items="${data.movie}">
+																	<li><button type="button" class="btn"
+																			value="${movie.movieName }"
+																			data-movie-no="${movie.movieCode }"
+																			data-img-path="${movie.moviePoster}">${movie.movieName }</button></li>
+																</c:forEach>
 															</ul>
 														</div>
 														<div id="mCSB_2_scrollbar_vertical"
@@ -134,8 +85,8 @@
 										<div class="table">
 											<div class="td">
 												<img class="poster" onerror="noImg(this, 'del')"
-													src="https://img.megabox.co.kr/SharedImg/2020/03/11/Qgl73W9FxEMYJnnaOYPFtyqSrqB3vmJ2_316.jpg"
-													alt="라라랜드">
+													src="/img/${data.movie[0].moviePoster }"
+													alt="${data.movie[0].movieName }">
 											</div>
 										</div>
 									</div>
@@ -146,64 +97,44 @@
 									<div class="wrap tab-area">
 										<div class="tab-list-choice">
 											<ul>
-												<li><a href="#tab10" title="서울지점 선택" data-area-cd="10"
-													class="on">서울(20)</a></li>
-												<li><a href="#tab30" title="경기지점 선택" data-area-cd="30">경기(25)</a></li>
-												<li><a href="#tab35" title="인천지점 선택" data-area-cd="35">인천(6)</a></li>
-												<li><a href="#tab45" title="대전/충청/세종지점 선택"
-													data-area-cd="45">대전/충청/세종(13)</a></li>
-												<li><a href="#tab55" title="부산/대구/경상지점 선택"
-													data-area-cd="55">부산/대구/경상(24)</a></li>
-												<li><a href="#tab65" title="광주/전라지점 선택"
-													data-area-cd="65">광주/전라(9)</a></li>
-												<li><a href="#tab70" title="강원지점 선택" data-area-cd="70">강원(4)</a></li>
-												<li><a href="#tab80" title="제주지점 선택" data-area-cd="80">제주(1)</a></li>
+												<c:forEach var="location" items="${data.location}"
+													varStatus="status">
+													<li><a
+														href="/getBranchList?locationCode=${location.locationCode}"
+														title=" ${location.locationName}지점 선택"
+														data-area-cd="${location.locationCode}0" class=""
+														onclick="return false">${location.locationName} (
+															${location.countBranch } )</a></li>
+												</c:forEach>
 											</ul>
 										</div>
 										<div class="list-section">
-											<div id="tab10" class="tab-layer-cont">
+
+											<div id="tab${data.branch[0].location.locationCode}0"
+												class="tab-layer-cont">
+												<div id="tab${data.branch[0].location.locationCode}0"
+													class="tab-layer-cont">
+													<div class="scroll m-scroll">
+														<ul class="list">
+
+															<c:forEach var="branch" items="${data.branch}"
+																varStatus="status">
+																<li><button type="button" class="btn"
+																		data-area-cd="${branch.location.locationCode}0"
+																		data-brch-no="${branch.branchCode}">${branch.branchName }</button></li>
+															</c:forEach>
+														</ul>
+														<div></div>
+													</div>
+												</div>
+											</div>
+
+											<div id="tab20" class="tab-layer-cont">
 												<div class="scroll m-scroll">
 													<ul class="list">
-														<li><button type="button" class="btn on"
-																data-area-cd="10" data-brch-no="1372">강남</button></li>
 														<li><button type="button" class="btn"
-																data-area-cd="10" data-brch-no="1359">강남대로(씨티)</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="10" data-brch-no="1341">강동</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="10" data-brch-no="1431">군자</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="10" data-brch-no="1003">동대문</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="10" data-brch-no="1572">마곡</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="10" data-brch-no="1581">목동</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="10" data-brch-no="1311">상봉</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="10" data-brch-no="1211">상암월드컵경기장</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="10" data-brch-no="1331">성수</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="10" data-brch-no="1371">센트럴</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="10" data-brch-no="1381">송파파크하비오</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="10" data-brch-no="1202">신촌</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="10" data-brch-no="1221">은평</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="10" data-brch-no="1561">이수</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="10" data-brch-no="1321">창동</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="10" data-brch-no="1351">코엑스</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="10" data-brch-no="1212">홍대</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="10" data-brch-no="1571">화곡</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="10" data-brch-no="1562">ARTNINE</button></li>
+																data-area-cd="30" data-brch-no="4121">고양스타필드</button></li>
+
 													</ul>
 													<div></div>
 												</div>
@@ -212,189 +143,38 @@
 												<div class="scroll m-scroll">
 													<ul class="list">
 														<li><button type="button" class="btn"
-																data-area-cd="30" data-brch-no="4121">고양스타필드</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="30" data-brch-no="4152">김포한강신도시</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="30" data-brch-no="4721">남양주</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="30" data-brch-no="4451">동탄</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="30" data-brch-no="4652">미사강변</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="30" data-brch-no="4113">백석</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="30" data-brch-no="4722">별내</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="30" data-brch-no="4221">부천스타필드시티</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="30" data-brch-no="4631">분당</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="30" data-brch-no="4411">수원</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="30" data-brch-no="4421">수원남문</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="30" data-brch-no="4291">시흥배곧</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="30" data-brch-no="4253">안산중앙</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="30" data-brch-no="4821">양주</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="30" data-brch-no="4431">영통</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="30" data-brch-no="4462">용인테크노밸리</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="30" data-brch-no="4804">의정부민락</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="30" data-brch-no="4111">일산</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="30" data-brch-no="4104">일산벨라시타</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="30" data-brch-no="4112">킨텍스</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="30" data-brch-no="4132">파주금촌</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="30" data-brch-no="4115">파주운정</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="30" data-brch-no="4131">파주출판도시</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="30" data-brch-no="4501">평택</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="30" data-brch-no="4651">하남스타필드</button></li>
-													</ul>
-													<div></div>
-												</div>
-											</div>
-											<div id="tab35" class="tab-layer-cont">
-												<div class="scroll m-scroll">
-													<ul class="list">
-														<li><button type="button" class="btn"
 																data-area-cd="35" data-brch-no="4041">검단</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="35" data-brch-no="4062">송도</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="35" data-brch-no="4001">영종</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="35" data-brch-no="4051">인천논현</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="35" data-brch-no="4042">청라</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="35" data-brch-no="4043">청라지젤</button></li>
+
 													</ul>
 													<div></div>
 												</div>
 											</div>
-											<div id="tab45" class="tab-layer-cont">
+											<div id="tab40" class="tab-layer-cont">
 												<div class="scroll m-scroll">
 													<ul class="list">
 														<li><button type="button" class="btn"
 																data-area-cd="45" data-brch-no="3141">공주</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="45" data-brch-no="3021">대전</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="45" data-brch-no="0009">
-																대전유성&nbsp;<i class="iconset ico-theater-new"></i>
-															</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="45" data-brch-no="3011">대전중앙로</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="45" data-brch-no="3391">세종(조치원)</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="45" data-brch-no="3392">세종나성</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="45" data-brch-no="3631">오창</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="45" data-brch-no="3901">제천</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="45" data-brch-no="3651">진천</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="45" data-brch-no="3301">천안</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="45" data-brch-no="3611">청주사창</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="45" data-brch-no="3801">충주</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="45" data-brch-no="3501">홍성내포</button></li>
+
 													</ul>
 													<div></div>
 												</div>
 											</div>
-											<div id="tab55" class="tab-layer-cont">
+											<div id="tab50" class="tab-layer-cont">
 												<div class="scroll m-scroll">
 													<ul class="list">
 														<li><button type="button" class="btn"
 																data-area-cd="55" data-brch-no="6701">거창</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="55" data-brch-no="7602">경북도청</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="55" data-brch-no="7122">경산하양</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="55" data-brch-no="7801">경주</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="55" data-brch-no="7303">구미강동</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="55" data-brch-no="7401">김천</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="55" data-brch-no="7901">남포항</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="55" data-brch-no="7022">대구(칠성로)</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="55" data-brch-no="7011">대구신세계(동대구)</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="55" data-brch-no="7012">대구이시아</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="55" data-brch-no="6161">덕천</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="55" data-brch-no="6312">마산</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="55" data-brch-no="7451">문경</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="55" data-brch-no="6001">부산극장</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="55" data-brch-no="6906">부산대</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="55" data-brch-no="7021">북대구(칠곡)</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="55" data-brch-no="6641">사천</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="55" data-brch-no="6642">삼천포</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="55" data-brch-no="6261">양산</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="55" data-brch-no="6262">양산라피에스타</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="55" data-brch-no="6811">울산</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="55" data-brch-no="6191">정관</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="55" data-brch-no="6421">창원</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="55" data-brch-no="6121">해운대(장산)</button></li>
+
 													</ul>
 													<div></div>
 												</div>
 											</div>
-											<div id="tab65" class="tab-layer-cont">
+											<div id="tab60" class="tab-layer-cont">
 												<div class="scroll m-scroll">
 													<ul class="list">
 														<li><button type="button" class="btn"
 																data-area-cd="65" data-brch-no="5021">광주상무</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="65" data-brch-no="5061">광주하남</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="65" data-brch-no="5901">남원</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="65" data-brch-no="5302">목포하당(포르모)</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="65" data-brch-no="5612">송천</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="65" data-brch-no="5401">순천</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="65" data-brch-no="5552">여수웅천</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="65" data-brch-no="0010">전대(광주)</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="65" data-brch-no="5064">첨단</button></li>
+
 													</ul>
 													<div></div>
 												</div>
@@ -404,12 +184,7 @@
 													<ul class="list">
 														<li><button type="button" class="btn"
 																data-area-cd="70" data-brch-no="2001">남춘천</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="70" data-brch-no="2171">속초</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="70" data-brch-no="2201">원주</button></li>
-														<li><button type="button" class="btn"
-																data-area-cd="70" data-brch-no="2202">원주센트럴</button></li>
+
 													</ul>
 													<div></div>
 												</div>
@@ -426,7 +201,126 @@
 										</div>
 									</div>
 								</div>
+								
+								
+								
+								<div id="masterTheater" class="ltab-layer-cont">
+									<a href="" class="ir"> 상영관별 탭 화면 입니다.</a>
+									<div class="wrap tab-area">
+										<div class="tab-list-choice">
+											<ul>
 
+												<li><a href="/getBranchList?locationCode=1"
+													title=" 강북구지점 선택" data-area-cd="10" class="on"
+													onclick="return false">쇼비강북</a></li>
+
+												<li><a href="/getBranchList?locationCode=2"
+													title=" 노원구지점 선택" data-area-cd="20" class=""
+													onclick="return false">쇼비미아</a></li>
+
+												<li><a href="/getBranchList?locationCode=3"
+													title=" 동대문구지점 선택" data-area-cd="30" class=""
+													onclick="return false">쇼비수유 </a></li>
+
+												<li><a href="/getBranchList?locationCode=4"
+													title=" 성동구지점 선택" data-area-cd="40" class=""
+													onclick="return false">쇼비청량리</a></li>
+
+												<li><a href="/getBranchList?locationCode=5"
+													title=" 강남구지점 선택" data-area-cd="50" class=""
+													onclick="return false">쇼비회기</a></li>
+
+											</ul>
+										</div>
+										<div class="list-section">
+
+											<div id="tab10" class="tab-layer-cont">
+												<div id="tab10" class="tab-layer-cont">
+													<div class="scroll m-scroll">
+														<ul class="list">
+															<li><button type="button" class="btn"
+																	data-brch-no="1">호롤롤롤ㅇ롱ㄹㅇ로롤</button></li>
+															<li><button type="button" class="btn"
+																	data-brch-no="2">아직 안했으..</button></li>
+															<li><button type="button" class="btn"
+																	data-brch-no="3">흑흐규</button></li>
+														</ul>
+														<div class=""></div>
+													</div>
+												</div>
+											</div>
+
+											<div id="tab20" class="tab-layer-cont">
+												<div class="scroll m-scroll on">
+													<ul class="list">
+														<li><button type="button" class="btn"
+																data-brch-no="4">쇼비하계</button></li>
+													</ul>
+													<div class=""></div>
+												</div>
+											</div>
+											<div id="tab30" class="tab-layer-cont">
+												<div class="scroll m-scroll on">
+													<ul class="list">
+														<li><button type="button" class="btn"
+																data-area-cd="35" data-brch-no="4041">검단</button></li>
+
+													</ul>
+													<div></div>
+												</div>
+											</div>
+											<div id="tab40" class="tab-layer-cont">
+												<div class="scroll m-scroll on">
+													<ul class="list">
+														<li><button type="button" class="btn"
+																data-area-cd="45" data-brch-no="3141">공주</button></li>
+
+													</ul>
+													<div></div>
+												</div>
+											</div>
+											<div id="tab50" class="tab-layer-cont">
+												<div class="scroll m-scroll on">
+													<ul class="list">
+														<li><button type="button" class="btn"
+																data-area-cd="55" data-brch-no="6701">거창</button></li>
+
+													</ul>
+													<div></div>
+												</div>
+											</div>
+											<div id="tab60" class="tab-layer-cont">
+												<div class="scroll m-scroll on">
+													<ul class="list">
+														<li><button type="button" class="btn"
+																data-area-cd="65" data-brch-no="5021">광주상무</button></li>
+
+													</ul>
+													<div></div>
+												</div>
+											</div>
+											<div id="tab70" class="tab-layer-cont">
+												<div class="scroll m-scroll on">
+													<ul class="list">
+														<li><button type="button" class="btn"
+																data-area-cd="70" data-brch-no="2001">남춘천</button></li>
+
+													</ul>
+													<div></div>
+												</div>
+											</div>
+											<div id="tab80" class="tab-layer-cont">
+												<div class="scroll m-scroll on">
+													<ul class="list">
+														<li><button type="button" class="btn"
+																data-area-cd="80" data-brch-no="6901">제주</button></li>
+													</ul>
+													<div></div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
 
 							</div>
 						</div>

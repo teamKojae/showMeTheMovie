@@ -22,7 +22,8 @@
 			<!-- ↓설명 : <select  resultMap ="mvInfo">로 접근하면   movieInfo 객체로 반환함 -->
 	<resultMap id="mvInfo" type="movieInfo">
 				<!-- column : DB 컬럼명    property : POJO 클래스의 속성명-->
-		 <result column="movieDate" property="movieDate" />  
+		<result column="moiveInfoCode" property="moviePosterBG" />
+		 <result column="movieDate" property="movieDate" />
 		<result column="movieStartTime" property="movieStartTime" />
 		<result column="movieEndTime" property="movieEndTime" />
 		 		<!-- Collection은 ofType으로  -->

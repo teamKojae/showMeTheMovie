@@ -1,4 +1,4 @@
-package com.show.movie.controller.util.naver;
+package com.show.movie.controller;
 
 import java.io.IOException;
 
@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.github.scribejava.core.model.OAuth2AccessToken;
+import com.show.movie.controller.util.naver.NaverLoginBO;
 import com.show.movie.model.dao.UserDAO;
 import com.show.movie.model.domain.User;
 import com.show.movie.model.service.UserService;
