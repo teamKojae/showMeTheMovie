@@ -35,7 +35,7 @@ public class KakaoAPI {
 			StringBuilder sb = new StringBuilder();
 			sb.append("grant_type=authorization_code");
 			sb.append("&client_id=e7a638f0535094326fe38f8ae0fc6bde");
-			sb.append("&redirect_uri=http://localhost:5000/kakaoCallback");
+			sb.append("&redirect_uri=http://192.168.0.23:5000/kakaoCallback");
 			sb.append("&code=" + authorize_code);
 			bw.write(sb.toString());
 			bw.flush();
@@ -75,7 +75,7 @@ public class KakaoAPI {
 	}
 
 	public HashMap<String, Object> getUserInfo(String access_Token) {
-
+		
 		// 요청하는 클라이언트마다 가진 정보가 다를 수 있기에 HashMap타입으로 선언
 		HashMap<String, Object> userInfo = new HashMap();
 		String reqURL = "https://kapi.kakao.com/v2/user/me";

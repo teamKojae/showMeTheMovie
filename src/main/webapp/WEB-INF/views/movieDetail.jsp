@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
  <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%request.setCharacterEncoding("UTF-8");%>
 <%@ page trimDirectiveWhitespaces="true" %>
 <!DOCTYPE html>
 <html>
@@ -14,14 +13,6 @@
 <link href="/css/main.css" rel="stylesheet">
 <link href="/css/custom.css" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="/js/jquery-3.4.1.min.js"></script>
-
-<script src="/js/common.js"></script>
-<script src="/js/movie.js"></script>
-
-
-
-
 </head>
 <body>
 
@@ -32,7 +23,7 @@
 
 		<div class="movie-detail-page">
 			<div class="bg-img"
-				style="background-image: url('${movie.moviePosterBG}');"></div>
+				style="background-image: url('/img/${movie.moviePosterBG}');"></div>
 			<div class="bg-pattern"></div>
 			<div class="bg-mask"></div>
 
@@ -69,7 +60,7 @@
 				<div class="poster">
 					<div class="wrap">
 						<img
-							src="${movie.moviePoster}"
+							src="/img/${movie.moviePoster}"
 							onerror="noImg(this)" alt="다크 워터스">
 					</div>
 				</div>
@@ -106,13 +97,9 @@
 			</div>
 		</div>
 	</div>
-
-
-
-
+	<script src="/js/common.js"></script>
+	<script src="/js/movie.js"></script>
 </body>
-
-
 </html>
 
 

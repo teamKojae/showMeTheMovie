@@ -78,3 +78,19 @@
     background-repeat: no-repeat;
     width:10%;
 }
+
+.getMovieImages{
+	display:block;
+}
+.widthImage{
+	width:400px;
+}
+
+.selectThumbnail{
+	margin: 20px;
+}
+
+.thumbNailImages{
+	margin:auto;
+}
+

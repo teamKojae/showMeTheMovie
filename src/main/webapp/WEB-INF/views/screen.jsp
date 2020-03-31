@@ -9,12 +9,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="/js/jquery-3.4.1.min.js"></script>
-<script src="/js/ticketting.js"></script>
+
 <link href="/css/component.css" rel="stylesheet">
 <link href="/css/megabox.min.css" rel="stylesheet">
 <link href="/css/main.css" rel="stylesheet">
 <link href="/css/custom.css" rel="stylesheet">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"> -->
 </head>
 <body>
@@ -29,13 +30,15 @@
 						<div class="seat-section">
 							<div class="tit-util">
 							<!-- 최대 8명까지만 선택 -->
-								<h3 class="tit small">관람인원선택</h3>
+								<h3 class="tit small">
+								<input type="number" value="관람 인원 선택">
+								</h3>
 							</div>
 							<div class="seat-layout">
 								<div class="plan plan--shown">
 									<div class="rows rows--mini">
 										<div class="row">
-											<div class="row__seat A1">A1</div>
+											<div class="row__seat A1" value="${seat.seatName }"/>
 											<div class="row__seat A2">A2</div>
 											<div class="row__seat A3">A3</div>
 											<div class="row__seat A4">A4</div>
@@ -459,5 +462,6 @@
 			</div>
 		</div>
 	</div>
+	<script src="/js/ticketting.js"></script>
 </body>
 </html>

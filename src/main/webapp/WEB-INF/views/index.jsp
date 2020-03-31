@@ -14,10 +14,6 @@
 <link href="/css/custom.css" rel="stylesheet">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="/js/jquery-3.4.1.min.js"></script>
-
-<script src="/js/common.js"></script>
-<script src="/js/movie.js"></script>
 </head>
 <body>
 	<div class="container main-container area-ad">
@@ -64,11 +60,11 @@
 								<li name="li_boxoRankList" class="first"><a
 									href="" onclick="return false"
 									class="movie-list-info" title="영화상세 보기">
-									<input type="hidden"  name="movieName" value="다크워터스" class="movie-info-hidden">
+									<input type="hidden"  name="movieName" value="testtest" class="movie-info-hidden">
 										<p class="rank">
 											1<span class="ir">위</span>
 										</p> <!-- to 개발 : alt 값에 영화 제목 출력 --> <img
-										src="https://img.megabox.co.kr/SharedImg/2020/02/21/lczdtI1vz3Dd1ShuXb0iXj8pTJGbh4wa_420.jpg"
+										src="/img/1Company.PNG"
 										alt="다크 워터스" class="poster" onerror="noImg(this, 'main');">
 										<div class="wrap">
 											<div class="summary">
@@ -359,5 +355,7 @@
 			<c:import url="/resources/common/footer.jsp"></c:import>
 		</div>
 	</div>
+<script src="/js/common.js"></script>
+<script src="/js/movie.js"></script>
 </body>
 </html>

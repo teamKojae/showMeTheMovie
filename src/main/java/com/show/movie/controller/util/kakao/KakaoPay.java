@@ -13,10 +13,10 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
-import com.show.movie.model.Movie;
-import com.show.movie.model.User;
-import com.show.movie.model.kakao.KakaoPayReadyVO;
-import com.show.movie.model.kakao.KakaoPayApprovalVO;
+import com.show.movie.model.domain.kakao.KakaoPayReadyVO;
+import com.show.movie.model.domain.Movie;
+import com.show.movie.model.domain.User;
+import com.show.movie.model.domain.kakao.KakaoPayApprovalVO;
 
 import lombok.extern.log4j.Log4j;
 
@@ -55,9 +55,9 @@ public class KakaoPay {
 	        params.add("tax_free_amount", "50");				//현금영수증용 
 																// ↑ 모두 필수
 	        // ↓고정
-	        params.add("approval_url", "http://localhost:5000/kakaoPaySuccess");		
-	        params.add("cancel_url", "http://localhost:5000/kakaoPayCancel");
-	        params.add("fail_url", "http://localhost:5000/kakaoPaySuccessFail");
+	        params.add("approval_url", "http://192.168.0.23:5000//kakaoPaySuccess");		
+	        params.add("cancel_url", "http://192.168.0.23:5000//kakaoPayCancel");
+	        params.add("fail_url", "http://192.168.0.23:5000//kakaoPaySuccessFail");
 	        HttpEntity<MultiValueMap<String, String>> body = 
 	        		 new HttpEntity<MultiValueMap<String, String>>(params, headers);
 	         System.out.println(body);

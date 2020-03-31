@@ -17,59 +17,55 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <script type="text/javascript">
-$(function() {
-  $('button[type=submit]').click(function(e) {
-    e.preventDefault();
-    //Disable submit button
-    $(this).prop('disabled',true);
-    
-    var form = document.forms[0];
-    var formData = new FormData(form);
-    	
-    // Ajax call for file uploaling
-    var ajaxReq = $.ajax({
-      url : 'fileUpload',
-      type : 'POST',
-      data : formData,
-      cache : false,
-      contentType : false,
-      processData : false
-    })
-    /*   xhr: function(){
-        //Get XmlHttpRequest object
-         var xhr = $.ajaxSettings.xhr() ;
-        
-        //Set onprogress event handler 
-         xhr.upload.onprogress = function(event){
-          	var perc = Math.round((event.loaded / event.total) * 100);
-          	$('#progressBar').text(perc + '%');
-          	$('#progressBar').css('width',perc + '%');
-         };
-         return xhr ;
-    	},
-    	beforeSend: function( xhr ) {
-    		//Reset alert message and progress bar
-    		$('#alertMsg').text('');
-    		$('#progressBar').text('');
-    		$('#progressBar').css('width','0%');
-              }
-    }); */
-  
-    // Called on success of file upload
-    ajaxReq.done(function(msg) {
-      $('#alertMsg').text(msg);
-      $('input[type=file]').val('');
-      $('button[type=submit]').prop('disabled',false);
-    });
-    
-    // Called on failure of file upload
-    ajaxReq.fail(function(jqXHR) {
-      $('#alertMsg').text(jqXHR.responseText+'('+jqXHR.status+
-      		' - '+jqXHR.statusText+')');
-      $('button[type=submit]').prop('disabled',false);
-    });
-  });
-});
+	$(function() {
+		$('button[type=submit]').click(function(e) {
+			e.preventDefault();
+			//Disable submit button
+			$(this).prop('disabled', true);
+
+			var form = document.forms[0];
+			var formData = new FormData(form);
+
+			// Ajax call for file uploaling
+			$.ajax({
+				url : 'fileUpload',
+				type : 'POST',
+				data : formData,
+				cache : false,
+				contentType : false,
+				processData : false,
+				success : function(result) {
+					$.each(result, function(key,value){
+						$('#alertMsg').append(
+								'<img src = "/img/'+result+'" alt="이미지경로띠"></img>'
+						)	
+					})
+				}
+			})
+			/*   xhr: function(){
+			    //Get XmlHttpRequest object
+			     var xhr = $.ajaxSettings.xhr() ;
+			    
+			    //Set onprogress event handler 
+			     xhr.upload.onprogress = function(event){
+			      	var perc = Math.round((event.loaded / event.total) * 100);
+			      	$('#progressBar').text(perc + '%');
+			      	$('#progressBar').css('width',perc + '%');
+			     };
+			     return xhr ;
+				},
+				beforeSend: function( xhr ) {
+					//Reset alert message and progress bar
+					$('#alertMsg').text('');
+					$('#progressBar').text('');
+					$('#progressBar').css('width','0%');
+			          }
+			}); */
+
+			// Called on success of file upload
+			// Called on failure of file upload
+		});
+	});
 </script>
 
 </head>

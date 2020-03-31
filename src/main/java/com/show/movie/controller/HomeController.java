@@ -8,7 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.show.movie.service.UserService;
+import com.show.movie.model.service.UserService;
 
 import lombok.extern.log4j.Log4j;
 
@@ -28,7 +28,6 @@ public class HomeController {
 	
 	@RequestMapping(value="/")
 	public String mainPage( Model model, HttpSession session) {
-		
 		return "index";
 	}
 
