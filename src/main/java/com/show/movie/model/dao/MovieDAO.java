@@ -10,12 +10,17 @@ import com.show.movie.model.domain.Movie;
 import com.show.movie.model.domain.MovieInfo;
 
 public interface MovieDAO {
-
+	//재현
 	public List<String> getBranch(@Param("locationName")  String locationName);
 	public List<MovieInfo> getMovieInfo(MovieInfo movieInfo);
 	public Movie getMovie(String movieName);
-	public String getMovieSynopsis();
+	public String getMovieSynopsis(String movieName);
 	public String getMovieImages(String movieName);
+	public int isView();
+	public void createViewGetMovieInfo();
+	
+	
+	
 	
 	//순위까지 가져오는 쿼리문
 	@Select("SELECT movie.movieName, movie.movieAudience, movieRank.rank FROM movie movie, \r\n" + 

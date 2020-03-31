@@ -46,11 +46,6 @@ public class TicketController {
 	@RequestMapping(value="/getMovieInfoAndTime",  produces = "application/json; charset=utf8")
 	@ResponseBody
 	public String getMovieInfoAndTime(Model model, MovieInfo movieInfo) {
-		log.info("log : "+ movieInfo.getMovie().getMovieName());
-		log.info("log : "+ movieInfo.getBranch().getBranchName());
-		log.info(movieInfo);
-		movieService.getMovieInfo(movieInfo);
-		log.info("dao 갔다 온 후 ");
 		return new Gson().toJson(movieService.getMovieInfo(movieInfo));
 	}
 

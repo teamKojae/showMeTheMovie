@@ -8,8 +8,10 @@ import com.show.movie.model.domain.Movie;
 import com.show.movie.model.domain.MovieInfo;
 
 public interface MovieService {
+	//재현
 	public List<String> getBranch(String locationName);
 	public Movie getMovie(String movieName);
 	public List<MovieInfo> getMovieInfo(MovieInfo movieInfo) ;
 	public String getMovieImages(String movieName);
+	public String getMovieSynopsis(String movieName);
 }

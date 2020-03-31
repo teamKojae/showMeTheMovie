@@ -77,19 +77,23 @@
 		AND location.locationName = #{locationName} 
 	</select>
 	
-		<select id="getMovieImages" resultType="string" >
+	<select id="getMovieImages" resultType="string" >
 		SELECT movieImages FROM movie
 		WHERE movieName= #{movieName}
 	</select>
 	
+	<select id="getMovieSynopsis" resultType="string">
+		SELECT movieSynopsis FROM movie where moviename = #{movieName};
+	</select>
 		
 	<select id="getMovieInfo" resultMap="mvInfo" parameterType="movieInfo">
 	<!--  getMovieInfo는 View Table -->
 		SELECT * FROM getMovieInfo		
 		WHERE movieName = #{movie.movieName}
 		AND branchName = #{branch.branchName}
+		AND movieDate = #{movieDate}
 		<!-- AND movieDate = #{movieDate} -->
-		ORDER BY movieDate;
+		ORDER BY movieStartTime;
 	</select>
 	
 	
@@ -102,7 +106,8 @@
 	<!--  return : void  -->
 	<select id="createViewGetMovieInfo">
 			CREATE VIEW getMovieInfo AS 
-			SELECT movie.movieName, movieInfo.movieStartTime, movieInfo.movieEndTime, 
+			SELECT movie.movieName,movie.moviePoster,
+			movieInfo.movieStartTime, movieInfo.movieEndTime, 
 			branch.branchName, theater.theaterleftSeat,
 			theater.theaterAllSeat,theater.theaterCode,
 			theater.theaterName,movieInfo.movieDate

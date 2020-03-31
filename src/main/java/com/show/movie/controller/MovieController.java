@@ -51,8 +51,9 @@ public class MovieController {
 	}
 	
 	@GetMapping(value="/getMovieSynopsis" ,  produces = "application/json; charset=utf8")
-	public String getMovieSynopsis() {
-		return "";
+	@ResponseBody
+	public String getMovieSynopsis(String movieName) {
+		return new Gson().toJson(movieService.getMovieSynopsis(movieName));
 	}
 	
 }

@@ -136,10 +136,10 @@ function getMovieInfoAndTime(event) {
 			
 				data : {
 					/*'movieDate' : dataArray[0],*/
-					'movieDate' : '2020-04-06',
-					'movie.movieName' : '라라랜드',
+					'movieDate' : '2020-04-07',
+					'movie.movieName' : dataArray[1],
 					'branch.location.locationName' : dataArray[2],
-					'branch.branchName' : '쇼비강북'
+					'branch.branchName' : dataArray[3]
 				},
 			
 				
@@ -147,7 +147,6 @@ function getMovieInfoAndTime(event) {
 					$('#playScheduleNonList').attr('style', 'display:none');
 					$('.result').find('ul').empty();
 					$.each(result,function(index, item) {
-										console.log(item);
 										$('.result').find('ul').append(
 														'<li>'
 														+'<form action="/getSelectScreen" method="post">'
@@ -178,6 +177,7 @@ function getMovieInfoAndTime(event) {
 																+ '</em></span>'
 																+ '</div></button>'
 																+'<input type="hidden" name="movie.movieName" value="'+item.movie.movieName+'" >'
+																+'<input type="hidden" name="movie.moviePoster" value="'+item.movie.moviePoster+'" >'
 																+'<input type="hidden" name="movieStartTime" value="'+item.movieStartTime+'" >'
 																+'<input type="hidden" name="movieEndTime" value="'+item.movieEndTime+'" >'
 																+'<input type="hidden" name="branch.branchName" value="'+item.branch.branchName+'" >'
