@@ -12,10 +12,27 @@
 		</layout>
 	</appender>
 
-	<!-- Application Loggers -->
-	<logger name="com.show.movie">
-		<level value="info" />
-	</logger>
+	 <Loggers>
+        <Logger name="java.sql" level="DEBUG" additivity="false">
+            <AppenderRef ref="console" />
+        </Logger>
+        <Logger name="egovframework" level="DEBUG" additivity="false">
+            <AppenderRef ref="console" />
+        </Logger>
+        <Logger name="jdbc.sqltiming" level="DEBUG" additivity="false">
+            <AppenderRef ref="console" />
+        </Logger>
+         <Logger name="java.sqlonly" level="DEBUG" additivity="false">
+            <AppenderRef ref="console" />
+        </Logger>
+        <Logger name="org.springframework" level="DEBUG" additivity="false">
+            <AppenderRef ref="console" />
+        </Logger>
+        <Logger name="jdbc.resultsettable" additivity="false"> 
+            <level value="DEBUG" /> 
+            <appender-ref ref="console-log4jdbc" />
+        </Logger>
+    </Loggers>
 
 	<!-- jdbc 로그 -->
 	<logger name="jdbc.audit">
@@ -26,28 +43,24 @@
 	</logger>
 	<logger name="jdbc.connection">
 		<level value="warn" />
+	<logger name="com.show.movie">
+		<level value="DEBUG" />
+	</logger>
+	
+	<logger name="org.springframework" level="DEBUG "
+		additivity="false">
+		<appender-ref ref="console" />
 	</logger>
 
-	<!-- 3rdparty Loggers -->
-	<logger name="org.springframework.core">
-		<level value="info" />
+	<logger name="org.mybatis" level="DEBUG " additivity="false">
+		<appender-ref ref="console" />
 	</logger>
 
-	<logger name="org.springframework.beans">
-		<level value="info" />
-	</logger>
 
-	<logger name="org.springframework.context">
-		<level value="info" />
-	</logger>
-
-	<logger name="org.springframework.web">
-		<level value="info" />
-	</logger>
 
 	<!-- Root Logger -->
 	<root>
-		<priority value="warn" />
+		<priority value="DEBUG" />
 		<appender-ref ref="console" />
 	</root>
 

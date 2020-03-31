@@ -13,9 +13,6 @@
 <link href="/css/custom.css" rel="stylesheet">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="/js/jquery-3.4.1.min.js"></script>
-
-<script src="/js/common.js"></script>
 </head>
 <body>
 
@@ -289,6 +286,5 @@
 		</div>
 		<c:import url="/resources/common/footer.jsp"></c:import>
 	</div>
-
 </body>
 </html>

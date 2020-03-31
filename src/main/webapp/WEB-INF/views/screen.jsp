@@ -9,12 +9,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="/js/jquery-3.4.1.min.js"></script>
-<script src="/js/ticketting.js"></script>
+
 <link href="/css/component.css" rel="stylesheet">
 <link href="/css/megabox.min.css" rel="stylesheet">
 <link href="/css/main.css" rel="stylesheet">
 <link href="/css/custom.css" rel="stylesheet">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"> -->
 </head>
 <body>
@@ -34,18 +35,18 @@
 								<div class="plan plan--shown">
 									<div class="rows rows--mini">
 										<div class="row">
-											<div class="row__seat A1">A1</div>
-											<div class="row__seat A2">A2</div>
-											<div class="row__seat A3">A3</div>
+											<div class="row__seat row__seat--reserved" id="A1">A1</div>
+											<div class="row__seat" id="A2">A2</div>
+											<div class="row__seat" id="A3">A3</div>
 											<div class="row__seat A4">A4</div>
 											<div class="row__seat A5">A5</div>
 											<div class="row__seat A6">A6</div>
 											<div class="row__seat A7">A7</div>
 											<div class="row__seat A8">A8</div>
 											<div class="row__seat A9">A9</div>
-											<div class="row__seat row__seat--reserved"></div>
-											<div class="row__seat row__seat--reserved"></div>
-											<div class="row__seat row__seat--reserved"></div>
+											<div class="row__seat" id="A10" ></div>
+											<div class="row__seat"></div>
+											<div class="row__seat"></div>
 											<div class="row__seat A13"></div>
 											<div class="row__seat A14"></div>
 											<div class="row__seat A15"></div>
@@ -415,10 +416,10 @@
 									<p class="cate">2D(자막)</p>
 								</div>
 								<div class="info-area">
-									<p class="theater">${movieInfo.branch.branchName }</p>
-									<p class="special">${movieInfo.theater.theaterCode }관</p>
+									<%-- <p class="theater">${movieInfo.branch.branchName }점</p>
+									<p class="special">${movieInfo.theater.theaterName}</p> --%>
 									<p class="date">
-										<span>2020.03.19</span><em>(목)</em>
+										<%-- <span>${movieInfo.movieDate}</span><em>(목)</em> --%>
 									</p>
 									<div class="other-time">
 										<button type="button" class="now">
@@ -458,5 +459,6 @@
 			</div>
 		</div>
 	</div>
+	<script src="/js/ticketting.js"></script>
 </body>
 </html>

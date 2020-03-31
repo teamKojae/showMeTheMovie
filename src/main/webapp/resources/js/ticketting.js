@@ -7,6 +7,7 @@ $(function() {
 })
 
 
+
 function requestKakaoPay() {
 	$('.button').on('click', function(event) {
 		$('#kakaoPay').submit();
@@ -104,27 +105,7 @@ function getTheater(event) {
 			});
 }
 
-/*function getScreen(){
-	$('.result .btn').bind('click', function(event) {
-		event.preventDefault();
-		const data = $(event.target).find('form').serialize();
-		$(event.target).closet('form').submit();
-	})
-}
-*/
 function getMovieInfoAndTime(event) {
-	/*	var dataArray = new Array();
-	var movieName = $('.on span');
-	var locationName = $('.on span')[6];
-	var branchName = $('.on span')[7];
-	console.log(movieName);
-	console.log(movieName.text());
-	console.log(locationName.text());
-	console.log(branchName.text());*/
-	
-	//var data = $('.on').find('span').text();
-	//console.log(data);
-	
 	
 	var dataArray = new Array();
 	$.each($(".on"), function(key, value){
@@ -155,10 +136,10 @@ function getMovieInfoAndTime(event) {
 			
 				data : {
 					/*'movieDate' : dataArray[0],*/
-					'movieDate' : '2020-03-20',
-					'movie.movieName' : dataArray[1],
+					'movieDate' : '2020-04-06',
+					'movie.movieName' : '라라랜드',
 					'branch.location.locationName' : dataArray[2],
-					'branch.branchName' : dataArray[3]
+					'branch.branchName' : '쇼비강북'
 				},
 			
 				
@@ -188,7 +169,7 @@ function getMovieInfoAndTime(event) {
 																+ item.branch.branchName
 																+ '">'
 																+ item.branch.branchName
-																+ '<br>'+item.theater.theaterCode+'관'
+																+ '<br>'+item.theater.theaterName
 																+ '</span><span class="seat"><strong class="now" title="잔여 좌석">'
 																+ item.theater.theaterLeftSeat
 																+ '</strong>'
@@ -200,7 +181,7 @@ function getMovieInfoAndTime(event) {
 																+'<input type="hidden" name="movieStartTime" value="'+item.movieStartTime+'" >'
 																+'<input type="hidden" name="movieEndTime" value="'+item.movieEndTime+'" >'
 																+'<input type="hidden" name="branch.branchName" value="'+item.branch.branchName+'" >'
-																+'<input type="hidden" name="theater.theaterCode" value="'+item.theater.theaterCode+'" ></form>'
+																+'<input type="hidden" name="theater.theaterName" value="'+item.theater.theaterName+'" ></form>'
 																+'</li>'
 												);
 									})
