@@ -535,7 +535,6 @@
 			<c:import url="/resources/common/footer.jsp"></c:import>
 		</div>
 	</div>
-	<script src="/js/common.js"></script>	
 	<script src="/js/movie.js"></script>	
 </body>
 </html>

@@ -104,7 +104,6 @@
 		</div>
 	</div>
 	<!--// body-wrap -->
-	<script src="/js/common.js"></script>
 	<script src="/js/sign.js"></script>
 </body>
 </html>

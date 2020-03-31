@@ -23,10 +23,11 @@
 	<resultMap id="mvInfo" type="movieInfo">
 				<!-- column : DB 컬럼명    property : POJO 클래스의 속성명-->
 		<result column="moiveInfoCode" property="moviePosterBG" />
-		<!-- <result column="movieDate" property="movieDate" /> Date타입 에러떠서 잠시..-->
+		 <result column="movieDate" property="movieDate" />
 		<result column="movieStartTime" property="movieStartTime" />
 		<result column="movieEndTime" property="movieEndTime" />
 		 		<!-- Collection은 ofType으로  -->
+		 		
 				<association property="movie" javaType="movie">
 						<result column="movieCode" property="movieCode" />
 						<result column="movieName" property="movieName" />
@@ -38,12 +39,15 @@
 						<result column="moviePoster" property="moviePoster" />
 						<result column="moviePosterBG" property="moviePosterBG" />
 				</association>
+				
 				<association property="theater" javaType="theater">
 					<result column="theaterCode" property="theaterCode" />
 					<result column="theaterleftSeat" property="theaterLeftSeat" />
 					<result column="theaterAllSeat" property="theaterAllSeat" />
+					<result column="theaterName" property="theaterName" />
 				</association>
-				<association property="branch" javaType="Branch">
+				
+				<association property="branch" javaType="branch">
 					<result column="branchCode" property="branchCode" />
 					<result column="branchName" property="branchName" />
 					<association property="location" javaType="Location">
@@ -51,6 +55,7 @@
 						<result column="locationName" property="locationName" />
 					</association>
 				</association>
+				
 	</resultMap>
 
  
@@ -77,7 +82,9 @@
 	<!--  getMovieInfo는 View Table -->
 		SELECT * FROM getMovieInfo		
 		WHERE movieName = #{movie.movieName}
-		AND branchName=  #{branch.branchName}
+		AND branchName = #{branch.branchName}
+		<!-- AND movieDate = #{movieDate} -->
+		ORDER BY movieDate;
 	</select>
 	
 	
@@ -92,8 +99,8 @@
 			CREATE VIEW getMovieInfo AS 
 			SELECT movie.movieName, movieInfo.movieStartTime, movieInfo.movieEndTime, 
 			branch.branchName, theater.theaterleftSeat,
-			 theater.theaterAllSeat,
-			 theater.theaterCode
+			theater.theaterAllSeat,theater.theaterCode,
+			theater.theaterName,movieInfo.movieDate
 			FROM movie AS movie , movieInfo AS movieInfo, theater AS theater, branch AS branch
 			WHERE theater.theaterCode = movieinfo.theaterCode
 			AND movieinfo.movieCode = movie.movieCode 

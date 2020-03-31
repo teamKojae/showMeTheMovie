@@ -286,6 +286,5 @@
 		</div>
 		<c:import url="/resources/common/footer.jsp"></c:import>
 	</div>
-	<script src="/js/common.js"></script>
 </body>
 </html>
