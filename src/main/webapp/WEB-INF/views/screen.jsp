@@ -416,10 +416,10 @@
 									<p class="cate">2D(자막)</p>
 								</div>
 								<div class="info-area">
-									<p class="theater">${movieInfo.branch.branchName }</p>
-									<p class="special">${movieInfo.theater.theaterCode }관</p>
+									<%-- <p class="theater">${movieInfo.branch.branchName }점</p>
+									<p class="special">${movieInfo.theater.theaterName}</p> --%>
 									<p class="date">
-										<span>2020.03.19</span><em>(목)</em>
+										<%-- <span>${movieInfo.movieDate}</span><em>(목)</em> --%>
 									</p>
 									<div class="other-time">
 										<button type="button" class="now">

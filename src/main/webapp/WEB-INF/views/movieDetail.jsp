@@ -97,7 +97,6 @@
 			</div>
 		</div>
 	</div>
-	<script src="/js/common.js"></script>
 	<script src="/js/movie.js"></script>
 </body>
 </html>

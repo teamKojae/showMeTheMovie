@@ -34,8 +34,14 @@ public class MovieServiceImpl implements MovieService {
 
 	@Override
 	public List<MovieInfo> getMovieInfo(MovieInfo movieInfo) {
-		log.info(movieDAO.getMovieInfo(movieInfo));
-		return movieDAO.getMovieInfo(movieInfo);
+		log.info("movieInfo : " );
+		try {
+			return movieDAO.getMovieInfo(movieInfo);
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }

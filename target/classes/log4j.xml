@@ -13,9 +13,9 @@
 	</appender>
 
 	<!-- Application Loggers -->
-	<logger name="com.show.movie">
-		<level value="info" />
-	</logger>
+	<!-- <logger name="com.show.movie">
+		<level value="debug" />
+	</logger> -->
 
 	<!-- jdbc 로그 -->
 	<logger name="jdbc.audit">
@@ -47,7 +47,7 @@
 
 	<!-- Root Logger -->
 	<root>
-		<priority value="warn" />
+		<priority value="debug" />
 		<appender-ref ref="console" />
 	</root>
 
