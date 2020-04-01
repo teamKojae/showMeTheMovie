@@ -22,5 +22,5 @@ public class User {
 	private String userName;
 	private String userPhoneNumber;
 	private String userBirth;
-	private int userCode;
+	private int userSignupCode;
 }

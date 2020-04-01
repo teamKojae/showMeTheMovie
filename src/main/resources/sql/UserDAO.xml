@@ -10,7 +10,7 @@
 		<result column="userName" property="userName" />
 		<result column="userPhoneNumber" property="userPhoneNumber" />
 		<result column="userBirth" property="userBirth" />
-		<result column="userCode" property="userCode" />
+		<result column="userSignupCode" property="userSignupCode" />
 	</resultMap> 
 
 
@@ -27,4 +27,15 @@
 		VALUES ( #{userId}, #{userName},   #{userCode} )
 	</insert> 
   
+  	<!-- 회원가입 -->
+  	<insert id="signUpUser" parameterType="user">
+  		INSERT INTO user(userId, userName, userPassword, userBirth, userPhoneNumber, userSignupCode)
+		VALUES ( #{userId}, #{userName}, #{userPassword}, #{userBirth}, #{userPhoneNumber}, #{userSignupCode} )
+  	</insert>
+  	
+  	<select id="btnUserIdCheck" resultType="int">
+  		SELECT * fROM user WHERE userId = #{userId}
+  	</select>
+  	
+  	
 </mapper>

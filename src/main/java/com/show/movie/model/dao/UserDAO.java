@@ -17,4 +17,5 @@ public interface UserDAO {
 	public User selectUser();
 	public void insertNewUser(User user);
 	public String getTime();
+	public void signUpUser(User user);
 }

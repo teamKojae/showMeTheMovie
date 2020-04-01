@@ -10,4 +10,5 @@ public interface UserService {
 	/* public User selectUser(String userId); */
 	public void insertNewUser(User user);
 	public User isUser(String userId);
+	public void signUpUser(User user);
 }

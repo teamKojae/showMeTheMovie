@@ -52,7 +52,6 @@
 											</div>
 
 
-										</div>
 										<!--// chk-util -->
 
 										<button id="btnLogin" type="button"

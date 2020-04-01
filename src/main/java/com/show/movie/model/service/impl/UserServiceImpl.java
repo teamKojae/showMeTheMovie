@@ -35,6 +35,11 @@ public class UserServiceImpl implements UserService {
 		return null;/*userDao.isUser(userId);*/
 	}
 
+	@Override
+	public void signUpUser(User user) {
+		userDAO.signUpUser(user);
+	}
+
 
 
 
