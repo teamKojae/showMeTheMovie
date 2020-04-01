@@ -52,11 +52,7 @@
 										<div class="alert"></div>
 										<div class = "row">
 											<div class="col-xs-8">
-												<div class="checkbox icheck">
-													<label>
-														<input type="checkbox" name="useCookie">로그인 유지
-													</label>
-												</div>
+												
 											</div>
 
 
