@@ -12,9 +12,12 @@ import org.springframework.stereotype.Component;
 import com.show.movie.model.domain.User;
 
 public interface UserDAO {
-	
+	//재현
 	public User getUser(String userId);
 	public User selectUser();
 	public void insertNewUser(User user);
 	public String getTime();
+
+	
+	
 }

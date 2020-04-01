@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.google.gson.Gson;
-import com.show.movie.controller.util.image.ImageParser;
+import com.show.movie.controller.util.parse.Parser;
 import com.show.movie.model.domain.Location;
 import com.show.movie.model.domain.Movie;
 import com.show.movie.model.service.ManagerService;
@@ -45,11 +45,6 @@ public class ManagerController {
 	
 	@PostMapping("/insertMovie")
 	public String insertMovie(Movie movie) {
-		String[] movies = movie.getMovieImages().split(",");
-		log.info("movie의 값은 뭐가왔을까요옹 ??  "+movie);
-		for(String movieaa : movies) {
-			log.info("영화 상세이미지  :  "+movieaa);
-		}
 		managerService.insertMovie(movie);
 		return "redirect:/addMovie";
 	}
@@ -63,7 +58,7 @@ public class ManagerController {
 	@RequestMapping(value = "/fileUpload" ,  produces = "application/json; charset=utf8")
 	@ResponseBody
 	public String fileUpload(MultipartHttpServletRequest multipartHttpServletRequest, Model model) throws IOException {
-		return new ImageParser().fileParser(multipartHttpServletRequest);
+		return new Parser().fileParser(multipartHttpServletRequest);
 	}
 	
 	@GetMapping("/addMovieInfo")

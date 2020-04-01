@@ -35,16 +35,27 @@ public class MovieServiceImpl implements MovieService {
 
 	@Override
 	public List<MovieInfo> getMovieInfo(MovieInfo movieInfo) {
-		log.info("movieInfo : " );
 		try {
+			if(movieDAO.isView() == 0) {
+				movieDAO.createViewGetMovieInfo();
+			}
 			return movieDAO.getMovieInfo(movieInfo);
-			
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
 		return null;
 	}
 
+	@Override
+	public String getMovieImages(String movieName) {
+		return movieDAO.getMovieImages(movieName);
+	}
+
+	@Override
+	public String getMovieSynopsis(String movieName) {
+		return movieDAO.getMovieSynopsis(movieName);
+	}
+	
 	@Override
 	public List<Seat> getSeatList(Seat seat) {
 		log.info(movieDAO.getSeatList());

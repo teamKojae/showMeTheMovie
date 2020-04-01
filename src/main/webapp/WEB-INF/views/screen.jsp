@@ -458,10 +458,18 @@
 									<p class="cate">2D(자막)</p>
 								</div>
 								<div class="info-area">
-									<%-- <p class="theater">${movieInfo.branch.branchName }점</p>
-									<p class="special">${movieInfo.theater.theaterName}</p> --%>
+									<p class="theater">${movieInfo.branch.branchName }점</p>
+									<p class="special">${movieInfo.theater.theaterName}</p> 
 									<p class="date">
-										<%-- <span>${movieInfo.movieDate}</span><em>(목)</em> --%>
+										 <span>${movieInfo.movieDate}</span><em></em>
+										 <script>
+										 	var date = new Date( ${movieInfo.movieDate} ).getDay();
+										 	console.log(date);
+										 	var week = new Array('일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일');
+										 	var getDay = week[date];
+										 	$('.date').find('em').text('('+getDay+')');
+										 </script>
+										 
 									</p>
 									<div class="other-time">
 										<button type="button" class="now">
@@ -474,7 +482,7 @@
 										</ul>
 									</div>
 									<p class="poster">
-										<img src="/images/popCinema.jpg" alt="1917">
+										<img src="/img/${movieInfo.movie.moviePoster}" alt="영화없오요">
 									</p>
 								</div>
 
