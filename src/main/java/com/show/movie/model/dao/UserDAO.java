@@ -19,10 +19,10 @@ public interface UserDAO {
 	public void insertNewUser(User user);
 	public String getTime();
 	
-	void register(User user)throws Exception;
-	public Login getLogin(String userId);
-	User loginM(Login login);
+	public Login getLogin(Login login);
 
+	public Login encrypt(Login login);
+	//boolean isMatch(String userPassword, String hashed);
 	
 	
 }

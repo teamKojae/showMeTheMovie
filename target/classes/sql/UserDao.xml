@@ -27,9 +27,14 @@
 	private String userBirth;
 	private int userCode;
 	 -->
+	 <!-- INSERT INTO user(userPassword) VALUE #{userPassword} -->
+	 <!-- 안되는 부분 -->
+	 <insert id = "encrypt" parameterType="login">
+		UPDATE user SET userPassword=#{userPassword} WHERE userId = {userId}
+	</insert>
 	 
-	<select id = "getLogin" resultMap="login" parameterType="string">
-		SELECT * FROM user WHERE userId = #{userId}
+	<select id = "getLogin" resultMap="login" parameterType="login">
+		SELECT * FROM user WHERE userId = #{userId} and userPassword = #{userPassword}
 	</select>
 
 	<select id="getTime" resultType="string">
@@ -38,7 +43,7 @@
     <!-- 로그인  -->
 	
 	<select id="getUser" resultMap="user" parameterType="string">
-		SELECT * FROM user WHERE userId = #{id}
+		SELECT * FROM user WHERE userId = #{userId}
 	</select>
  
 
@@ -47,5 +52,4 @@
 		VALUES ( #{userId}, #{userName},   #{userCode} )
 	</insert> 
 	
-  
 </mapper>

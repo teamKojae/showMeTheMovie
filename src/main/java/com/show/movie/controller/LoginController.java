@@ -1,5 +1,7 @@
 package com.show.movie.controller;
 
+import static org.junit.Assert.assertTrue;
+
 import java.io.IOException;
 
 import javax.servlet.http.HttpSession;
@@ -48,30 +50,68 @@ public class LoginController {
 	UserService userService;
 
 	//  일반로그인
-	@RequestMapping(value="/loginSuccess", method = RequestMethod.GET)
+	/*@RequestMapping(value="/loginSuccess", method = RequestMethod.GET)
 	public String longinGet(@ModelAttribute("User") User user) {
 		
 		
-		return "/loginPost"; 
+		return "/"; 
 		
 	}
-	
+	*/
 	// 로그인 처리
+	private String hashPassword(User user) { 
+		return BCrypt.hashpw(user.getUserPassword(), BCrypt.gensalt()); 
+		}
+
 	
 	
 	  @RequestMapping(value = "/loginPost", method = RequestMethod.POST) 
 	  public String loginPost(User user,Login login, HttpSession httpSession, Model model) { 
 		  log.info("param : "+login);
-		  login = userService.getLogin(login.getUserId()); 
-		  user = userService.getUser(user.getUserId()); // xml에서 Login값이 들어감 user query문이 들어가야함
-		  log.info("return login : "+login);
-		  log.info("return user: " + user );
-	 if(user == null || ! BCrypt.checkpw(user.getUserPassword(), login.getUserPassword())){
-		 return "loginPost" ;
-		 }
-	 
-	 model.addAttribute("user",user); 
-	  return "/";
+		  log.info("param : " + user);
+		  login = userService.getLogin(login);
+		  user = userService.getUser(user.getUserId());
+		  log.info("return login : " + login);
+		  log.info("return user : " + user);
+		  
+		  //login = userService.getLogin(login.getUserId()); 
+		  
+		  // nullPoint Exception : 
+		 
+		  /* 안되는 부분
+		  String plainPassword = login.getUserPassword();
+				 
+		  //String plainPassword = user.getUserPassword();
+		  log.info("plainPassword" + plainPassword);
+		  
+		  String hashedPassword = BCrypt.hashpw(plainPassword, BCrypt.gensalt());
+		  log.info("hashedPassword : " + hashedPassword);
+		  //해시 insert
+		      */
+		  
+		 // 안되는 부분  userService.encrypt(login);
+		if (login == null  /* 안되는 부분 || BCrypt.checkpw(plainPassword, hashedPassword)==false */) {
+			  return "login";
+		  }else {
+			  model.addAttribute("user",user);
+			  return "index";
+		  }
+		  
+		//   해시코드 로그인 
+		  
+		  /*
+		   
+		  
+		         // 일반 로그인
+		  if(login==null) {
+			  model.addAttribute("user", null);
+			  return "login";
+		  }else {
+			  model.addAttribute("user",user);
+			  return "index";
+		  }
+		 */
+		  
 	  }
 	  
 	  

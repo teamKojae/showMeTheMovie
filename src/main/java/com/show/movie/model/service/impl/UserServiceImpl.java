@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 
 import com.show.movie.model.dao.UserDAO;
@@ -36,15 +37,15 @@ public class UserServiceImpl implements UserService {
 		return null;/*userDao.isUser(userId);*/
 	}
 
-	@Override
-	public User loginM(Login login) {
-		// TODO Auto-generated method stub
-		return userDAO.loginM(login);
-	}
+	
 
 	@Override
-	public Login getLogin(String userId) {
-		return userDAO.getLogin(userId);
+	public Login getLogin(Login login) {
+		return userDAO.getLogin(login);
+	}
+
+	public Login encrypt(Login login) {
+		return userDAO.encrypt(login);
 	}
 
 

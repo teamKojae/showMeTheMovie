@@ -338,11 +338,13 @@
 						<div class="search-link">
 							<div class="cell" style="width:100%">
 								<div class="search">
+								<form action = "/" method="post">
 									<input type="text" placeholder="영화명을 입력해 주세요" title="영화 검색"
 										class="input-text" id="movieName">
-									<button type="button" class="btn" id="btnSearch">
+									<button type="button" type ="submit" class="btn" id="btnSearch">
 										<i class="iconset ico-search-w"></i> 검색
 									</button>
+									</form>
 								</div>
 							</div>
 						</div>

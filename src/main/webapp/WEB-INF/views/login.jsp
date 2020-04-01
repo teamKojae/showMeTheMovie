@@ -50,6 +50,7 @@
 										<!--비밀번호-->
 										<!--비밀번호를 입력하세요-->
 										<div class="alert"></div>
+										
 										<div class = "row">
 											<div class="col-xs-8">
 												<div class="checkbox icheck">
