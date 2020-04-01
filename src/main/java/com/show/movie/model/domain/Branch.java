@@ -25,6 +25,7 @@ public class Branch {
 	
 	@Autowired(required = false)
 	private Location location;
+	
 	public Branch(int branchCode, String branchName, Location location) {
 		super();
 		this.branchCode = branchCode;

@@ -29,7 +29,10 @@ public class MovieController {
 	
 	@GetMapping(value="/movieDetail")
 	public String movieDetail(Model model, Movie movie) {
-		model.addAttribute("movie",  movieService.getMovie(movie.getMovieName() ) );
+		movie = movieService.getMovie(movie.getMovieName() );
+		model.addAttribute("movie",  movie);
+		log.info(new Parser().stringParser(movie.getMovieImages()));
+		model.addAttribute("movieImages",new Parser().stringParser(movie.getMovieImages()));
 		return "movieDetail";
 	}
 	

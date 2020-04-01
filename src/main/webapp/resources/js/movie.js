@@ -3,9 +3,8 @@ $(function(){
 	getMovieDetail();
 	getTickettingThisMovie();
 	infoMore();
-//	slidSynopsis();
-	getStilCutList();
-	getSysnopsis();
+	tabListStilCut();
+	tabListSynopsis();
 	
 })
 
@@ -15,21 +14,57 @@ function totalWon(){
 }
 
 function infoMore(){
-	if($('.synopsis').length > 200){
-		$('.movie-summary').addClass('on');
-	}
-
 $('.btn').on('click',function(event){
 	if($('.btn-more').hasClass("on") == true){
-		$('.movie-summary').removeClass('on');
+		$('.movie-summary .txt').attr('style', "height:140px");
 		$('.btn-more').removeClass('on');
 	}else{
-		$('.movie-summary').addClass('on');
+		$('.movie-summary .txt').attr('style', 'hegith:auto');
 		$('.btn-more').addClass('on');
 	}
 })
 }
 
+function tabListStilCut(){
+	$('.tab-list li:nth-child(2)').on('click',function(event){
+		$('.tab-list li').removeClass('on');
+		$(event.target).closest('li').addClass('on');
+		
+		$('.inner-wrap div').removeClass('on');
+		$('.pb100').addClass('on');
+		
+		$.each($('.thumb'),function(index,item){
+			var xPosition =  ( index % 4 ) * 280;
+			var yPosition = 0;
+			var div = $('.thumb').eq(index);
+			div.attr('style','transform: translate('+xPosition+'px, 0px)');
+			if(index > 3 ){
+				for(var i = index-4 ; i >= 0 ; i-=4){
+					var imageHeight =  $('.stair-slide-list .thumb').eq(i).find('img').height();
+					yPosition += ( imageHeight + 20 );
+					div.attr('style','transform: translate('+xPosition+'px, '+yPosition+'px)');
+				}
+			}
+		});
+		
+	})
+}
+
+function tabListSynopsis(){
+	$('.tab-list li:nth-child(1)').on('click',function(event){
+		$('.tab-list li').closest('li').removeClass('on');
+		$(event.target).addClass('on');
+		
+		$('.inner-wrap div').addClass('on');
+		$('.tab-list').removeClass('on');
+		$('.btn-more').removeClass('on');
+		$('.pb100').removeClass('on');
+	})
+}
+
+
+/*
+ * 시놉시스 슬라이드 FUNCTION 제작 했지만 
 function slidSynopsis(){
 	$('.btn-more').on('click',function(event){
 		if($('.btn-more').hasClass("on") == true){
@@ -44,7 +79,7 @@ function slidSynopsis(){
 		
 		
 	})
-}
+}*/
 
 
 function getMovieDetail(){
@@ -67,9 +102,9 @@ function tabList(){
 			'<div class="tab-list fixed">'
 			+'<ul>'
 			+'<li><a href="/getMovieSynopsis?movieName='+$('.movie-detail-cont .title').text()+'"'
-			+'  title="시놉시스 탭으로 이동" onclick="return false">시놉시스</a></li>'
+			+'  title="시놉시스 탭으로 이동" >시놉시스</a></li>'
 			+'<li><a href="/getMovieImages?movieName='+$('.movie-detail-cont .title').text()+'"'
-			+'  title="예고편/스틸컷 탭으로 이동" onclick="return false">이미지/스틸컷</a></li>'
+			+'  title="예고편/스틸컷 탭으로 이동" >이미지/스틸컷</a></li>'
 			+'</ul>'
 			+'</div>'
 	);
@@ -78,41 +113,39 @@ function tabList(){
 
 function getSysnopsis(){
 	$('.tab-list li:nth-child(1) a').on('click',function(event){
-		console.log(event);
-		event.preventDefault();
-		console.log('여기옴 ?');
+		// event.preventDefault();
 		$('.inner-wrap').empty();
 		$.ajax({
-			url: $(event.target).attr('href'),
-			success : function(result){
-				var length = result.length;
-				tabList();
-				//$('.inner-wrap ul li:nth-child(1)').addClass('on');
-				$('.inner-wrap').append(
-						'<div class="movie-summary infoContent" id="info">'
-						+'<div class="txt">'+result+'</div>'
-						+'<div class="btn-more toggle">'
-							+'<button type="button" class="btn">'
-								+'<span>닫기</span> <i class="iconset ico-btn-more-arr"></i>'
-							+'</button>'
-						+'</div>'
+			url: $(event.target).attr('href')
+		}).done(function (result){
+			var length = result.length;
+			tabList();
+			//$('.inner-wrap ul li:nth-child(1)').addClass('on');
+			$('.inner-wrap').append(
+					'<div class="movie-summary infoContent" id="info">'
+					+'<div class="txt">'+result+'</div>'
+					+'<div class="btn-more toggle">'
+						+'<button type="button" class="btn">'
+							+'<span>닫기</span> <i class="iconset ico-btn-more-arr"></i>'
+						+'</button>'
 					+'</div>'
-				)
-			}
+				+'</div>'
+			)
 		})
+		// event.stopPropagation();
+		 return false;
 	})
 }
 
 function getStilCutList(){
 	$('.tab-list li:nth-child(2) a').on('click',function(event){
-		event.preventDefault();
-		/*$('.tab-list li').removeClass('on');
-		$(event.target).closest('li').addClass('on');*/
+		// event.preventDefault();
+		$(event.target).closest('li').addClass('on');
 		$('.inner-wrap').empty();
 		$.ajax({
-			url : $(event.target).attr('href'),
-			success : function(result){
-				var length = result.length;
+			url : $(event.target).attr('href')
+		}).done(function (result){
+			var length = result.length;
 				tabList();
 				$('.inner-wrap ul li:nth-child(2)').addClass('on');
 				$('.inner-wrap').append(
@@ -137,7 +170,6 @@ function getStilCutList(){
 					
 					//console.log("index :  "+index);
 					var yPosition = 0;
-					var xPosition =  ( index % 4 ) * 280;
 					if(index > 3 ){
 						for(var i = index-4 ; i >= 0 ; i-=4){
 							var imageHeight =  $('.stair-slide-list .thumb').eq(i).find('#stilCut').height();
@@ -147,40 +179,9 @@ function getStilCutList(){
 						}
 					}
 				});
-				
-				/*$.each($('.thumb'),function(index,value){
-					var yPosition = 0;
-					var xPosition =  ( index % 4 ) * 280;
-					if(index > 3 ){
-						for(var i = index-4 ; i >= 0 ; i-=4){
-							var imageHeight =  $('.stair-slide-list .thumb').eq(i).find('#stilCut').height();
-							yPosition += ( imageHeight + 20 );
-							var div = $('.thumb').eq(index);
-							div.attr('style','transform: translate('+xPosition+'px, '+yPosition+'px)');
-						}
-					}
-				})*/
-				
-				
-				
-				
-				/*console.log($('.stair-slide-list .thumb').eq(0).find('#stilCut').height());
-				console.log($('.stair-slide-list .thumb').eq(1).find('#stilCut').height());
-				console.log($('.stair-slide-list .thumb').eq(2).find('#stilCut').height());
-				console.log($('.stair-slide-list .thumb').eq(3).find('#stilCut').height());
-				console.log($('.stair-slide-list .thumb').eq(4).find('#stilCut').height());
-				console.log($('.stair-slide-list .thumb').eq(5).find('#stilCut').height());
-				console.log($('.stair-slide-list .thumb').eq(6).find('#stilCut').height());
-				console.log($('.stair-slide-list .thumb').eq(7).find('#stilCut').height());
-				console.log($('.stair-slide-list .thumb').eq(8).find('#stilCut').height());
-				console.log($('.stair-slide-list .thumb').eq(9).find('#stilCut').height());*/
-				
-			/*	console.log($('.thumb img').eq(8).height());
-				console.log($('.thumb img').eq(9).height());
-				console.log($('.thumb img').eq(10).height());*/
-				
-			}
 		})
+		// event.stopPropagation();
+		 return false;		
 	})
 }
 
