@@ -18,11 +18,13 @@ public interface UserDAO {
 	public User selectUser();
 	public void insertNewUser(User user);
 	public String getTime();
-	
+
+	//예나
+	public void signUpUser(User user);
+
+	//중훈
 	void register(User user)throws Exception;
 	public Login getLogin(String userId);
 	User loginM(Login login);
 
-	
-	
 }

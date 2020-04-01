@@ -37,6 +37,10 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	public void signUpUser(User user) {
+		userDAO.signUpUser(user);
+	}
+
 	public User loginM(Login login) {
 		// TODO Auto-generated method stub
 		return userDAO.loginM(login);

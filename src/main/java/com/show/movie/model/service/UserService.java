@@ -11,6 +11,10 @@ public interface UserService {
 	public void insertNewUser(User user);
 	public User isUser(String userId);
 
+	//예나
+	public void signUpUser(User user);
+
+	//중훈
 	public User loginM(Login login);
 	public Login getLogin(String userId);
 }

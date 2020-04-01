@@ -48,4 +48,15 @@
 	</insert> 
 	
   
+  	<!-- 회원가입 -->
+  	<insert id="signUpUser" parameterType="user">
+  		INSERT INTO user(userId, userName, userPassword, userBirth, userPhoneNumber, userSignupCode)
+		VALUES ( #{userId}, #{userName}, #{userPassword}, #{userBirth}, #{userPhoneNumber}, #{userSignupCode} )
+  	</insert>
+  	
+  	<select id="btnUserIdCheck" resultType="int">
+  		SELECT * fROM user WHERE userId = #{userId}
+  	</select>
+  	
+  	
 </mapper>
