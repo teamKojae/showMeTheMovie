@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
+import com.show.movie.model.domain.Login;
 import com.show.movie.model.domain.User;
 
 public interface UserDAO {
@@ -17,4 +18,8 @@ public interface UserDAO {
 	public User selectUser();
 	public void insertNewUser(User user);
 	public String getTime();
+	
+	void register(User user)throws Exception;
+	public Login getLogin(String userId);
+	User loginM(Login login);
 }

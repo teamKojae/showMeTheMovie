@@ -35,31 +35,42 @@
 							<div class="col-wrap">
 								<div class="col left">
 									<div class="login-input-area">
+									
+									<form action = "/loginPost" method="post">
 										<input autocomplete="off" id="ibxLoginId" maxlength="20"
 											type="text" placeholder="아이디" title="아이디를 입력하세요"
-											class="input-text strTrim">
+											class="input-text strTrim" name = "userId">
 										<!--아이디-->
 										<!--아이디를 입력하세요-->
 										<input autocomplete="off" id="ibxLoginPwd" maxlength="20"
 											type="password" placeholder="비밀번호" title="비밀번호를 입력하세요"
-											class="input-text mt15">
+											class="input-text mt15" name = "userPassword">
 										<!--비밀번호-->
 										<!--비밀번호를 입력하세요-->
 										<div class="alert"></div>
-
-										<!-- chk-util -->
-										<div class="chk-util">
+										<div class = "row">
+											<div class="col-xs-8">
+												<div class="checkbox icheck">
+													<label>
+														<input type="checkbox" name="useCookie">로그인 유지
+													</label>
+												</div>
 											</div>
-
-
 										</div>
+										<!-- chk-util -->
+										<div class="chk-util"></div>
+										
+										
+
+										
 										<!--// chk-util -->
 
-										<button id="btnLogin" type="button"
-											class="button purple large btn-login" disabled="disabled">
+										<button id="btnLogin" type="submit"
+											class="button purple large btn-login" >
 											로그인
 											<!--로그인-->
-										</button>
+										</button> 
+										</form>
 
 										<div class="link">
 											<a href="/user-find" title="ID/PW 찾기 선택">ID/PW 찾기<!--ID/PW 찾기--></a>

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.show.movie.model.dao.UserDAO;
+import com.show.movie.model.domain.Login;
 import com.show.movie.model.domain.User;
 import com.show.movie.model.service.UserService;
 
@@ -35,7 +36,16 @@ public class UserServiceImpl implements UserService {
 		return null;/*userDao.isUser(userId);*/
 	}
 
+	@Override
+	public User loginM(Login login) {
+		// TODO Auto-generated method stub
+		return userDAO.loginM(login);
+	}
 
+	@Override
+	public Login getLogin(String userId) {
+		return userDAO.getLogin(userId);
+	}
 
 
 }
