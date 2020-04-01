@@ -31,7 +31,7 @@
 	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource"
 		destroy-method="close">
 		<constructor-arg ref="hikariConfig" />
-	</bean>
+	</bean> 
 
 	<bean id="sqlSessionFactory"
 		class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -43,7 +43,7 @@
 <!-- 	<mybatis-spring:scan base-package="com.show.movie.mapper" />  -->
 	<mybatis-spring:scan base-package="com.show.movie.model.dao" />  
 
-
+	
 	<!-- 트랜잭션 설정 -->
 	<tx:annotation-driven />
 	

@@ -15,9 +15,9 @@
 		<setting name="defaultExecutorType" value="SIMPLE" /> 
 		<setting name="defaultStatementTimeout" value="25000" />
 	</settings>
-
-	<typeHandlers>
 		<!-- java.sql.Timestamp 를 java.util.Date 형으로 반환 -->
+		
+	<!-- <typeHandlers>
 		<typeHandler javaType="java.sql.Timestamp"
 			handler="org.apache.ibatis.type.DateTypeHandler" />
 		<typeHandler javaType="java.sql.Time"
@@ -26,7 +26,7 @@
 			handler="org.apache.ibatis.type.DateTypeHandler" />
 	</typeHandlers>
 	
-	
+	 -->
 	
 
 </configuration>

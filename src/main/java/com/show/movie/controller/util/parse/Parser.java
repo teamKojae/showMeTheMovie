@@ -1,4 +1,4 @@
-package com.show.movie.controller.util.image;
+package com.show.movie.controller.util.parse;
 
 import java.io.File;
 import java.io.IOException;
@@ -13,7 +13,23 @@ import com.google.gson.Gson;
 import lombok.extern.log4j.Log4j;
 
 @Log4j
-public class ImageParser {
+public class Parser {
+	
+	/**
+	 * return : String -> list<String>  
+	 */
+	public List<String> stringParser(String str){
+		String[] strs = str.split(",");
+		List<String> list = new ArrayList<String>();
+		for( String msg : strs) {
+			list.add(msg);
+		}
+		return list;
+	}
+	
+	/**
+	 * return : List<String> -> JSON  
+	 */
 	public String fileParser(MultipartHttpServletRequest multipartHttpServletRequest) throws IOException {
 		String filePath = "D:/uploadImage/";
 		//파일들을 List형식으로 보관

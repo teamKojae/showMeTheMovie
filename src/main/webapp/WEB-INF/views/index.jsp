@@ -26,7 +26,7 @@
 						<div class="bg-pattern"></div>
 						<img
 							src="https://img.megabox.co.kr/SharedImg/2020/02/14/BJ4fa4uF619oFERjOyuxvVYzvOeYDSYV_380.jpg"
-							alt="다크워터스_티저포스터.jpg" onerror="noImg(this, 'main');">
+							alt="다크워터스_티저포스터.jpg">
 					</div>
 
 					<!-- cont-area  -->
@@ -60,12 +60,12 @@
 								<li name="li_boxoRankList" class="first"><a
 									href="" onclick="return false"
 									class="movie-list-info" title="영화상세 보기">
-									<input type="hidden"  name="movieName" value="testtest" class="movie-info-hidden">
+									<input type="hidden"  name="movieName" value="라라랜드" class="movie-info-hidden">
 										<p class="rank">
 											1<span class="ir">위</span>
 										</p> <!-- to 개발 : alt 값에 영화 제목 출력 --> <img
-										src="/img/1Company.PNG"
-										alt="다크 워터스" class="poster" onerror="noImg(this, 'main');">
+										src="/img/lalaland_snapshot1.jpg"
+										alt="다크 워터스" class="poster" >
 										<div class="wrap">
 											<div class="summary">
 												인류의 99%는 이미 중독되었다<br>&lt;스포트라이트&gt; 제작진의 충격 고발 실화<br>
@@ -121,7 +121,7 @@
 										<div class="case">
 											<!-- 개봉 예매가능 기본-->
 											<!-- <input type="button" class="button gblue" value="darkWater"> -->
-											<button class="button gblue" name="movieName" value="다크워터스">예매</button>
+											<button class="button gblue" name="movieName" value="라라랜드">예매</button>
 											<!-- <a href="javascript:moveBokdPage('20003000');"
 												class="button gblue" title="영화 예매하기">예매</a> -->
 										</div>
@@ -137,8 +137,7 @@
 											2<span class="ir">위</span>
 										</p> <!-- to 개발 : alt 값에 영화 제목 출력 --> <img
 										src="https://img.megabox.co.kr/SharedImg/2020/02/07/jO2LnVNFJxLzAL62WxHjDUBKbtPcV8ET_420.jpg"
-										alt="시원찮은 그녀를 위한 육성방법 피날레" class="poster"
-										onerror="noImg(this, 'main');">
+										alt="시원찮은 그녀를 위한 육성방법 피날레" class="poster">
 										<div class="wrap">
 											<div class="summary">
 												어느 봄날, 아키 토모야는 벚꽃이 흩날리는 언덕길에서 운명적으로 만난 소녀 '카토 메구미'를 메인 히로인으로
@@ -208,7 +207,7 @@
 											3<span class="ir">위</span>
 										</p> <!-- to 개발 : alt 값에 영화 제목 출력 --> <img
 										src="https://img.megabox.co.kr/SharedImg/2020/02/21/IyeZJvAzV3QgEoW4F7HzdS97zfLYfcni_420.jpg"
-										alt="1917" class="poster" onerror="noImg(this, 'main');">
+										alt="1917" class="poster">
 										<div class="wrap" style="display: none; opacity: 1;">
 											<div class="summary">
 												두 명의 병사, 하나의 미션!<br>그들이 싸워야 할 것은 적이 아니라 시간이었다!<br>
@@ -274,7 +273,7 @@
 											4<span class="ir">위</span>
 										</p> <!-- to 개발 : alt 값에 영화 제목 출력 --> <img
 										src="https://img.megabox.co.kr/SharedImg/2020/02/25/cH7qHYtiXhvrIwZVNraUkjfGPPUj4M5W_420.jpg"
-										alt="인비저블맨" class="poster" onerror="noImg(this, 'main');">
+										alt="인비저블맨" class="poster" >
 										<div class="wrap" style="display: none; opacity: 1;">
 											<div class="summary">
 												모든 것을 통제하려는 소시오패스 남자에게서 도망친 세실리아<br>그의 자살 소식과 함께 상속받게 된
@@ -355,7 +354,6 @@
 			<c:import url="/resources/common/footer.jsp"></c:import>
 		</div>
 	</div>
-<script src="/js/common.js"></script>
 <script src="/js/movie.js"></script>
 </body>
 </html>

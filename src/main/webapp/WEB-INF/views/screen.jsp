@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
 	request.setCharacterEncoding("UTF-8");
 %>
@@ -29,13 +30,41 @@
 					<div class="seat-select-section">
 						<div class="seat-section">
 							<div class="tit-util">
-								<h3 class="tit small">관람인원선택</h3>
+							<!-- 최대 8명까지만 선택 .. 그리고 화살표로 내려서 8까지만 나오게 하고 싶다. -->
+								<h3 class="tit small">
+								관람 인원 선택 
+								<select name="numberOf" size="1">
+								<option value="1">1
+								<option value="2">2
+								<option value="3">3
+								<option value="4">4
+								<option value="5">5
+								<option value="6">6
+								<option value="7">7
+								<option value="8">8
+					
+					 </select>
+								<% String n1= request.getParameter("numberOf");
+								int fixedNum = 10000;
+								
+								int sum = 0;
+								
+								if(n1==null){
+									n1="0";
+								}
+								int num1 = Integer.parseInt(n1);
+								sum = num1*fixedNum;
+								
+								%>
+								</h3>
+								
 							</div>
 							<div class="seat-layout">
 								<div class="plan plan--shown">
 									<div class="rows rows--mini">
 										<div class="row">
-											<div class="row__seat A1">A1</div>
+
+<!-- 											<div class="row__seat A1">A1</div>
 											<div class="row__seat A2">A2</div>
 											<div class="row__seat A3">A3</div>
 											<div class="row__seat A4">A4</div>
@@ -44,16 +73,29 @@
 											<div class="row__seat A7">A7</div>
 											<div class="row__seat A8">A8</div>
 											<div class="row__seat A9">A9</div>
-											<div class="row__seat row__seat--reserved"></div>
-											<div class="row__seat row__seat--reserved"></div>
-											<div class="row__seat row__seat--reserved"></div>
+											<div class="row__seat" id="A10" ></div>
+											<div class="row__seat"></div>
+											<div class="row__seat"></div>
 											<div class="row__seat A13"></div>
 											<div class="row__seat A14"></div>
 											<div class="row__seat A15"></div>
 											<div class="row__seat A16"></div>
 											<div class="row__seat A17"></div>
-											<div class="row__seat A18"></div>
+											<div class="row__seat A18"></div> -->
+											
+											
+											<c:forEach items="${seatList }" var="seat" varStatus="status" >
+												
+												<div class="row__seat">
+												<c:if test=""></c:if>
+											
+												${seat.seatName}&nbsp;
+											</div>
+											</c:forEach>
+										
 										</div>
+										
+										
 										<div class="row">
 											<div class="row__seat B1"></div>
 											<div class="row__seat B2"></div>
@@ -416,10 +458,18 @@
 									<p class="cate">2D(자막)</p>
 								</div>
 								<div class="info-area">
-									<p class="theater">${movieInfo.branch.branchName }</p>
-									<p class="special">${movieInfo.theater.theaterCode }관</p>
+									<p class="theater">${movieInfo.branch.branchName }점</p>
+									<p class="special">${movieInfo.theater.theaterName}</p> 
 									<p class="date">
-										<span>2020.03.19</span><em>(목)</em>
+										 <span>${movieInfo.movieDate}</span><em></em>
+										 <script>
+										 	var date = new Date( ${movieInfo.movieDate} ).getDay();
+										 	console.log(date);
+										 	var week = new Array('일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일');
+										 	var getDay = week[date];
+										 	$('.date').find('em').text('('+getDay+')');
+										 </script>
+										 
 									</p>
 									<div class="other-time">
 										<button type="button" class="now">
@@ -432,7 +482,7 @@
 										</ul>
 									</div>
 									<p class="poster">
-										<img src="/images/popCinema.jpg" alt="1917">
+										<img src="/img/${movieInfo.movie.moviePoster}" alt="영화없오요">
 									</p>
 								</div>
 
@@ -441,7 +491,7 @@
 									<div class="pay">
 										<p class="tit">최종결제금액</p>
 										<div class="money">
-											<em>0</em> <span>원</span>
+											<em><%=sum %></em> <span>원</span>
 										</div>
 									</div>
 								</div>

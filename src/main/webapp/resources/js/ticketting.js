@@ -136,7 +136,7 @@ function getMovieInfoAndTime(event) {
 			
 				data : {
 					/*'movieDate' : dataArray[0],*/
-					'movieDate' : '2020-03-20',
+					'movieDate' : '2020-04-07',
 					'movie.movieName' : dataArray[1],
 					'branch.location.locationName' : dataArray[2],
 					'branch.branchName' : dataArray[3]
@@ -147,7 +147,6 @@ function getMovieInfoAndTime(event) {
 					$('#playScheduleNonList').attr('style', 'display:none');
 					$('.result').find('ul').empty();
 					$.each(result,function(index, item) {
-										console.log(item);
 										$('.result').find('ul').append(
 														'<li>'
 														+'<form action="/getSelectScreen" method="post">'
@@ -169,7 +168,7 @@ function getMovieInfoAndTime(event) {
 																+ item.branch.branchName
 																+ '">'
 																+ item.branch.branchName
-																+ '<br>'+item.theater.theaterCode+'관'
+																+ '<br>'+item.theater.theaterName
 																+ '</span><span class="seat"><strong class="now" title="잔여 좌석">'
 																+ item.theater.theaterLeftSeat
 																+ '</strong>'
@@ -178,10 +177,11 @@ function getMovieInfoAndTime(event) {
 																+ '</em></span>'
 																+ '</div></button>'
 																+'<input type="hidden" name="movie.movieName" value="'+item.movie.movieName+'" >'
+																+'<input type="hidden" name="movie.moviePoster" value="'+item.movie.moviePoster+'" >'
 																+'<input type="hidden" name="movieStartTime" value="'+item.movieStartTime+'" >'
 																+'<input type="hidden" name="movieEndTime" value="'+item.movieEndTime+'" >'
 																+'<input type="hidden" name="branch.branchName" value="'+item.branch.branchName+'" >'
-																+'<input type="hidden" name="theater.theaterCode" value="'+item.theater.theaterCode+'" ></form>'
+																+'<input type="hidden" name="theater.theaterName" value="'+item.theater.theaterName+'" ></form>'
 																+'</li>'
 												);
 									})

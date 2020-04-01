@@ -14,14 +14,22 @@ import lombok.ToString;
 @Alias("branch")
 @Getter @Setter @ToString
 public class Branch {
+	public Branch() {}
+	
 	@Bean(name="branchVO")
 	public Branch getBranch() {
 		return new Branch();
 	}
 	private int branchCode;
 	private String branchName;
+	
 	@Autowired(required = false)
 	private Location location;
-	@Autowired(required = false)
-	private Movie movie;
+	public Branch(int branchCode, String branchName, Location location) {
+		super();
+		this.branchCode = branchCode;
+		this.branchName = branchName;
+		this.location = location;
+	}
+	
 }

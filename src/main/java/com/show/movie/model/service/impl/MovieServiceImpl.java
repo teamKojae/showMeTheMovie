@@ -11,6 +11,7 @@ import com.show.movie.model.dao.MovieDAO;
 import com.show.movie.model.domain.Branch;
 import com.show.movie.model.domain.Movie;
 import com.show.movie.model.domain.MovieInfo;
+import com.show.movie.model.domain.Seat;
 import com.show.movie.model.service.MovieService;
 
 import lombok.extern.log4j.Log4j;
@@ -34,8 +35,31 @@ public class MovieServiceImpl implements MovieService {
 
 	@Override
 	public List<MovieInfo> getMovieInfo(MovieInfo movieInfo) {
-		log.info(movieDAO.getMovieInfo(movieInfo));
-		return movieDAO.getMovieInfo(movieInfo);
+		try {
+			if(movieDAO.isView() == 0) {
+				movieDAO.createViewGetMovieInfo();
+			}
+			return movieDAO.getMovieInfo(movieInfo);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public String getMovieImages(String movieName) {
+		return movieDAO.getMovieImages(movieName);
+	}
+
+	@Override
+	public String getMovieSynopsis(String movieName) {
+		return movieDAO.getMovieSynopsis(movieName);
+	}
+	
+	@Override
+	public List<Seat> getSeatList(Seat seat) {
+		log.info(movieDAO.getSeatList());
+		return movieDAO.getSeatList();
 	}
 
 }

@@ -106,12 +106,13 @@
 				<div class="movie-list">
 					<ol class="list" id="movieList">
 						<li tabindex="0" class="no-img"><div class="movie-list-info">
+						<input type="hidden"  name="movieName" value="라라랜드" class="movie-info-hidden">
 								<p class="rank" style="">
 									1<span class="ir">위</span>
 								</p>
 								<img
-									src="https://img.megabox.co.kr/SharedImg/2020/02/21/lczdtI1vz3Dd1ShuXb0iXj8pTJGbh4wa_420.jpg"
-									alt="다크 워터스" class="poster lozad" onerror="noImg(this)">
+									src="/img/alaland_snapshot1.jpg"
+									alt="라라랜드" class="poster lozad" onerror="noImg(this)">
 								<div class="movie-score" style="opacity: 0;">
 									<a href="#" class="wrap movieBtn" data-no="20003000"
 										title="다크 워터스 상세보기">
@@ -151,8 +152,8 @@
 							</div>
 							<div class="btn-util">
 								<div class="case movieStat4" style="">
-									<a href="#" class="button purple bokdBtn" data-no="20003000"
-										title="영화 예매하기">예매</a>
+									<button value="라라랜드" class="button purple bokdBtn" data-no="20003000"
+										title="영화 예매하기">예매</button>
 								</div>
 							</div></li>
 						<li tabindex="0" class="no-img"><div class="movie-list-info">
@@ -535,7 +536,6 @@
 			<c:import url="/resources/common/footer.jsp"></c:import>
 		</div>
 	</div>
-	<script src="/js/common.js"></script>	
 	<script src="/js/movie.js"></script>	
 </body>
 </html>

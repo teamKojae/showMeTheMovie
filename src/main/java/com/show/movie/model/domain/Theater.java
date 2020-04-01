@@ -21,4 +21,5 @@ public class Theater {
 	private int theaterCode;
 	private int theaterAllSeat;
 	private int theaterLeftSeat;
+	private String theaterName;
 }
