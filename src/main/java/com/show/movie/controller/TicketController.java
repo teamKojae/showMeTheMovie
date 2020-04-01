@@ -58,9 +58,14 @@ public class TicketController {
 	@PostMapping("/getSelectScreen" )
 	public String getSelectScreen(Model model, MovieInfo movieInfo, Seat seat) {
 		
-		model.addAttribute("seat", movieService.getSeatList(seat.getSeat(seat)));
+
 		
+		model.addAttribute("seatList", movieService.getSeatList(seat));
+		log.info(seat.getSeatName());
 		
 		return "screen";
 	}
+	
+
+	
 }

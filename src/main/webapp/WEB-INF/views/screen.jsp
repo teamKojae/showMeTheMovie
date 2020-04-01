@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
 	request.setCharacterEncoding("UTF-8");
 %>
@@ -29,24 +30,43 @@
 					<div class="seat-select-section">
 						<div class="seat-section">
 							<div class="tit-util">
-							<!-- 최대 8명까지만 선택 -->
+							<!-- 최대 8명까지만 선택 .. 그리고 화살표로 내려서 8까지만 나오게 하고 싶다. -->
 								<h3 class="tit small">
-								<input type="number" value="관람 인원 선택">
+								관람 인원 선택 
+								<select name="numberOf" size="1">
+								<option value="1">1
+								<option value="2">2
+								<option value="3">3
+								<option value="4">4
+								<option value="5">5
+								<option value="6">6
+								<option value="7">7
+								<option value="8">8
+					
+					 </select>
+								<% String n1= request.getParameter("numberOf");
+								int fixedNum = 10000;
+								
+								int sum = 0;
+								
+								if(n1==null){
+									n1="0";
+								}
+								int num1 = Integer.parseInt(n1);
+								sum = num1*fixedNum;
+								
+								%>
 								</h3>
+								
 							</div>
 							<div class="seat-layout">
 								<div class="plan plan--shown">
 									<div class="rows rows--mini">
 										<div class="row">
-<<<<<<< HEAD
-											<div class="row__seat A1" value="${seat.seatName }"/>
+
+<!-- 											<div class="row__seat A1">A1</div>
 											<div class="row__seat A2">A2</div>
 											<div class="row__seat A3">A3</div>
-=======
-											<div class="row__seat row__seat--reserved" id="A1">A1</div>
-											<div class="row__seat" id="A2">A2</div>
-											<div class="row__seat" id="A3">A3</div>
->>>>>>> e76195a09bb4a69092374556df6d662e0561972e
 											<div class="row__seat A4">A4</div>
 											<div class="row__seat A5">A5</div>
 											<div class="row__seat A6">A6</div>
@@ -61,8 +81,21 @@
 											<div class="row__seat A15"></div>
 											<div class="row__seat A16"></div>
 											<div class="row__seat A17"></div>
-											<div class="row__seat A18"></div>
+											<div class="row__seat A18"></div> -->
+											
+											
+											<c:forEach items="${seatList }" var="seat" varStatus="status" >
+												
+												<div class="row__seat">
+												<c:if test=""></c:if>
+											
+												${seat.seatName}&nbsp;
+											</div>
+											</c:forEach>
+										
 										</div>
+										
+										
 										<div class="row">
 											<div class="row__seat B1"></div>
 											<div class="row__seat B2"></div>
@@ -450,7 +483,7 @@
 									<div class="pay">
 										<p class="tit">최종결제금액</p>
 										<div class="money">
-											<em>0</em> <span>원</span>
+											<em><%=sum %></em> <span>원</span>
 										</div>
 									</div>
 								</div>

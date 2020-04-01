@@ -36,9 +36,6 @@ public class MovieController {
 	public String ticketing(Model model,Movie movie) {
 		return "ticketing";
 	}
-	@RequestMapping(value="/screen")
-	public String getScreen(Model model) {
-		return "screen";
-	}
+
 	
 }

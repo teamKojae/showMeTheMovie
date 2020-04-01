@@ -15,7 +15,7 @@ import lombok.ToString;
 @Getter @Setter @ToString
 public class Seat {
 	
-	@Bean("getSeatVO")
+	@Bean(name="getSeatVO")
 	public Seat getSeat(Seat seat) {
 		return new Seat();
 	}
@@ -23,21 +23,14 @@ public class Seat {
 	public Seat() {};
 	
 	@Builder
-	public Seat(MovieInfo movieInfo, Movie movie, Theater theater, Branch branch) {
-		this.movie = movie;
-		this.theater = theater;
-		this.branch = branch;
+	public Seat(MovieInfo movieInfo) {
+
 		this.movieInfo = movieInfo;
 	}
 	
 	@Autowired(required = false)
 	private MovieInfo movieInfo;
-	@Autowired(required = false)
-	private Movie movie;
-	@Autowired(required = false)
-	private Theater theater;
-	@Autowired(required = false)
-	private Branch branch;
+
 	
 	private int seatCode;
 	private int movieInfoCode;

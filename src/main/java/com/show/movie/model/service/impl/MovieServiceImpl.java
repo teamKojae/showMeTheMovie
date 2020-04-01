@@ -48,7 +48,7 @@ public class MovieServiceImpl implements MovieService {
 	@Override
 	public List<Seat> getSeatList(Seat seat) {
 		log.info(movieDAO.getSeatList());
-		return null;
+		return movieDAO.getSeatList();
 	}
 
 }

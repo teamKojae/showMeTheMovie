@@ -8,6 +8,11 @@ $(function(){
 	
 })
 
+
+function totalWon(){
+	
+}
+
 function infoMore(){
 	if($('.synopsis').length > 200){
 		$('.movie-summary').addClass('on');

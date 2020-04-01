@@ -58,8 +58,8 @@
 				
 	</resultMap>
 
-	<select id="getSeat" resultMap="seat">
-		select seat.seatCode, seat.seatName, seatStatus from seat
+	<select id="getSeatList" resultType="seat">
+		select * from seat
 	</select>
 
  
