@@ -13,7 +13,7 @@ import com.show.movie.model.domain.Login;
 import com.show.movie.model.domain.User;
 
 public interface UserDAO {
-	
+	//재현
 	public User getUser(String userId);
 	public User selectUser();
 	public void insertNewUser(User user);
@@ -22,4 +22,7 @@ public interface UserDAO {
 	void register(User user)throws Exception;
 	public Login getLogin(String userId);
 	User loginM(Login login);
+
+	
+	
 }

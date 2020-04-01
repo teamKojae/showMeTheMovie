@@ -43,8 +43,8 @@
  
 
   	<insert id="insertNewUser" parameterType="user">
-		INSERT INTO user(userId,  userName, userBirth, userCode)
-		VALUES ( #{user.userId}, #{user.userName},  #{user.userBirth}, #{user.userCode} )
+		INSERT INTO user(userId,  userName,  userSignupCode)
+		VALUES ( #{userId}, #{userName},   #{userCode} )
 	</insert> 
 	
   

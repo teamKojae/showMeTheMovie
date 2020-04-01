@@ -16,8 +16,10 @@
 
 		<div id="wrap" class="wrap">
 
-			<header class="layer-header" >
-				<h3 class="tit"><a href="/" style="color: #fff;">로그인</a></h3>
+			<header class="layer-header">
+				<h3 class="tit">
+					<a href="/" style="color: #fff;">로그인</a>
+				</h3>
 			</header>
 
 			<div class="layer-con" style="height: 439px;">
@@ -67,6 +69,7 @@
 
 										<button id="btnLogin" type="submit"
 											class="button purple large btn-login" >
+
 											로그인
 											<!--로그인-->
 										</button> 
@@ -75,19 +78,23 @@
 										<div class="link">
 											<a href="/user-find" title="ID/PW 찾기 선택">ID/PW 찾기<!--ID/PW 찾기--></a>
 											<a href="/join" title="회원가입 선택">회원가입<!--회원가입--></a>
-
 										</div>
 
 										<div class="sns-login">
-											<a href="${naverAuthUrl}" lnkgty="NAVER"
-												title="네이버로 로그인 선택"><img src="/images/ico-naver.png"
-												alt="네이버"> <!--네이버--> 네이버로 로그인<!--네이버로 로그인--></a> <a
+											<a href="${naverAuthUrl}" lnkgty="NAVER" title="네이버로 로그인 선택"><img
+												src="/images/ico-naver.png" alt="네이버"> <!--네이버--> 네이버로
+												로그인<!--네이버로 로그인--></a> <a
 												href="https://kauth.kakao.com/oauth/authorize?client_id=e7a638f0535094326fe38f8ae0fc6bde&
-												redirect_uri=http://192.168.0.23:5000/kakaoCallback&response_type=code" lnkgty="KAKAO"
-												title="카카오톡으로 로그인 선택"><img src="/images/ico-kakao.png"
-												alt="카카오톡"> <!--카카오톡--> 카카오톡으로 로그인<!--카카오톡으로 로그인--></a>
+												redirect_uri=http://192.168.0.23:5000/kakaoCallback&response_type=code"
+												lnkgty="KAKAO" title="카카오톡으로 로그인 선택"><img
+												src="/images/ico-kakao.png" alt="카카오톡"> <!--카카오톡-->
+												카카오톡으로 로그인<!--카카오톡으로 로그인--></a>
 										</div>
+
 									</div>
+									<!--// chk-util -->
+
+
 								</div>
 							</div>
 						</div>
@@ -95,5 +102,6 @@
 				</div>
 			</div>
 		</div>
+	</div>
 </body>
 </html>
