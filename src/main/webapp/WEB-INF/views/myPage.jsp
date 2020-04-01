@@ -97,7 +97,7 @@
 															<div class="filter-option-inner-inner">2020년 3월</div>
 														</div>
 													</div>
-													<span class="bs-caret"><span class="caret"></span></span>
+													<span class="bs-caret">                            <span class="caret"></span></span>
 												</button>
 												<div class="dropdown-menu open" role="combobox">
 													<div class="inner open" role="listbox"
@@ -143,13 +143,13 @@
 												<tbody>
 													<tr>
 														<th scope="row" class="a-r">예매번호</th>
-														<td colspan="3"><em class="num">9400-111-42624</em></td>
+														<td colspan="3"><em class="num">${bookingList.bookingCode}</em></td>
 													</tr>
 													<tr>
 														<th scope="row" class="a-r">영화명</th>
 														<td colspan="3">
 															<p class="tit-movie">
-																<span>다크 워터스</span> <span>2D(자막)</span>
+																<span>${bookingList.movieInfoCode}</span> <span>2D(자막)</span>
 															</p>
 														</td>
 													</tr>
@@ -277,9 +277,9 @@
 						</div>
 						<!-- 예매 안내상황 End -->
 					</div>
-
-
-
+					
+					
+					
 				</div>
 			</div>
 
