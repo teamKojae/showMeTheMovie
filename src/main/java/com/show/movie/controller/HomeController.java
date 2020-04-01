@@ -31,12 +31,13 @@ public class HomeController {
 	UserService userService;
 	
 	/*  ※   login은 LoginController에  있어요   */
-	
 	@RequestMapping(value="/")
 	public String mainPage( Model model, HttpSession session) {
 		return "index";
 	}
 
+	
+	
 	@RequestMapping(value="/myPage")
 	public String ticketList(Model model) {
 		return "myPage";

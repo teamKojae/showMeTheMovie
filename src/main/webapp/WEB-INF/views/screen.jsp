@@ -29,15 +29,24 @@
 					<div class="seat-select-section">
 						<div class="seat-section">
 							<div class="tit-util">
-								<h3 class="tit small">관람인원선택</h3>
+							<!-- 최대 8명까지만 선택 -->
+								<h3 class="tit small">
+								<input type="number" value="관람 인원 선택">
+								</h3>
 							</div>
 							<div class="seat-layout">
 								<div class="plan plan--shown">
 									<div class="rows rows--mini">
 										<div class="row">
+<<<<<<< HEAD
+											<div class="row__seat A1" value="${seat.seatName }"/>
+											<div class="row__seat A2">A2</div>
+											<div class="row__seat A3">A3</div>
+=======
 											<div class="row__seat row__seat--reserved" id="A1">A1</div>
 											<div class="row__seat" id="A2">A2</div>
 											<div class="row__seat" id="A3">A3</div>
+>>>>>>> e76195a09bb4a69092374556df6d662e0561972e
 											<div class="row__seat A4">A4</div>
 											<div class="row__seat A5">A5</div>
 											<div class="row__seat A6">A6</div>

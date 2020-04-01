@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.google.gson.Gson;
 import com.show.movie.model.domain.Location;
 import com.show.movie.model.domain.MovieInfo;
+import com.show.movie.model.domain.Seat;
 import com.show.movie.model.service.MovieService;
 
 import lombok.extern.log4j.Log4j;
@@ -50,7 +51,11 @@ public class TicketController {
 	}
 
 	@PostMapping("/getSelectScreen" )
-	public String getSelectScreen(Model model, MovieInfo movieInfo) {
+	public String getSelectScreen(Model model, MovieInfo movieInfo, Seat seat) {
+		
+		model.addAttribute("seat", movieService.getSeatList(seat.getSeat(seat)));
+		
+		
 		return "screen";
 	}
 }

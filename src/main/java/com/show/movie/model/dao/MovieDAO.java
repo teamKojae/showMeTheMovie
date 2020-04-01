@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Select;
 import com.show.movie.model.domain.Branch;
 import com.show.movie.model.domain.Movie;
 import com.show.movie.model.domain.MovieInfo;
+import com.show.movie.model.domain.Seat;
 
 public interface MovieDAO {
 	//재현
@@ -27,6 +28,8 @@ public interface MovieDAO {
 			"(SELECT movieCode, movieAudience, @curRank := @curRank + 1 AS 'rank' from movie, (select @curRank := 0 ) r ) movieRank\r\n" + 
 			"where movie.movieCode = movieRank.movieCode;")
 	public List<Movie> getMovieList();
+	
+	public List<Seat> getSeatList();
 	
 	
 }

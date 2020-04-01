@@ -58,6 +58,10 @@
 				
 	</resultMap>
 
+	<select id="getSeat" resultMap="seat">
+		select seat.seatCode, seat.seatName, seatStatus from seat
+	</select>
+
  
 	<select id="getMovie" resultMap="movie">
 	<!-- View로 처리좀 하고싶은데.. 강사님 HELP !! -->

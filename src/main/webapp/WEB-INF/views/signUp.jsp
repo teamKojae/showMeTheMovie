@@ -32,7 +32,6 @@
 								<col>
 							</colgroup>
 							<tbody>
-
 								<tr>
 									<th scope="row"><label for="ibxJoinInfoRegLoginId">아이디<!--아이디--></label></th>
 									<td><input maxlength="12" id="ibxJoinInfoRegLoginId"
@@ -45,6 +44,14 @@
 										</button>
 										<div id="JoinInfoRegLoginId-error-text" class="alert">아이디는
 											영문,숫자 조합 8자리 이상 12자리 이하 입니다.</div></td>
+								</tr>
+								<tr>
+									<th scope="row"><label for="ibxJoinInfoRegLoginName">이름<!-- 이름 -->
+									</label></th>
+									<td><input maxlength="16" id="ibxJoinInfoRegLoginName" type="text" placeholder="한글 (3~10자)" class="input-text w260px">
+										<!-- 한글 3자 이상-->
+										<div id="JoinInfoRegLoginName-error-text" class="alert"></div>
+									</td>
 								</tr>
 								<tr>
 									<th scope="row"><label for="ibxJoinInfoRegLoginPwd">비밀번호<!--비밀번호--></label></th>
@@ -60,14 +67,11 @@
 									</label></th>
 									<td><input maxlength="16"
 										id="ibxJoinInfoRegLoginPwdConfirm" type="password"
-										placeholder="8자이상 입력" class="input-text w260px">
+										placeholder="영문,숫자 조합(8자~15자)" class="input-text w260px">
 										<!--영문,숫자,특수기호 중 2가지 이상 조합-->
 										<div id="JoinInfoRegLoginPwdConfirm-error-text" class="alert"></div>
 									</td>
 								</tr>
-
-
-
 								<tr>
 									<th scope="row">생년월일<!--생년월일--></th>
 									<td><input maxlength="6"

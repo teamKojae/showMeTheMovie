@@ -10,12 +10,14 @@ import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.github.scribejava.core.model.OAuth2AccessToken;
 import com.show.movie.controller.util.naver.NaverLoginBO;
+
 import com.show.movie.model.dao.UserDAO;
 import com.show.movie.model.domain.User;
 import com.show.movie.model.service.UserService;
@@ -38,9 +40,19 @@ public class LoginController {
 	@Autowired
 	UserService userService;
 
+	//  일반로그인
+	@RequestMapping(value="/commonLogin", method = RequestMethod.GET)
+	public String longinGet(@ModelAttribute("User") User user) {
+		return "login"; 
+	}
 	
+	// 로그인 처리
+	@RequestMapping(value = "/loginPost", method = RequestMethod.POST)
+	public void loginPost(User user, HttpSession httpSession, Model model) {
+		
+	}
 
-	
+	//  네이버로그인
 	@RequestMapping(value="/login", method = { RequestMethod.GET, RequestMethod.POST })
 	public String login(Model model , HttpSession session) {
 		
