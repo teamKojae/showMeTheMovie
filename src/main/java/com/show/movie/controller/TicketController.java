@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.google.gson.Gson;
 import com.show.movie.model.domain.Location;
 import com.show.movie.model.domain.MovieInfo;
+import com.show.movie.model.domain.Seat;
 import com.show.movie.model.service.MovieService;
 
 import lombok.extern.log4j.Log4j;
@@ -46,16 +47,20 @@ public class TicketController {
 	@RequestMapping(value="/getMovieInfoAndTime",  produces = "application/json; charset=utf8")
 	@ResponseBody
 	public String getMovieInfoAndTime(Model model, MovieInfo movieInfo) {
-		log.info("log : "+ movieInfo.getMovie().getMovieName());
-		log.info("log : "+ movieInfo.getBranch().getBranchName());
-		log.info(movieInfo);
-		movieService.getMovieInfo(movieInfo);
-		log.info("dao 갔다 온 후 ");
 		return new Gson().toJson(movieService.getMovieInfo(movieInfo));
 	}
 
 	@PostMapping("/getSelectScreen" )
-	public String getSelectScreen(Model model, MovieInfo movieInfo) {
+	public String getSelectScreen(Model model, MovieInfo movieInfo, Seat seat) {
+		
+
+		
+		model.addAttribute("seatList", movieService.getSeatList(seat));
+		log.info(seat.getSeatName());
+		
 		return "screen";
 	}
+	
+
+	
 }

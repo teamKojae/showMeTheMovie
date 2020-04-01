@@ -8,6 +8,7 @@ import com.show.movie.model.domain.Location;
 import com.show.movie.model.domain.Movie;
 
 public interface ManagerService {
+	//재현
 	public void insertMovie(Movie movie);
 	public HashMap<String,Object> getMovieList();
 	public List<Branch> getBranchList(Location location);

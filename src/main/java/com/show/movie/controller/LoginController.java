@@ -8,8 +8,10 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,13 +19,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.github.scribejava.core.model.OAuth2AccessToken;
 import com.show.movie.controller.util.naver.NaverLoginBO;
 import com.show.movie.model.dao.UserDAO;
+import com.show.movie.model.domain.Login;
 import com.show.movie.model.domain.User;
 import com.show.movie.model.service.UserService;
+
+import lombok.extern.log4j.Log4j;
 
 /**
  * Handles requests for the application home page.
  */
 @Controller
+@Log4j
 public class LoginController {
 	/* NaverLoginBO */
 	@Autowired
@@ -32,15 +38,47 @@ public class LoginController {
 	@Autowired(required = false)
 	User user;
 	
+	@Autowired(required = false)
+	Login login;
+	
 	@Autowired
 	UserDAO userDao;
 	
 	@Autowired
 	UserService userService;
 
+	//  일반로그인
+	@RequestMapping(value="/loginSuccess", method = RequestMethod.GET)
+	public String longinGet(@ModelAttribute("User") User user) {
+		
+		
+		return "/loginPost"; 
+		
+	}
 	
+	// 로그인 처리
+	
+	
+	  @RequestMapping(value = "/loginPost", method = RequestMethod.POST) 
+	  public String loginPost(User user,Login login, HttpSession httpSession, Model model) { 
+		  log.info("param : "+login);
+		  login = userService.getLogin(login.getUserId()); 
+		  user = userService.getUser(user.getUserId()); // xml에서 Login값이 들어감 user query문이 들어가야함
+		  log.info("return login : "+login);
+		  log.info("return user: " + user );
+	 if(user == null || ! BCrypt.checkpw(user.getUserPassword(), login.getUserPassword())){
+		 return "loginPost" ;
+		 }
+	 
+	 model.addAttribute("user",user); 
+	  return "/";
+	  }
+	  
+	  
+	  
+	 
 
-	
+	//  네이버로그인
 	@RequestMapping(value="/login", method = { RequestMethod.GET, RequestMethod.POST })
 	public String login(Model model , HttpSession session) {
 		
@@ -103,7 +141,7 @@ public class LoginController {
 		user.setUserId((String)obj.get("id"));
 		user.setUserName((String)obj.get("name"));
 		user.setUserBirth((String)obj.get("birthday"));
-		user.setUserCode(1);
+		//user.getUserSignupCode(1);
 		return user;
 	}
 	

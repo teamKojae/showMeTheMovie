@@ -7,6 +7,7 @@ import com.show.movie.model.domain.Location;
 import com.show.movie.model.domain.Movie;
 
 public interface ManagerDAO {
+	//재현
 	public void insertMovie(Movie movie);
 	public List<Movie> getMovieList();
 	public List<Location> getLocationList();

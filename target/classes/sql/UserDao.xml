@@ -12,20 +12,41 @@
 		<result column="userBirth" property="userBirth" />
 		<result column="userSignupCode" property="userSignupCode" />
 	</resultMap> 
+	
+	<resultMap id="login" type="login">
+		<id column="userId" property="userId" />
+		<result column="userPassword" property="userPassword" />
+		<result column="userSignupCode" property="userSignupCode" />
+	</resultMap> 
 
+	<!-- 
+		private String userId;
+	private String userPassword;
+	private String userName;
+	private String userPhoneNumber;
+	private String userBirth;
+	private int userCode;
+	 -->
+	 
+	<select id = "getLogin" resultMap="login" parameterType="string">
+		SELECT * FROM user WHERE userId = #{userId}
+	</select>
 
+	<select id="getTime" resultType="string">
+		SELECT sysdate() FROM dual
+	</select>
     <!-- 로그인  -->
 	
-	
-	<select id="getUser" resultMap="user">
-		SELECT * FROM user WHERE userId = #{userId}
+	<select id="getUser" resultMap="user" parameterType="string">
+		SELECT * FROM user WHERE userId = #{id}
 	</select>
  
 
   	<insert id="insertNewUser" parameterType="user">
-		INSERT INTO user(userId,  userName,  userCode)
+		INSERT INTO user(userId,  userName,  userSignupCode)
 		VALUES ( #{userId}, #{userName},   #{userCode} )
 	</insert> 
+	
   
   	<!-- 회원가입 -->
   	<insert id="signUpUser" parameterType="user">

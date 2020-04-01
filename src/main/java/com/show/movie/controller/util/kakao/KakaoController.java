@@ -40,7 +40,7 @@ public class KakaoController {
 		HashMap<String, Object> userInfo = kakaoAPI.getUserInfo(access_Token);
 		user.setUserId((String) userInfo.get("id"));
 		user.setUserName((String) userInfo.get("userName"));
-		user.setUserCode(2);
+		//user.setUserCode(2);
 		if (userService.getUser(user.getUserId()) == null) {
 			userService.insertNewUser(user);
 		}
