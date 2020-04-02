@@ -22,4 +22,5 @@ public class Theater {
 	private int theaterAllSeat;
 	private int theaterLeftSeat;
 	private String theaterName;
+	private Branch branch;
 }

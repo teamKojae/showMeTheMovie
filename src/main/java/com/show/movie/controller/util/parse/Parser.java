@@ -23,7 +23,6 @@ public class Parser {
 		List<String> list = new ArrayList<String>();
 		for( String msg : strs) {
 			list.add(msg);
-			log.info(list);
 		}
 		return list;
 	}
@@ -56,6 +55,7 @@ public class Parser {
 			file = new File(filePath+files.get(i).getOriginalFilename());
 			files.get(i).transferTo(file);	
 			imageList.add(file.getName());
+			log.info(imageList);
 		}		
 		return new Gson().toJson(imageList);
 	}
