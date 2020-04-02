@@ -176,7 +176,8 @@ function movieAddBranchAndTheater(){
 		$.ajax({
 			url:"/movieAddBranchAndTheater",
 			method:"POST",
-			data : "JSON",
+			traditional : true ,
+			//data : "JSON",
 			data : {
 				movieName : movieName,
 				branchName : branchName,

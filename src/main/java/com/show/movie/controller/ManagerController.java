@@ -3,6 +3,7 @@ package com.show.movie.controller;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -87,11 +88,9 @@ public class ManagerController {
 	}
 	@PostMapping(value="/movieAddBranchAndTheater" , produces = "application/json; charset=utf8")
 	@ResponseBody
-	public String movieAddBranchAndTheater(String movieName,
-			@RequestParam(value="branchName" , required = false) List<String> branchName,
-			@RequestParam(value="theaterName" , required = false) List<String> theaterName  ) {
+	public String movieAddBranchAndTheater(String movieName, 
+			String[] branchName, String[] theaterName  ) {
 		log.info("movieName   "+movieName);
-		log.info("movieName   "+branchName);
 		for(String bn : branchName) {
 		log.info("branchName  : "+ bn);
 		}
