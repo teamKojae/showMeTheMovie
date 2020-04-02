@@ -48,21 +48,26 @@
 		base-package="com.show.movie.model.dao" />
 
 
-	<!-- 트랜잭션 설정 -->
-	<tx:annotation-driven />
 
 	<!--파라미터 , 결과값 관련 AOP설정 -->
-	<bean id="pojoAspectJ"
+	<aop:aspectj-autoproxy/>
+ 	<bean id="pojoAspectJ"
 		class="com.show.movie.model.service.PojoAspectJ" />
 
 
-	<aop:config>
+	<!-- <aop:config>
 		<aop:aspect ref="pojoAspectJ">
+			<aop:around method="invoke"
+				pointcut="execution(* com.show.movie.controller..*(..))" />
 			<aop:around method="invoke"
 				pointcut="execution(* com.show.movie.model.dao..*(..))" />
 		</aop:aspect>
-	</aop:config>
-
+	</aop:config> -->
+	
+	<!-- 트랜잭션 설정 -->
+	<tx:annotation-driven />
+	 
+	
 	<!-- 트랜잭션 매니저 및 트랜잭션 설정 -->
 
 	<bean id="transactionManager"
