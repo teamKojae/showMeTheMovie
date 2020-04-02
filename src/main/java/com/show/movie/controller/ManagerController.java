@@ -1,10 +1,8 @@
 package com.show.movie.controller;
 
-import java.io.File;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -19,8 +17,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.google.gson.Gson;
@@ -87,6 +85,29 @@ public class ManagerController {
 	public String getTheaterInAddMovie(String branchName) {
 		return new Gson().toJson(managerService.getTheaterList(branchName));
 	}
-	
+	@PostMapping(value="/movieAddBranchAndTheater" , produces = "application/json; charset=utf8")
+	@ResponseBody
+	public String movieAddBranchAndTheater(String movieName,
+			@RequestParam(value="branchName" , required = false) List<String> branchName,
+			@RequestParam(value="theaterName" , required = false) List<String> theaterName  ) {
+		log.info("movieName   "+movieName);
+		log.info("movieName   "+branchName);
+		for(String bn : branchName) {
+		log.info("branchName  : "+ bn);
+		}
+		for(String tn : theaterName) {
+		log.info("theatherName  "+tn);
+		}
+		
+		return "";
+	}
 }
+
+
+
+
+
+
+
+
 

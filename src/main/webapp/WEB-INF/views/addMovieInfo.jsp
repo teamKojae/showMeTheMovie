@@ -41,12 +41,12 @@
 									<div class="wrap tab-area">
 										<div class="tab-list-choice">
 											<ul>
-												<li><a href="#masterMovie_AllMovie" title="전체영화 선택"
+												<li><a href="#tab10" title="전체영화 선택" data-area-cd="10"
 													class="btn on">전체영화</a></li>
 											</ul>
 										</div>
 										<div class="list-section on">
-											<div id="masterMovie_AllMovie" class="tab-layer-cont on">
+											<div id="tab10" class="tab-layer-cont on">
 												<a href="" class="ir"> 영화별 탭 화면 입니다.</a>
 												<div class="scroll m-scroll mCustomScrollbar _mCS_2">
 													<div id="mCSB_2"
@@ -55,6 +55,7 @@
 														<div id="mCSB_2_container" class="mCSB_container on"
 															style="position: relative; left: 0px;" dir="ltr">
 															<ul class="list">
+																<%-- 영화리스트 --%>
 																<c:forEach var="movie" items="${data.movie}">
 																	<li><button type="button" class="btn"
 																			value="${movie.movieName }"
@@ -97,6 +98,7 @@
 									<div class="wrap tab-area">
 										<div class="tab-list-choice">
 											<ul>
+											<%-- 지역명 --%>
 												<c:forEach var="location" items="${data.location}"
 													varStatus="status">
 													<li><a
@@ -109,31 +111,10 @@
 											</ul>
 										</div>
 										<div class="list-section">
-
-											<%-- 	<div id="tab${data.branch[0].location.locationCode}0"
-												class="tab-layer-cont">
-												<div id="tab${data.branch[0].location.locationCode}0"
-													class="tab-layer-cont">
-													<div class="scroll m-scroll">
-														<ul class="list">
-
-															<c:forEach var="branch" items="${data.branch}"
-																varStatus="status">
-																<li><button type="button" class="btn"
-																		data-area-cd="${branch.location.locationCode}0"
-																		data-brch-no="${branch.branchCode}">${branch.branchName }</button></li>
-															</c:forEach>
-														</ul>
-														<div></div>
-													</div>
-												</div>
-											</div> --%>
-
+										<%-- 지역별 브랜치명 --%>
 											<c:forEach var="location" items="${data.location}">
 												<div id="tab${location.locationCode}0"
 													class="tab-layer-cont">
-													<div id="tab${location.locationCode}0"
-														class="tab-layer-cont">
 														<div class="scroll m-scroll">
 															<ul class="list">
 																<c:forEach var="branch" items="${data.branch}"
@@ -148,7 +129,6 @@
 															</ul>
 															<div></div>
 														</div>
-													</div>
 												</div>
 											</c:forEach>
 										</div>
@@ -175,223 +155,10 @@
 								</div>
 								</div>
 								</div>
-								
-								<!-- <div id="tab10" class="tab-layer-cont on">
-												<div id="tab10" class="tab-layer-cont on">
-													<div class="scroll m-scroll on">
-														<ul class="list">
-															<li><button type="button" class="btn"
-																	data-area-cd="10" data-brch-no="1">쇼비강북</button></li>
-															<li><button type="button" class="btn"
-																	data-area-cd="10" data-brch-no="2">쇼비미아</button></li>
-															<li><button type="button" class="btn"
-																	data-area-cd="10" data-brch-no="3">쇼비수유</button></li>
-														</ul>
-														<div></div>
-													</div>
-												</div> -->
-								
-								
-								
-								<!-- 
-											<div id="tab20" class="tab-layer-cont">
-												<div class="scroll m-scroll">
-													<ul class="list">
-														<li><button type="button" class="btn"
-																data-area-cd="30" data-brch-no="4121">고양스타필드</button></li>
-
-													</ul>
-													<div></div>
-												</div>
-											</div>
-											<div id="tab30" class="tab-layer-cont">
-												<div class="scroll m-scroll">
-													<ul class="list">
-														<li><button type="button" class="btn"
-																data-area-cd="35" data-brch-no="4041">검단</button></li>
-
-													</ul>
-													<div></div>
-												</div>
-											</div>
-											<div id="tab40" class="tab-layer-cont">
-												<div class="scroll m-scroll">
-													<ul class="list">
-														<li><button type="button" class="btn"
-																data-area-cd="45" data-brch-no="3141">공주</button></li>
-
-													</ul>
-													<div></div>
-												</div>
-											</div>
-											<div id="tab50" class="tab-layer-cont">
-												<div class="scroll m-scroll">
-													<ul class="list">
-														<li><button type="button" class="btn"
-																data-area-cd="55" data-brch-no="6701">거창</button></li>
-
-													</ul>
-													<div></div>
-												</div>
-											</div>
-											<div id="tab60" class="tab-layer-cont">
-												<div class="scroll m-scroll">
-													<ul class="list">
-														<li><button type="button" class="btn"
-																data-area-cd="65" data-brch-no="5021">광주상무</button></li>
-
-													</ul>
-													<div></div>
-												</div>
-											</div>
-											<div id="tab70" class="tab-layer-cont">
-												<div class="scroll m-scroll">
-													<ul class="list">
-														<li><button type="button" class="btn"
-																data-area-cd="70" data-brch-no="2001">남춘천</button></li>
-
-													</ul>
-													<div></div>
-												</div>
-											</div>
-											<div id="tab80" class="tab-layer-cont">
-												<div class="scroll m-scroll">
-													<ul class="list">
-														<li><button type="button" class="btn"
-																data-area-cd="80" data-brch-no="6901">제주</button></li>
-													</ul>
-													<div></div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								
-								
-								
-								<div id="masterTheater" class="ltab-layer-cont">
-									<a href="" class="ir"> 상영관별 탭 화면 입니다.</a>
-									<div class="wrap tab-area">
-										<div class="tab-list-choice">
-											<ul>
-
-												<li><a href="/getBranchList?locationCode=1"
-													title=" 강북구지점 선택" data-area-cd="10" class="on"
-													onclick="return false">쇼비강북</a></li>
-
-												<li><a href="/getBranchList?locationCode=2"
-													title=" 노원구지점 선택" data-area-cd="20" class=""
-													onclick="return false">쇼비미아</a></li>
-
-												<li><a href="/getBranchList?locationCode=3"
-													title=" 동대문구지점 선택" data-area-cd="30" class=""
-													onclick="return false">쇼비수유 </a></li>
-
-												<li><a href="/getBranchList?locationCode=4"
-													title=" 성동구지점 선택" data-area-cd="40" class=""
-													onclick="return false">쇼비청량리</a></li>
-
-												<li><a href="/getBranchList?locationCode=5"
-													title=" 강남구지점 선택" data-area-cd="50" class=""
-													onclick="return false">쇼비회기</a></li>
-
-											</ul>
-										</div>
-										<div class="list-section">
-
-											<div id="tab10" class="tab-layer-cont">
-												<div id="tab10" class="tab-layer-cont">
-													<div class="scroll m-scroll">
-														<ul class="list">
-															<li><button type="button" class="btn"
-																	data-brch-no="1">호롤롤롤ㅇ롱ㄹㅇ로롤</button></li>
-															<li><button type="button" class="btn"
-																	data-brch-no="2">아직 안했으..</button></li>
-															<li><button type="button" class="btn"
-																	data-brch-no="3">흑흐규</button></li>
-														</ul>
-														<div class=""></div>
-													</div>
-												</div>
-											</div>
-
-											<div id="tab20" class="tab-layer-cont">
-												<div class="scroll m-scroll on">
-													<ul class="list">
-														<li><button type="button" class="btn"
-																data-brch-no="4">쇼비하계</button></li>
-													</ul>
-													<div class=""></div>
-												</div>
-											</div>
-											<div id="tab30" class="tab-layer-cont">
-												<div class="scroll m-scroll on">
-													<ul class="list">
-														<li><button type="button" class="btn"
-																data-area-cd="35" data-brch-no="4041">검단</button></li>
-
-													</ul>
-													<div></div>
-												</div>
-											</div>
-											<div id="tab40" class="tab-layer-cont">
-												<div class="scroll m-scroll on">
-													<ul class="list">
-														<li><button type="button" class="btn"
-																data-area-cd="45" data-brch-no="3141">공주</button></li>
-
-													</ul>
-													<div></div>
-												</div>
-											</div>
-											<div id="tab50" class="tab-layer-cont">
-												<div class="scroll m-scroll on">
-													<ul class="list">
-														<li><button type="button" class="btn"
-																data-area-cd="55" data-brch-no="6701">거창</button></li>
-
-													</ul>
-													<div></div>
-												</div>
-											</div>
-											<div id="tab60" class="tab-layer-cont">
-												<div class="scroll m-scroll on">
-													<ul class="list">
-														<li><button type="button" class="btn"
-																data-area-cd="65" data-brch-no="5021">광주상무</button></li>
-
-													</ul>
-													<div></div>
-												</div>
-											</div>
-											<div id="tab70" class="tab-layer-cont">
-												<div class="scroll m-scroll on">
-													<ul class="list">
-														<li><button type="button" class="btn"
-																data-area-cd="70" data-brch-no="2001">남춘천</button></li>
-
-													</ul>
-													<div></div>
-												</div>
-											</div>
-											<div id="tab80" class="tab-layer-cont">
-												<div class="scroll m-scroll on">
-													<ul class="list">
-														<li><button type="button" class="btn"
-																data-area-cd="80" data-brch-no="6901">제주</button></li>
-													</ul>
-													<div></div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-
-							</div>
-						</div> -->
-								<!--  영화선택, 극장선택 끝 -->
-								<div class="box-alert mt40" style="display: none">
-									<i class="iconset ico-bell"></i> <strong></strong> <span></span>
+							
+								<%--  영화선택, 극장선택, 상영관 선택 끝 --%>
+								<div class="box-alert" >
+									<button type="button" class="managerButton" value="등록">등록</button>
 								</div>
 
 								<h3 class="tit mt60" style="display: none">
