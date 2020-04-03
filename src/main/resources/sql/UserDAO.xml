@@ -27,8 +27,10 @@
 	private String userBirth;
 	private int userCode;
 	 -->
-	 <!-- INSERT INTO user(userPassword) VALUE #{userPassword} -->
-	 <!-- 안되는 부분 -->
+	 
+	 <!-- 로그인  -->
+						 <!-- INSERT INTO user(userPassword) VALUE #{userPassword} -->
+						 <!-- 안되는 부분 -->
 	 <insert id = "encrypt" parameterType="login">
 		UPDATE user SET userPassword=#{userPassword} WHERE userId = {userId}
 	</insert>
@@ -40,16 +42,26 @@
 	<select id="getTime" resultType="string">
 		SELECT sysdate() FROM dual
 	</select>
-    <!-- 로그인  -->
-	
+    
 	<select id="getUser" resultMap="user" parameterType="string">
 		SELECT * FROM user WHERE userId = #{userId}
 	</select>
  
-
   	<insert id="insertNewUser" parameterType="user">
 		INSERT INTO user(userId,  userName,  userSignupCode)
 		VALUES ( #{userId}, #{userName},   #{userCode} )
 	</insert> 
-	
+
+  
+  	<!-- 회원가입 -->
+  	<insert id="signUpUser" parameterType="user">
+  		INSERT INTO user(userId, userName, userPassword, userBirth, userPhoneNumber, userSignupCode)
+		VALUES ( #{userId}, #{userName}, #{userPassword}, #{userBirth}, #{userPhoneNumber}, #{userSignupCode} )
+  	</insert>
+  	
+  	<select id="btnUserIdCheck" resultType="int">
+  		SELECT * fROM user WHERE userId = #{userId}
+  	</select>
+  	
+  	
 </mapper>

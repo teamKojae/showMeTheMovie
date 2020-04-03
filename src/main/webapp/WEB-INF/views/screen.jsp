@@ -64,6 +64,9 @@
 									<div class="rows rows--mini">
 										<div class="row">
 
+<script type="text/javascript">
+${session.user}
+</script>
 <!-- 											<div class="row__seat A1">A1</div>
 											<div class="row__seat A2">A2</div>
 											<div class="row__seat A3">A3</div>
@@ -501,6 +504,24 @@
 										<a href=""  class="button active" onclick="return false"
 											id="pageNext" title="다음">다음</a>
 											</div>
+											<%-- <script>
+											$('.button').on('click', function(event) {
+											var str = ${user.userId}
+											alert.log(str);
+											  if(typeof str == "undefined" || str == null || str == ""){
+													var confirm = confirm('로그인이 필요한 서비스입니다.');
+													if(confirm){
+														$(location).attr('href','/login');
+													}else{
+														return;
+													}
+												}else{
+													alert('카카오페이 가욧');
+													requestKakaoPay();
+												}
+											  
+											})
+											</script> --%>
 								</div>
 							</div>
 						</form>

@@ -36,14 +36,23 @@ public class UserServiceImpl implements UserService {
 	public User isUser(String userId) {
 		return null;/*userDao.isUser(userId);*/
 	}
-
 	
-
 	@Override
 	public Login getLogin(Login login) {
 		return userDAO.getLogin(login);
 	}
+	
+	
+	//예나
+	@Override
+	public void signUpUser(User user) {
+		userDAO.signUpUser(user);
+	}
 
+	
+	//중훈
+	
+	@Override
 	public Login encrypt(Login login) {
 		return userDAO.encrypt(login);
 	}

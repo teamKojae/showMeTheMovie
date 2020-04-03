@@ -18,10 +18,15 @@ public interface UserDAO {
 	public User selectUser();
 	public void insertNewUser(User user);
 	public String getTime();
-	
+
+
+	//예나
+	public void signUpUser(User user);
+
+	//중훈
 	public Login getLogin(Login login);
 	public Login encrypt(Login login);
 	//boolean isMatch(String userPassword, String hashed);
-	
-	
+
+
 }

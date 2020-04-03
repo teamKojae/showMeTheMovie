@@ -12,8 +12,12 @@ public interface UserService {
 	public void insertNewUser(User user);
 	public User isUser(String userId);
 
-	public Login getLogin(Login login);
 	
+	//예나
+	public void signUpUser(User user);
+
+	//중훈
+	public Login getLogin(Login login);
 	public Login encrypt(Login login);
 	//String encrypted = UserDAO.encrypt(userPassword);
 }

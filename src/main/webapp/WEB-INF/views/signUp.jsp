@@ -14,6 +14,7 @@
 </head>
 <body>
 <body class="bg-member">
+<form method="post" action="/signUp.do">
 	<div class="body-wrap">
 		<div class="member-wrap">
 
@@ -37,7 +38,7 @@
 									<td><input maxlength="12" id="ibxJoinInfoRegLoginId"
 										type="text" placeholder="영문,숫자 조합(8~12자)"
 										class="input-text w260px" name="userId"> <!--영문,숫자 조합(8~12자)-->
-										<button id="btnMbLoginIdDupCnfm" type="button"
+										<button id="btnUserIdCheck" type="button"
 											class="button gray-line small w75px ml08 disabled">
 											중복확인
 											<!--중복확인-->
@@ -48,24 +49,24 @@
 								<tr>
 									<th scope="row"><label for="ibxJoinInfoRegLoginName">이름<!-- 이름 -->
 									</label></th>
-									<td><input maxlength="16" id="ibxJoinInfoRegLoginName" type="text" placeholder="한글 (3~10자)" class="input-text w260px">
+									<td><input maxlength="10" id="ibxJoinInfoRegLoginName" type="text" placeholder="한글 (3~10자)" 
+										class="input-text w260px" name="userName">
 										<!-- 한글 3자 이상-->
 										<div id="JoinInfoRegLoginName-error-text" class="alert"></div>
 									</td>
 								</tr>
 								<tr>
 									<th scope="row"><label for="ibxJoinInfoRegLoginPwd">비밀번호<!--비밀번호--></label></th>
-									<td><input maxlength="16" id="ibxJoinInfoRegLoginPwd"
+									<td><input maxlength="15" id="ibxJoinInfoRegLoginPwd"
 										type="password" placeholder="영문,숫자 조합(8자~15자)"
 										class="input-text w260px" name="userPassword"> <!--영문,숫자,특수기호 중 2가지 이상 조합-->
 										<div id="JoinInfoRegLoginPwd-error-text" class="alert">비밀번호는
 											영문,숫자 조합 8자리 이상 16자리 이하 입니다.</div></td>
 								</tr>
 								<tr>
-									<th scope="row"><label for="ibxJoinInfoRegLoginPwdConfirm">비밀번호
-											확인<!--비밀번호 확인-->
+									<th scope="row"><label for="ibxJoinInfoRegLoginPwdConfirm">비밀번호 확인<!--비밀번호 확인-->
 									</label></th>
-									<td><input maxlength="16"
+									<td><input maxlength="15"
 										id="ibxJoinInfoRegLoginPwdConfirm" type="password"
 										placeholder="영문,숫자 조합(8자~15자)" class="input-text w260px">
 										<!--영문,숫자,특수기호 중 2가지 이상 조합-->
@@ -77,20 +78,20 @@
 									<td><input maxlength="6"
 										id="ibxJoinInfoRegLoginBirthConfirm" type="text"
 										placeholder="생년월일(ex.950623)" class="input-text w260px"
-										name="userBrith"></td>
+										name="userBirth"></td>
 								</tr>
 								<!-- 휴대폰 번호 불러올때 -->
 								<tr id="trMblpTelno">
 									<th scope="row">휴대폰 번호 <!--휴대폰 번호 --></th>
 									<td><input maxlength="16" id="ibxJoinInfoRegLoginPhoneNum"
-										type="password" placeholder="핸드폰번호 -제외"
-										class="input-text w260px" name="userPhoneNum"></td>
+										type="text" placeholder="핸드폰번호 -제외"
+										class="input-text w260px" name="userPhoneNumber"></td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
 					<div class="btn-member-bottom">
-						<button id="btnJoinInfoRegButton" type="button"
+						<button id="btnJoinInfoRegButton" type="submit" 
 							class="button purple large disabled">
 							회원가입
 							<!--회원가입-->
@@ -105,5 +106,6 @@
 	</div>
 	<!--// body-wrap -->
 	<script src="/js/sign.js"></script>
+</form>
 </body>
 </html>

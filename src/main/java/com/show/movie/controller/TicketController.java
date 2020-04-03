@@ -1,8 +1,10 @@
 package com.show.movie.controller;
 
+import java.sql.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.sql.Date;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -10,8 +12,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
@@ -50,11 +54,17 @@ public class TicketController {
 		return new Gson().toJson(movieService.getMovieInfo(movieInfo));
 	}
 
-	@PostMapping("/getSelectScreen" )
-	public String getSelectScreen(Model model, MovieInfo movieInfo, Seat seat) {
-		
-
-		
+	@RequestMapping(value="/getSelectScreen" ,method = {RequestMethod.GET, RequestMethod.POST})
+	public String getSelectScreen(Model model, @ModelAttribute("movieInfo") MovieInfo movieInfo, 
+									 Seat seat, HttpSession session) {
+		if( session.getAttribute("user") == null ) {
+			session.setAttribute("screenInfo", movieInfo);
+		}else {
+			if( session.getAttribute("screenInfo") != null) {
+			model.addAttribute("movieInfo", session.getAttribute("screenInfo"));
+			session.removeAttribute("screenInfo");
+			}
+		}
 		model.addAttribute("seatList", movieService.getSeatList(seat));
 		log.info(seat.getSeatName());
 		
