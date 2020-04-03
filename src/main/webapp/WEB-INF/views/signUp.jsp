@@ -11,10 +11,80 @@
 <link href="/css/custom.css" rel="stylesheet">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">	
+
+
+// 아이디 중복 확인
+//<input name="userId" id="abc" class="bbb">  input[name=userId]  #abc  .bbb 
+function userIdCheck(){
+	$.ajax({ //ajax 구버전...
+		url : "/userIdCheck",
+		type : "post",
+		dataType : "json",
+		data : {"userId" : $("input[name=userId]").val()}, // 데이터 url로 보내줌
+		success : function(data){ //데이터 보내기 성공하면 url(컨트롤러) 반환값(result) 펑션에 넣어줌
+			console.log(data);
+			if(data == 1){
+				alert("중복된 아이디입니다.");
+			}else if (data == 0){
+				$("#userIdCheck").attr("value", "Y");
+				alert("사용가능한 아이디입니다.");
+			}else{
+				alert("그 외 alert!!!!!");				
+			}
+		}
+//		error : function(jqXHR, exception){ //매개변수 2개로 받기
+//			} else if (jqXHR.status == 500) {
+//            alert('Internal server error. [500]');
+//        } else {
+//        	alert("뭘까요");
+//        	console.log(data);
+
+	})
+}
+
+function validate(){
+	//모든 공백 체크
+	var empJ = /\s/g;  //변수명...
+	//아이디
+	var idJ = /^[a-z0-9]{5,10}$/;
+	//이름
+	var nameJ = /^[가-힣]{2,6}$/;
+	//비밀번호
+	var pwJ = /^[A-Za-z0-9]{8,15}$/; 
+	//생년월일
+	
+	//핸드폰 번호
+	var phoneJ = /^01([0|1|6|7|8|9]?)?([0-9]{3,4})?([0-9]{4})$/;
+	
+	
+	var id = document.getElementById("userId");
+    var pw = document.getElementById("userPassword");
+    var email = document.getElementById("email");
+    var num1 = document.getElementById("num1");
+    var num2 = document.getElementById("num2");
+
+    if(!check(idJ,id,"아이디는 5~10자의 영문 소문자와 숫자로만 입력")) {
+        return false;
+    }
+    
+}
+
+function check(idJ, what, message) {
+    if(idJ.test(what.value)) {
+        return true;
+    }
+    alert(message);
+    what.value = "";
+    what.focus();
+    //return false;
+}
+
+</script>
 </head>
 <body>
 <body class="bg-member">
-<form method="post" action="/signUp.do">
+<form name="formname" method="post" action="/signUp.do" onsubmit="return validate();">
 	<div class="body-wrap">
 		<div class="member-wrap">
 
@@ -35,23 +105,23 @@
 							<tbody>
 								<tr>
 									<th scope="row"><label for="ibxJoinInfoRegLoginId">아이디<!--아이디--></label></th>
-									<td><input maxlength="12" id="ibxJoinInfoRegLoginId"
-										type="text" placeholder="영문,숫자 조합(8~12자)"
-										class="input-text w260px" name="userId"> <!--영문,숫자 조합(8~12자)-->
-										<button id="btnUserIdCheck" type="button"
+									<td><input maxlength="10" id="ibxJoinInfoRegLoginId"
+										type="text" placeholder="영문,숫자 조합(5~10자)"
+										class="input-text w260px" name="userId"> <!--영문,숫자 조합(5~10자)-->
+										<button id="btnUserIdCheck" type="button" onclick="userIdCheck()" value="N"
 											class="button gray-line small w75px ml08 disabled">
 											중복확인
 											<!--중복확인-->
 										</button>
 										<div id="JoinInfoRegLoginId-error-text" class="alert">아이디는
-											영문,숫자 조합 8자리 이상 12자리 이하 입니다.</div></td>
+											영문,숫자 조합 5자리 이상 10자리 이하 입니다.</div></td>
 								</tr>
 								<tr>
 									<th scope="row"><label for="ibxJoinInfoRegLoginName">이름<!-- 이름 -->
 									</label></th>
-									<td><input maxlength="10" id="ibxJoinInfoRegLoginName" type="text" placeholder="한글 (3~10자)" 
+									<td><input maxlength="6" id="ibxJoinInfoRegLoginName" type="text" placeholder="한글 (2~6자)" 
 										class="input-text w260px" name="userName">
-										<!-- 한글 3자 이상-->
+										<!-- 한글 2자 이상-->
 										<div id="JoinInfoRegLoginName-error-text" class="alert"></div>
 									</td>
 								</tr>
@@ -61,7 +131,7 @@
 										type="password" placeholder="영문,숫자 조합(8자~15자)"
 										class="input-text w260px" name="userPassword"> <!--영문,숫자,특수기호 중 2가지 이상 조합-->
 										<div id="JoinInfoRegLoginPwd-error-text" class="alert">비밀번호는
-											영문,숫자 조합 8자리 이상 16자리 이하 입니다.</div></td>
+											영문,숫자 조합 8자리 이상 15자리 이하 입니다.</div></td>
 								</tr>
 								<tr>
 									<th scope="row"><label for="ibxJoinInfoRegLoginPwdConfirm">비밀번호 확인<!--비밀번호 확인-->
