@@ -8,9 +8,11 @@ import com.show.movie.model.domain.MovieInfo;
 
 public interface BookingService {
 	
-	List<Booking> allgetBooking();
-	List<MovieInfo> getAllMovieinfo();
-	List<Movie> getAllmovieName();
+	List<Booking> getAllBooking(String userId);
+	/*
+	 * List<MovieInfo> getAllMovieinfo(); 
+	 * List<Movie> getAllmovieName();
+	 */
 
 	
 

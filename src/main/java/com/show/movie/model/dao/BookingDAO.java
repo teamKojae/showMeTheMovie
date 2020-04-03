@@ -8,10 +8,7 @@ import com.show.movie.model.domain.MovieInfo;
 
 public interface BookingDAO {
 	
-	List<Booking> getAllbooking();
-	List<MovieInfo> getAllMovieinfo();
-	List<Movie> getAllmovieName();
-	
+	List<Booking> getAllbooking(String userId);
 }
 
 

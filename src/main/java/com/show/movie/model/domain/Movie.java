@@ -31,12 +31,13 @@ public class Movie {
 	private String moviePoster;
 	private String moviePosterBG;
 	private String movieImages;
+	
 	private String branchName;
 	private Date movieUpdate;
 	private int movieTime;
+	
 	@Autowired(required = false)
 	private Manager manager;
-	
 	
 	public Movie(int movieCode, String movieName, String movieAudience, String movieTicketRate,
 			String movieTicketRatePersent, String movieTitle, String movieSynopsis, String moviePrice,

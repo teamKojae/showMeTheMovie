@@ -11,26 +11,15 @@ import com.show.movie.model.domain.Movie;
 import com.show.movie.model.domain.MovieInfo;
 import com.show.movie.model.service.BookingService;
 
-@Service("bookingService") 
-public class BookingServiceImpl implements  BookingService{
+@Service("bookingService")
+public class BookingServiceImpl implements BookingService {
 
 	@Autowired
-	 private  BookingDAO bookingDAO;
+	private BookingDAO bookingDAO;
 
 	@Override
-	public List<Booking> allgetBooking() {
-		return bookingDAO.getAllbooking();
+	public List<Booking> getAllBooking(String userId) {
+		return bookingDAO.getAllbooking(userId);
 	}
 
-	@Override
-	public List<MovieInfo> getAllMovieinfo() {
-		// TODO Auto-generated method stub
-		return bookingDAO.getAllMovieinfo();
-	}
-
-	@Override
-	public List<Movie> getAllmovieName() {
-		// TODO Auto-generated method stub
-		return bookingDAO.getAllmovieName();
-	}
 }

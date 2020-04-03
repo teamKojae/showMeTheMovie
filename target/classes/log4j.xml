@@ -38,15 +38,15 @@
 
 	<!-- jdbc 로그 -->
 	<logger name="jdbc.audit">
-		<level value="warn" />
+		<level value="DEBUG" />
 	</logger>
 	
 	<logger name="jdbc.resultset">
-		<level value="warn" />
+		<level value="DEBUG" />
 	</logger>
 	
 	<logger name="jdbc.connection">
-		<level value="warn" />
+		<level value="DEBUG" />
 	</logger>
 	
 	<logger name="com.show.movie">

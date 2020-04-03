@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.show.movie.model.dao.BookingDAO">
+
+	<resultMap id="booking" type="booking">
+		<id column="bookingCode" property="bookingCode" />
+		<result column="bookingPeople" property="bookingPeople" />
+		<result column="bookingSeat" property="bookingSeat" />
+		<result column="bookingDate" property="bookingDate" />
+
+		<association property="movie" javaType="movie">
+		<id column="movieCode" property="movieCode" />
+			<result column="movieName" property="movieName" />
+		</association>
+
+		<association property="movieInfo" javaType="movieInfo">
+		<id column="movieInfoCode" property="movieInfoCode" />
+					<association property="theater" javaType="theater">
+					<id column="theaterCode" property="theaterCode" />
+					<result column="theaterName" property="theaterName" />
+				</association>
+		</association>
+
+		<association property="branch" javaType="branch">
+			<id column="branchCode" property="branchCode" />
+			<result column="branchName" property="branchName" />
+		</association>
+
+	</resultMap>
+
+	<select id="getAllbooking"
+		resultMap="booking"
+		parameterType="string">
+		select * from getBooking
+		where userId=#{userId}
+	</select>
+</mapper>
+
+
+
+

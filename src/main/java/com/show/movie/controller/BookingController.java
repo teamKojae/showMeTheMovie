@@ -11,15 +11,13 @@ import com.show.movie.model.service.BookingService;
 @Controller
 public class BookingController {
 
-	
 	@Autowired
 	private BookingService bookingService;
-	
-	@RequestMapping(value="/booking", method=RequestMethod.GET)
+
+	@RequestMapping(value = "/booking", method = RequestMethod.GET)
 	public String getEmpCount(Model model) {
-		System.out.println(bookingService.getAllmovieName());
-		model.addAttribute("bookingList", bookingService.allgetBooking());
+		model.addAttribute("bookingList", bookingService.getAllBooking("jeongmin"));
+		System.out.println(bookingService.getAllBooking("jeongmin"));
 		return "myPage";
 	}
-	
 }

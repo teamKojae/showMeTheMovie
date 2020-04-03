@@ -23,20 +23,15 @@ public class MovieInfo {
 	public MovieInfo getMovieInfo() {
 		return new MovieInfo();
 	}
-
-	public MovieInfo() {//show 'I will use this method' 
+	public MovieInfo() {
 	}
-
-	@Builder //What this method means? 
-	
+	@Builder 
 	public MovieInfo(Movie movie, Theater theater, Branch branch) {
 		this.movie = movie;
 		this.theater = theater;
-		this.branch = branch;   //Declaration 
-	
+		this.branch = branch;   
 	}
-
-	@Autowired(required = false) //what "require=false' means? studied before this so lets check my notes 
+	@Autowired(required = false)
 	private Movie movie;
 	@Autowired(required = false)
 	private Theater theater;

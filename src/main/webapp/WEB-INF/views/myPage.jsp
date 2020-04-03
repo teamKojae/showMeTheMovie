@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	request.setCharacterEncoding("UTF-8");
@@ -97,7 +98,7 @@
 															<div class="filter-option-inner-inner">2020년 3월</div>
 														</div>
 													</div>
-													<span class="bs-caret">                            <span class="caret"></span></span>
+													<span class="bs-caret"> <span class="caret"></span></span>
 												</button>
 												<div class="dropdown-menu open" role="combobox">
 													<div class="inner open" role="listbox"
@@ -108,7 +109,7 @@
 											</div>
 
 											<button type="button" class="button gray-line small ml05"
-												name="search"> 
+												name="search">
 												<i class="iconset ico-search-gray"></i> 조회
 											</button></td>
 									</tr>
@@ -127,6 +128,7 @@
 							</div>
 							<div class="history-reservation">
 								<ul>
+									<c:forEach items="${bookingList}" var="booking" varStatus="status">
 									<li sell-tran-no="13722003170094915348">
 										<div class="round">
 											<a href="/movie-detail?rpstMovieNo=20003000" class="img"
@@ -141,30 +143,32 @@
 													<col>
 												</colgroup>
 												<tbody>
-													<tr>
-														<th scope="row" class="a-r">예매번호</th>
-														<td colspan="3"><em class="num">${bookingList.bookingCode}</em></td>
-													</tr>
-													<tr>
-														<th scope="row" class="a-r">영화명</th>
-														<td colspan="3">
-															<p class="tit-movie">
-																<span>${bookingList.movieInfoCode}</span> <span>2D(자막)</span>
-															</p>
-														</td>
-													</tr>
-													<tr>
-														<th scope="row" class="a-r">극장/상영관</th>
-														<td>강남/1관</td>
-														<th scope="row">관람인원</th>
-														<td>성인 1명</td>
-													</tr>
-													<tr>
-														<th scope="row" class="a-r">관람일시</th>
-														<td>2020.03.18 (수) 19:55 (4회차)</td>
-														<th scope="row">관람좌석</th>
-														<td>F열 11</td>
-													</tr>
+												
+														<tr>
+															<th scope="row" class="a-r">예매번호</th>
+															<td colspan="3"><em class="num">${booking.bookingCode}</em></td>
+														</tr>
+														<tr>
+															<th scope="row" class="a-r">영화명</th>
+															<td colspan="3">${booking.movie.movieName}
+																<p class="tit-movie">
+																	<span></span> <span>2D(자막)</span>
+																</p>
+															</td>
+														</tr>
+														<tr>
+															<th scope="row" class="a-r">극장/상영관</th>
+															<td>${booking.branch.branchName}/${booking.movieInfo.theater.theaterName}</td>
+															<th scope="row">관람인원</th>
+															<td>${booking.bookingPeople}</td>
+														</tr>
+														<tr>
+															<th scope="row" class="a-r">관람일시</th>
+															<td>${booking.bookingDate}</td>
+															<th scope="row">관람좌석</th>
+															<td>F열 11</td>
+														</tr>
+														
 												</tbody>
 											</table>
 											<div class="bg-round">
@@ -180,6 +184,7 @@
 															<th scope="row" class="a-r">결제일시</th>
 															<td>2020.03.17</td>
 														</tr>
+														
 													</tbody>
 												</table>
 											</div>
@@ -189,6 +194,7 @@
 											</div>
 										</div>
 									</li>
+									</c:forEach>
 								</ul>
 							</div>
 						</div>
@@ -277,9 +283,9 @@
 						</div>
 						<!-- 예매 안내상황 End -->
 					</div>
-					
-					
-					
+
+
+
 				</div>
 			</div>
 
