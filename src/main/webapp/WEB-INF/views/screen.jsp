@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%
 	request.setCharacterEncoding("UTF-8");
 %>
@@ -30,41 +30,80 @@
 					<div class="seat-select-section">
 						<div class="seat-section">
 							<div class="tit-util">
-							<!-- 최대 8명까지만 선택 .. 그리고 화살표로 내려서 8까지만 나오게 하고 싶다. -->
+								<!-- 최대 8명까지만 선택 .. 그리고 화살표로 내려서 8까지만 나오게 하고 싶다. -->
 								<h3 class="tit small">
-								관람 인원 선택 
-								<select name="numberOf" size="1">
-								<option value="1">1
-								<option value="2">2
-								<option value="3">3
-								<option value="4">4
-								<option value="5">5
-								<option value="6">6
-								<option value="7">7
-								<option value="8">8
-					
-					 </select>
-								<% String n1= request.getParameter("numberOf");
-								int fixedNum = 10000;
 								
-								int sum = 0;
-								
-								if(n1==null){
-									n1="0";
-								}
-								int num1 = Integer.parseInt(n1);
-								sum = num1*fixedNum;
-								
-								%>
+									관람 인원 선택 <select id="selectBox" name="numberOf" size="1">
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+										<option value="6">6</option>
+										<option value="7">7</option>
+										<option value="8">8</option>
+									</select>
+									
+									<script language="javascript">
+										var target = document.getElementById("selectBox");
+										target.options[target.selectedIndex].value
+										
+
+									<%
+										String n1 = request.getParameter("numberOf");
+										int fixedNum = 10000;
+
+										int sum = 0;
+
+										if (n1 == null) {
+											n1 = "0";
+										}
+										int num1 = Integer.parseInt(n1);
+										sum = num1 * fixedNum;
+									%>
+									</script>
 								</h3>
-								
+
 							</div>
+
+						<div style="padding-left: 40px; padding-right: 40px; padding-top: 30px">
+							<table width="90%" align="center">
+								<tr>
+									<td colspan="2" align="center"
+										style="background-color: gray; height: 50px">스크린</td>
+								</tr>
+								<tr>
+									<td colspan="2"><br></td>
+								</tr>
+								<tr>
+									<td align="center" ><c:set var="count" value="0"/>
+									<c:set var="tdCount" value="0"/>
+										<c:forEach var="seat" items="${seatList }" begin="10" end="19" >
+												
+											<c:choose>
+												<c:when test="${seat.seatStatus==0 }">
+													
+													${seat.seatName }
+												</c:when>
+												
+												<c:otherwise>
+													
+												</c:otherwise>
+											</c:choose>
+											
+										</c:forEach>
+							</table>
+							
+							
+							</div>
+
+
 							<div class="seat-layout">
 								<div class="plan plan--shown">
 									<div class="rows rows--mini">
-										<div class="row">
 
-<!-- 											<div class="row__seat A1">A1</div>
+
+										<!-- 										    <div class="row__seat A1">A1</div>
 											<div class="row__seat A2">A2</div>
 											<div class="row__seat A3">A3</div>
 											<div class="row__seat A4">A4</div>
@@ -73,7 +112,7 @@
 											<div class="row__seat A7">A7</div>
 											<div class="row__seat A8">A8</div>
 											<div class="row__seat A9">A9</div>
-											<div class="row__seat" id="A10" ></div>
+											<div class="row__seat" id="A10" >A10</div>
 											<div class="row__seat"></div>
 											<div class="row__seat"></div>
 											<div class="row__seat A13"></div>
@@ -81,22 +120,89 @@
 											<div class="row__seat A15"></div>
 											<div class="row__seat A16"></div>
 											<div class="row__seat A17"></div>
-											<div class="row__seat A18"></div> -->
-											
-											
-											<c:forEach items="${seatList }" var="seat" varStatus="status" >
-												
+											<div class="row__seat A18"></div>
+											<br> -->
+
+
+
+
+
+											<div class="row">
+											<c:forEach items="${seatList}" var="seat" begin="0" end="9" varStatus="status">
 												<div class="row__seat">
-												<c:if test=""></c:if>
-											
-												${seat.seatName}&nbsp;
-											</div>
+														${seat.seatName}
+												</div>
 											</c:forEach>
-										
 										</div>
-										
-										
+											<script text="text/javascript" src="ticketing.js"></script>
 										<div class="row">
+											<c:forEach items="${seatList}" var="seat" begin="10" end="19" varStatus="status">
+												<div class="row__seat">
+<!-- 											<script>
+											if( ${seat.seatStatus} == 1 ){
+												$(this).addClass(" row__seat--reserved");
+											}
+											</script> -->
+											${seat.seatName}
+												</div>
+											</c:forEach>
+										</div>
+
+
+										<div class="row">
+										
+											<c:forEach items="${seatList}" var="seat" begin="20" end="29"
+												varStatus="status">
+												<div class="row__seat">${seat.seatName}</div>
+											</c:forEach>
+										</div>
+										<div class="row">
+											<c:forEach items="${seatList}" var="seat" begin="30" end="39"
+												varStatus="status">
+												<div class="row__seat">${seat.seatName}</div>
+											</c:forEach>
+										</div>
+										<div class="row">
+											<c:forEach items="${seatList}" var="seat" begin="40" end="49"
+												varStatus="status">
+												<div class="row__seat">${seat.seatName}</div>
+											</c:forEach>
+										</div>
+										<div class="row">
+											<c:forEach items="${seatList}" var="seat" begin="50" end="59"
+												varStatus="status">
+												<div class="row__seat">${seat.seatName}</div>
+											</c:forEach>
+										</div>
+										<div class="row">
+											<c:forEach items="${seatList}" var="seat" begin="60" end="69"
+												varStatus="status">
+												<div class="row__seat">${seat.seatName}</div>
+											</c:forEach>
+										</div>
+										<div class="row">
+											<c:forEach items="${seatList}" var="seat" begin="70" end="79"
+												varStatus="status">
+												<div class="row__seat">${seat.seatName}</div>
+											</c:forEach>
+										</div>
+										<div class="row">
+											<c:forEach items="${seatList}" var="seat" begin="80" end="89"
+												varStatus="status">
+												<div class="row__seat">${seat.seatName}</div>
+											</c:forEach>
+										</div>
+										<div class="row">
+											<c:forEach items="${seatList}" var="seat" begin="90" end="99"
+												varStatus="status">
+												<div class="row__seat">${seat.seatName}</div>
+											</c:forEach>
+										</div>
+										<!--  -->
+
+
+
+																				<div class="row">
 											<div class="row__seat B1"></div>
 											<div class="row__seat B2"></div>
 											<div class="row__seat B3"></div>
@@ -137,7 +243,7 @@
 											<div class="row__seat C18"></div>
 										</div>
 										<div class="row">
-											<div class="row__seat D1"></div>
+											<div class="row__seat id="D1"> D1</div>
 											<div class="row__seat D2"></div>
 											<div class="row__seat D3"></div>
 											<div class="row__seat D4"></div>
@@ -437,78 +543,85 @@
 											<div class="row__seat R18"></div>
 										</div>
 									</div>
-									<!-- /rows -->
-									<ul class="legend">
-										<li class="legend__item legend__item--free">선택가능</li>
-										<li class="legend__item legend__item--reserved">선택불가</li>
-										<li class="legend__item legend__item--selected">선택된 좌석</li>
-									</ul>
+										<!-- /rows -->
+										<ul class="legend">
+											<li class="legend__item legend__item--free">선택가능</li>
+											<li class="legend__item legend__item--reserved">선택불가</li>
+											<li class="legend__item legend__item--selected">선택된 좌석</li>
+										</ul>
+									</div>
 								</div>
+
 							</div>
-							
-						</div>
-						<form action="/kakaoPay" method="post" id="kakaoPay">
-						<div class="seat-result">
-							<div class="wrap">
-								<div class="tit-area">
-								<input type="hidden" name="movieName" value="${movieInfo.movie.movieName}">
-								<input type="hidden" name="moviePrice" value="8000">
-									<span class="movie-grade small age-all age-15">15세이상관람가</span>
-									<p class="tit" name="movieName">${movieInfo.movie.movieName}</p>
-									<p class="cate">2D(자막)</p>
-								</div>
-								<div class="info-area">
-									<p class="theater">${movieInfo.branch.branchName }점</p>
-									<p class="special">${movieInfo.theater.theaterName}</p> 
-									<p class="date">
-										 <span>${movieInfo.movieDate}</span><em></em>
-										 <script>
-										 	var date = new Date( ${movieInfo.movieDate} ).getDay();
-										 	console.log(date);
+							<form action="/kakaoPay" method="post" id="kakaoPay">
+								<div class="seat-result">
+									<div class="wrap">
+										<div class="tit-area">
+											<input type="hidden" name="movieName"
+												value="${movieInfo.movie.movieName}"> <input
+												type="hidden" name="moviePrice" value="8000"> <span
+												class="movie-grade small age-all age-15">15세이상관람가</span>
+											<p class="tit" name="movieName">${movieInfo.movie.movieName}</p>
+											<p class="cate">2D(자막)</p>
+										</div>
+										<div class="info-area">
+											<%-- <p class="theater">${movieInfo.branch.branchName }점</p> --%>
+											<p class="special">${movieInfo.theater.theaterName}</p>
+											<p class="date">
+												<span>${movieInfo.movieDate}</span><em></em>
+												<script>
+										 	var date = new Date( ${movieInfo.movieDate } ).getDay();
+									 	console.log(date);
 										 	var week = new Array('일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일');
 										 	var getDay = week[date];
 										 	$('.date').find('em').text('('+getDay+')');
 										 </script>
-										 
-									</p>
-									<div class="other-time">
-										<button type="button" class="now">
-											${movieInfo.movieStartTime}~${movieInfo.movieEndTime}<i class="arr"></i>
-										</button>
-										<ul class="other">
-											<li><button type="button" choicnt="48"
-													playschdlno="2003191372070" class="btn on ">
-													${movieInfo.movieStartTime}~${movieInfo.movieEndTime}</button></li>
-										</ul>
-									</div>
-									<p class="poster">
-										<img src="/img/${movieInfo.movie.moviePoster}" alt="영화없오요">
-									</p>
-								</div>
 
-								<div class="pay-area">
-									<p class="count"></p>
-									<div class="pay">
-										<p class="tit">최종결제금액</p>
-										<div class="money">
-											<em><%=sum %></em> <span>원</span>
+											</p>
+											<div class="other-time">
+												<button type="button" class="now">
+													${movieInfo.movieStartTime}~${movieInfo.movieEndTime}<i
+														class="arr"></i>
+												</button>
+												<ul class="other">
+													<li><button type="button" choicnt="48"
+															playschdlno="2003191372070" class="btn on ">
+															${movieInfo.movieStartTime}~${movieInfo.movieEndTime}</button></li>
+												</ul>
+											</div>
+											<p class="poster">
+												<img src="/img/${movieInfo.movie.moviePoster}" alt="영화없오요">
+											</p>
+										</div>
+
+										<div class="pay-area">
+											<p class="count"></p>
+											<div class="pay">
+												<p class="tit">최종결제금액</p>
+												<div class="money">
+													<em><%=sum%></em> <span>원</span>
+												</div>
+											</div>
+										</div>
+										<div class="btn-group">
+											<a href="javaScript:void(0)" class="button" id="pagePrevious"
+												title="이전">이전</a> <a href="" class="button active"
+												onclick="return false" id="pageNext" title="다음">다음</a>
 										</div>
 									</div>
 								</div>
-								<div class="btn-group">
-									<a href="javaScript:void(0)" class="button" id="pagePrevious"
-										title="이전">이전</a>
-										<a href=""  class="button active" onclick="return false"
-											id="pageNext" title="다음">다음</a>
-											</div>
-								</div>
-							</div>
-						</form>
+							</form>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<script src="/js/ticketting.js"></script>
+		<!-- 										<script>
+	
+											if( ${seat.seatStatus} == 1 ){
+												$(this).addClass("row__seat--reserved");
+											}
+											</script> -->
+		<script src="/js/ticketting.js"></script>
 </body>
 </html>

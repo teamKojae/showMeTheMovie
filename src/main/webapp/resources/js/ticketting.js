@@ -7,7 +7,6 @@ $(function() {
 })
 
 
-
 function requestKakaoPay() {
 	$('.button').on('click', function(event) {
 		$('#kakaoPay').submit();
