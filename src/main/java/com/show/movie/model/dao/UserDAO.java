@@ -20,7 +20,6 @@ public interface UserDAO {
 	public String getTime();
 	
 	public Login getLogin(Login login);
-
 	public Login encrypt(Login login);
 	//boolean isMatch(String userPassword, String hashed);
 	

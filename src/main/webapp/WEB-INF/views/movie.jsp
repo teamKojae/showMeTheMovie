@@ -95,7 +95,6 @@
 					</div>
 				</div>
 				<!--// movie-list-util -->
-
 				<div class="bg-loading" style="display: none;">
 					<div class="spinner-border" role="status">
 						<span class="sr-only">Loading...</span>
@@ -157,70 +156,73 @@
 								</div>
 							</div></li>
 						<li tabindex="0" class="no-img"><div class="movie-list-info">
-								<p class="rank" style="">
-									2<span class="ir">위</span>
-								</p>
-								<img
-									src="https://img.megabox.co.kr/SharedImg/2020/02/07/jO2LnVNFJxLzAL62WxHjDUBKbtPcV8ET_420.jpg"
-									alt="시원찮은 그녀를 위한 육성방법 피날레" class="poster lozad"
-									onerror="noImg(this)">
-								<div class="curation">
-									<p class="film" style="display: none">필름 소사이어티</p>
-									<p class="classic" style="display: none">클래식 소사이어티</p>
-								</div>
-								<div class="screen-type">
-									<p class="boutqScreen" style="display: none">부티크</p>
-									<p class="mxScreen" style="display: none">MX</p>
-								</div>
-								<div class="movie-score" style="opacity: 0;">
-									<a href="#" class="wrap movieBtn" data-no="20000400"
-										title="시원찮은 그녀를 위한 육성방법 피날레 상세보기">
-										<div class="summary">어느 봄날, 아키 토모야는 벚꽃이 흩날리는 언덕길에서 운명적으로
-											만난 소녀 '카토 메구미'를 메인 히로인으로 삼아서 동인 게임을 제작하기로 마음을 먹는다. 미술부 소속이지만
-											동인 일러스트레이터로도 활동 중인 ‘사와무라 스펜서 에리리’, 우등생이면서 라이트노벨 작가로도 활약하고 있는
-											3학년 선배 ‘카스미가오카 우타하’를 영입한 그는, 게임 제작 동아리 ‘블레싱 소프트웨어’를 결성해서 시행착오
-											끝에 첫 작품을 발표한다ㅡ. 에리리와 우타하는 인기 크리에이터 코사카 아카네가 기획을 맡은 대작 게임 [필즈
-											크로니클]의 개발 멤버로 스카우트된다. 한편 블레싱 소프트웨어 대표인 토모야는 서클 활동을 이어 나가면서
-											일러스트레이터인 하시마 이즈미, 프로듀서인 하시마 이오리, 음악 밴드 아이시 테일의 효도 미치루, 그리고
-											부대표 메구미와 함께 신작 게임의 개발을 시작하는데…</div>
-										<div class="my-score big">
-											<div class="preview">
-												<p class="tit">기대평</p>
-												<p class="number">
-													8.8<span class="ir">점</span>
-												</p>
-											</div>
-											<span class="sign big">pointText</span>
-											<div class="review">
-												<p class="tit">관람평</p>
-												<p class="number after">
-													9.4<span class="ir">점</span>
-												</p>
-											</div>
+								<input type="hidden"  name="movieName" value="시원찮은 그녀를 위한 육성방법 피날레" class="movie-info-hidden">
+										<p class="rank" style="">
+											2<span class="ir">위</span>
+										</p>
+										<img
+											src="https://img.megabox.co.kr/SharedImg/2020/02/07/jO2LnVNFJxLzAL62WxHjDUBKbtPcV8ET_420.jpg"
+											alt="시원찮은 그녀를 위한 육성방법 피날레" class="poster lozad"
+											onerror="noImg(this)">
+										<div class="curation">
+											<p class="film" style="display: none">필름 소사이어티</p>
+											<p class="classic" style="display: none">클래식 소사이어티</p>
 										</div>
-									</a>
-								</div>
-							</div>
-							<div class="tit-area">
-								<p class="movie-grade age-12">,</p>
-								<p title="시원찮은 그녀를 위한 육성방법 피날레" class="tit">시원찮은 그녀를 위한 육성방법
-									피날레</p>
-							</div>
-							<div class="rate-date">
-								<span class="rate">예매율 9.6%</span> <span class="date">개봉일
-									2020.02.27</span>
-							</div>
-							<div class="btn-util">
-								<p class="txt movieStat1" style="display: none">상영예정</p>
-								<p class="txt movieStat2" style="display: none">2월 개봉예정</p>
-								<p class="txt movieStat5" style="display: none">개봉예정</p>
-								<p class="txt movieStat6" style="display: none">상영종료</p>
-								<div class="case movieStat4" style="">
-									<a href="#" class="button purple bokdBtn" data-no="20000400"
-										title="영화 예매하기">예매</a>
-								</div>
-							</div></li>
+										<div class="screen-type">
+											<p class="boutqScreen" style="display: none">부티크</p>
+											<p class="mxScreen" style="display: none">MX</p>
+										</div>
+										<div class="movie-score" style="opacity: 0;">
+											<a href="#" class="wrap movieBtn" data-no="20000400"
+												title="시원찮은 그녀를 위한 육성방법 피날레 상세보기">
+												<div class="summary">어느 봄날, 아키 토모야는 벚꽃이 흩날리는 언덕길에서 운명적으로
+													만난 소녀 '카토 메구미'를 메인 히로인으로 삼아서 동인 게임을 제작하기로 마음을 먹는다. 미술부 소속이지만
+													동인 일러스트레이터로도 활동 중인 ‘사와무라 스펜서 에리리’, 우등생이면서 라이트노벨 작가로도 활약하고 있는
+													3학년 선배 ‘카스미가오카 우타하’를 영입한 그는, 게임 제작 동아리 ‘블레싱 소프트웨어’를 결성해서 시행착오
+													끝에 첫 작품을 발표한다ㅡ. 에리리와 우타하는 인기 크리에이터 코사카 아카네가 기획을 맡은 대작 게임 [필즈
+													크로니클]의 개발 멤버로 스카우트된다. 한편 블레싱 소프트웨어 대표인 토모야는 서클 활동을 이어 나가면서
+													일러스트레이터인 하시마 이즈미, 프로듀서인 하시마 이오리, 음악 밴드 아이시 테일의 효도 미치루, 그리고
+													부대표 메구미와 함께 신작 게임의 개발을 시작하는데…</div>
+												<div class="my-score big">
+													<div class="preview">
+														<p class="tit">기대평</p>
+														<p class="number">
+															8.8<span class="ir">점</span>
+														</p>
+													</div>
+													<span class="sign big">pointText</span>
+													<div class="review">
+														<p class="tit">관람평</p>
+														<p class="number after">
+															9.4<span class="ir">점</span>
+														</p>
+													</div>
+												</div>
+											</a>
+										</div>
+									</div>
+									<div class="tit-area">
+										<p class="movie-grade age-12">,</p>
+										<p title="시원찮은 그녀를 위한 육성방법 피날레" class="tit">시원찮은 그녀를 위한 육성방법
+											피날레</p>
+									</div>
+									<div class="rate-date">
+										<span class="rate">예매율 9.6%</span> <span class="date">개봉일
+											2020.02.27</span>
+									</div>
+									<div class="btn-util">
+										<p class="txt movieStat1" style="display: none">상영예정</p>
+										<p class="txt movieStat2" style="display: none">2월 개봉예정</p>
+										<p class="txt movieStat5" style="display: none">개봉예정</p>
+										<p class="txt movieStat6" style="display: none">상영종료</p>
+										<div class="case movieStat4" style="">
+											<a href="#" class="button purple bokdBtn" data-no="20000400"
+												title="영화 예매하기">예매</a>
+										</div>
+									</div>
+						</li>
 						<li tabindex="0" class="no-img"><div class="movie-list-info">
+						<input type="hidden"  name="movieName" value="1917" class="movie-info-hidden">
 								<p class="rank" style="">
 									3<span class="ir">위</span>
 								</p>
@@ -378,7 +380,7 @@
 											부탁하는데… 무수히 늘어놓은 아름다운 말보다, 단 한마디로도 소중한 마음을 전할 수 있다 - 바이올렛 에버가든</div>
 										<div class="my-score smal">
 											<div class="preview">
-												<p class="tit">기대평</p>
+												<p class="tit" > </p>
 												<p class="number">
 													9.8<span class="ir">점</span>
 												</p>
@@ -536,6 +538,13 @@
 			<c:import url="/resources/common/footer.jsp"></c:import>
 		</div>
 	</div>
+	
+	
+	
+	
+	
+	
+	
 	<script src="/js/movie.js"></script>	
 </body>
 </html>

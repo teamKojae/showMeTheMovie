@@ -58,11 +58,11 @@ public class LoginController {
 		
 	}
 	*/
-	// 로그인 처리
+	/* 암호화 메소드 로그인 처리
 	private String hashPassword(User user) { 
 		return BCrypt.hashpw(user.getUserPassword(), BCrypt.gensalt()); 
 		}
-
+	*/
 	
 	
 	  @RequestMapping(value = "/loginPost", method = RequestMethod.POST) 
@@ -74,10 +74,10 @@ public class LoginController {
 		  log.info("return login : " + login);
 		  log.info("return user : " + user);
 		  
-		  //login = userService.getLogin(login.getUserId()); 
-		  
-		  // nullPoint Exception : 
-		 
+		   
+		  //user.setUserPassword(hashedPassword);
+		 // 회원가입 비밀번호 userPassword, 암호화 hashedPassword -> db 저장, -> 로그인 id 받아온 값 , db 받아온 값 비교  select id, pw where -> userService.getlogin(login)
+		//login = userService.getLogin(login.getUserId());
 		  /* 안되는 부분
 		  String plainPassword = login.getUserPassword();
 				 

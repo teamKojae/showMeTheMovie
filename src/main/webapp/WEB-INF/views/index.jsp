@@ -29,6 +29,10 @@
 							alt="다크워터스_티저포스터.jpg">
 					</div>
 
+					<!-- movie.js에 있는 함수 사용할 수 없음
+					<script text = "text/javascript" src="movie.js"></script>
+					 -->
+
 					<!-- cont-area  -->
 					<div class="cont-area">
 
@@ -62,7 +66,7 @@
 									class="movie-list-info" title="영화상세 보기">
 									<input type="hidden"  name="movieName" value="라라랜드" class="movie-info-hidden">
 										<p class="rank">
-											1<span class="ir">위</span>
+											<em>${movie.movieTicketRate }</em><span class="ir">위</span>
 										</p> <!-- to 개발 : alt 값에 영화 제목 출력 --> <img
 										src="/img/lalaland_snapshot1.jpg"
 										alt="다크 워터스" class="poster" >

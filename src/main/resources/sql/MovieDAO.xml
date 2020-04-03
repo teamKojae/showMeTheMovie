@@ -61,8 +61,11 @@
 	<select id="getSeatList" resultType="seat">
 		select * from seat
 	</select>
-
- 
+<!--  영화검색
+	<select id="getIncludeName" resultType = "movieNameList">
+	 select * from "테이블 명" where "칼럼 명" like "%{movieList.movieName}%";
+	</select> 
+  -->
 	<select id="getMovie" resultMap="movie">
 	<!-- View로 처리좀 하고싶은데.. 강사님 HELP !! -->
 		SELECT movie.movieCode, movie.movieName, movie.movieAudience, movie.movieUpdate, movie.movieSynopsis,

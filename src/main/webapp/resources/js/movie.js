@@ -11,7 +11,7 @@ $(function(){
 
 
 function totalWon(){
-	
+	//var o = document.querySelectorAll('li');
 }
 
 function infoMore(){
@@ -107,7 +107,7 @@ function getStilCutList(){
 	$('.tab-list li:nth-child(2) a').on('click',function(event){
 		event.preventDefault();
 		/*$('.tab-list li').removeClass('on');
-		$(event.target).closest('li').addClass('on');*/
+		$(event.target).closest('li').addlass('on');*/
 		$('.inner-wrap').empty();
 		$.ajax({
 			url : $(event.target).attr('href'),
