@@ -27,27 +27,32 @@
 	</resultMap>
 
 	<insert id="insertMovie">
-		INSERT INTO movie (managerCode, movieName,movieAudience,movieUpdate, 
+		INSERT INTO movie (managerCode,
+		movieName,movieAudience,movieUpdate,
 		movieSynopsis, moviePoster, moviePosterBG, movieImages, movieTime)
-		VALUES ( 
-		( SELECT managerCode FROM manager where managerId=#{manager.managerId}),
-		#{movieName},0,NOW(), #{movieSynopsis}, #{moviePoster}, #{moviePosterBG},
+		VALUES (
+		( SELECT managerCode FROM manager where
+		managerId=#{manager.managerId}),
+		#{movieName},0,NOW(),
+		#{movieSynopsis}, #{moviePoster}, #{moviePosterBG},
 		#{movieImages},#{movieTime}
 		)
 	</insert>
 
 	<select id="getMovieList" resultMap="movie">
-		SELECT movieName,movieName,moviePoster FROM movie
-		WHERE managerCode = (SELECT managerCode FROM manager WHERE managerId = #{managerId})
+		SELECT
+		movieName,movieName,moviePoster FROM movie
+		WHERE managerCode = (SELECT
+		managerCode FROM manager WHERE managerId = #{managerId})
 	</select>
 
 	<select id="getLocationList" resultType="location">
-		SELECT location.locationCode, location.locationName, COUNT(*) AS countBranch
+		SELECT
+		location.locationCode, location.locationName, COUNT(*) AS countBranch
 		from location,branch
 		WHERE branch.locationCode = location.locationCode
 		GROUP BY location.locationCode;
 	</select>
-
 	<select id="getBranchList" resultMap="branch"
 		parameterType="location">
 		SELECT * FROM movie.branch
@@ -55,18 +60,31 @@
 			<when test='locationCode != null'>
 				WHERE locationCode = #{locationCode}
 			</when>
-			<!-- <otherwise>
-				WHERE locationCode=1
-			</otherwise> -->
+			<!-- <otherwise> WHERE locationCode=1 </otherwise> -->
 		</choose>
 	</select>
-	
-	
+
+
 	<select id="getTheaterList" resultType="theater">
-		SELECT theaterCode, theaterName, branchCode AS 'branch.branchCode' FROM movie.theater 
-		WHERE branchCode = 
+		SELECT theaterCode,
+		theaterName, branchCode AS 'branch.branchCode' FROM movie.theater
+		WHERE branchCode =
 		(SELECT branchCode FROM branch WHERE branchName = #{branchName});
 	</select>
+
+	<insert id="insertTheater">
+			INSERT INTO
+			movieInfo(movieCode, theaterCode,movieDate)
+			VALUES
+			<foreach item="item" index="index" collection="theaterName" separator=","> 
+			(
+			(SELECT movieCode FROM movie WHERE movieName = #{movieName}),
+			(SELECT theaterCode FROM theater WHERE theaterName = #{item}),
+			(SELECT date_format(now(),'%Y-%m-%d') FROM dual)
+			)
+		</foreach>
+	</insert>
+
 </mapper> 
   
   

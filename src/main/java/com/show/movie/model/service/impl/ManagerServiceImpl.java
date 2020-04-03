@@ -51,4 +51,10 @@ public class ManagerServiceImpl implements ManagerService {
 		return managerDAO.getTheaterList(branchName);
 	}
 
+	@Override
+	public void insertTheater(String movieName, List<String> theaterName) {
+		managerDAO.insertTheater(movieName, theaterName);
+		
+	}
+
 }

@@ -112,3 +112,27 @@
     background-color: #503396;
     cursor: pointer;
 }
+
+.inner-wrap > .timeTable{
+	display:none;
+}
+
+.timeTable{
+	margin-bottom:300px;
+}
+
+.inner-wrap > .on{
+	display:block;
+}
+
+.width1000{
+	width:1000px;
+}
+
+.theater-list-box > .theater-list{
+	display:none;
+}
+.theater-list-box > .on{
+	display:block;
+}
+

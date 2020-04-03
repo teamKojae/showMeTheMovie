@@ -3,22 +3,23 @@ package com.show.movie.controller;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -77,7 +78,7 @@ public class ManagerController {
 	@GetMapping(value = "/getBranchList" ,  produces = "application/json; charset=utf8")
 	@ResponseBody
 	public String getBranchList(Model model,Location location) {
-		log.info("getBranchList : "+managerService.getBranchList(location));
+		
 		return new Gson().toJson(managerService.getBranchList(location));
 	}
 	
@@ -86,19 +87,20 @@ public class ManagerController {
 	public String getTheaterInAddMovie(String branchName) {
 		return new Gson().toJson(managerService.getTheaterList(branchName));
 	}
-	@PostMapping(value="/movieAddBranchAndTheater" , produces = "application/json; charset=utf8")
+	
+	
+	@PostMapping(value="/movieAddBranchAndTheater")
 	@ResponseBody
-	public String movieAddBranchAndTheater(String movieName, 
-			String[] branchName, String[] theaterName  ) {
-		log.info("movieName   "+movieName);
-		for(String bn : branchName) {
-		log.info("branchName  : "+ bn);
-		}
-		for(String tn : theaterName) {
-		log.info("theatherName  "+tn);
-		}
-		
-		return "";
+	public String movieAddBranchAndTheater(@RequestBody Map<String, Object> map) {
+//	public String movieAddBranchAndTheater(String movieName, 
+//			@RequestParam(value="branchName") List<String> branchName,
+//			@RequestParam(value="theaterName") List<String> theaterName,
+//			@RequestParam(value="movieStartTime") List<String> movieStartTime) {
+		//managerService.insertTheater(movieName, theaterName);
+		log.info(map);
+		log.info(map.get("theaterName"));
+		log.info(map.get("movieStartTime"));
+		return "addMovieInfo";
 	}
 }
 

@@ -14,4 +14,5 @@ public interface ManagerService {
 	public HashMap<String,Object> getMovieList(String managerId);
 	public List<Branch> getBranchList(Location location);
 	public List<Theater> getTheaterList(String branchName);
+	public void insertTheater(String movieName ,List<String> theaterName);
 }

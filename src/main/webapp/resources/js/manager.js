@@ -10,7 +10,10 @@ $(function() {
 	
 	selectTheater();
 	selectBranchInTheater();
-	movieAddBranchAndTheater();
+	getTimeTable();
+	selectTheaterInTimeTable();
+	
+	//movieAddBranchAndTheater();
 })
 
 $(function(){
@@ -23,7 +26,16 @@ $(function(){
 	$('#tab10').addClass("on");
 })
 
+//font-green
 
+function selectTheaterInTimeTable(){
+	$('.timeTable .tit').on('click','.theaterTimeTable',function(event){
+		var target = $(event.target);
+		console.log(target);
+		$('.timeTable .tit span').removeClass('font-green');
+		target.addClass('font-green');
+	})
+}
 
 
 
@@ -36,6 +48,7 @@ function selectTheater(){
 		var targetArea = target.attr('data-area-cd');
 		$('.list-section > div').removeClass('on');
 		$('#masterTheater #tab'+targetArea).addClass('on');
+		
 	})
 }
 
@@ -43,9 +56,24 @@ function selectBranchInTheater(){
 	$("#masterTheater .list-section").bind("click","ul > li",function(event){
 		var target = $(event.target);
 		targetFuntion(target);
+		$('.timeTable > h3').append(
+				'<a href="" style="padding: 10px;" class="theaterTimeTable" onclick="return false">'
+				+'<span class="">'+target.text()+'</span>'
+				+'</a>'
+		);
 	})
 }
 
+
+function getTimeTable(){
+	$('.managerButton').on('click',function(event){
+		if( $('#masterTheater .list-section ul' ).find('.on').length == 0  ){
+				alert('상영관을 선택해주세요');
+				return;
+			}
+		$('.timeTable').addClass('on');
+	})
+}
 /*	$(document).on("click","#masterTheater .list-section #tab10 button",function(event){
 var target = $(event.target);
 console.log(target);
@@ -169,20 +197,27 @@ function movieAddBranchAndTheater(){
 		$.each(theater, function(key, value){
 			theaterName.push($(this).text());
 		})
+		''
+		var movieStartTime = new Array();
+		movieStartTime.push('16:48');
+		movieStartTime.push('20:48');
+		movieStartTime.push('22:48');
 		
-		console.log(branchName);
-		console.log(theaterName);
+		var data = {};
+		data["movieName"]= movieName;
+		data["branchName"] =branchName;
+		data["theaterName"] =  theaterName;
+		data["movieStartTime"] = movieStartTime;
+		console.log(data);
 		
 		$.ajax({
 			url:"/movieAddBranchAndTheater",
-			method:"POST",
+			type:"POST",
 			traditional : true ,
-			//data : "JSON",
-			data : {
-				movieName : movieName,
-				branchName : branchName,
-				theaterName : theaterName
-			}
+			dataType : "JSON",
+			contentType:"application/json;charset=UTF-8",
+			data : JSON.stringify(data),
+			//async: false,
 		}).done(function(result){
 			console.log("ajax 성공 !");
 		})
