@@ -29,10 +29,11 @@ $(function(){
 //font-green
 
 function selectTheaterInTimeTable(){
-	$('.timeTable .tit').on('click','.theaterTimeTable, span',function(event){
+	$('.timeTable .tit').on('click','a , a > span',function(event){
 		var target = $(event.target);
 		console.log(target);
 		$('.timeTable .tit *').removeClass('font-green');
+		target.addClass('font-green');
 		target.find('span').addClass('font-green');
 		var theaterNo = target.closest('a').attr("data-theater-no");
 		$('.theater-list-box > div').removeClass('on');
