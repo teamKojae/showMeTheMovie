@@ -88,14 +88,21 @@ function getTimeTable(){
 		$.each( theaters ,  function (index, value){
 			theaterNo.push($(this).attr('data-theater-no'));
 		})
-		console.log( theaterNo );
 		
 		//상영시간표  날짜 구하는 부분
 		var timeSchedule =  $('.timeTable .time-schedule .date-area').find(' div > .on').attr('date-data');
-		console.log(timeSchedule);
 		
-		
-		
+		var colGroup = '<colgroup>'
+							+'<col style="width: 99px;">'
+							+'<col style="width: 99px;">'
+							+'<col style="width: 99px;">'
+							+'<col style="width: 99px;">'
+							+'<col style="width: 99px;">'
+							+'<col style="width: 99px;">'
+							+'<col style="width: 99px;">'
+							+'<col style="width: 99px;">'
+						+'</colgroup>';
+		var movieName = $('#masterMovie').find('.list .on').val();
 		
 		//해당 상영관 시간표 구해오는 Ajax  (return value : movieStartTime )
 		$.ajax({
@@ -104,10 +111,69 @@ function getTimeTable(){
 			traditional : true,
 			data : {
 				theaterNo : theaterNo,
-				timeSchedule : timeSchedule
+				timeSchedule : '2020-04-07'
+//				timeSchedule : timeSchedule
 			}
 		}).done(function(result){
-				console.log("ajax성공");
+				$.each(result,function(index, value){
+				$('.theater-list-box').append(
+					'<div class="theater-list" data-theater-no="'+value[index].theater.theaterCode+'">'
+					+'<div class="theater-tit">'
+						+'<p>'+value[index].theater.theaterName+'</p>'
+						+'<p class="infomation">'
+							+'<span>'+movieName+'</span>/상영시간 '+$('#'+movieName).val()+'분'
+						+'</p>'
+					+'</div>'
+					+'<div class="theater-type-box">'
+						+'<div class="theater-type">'
+							+'<p class="theater-name">'+value[index].theater.theaterName+'</p>'
+						+'</div>'
+						+'<div class="theater-time">'
+							+'<div class="theater-time-box">'
+								+'<table class="time-list-table">'
+									+'<caption>상영시간을 보여주는 표 입니다.</caption>'
+									 +colGroup
+									+'<tbody>'
+										+'<tr>'
+										 
+										+'</tr>'
+									+'</tbody>'
+								+'</table>'
+							+'</div>'
+						+'</div>'
+					+'</div>'
+				+'</div>'
+				//append끝
+					);
+				
+				
+				
+				$.each(value, function(index, item){
+					var test = $('.theater-list[data-theater-no="'+value[index].theater.theaterCode+'"');
+					test.find('table tr').append(
+							'<td class="" brch-no="1372" play-schdl-no="2003291372004" rpst-movie-no="20007800" theab-no="01" play-de="20200329" play-seq="4">'
+							+'<div class="td-ab">'
+								+'<div class="txt-center">'
+									+'<a href="" title="영화예매하기">'
+										+'<div class="ico-box">'
+											+'<i class="iconset ico-off"></i>'
+										+'</div>'
+										+'<p class="time">'+item.movieStartTime+'</p>'
+										+'<div class="play-time">'
+											+'<p>'+item.movieStartTime+'~'+item.movieEndTime+'</p>'
+											+'<p>4회차</p>'
+										+'</div>'
+									+'</a>'
+								+'</div>'
+							+'</div>'
+						+'</td>'
+					)
+				})
+				
+				
+			//each끝
+				});
+		//ajax끝
 		})	
 		
 		
@@ -129,12 +195,13 @@ function targetAddClassOn(target){
 
 function selectMovie(){
 	$('#masterMovie .list-section button').on('click',function(event){
-		var target = $(event.target)
+		var target = $(event.target);
 		target.closest('ul').find('button').removeClass('on');
 		target.addClass('on');
 		
 		var imagePoster = target.attr('data-img-path');
 		$('.poster').attr('src',"/img/"+imagePoster);
+		
 	})
 }
 

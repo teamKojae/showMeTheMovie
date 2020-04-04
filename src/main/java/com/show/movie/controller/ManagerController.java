@@ -91,8 +91,7 @@ public class ManagerController {
 	@ResponseBody
 	public String getTheatersTimeTable(Model model, 
 			@RequestParam List<String> theaterNo , Date timeSchedule ) {
-		log.info(managerService.getTimeScheduleInTheater(theaterNo, timeSchedule));
-		return "";
+		return new Gson().toJson(managerService.getTimeScheduleInTheater(theaterNo, timeSchedule));
 	}
 	
 

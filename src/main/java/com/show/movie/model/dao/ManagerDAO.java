@@ -23,4 +23,5 @@ public interface ManagerDAO {
 	public List<MovieInfo> getTimeScheduleInTheater(@Param("theaterNo") String theaterNo , @Param("timeSchedule") Date timeSchedule);
 	public int isViewTimeSchedule();
 	public void createViewTimeSchedule();
+	
 }

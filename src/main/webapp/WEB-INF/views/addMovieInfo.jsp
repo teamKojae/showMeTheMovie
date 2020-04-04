@@ -55,13 +55,16 @@
 														style="max-height: none;" tabindex="0">
 														<div id="mCSB_2_container" class="mCSB_container on"
 															style="position: relative; left: 0px;" dir="ltr">
+															
 															<ul class="list">
 																<%-- 영화리스트 --%>
 																<c:forEach var="movie" items="${data.movie}">
+																
 																	<li><button type="button" class="btn"
 																			value="${movie.movieName }"
 																			data-movie-no="${movie.movieCode }"
-																			data-img-path="${movie.moviePoster}">${movie.movieName }</button></li>
+																			data-img-path="${movie.moviePoster}">${movie.movieName }</button>
+																			<input type="hidden" id="${movie.movieName }" value="${movie.movieTime }"></li>
 																</c:forEach>
 															</ul>
 														</div>
@@ -248,193 +251,6 @@
 								
 								<div class="reserve theater-list-box">
 									
-									<div class="theater-list" data-theater-no="1">
-										<div class="theater-tit">
-											<p class="movie-grade age-12"></p>
-											<p>라라랜드</p>
-											<p class="infomation">
-												<span>상영중</span>/상영시간 128분
-											</p>
-										</div>
-										<div class="theater-type-box">
-											<div class="theater-type">
-												<p class="theater-name">1관</p>
-												<p class="chair">총 232석</p>
-											</div>
-											<div class="theater-time">
-												<div class="theater-type-area">2D(자막)</div>
-												<div class="theater-time-box">
-													<table class="time-list-table">
-														<caption>상영시간을 보여주는 표 입니다.</caption>
-														<colgroup>
-															<col style="width: 99px;">
-															<col style="width: 99px;">
-															<col style="width: 99px;">
-															<col style="width: 99px;">
-															<col style="width: 99px;">
-															<col style="width: 99px;">
-															<col style="width: 99px;">
-															<col style="width: 99px;">
-														</colgroup>
-														<tbody>
-															<tr>
-																<td class="" brch-no="1372"
-																	play-schdl-no="2003291372004" rpst-movie-no="20007800"
-																	theab-no="01" play-de="20200329" play-seq="4">
-																	<div class="td-ab">
-																		<div class="txt-center">
-																			<a href="" title="영화예매하기">
-																				<div class="ico-box">
-																					<i class="iconset ico-off"></i>
-																				</div>
-																				<p class="time">19:35</p>
-																				<p class="chair">104석</p>
-																				<div class="play-time">
-																					<p>19:35~21:53</p>
-																					<p>4회차</p>
-																				</div>
-																			</a>
-																		</div>
-																	</div>
-																</td>
-																<td class="" brch-no="1372"
-																	play-schdl-no="2003291372060" rpst-movie-no="20007800"
-																	theab-no="01" play-de="20200329" play-seq="5">
-																	<div class="td-ab">
-																		<div class="txt-center">
-																			<a href="" title="영화예매하기">
-																				<div class="ico-box">
-																					<i class="iconset ico-off"></i>
-																				</div>
-																				<p class="time">22:10</p>
-																				<p class="chair">121석</p>
-																				<div class="play-time">
-																					<p>22:10~24:28</p>
-																					<p>5회차</p>
-																				</div>
-																			</a>
-																		</div>
-																	</div>
-																</td>
-															</tr>
-														</tbody>
-													</table>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="theater-list" data-theater-no="2">
-										<div class="theater-tit">
-											<p class="movie-grade age-15"></p>
-											<p>1917</p>
-											<p class="infomation">
-												<span>상영중</span>/상영시간 119분
-											</p>
-										</div>
-										<div class="theater-type-box">
-											<div class="theater-type">
-												<p class="theater-name">2관</p>
-												<p class="chair">총 103석</p>
-											</div>
-											<div class="theater-time">
-												<div class="theater-type-area">2D(자막)</div>
-												<div class="theater-time-box">
-													<table class="time-list-table">
-														<caption>상영시간을 보여주는 표 입니다.</caption>
-														<colgroup>
-															<col style="width: 99px;">
-															<col style="width: 99px;">
-															<col style="width: 99px;">
-															<col style="width: 99px;">
-															<col style="width: 99px;">
-															<col style="width: 99px;">
-															<col style="width: 99px;">
-															<col style="width: 99px;">
-														</colgroup>
-														<tbody>
-															<tr>
-																<td class="" brch-no="1372"
-																	play-schdl-no="2003291372058" rpst-movie-no="01685000"
-																	theab-no="02" play-de="20200329" play-seq="4">
-																	<div class="td-ab">
-																		<div class="txt-center">
-																			<a href="" title="영화예매하기">
-																				<div class="ico-box">
-																					<i class="iconset ico-off"></i>
-																				</div>
-																				<p class="time">19:30</p>
-																				<p class="chair">41석</p>
-																				<div class="play-time">
-																					<p>19:30~21:39</p>
-																					<p>4회차</p>
-																				</div>
-																			</a>
-																		</div>
-																	</div>
-																</td>
-															</tr>
-														</tbody>
-													</table>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="theater-list" data-theater-no="3">
-										<div class="theater-tit">
-											<p class="movie-grade age-19"></p>
-											<p>지푸라기라도 잡고 싶은 짐승들</p>
-											<p class="infomation">
-												<span>상영중</span>/상영시간 109분
-											</p>
-										</div>
-										<div class="theater-type-box">
-											<div class="theater-type">
-												<p class="theater-name">5관</p>
-												<p class="chair">총 96석</p>
-											</div>
-											<div class="theater-time">
-												<div class="theater-type-area">2D</div>
-												<div class="theater-time-box">
-													<table class="time-list-table">
-														<caption>상영시간을 보여주는 표 입니다.</caption>
-														<colgroup>
-															<col style="width: 99px;">
-															<col style="width: 99px;">
-															<col style="width: 99px;">
-															<col style="width: 99px;">
-															<col style="width: 99px;">
-															<col style="width: 99px;">
-															<col style="width: 99px;">
-															<col style="width: 99px;">
-														</colgroup>
-														<tbody>
-															<tr>
-																<td class="" brch-no="1372"
-																	play-schdl-no="2003291372064" rpst-movie-no="01677700"
-																	theab-no="05" play-de="20200329" play-seq="5">
-																	<div class="td-ab">
-																		<div class="txt-center">
-																			<a href="" title="영화예매하기">
-																				<div class="ico-box">
-																					<i class="iconset ico-off"></i>
-																				</div>
-																				<p class="time">21:50</p>
-																				<p class="chair">48석</p>
-																				<div class="play-time">
-																					<p>21:50~23:49</p>
-																					<p>5회차</p>
-																				</div>
-																			</a>
-																		</div>
-																	</div>
-																</td>
-															</tr>
-														</tbody>
-													</table>
-												</div>
-											</div>
-										</div>
-									</div>
 								</div>
 							</div>
 						</div>

@@ -26,7 +26,7 @@
 		</association>
 	</resultMap>
 
-	<resultMap id="mvInfo" type="movieInfo">
+ 	<resultMap id="mvInfo" type="movieInfo">
 		<result column="movieDate" property="movieDate" />
 		<result column="movieStartTime" property="movieStartTime" />
 		<result column="movieEndTime" property="movieEndTime" />
@@ -40,7 +40,7 @@
 		</association>
 
 	</resultMap>
-
+ 
 
 
 
@@ -61,7 +61,7 @@
 
 	<select id="getMovieList" resultMap="movie">
 		SELECT
-		movieName,movieName,moviePoster FROM movie
+		movieName, moviePoster, movieTime FROM movie
 		WHERE managerCode = (SELECT
 		managerCode FROM manager WHERE managerId = #{managerId})
 	</select>
@@ -93,8 +93,8 @@
 		(SELECT branchCode FROM branch WHERE branchName =
 		#{branchName});
 	</select>
-
-	<select id="getTimeScheduleInTheater" resultMap="movieInfo">
+ 
+	<select id="getTimeScheduleInTheater" resultMap="mvInfo">
 			SELECT * FROM timeSchedule
 			where theaterCode = #{theaterNo} and movieDate = #{timeSchedule}
 	</select>
@@ -108,14 +108,13 @@
 	<select id="createViewTimeSchedule">
 		CREATE VIEW timeSchedule AS
 		SELECT theater.theaterCode,theater.theaterName,
-		movie.movieCode, movie.movieName,
+		movie.movieCode, movie.movieName, movie.movieTime,
 		movieInfo.movieDate, movieInfo.movieStartTime, movieInfo.movieEndTime
 		FROM movie, theater, movieInfo
 		WHERE movie.movieCode = movieInfo.movieCode
 		AND theater.theaterCode = movieInfo.theaterCode
 		ORDER BY movieInfo.movieStartTime
 	</select>
-
 
 
 	<!-- INSERT -->
