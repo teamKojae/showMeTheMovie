@@ -26,15 +26,35 @@
 		</association>
 	</resultMap>
 
+	<resultMap id="mvInfo" type="movieInfo">
+		<result column="movieDate" property="movieDate" />
+		<result column="movieStartTime" property="movieStartTime" />
+		<result column="movieEndTime" property="movieEndTime" />
+		<association property="movie" javaType="movie">
+			<result column="movieCode" property="movieCode" />
+			<result column="movieName" property="movieName" />
+		</association>
+		<association property="theater" javaType="theater">
+			<result column="theaterCode" property="theaterCode" />
+			<result column="theaterName" property="theaterName" />
+		</association>
+
+	</resultMap>
+
+
+
+
 	<insert id="insertMovie">
 		INSERT INTO movie (managerCode,
 		movieName,movieAudience,movieUpdate,
-		movieSynopsis, moviePoster, moviePosterBG, movieImages, movieTime)
+		movieSynopsis, moviePoster,
+		moviePosterBG, movieImages, movieTime)
 		VALUES (
-		( SELECT managerCode FROM manager where
-		managerId=#{manager.managerId}),
+		( SELECT managerCode FROM manager 
+		WHERE managerId=#{manager.managerId}),
 		#{movieName},0,NOW(),
-		#{movieSynopsis}, #{moviePoster}, #{moviePosterBG},
+		#{movieSynopsis}, #{moviePoster},
+		#{moviePosterBG},
 		#{movieImages},#{movieTime}
 		)
 	</insert>
@@ -53,6 +73,7 @@
 		WHERE branch.locationCode = location.locationCode
 		GROUP BY location.locationCode;
 	</select>
+	
 	<select id="getBranchList" resultMap="branch"
 		parameterType="location">
 		SELECT * FROM movie.branch
@@ -69,21 +90,55 @@
 		SELECT theaterCode,
 		theaterName, branchCode AS 'branch.branchCode' FROM movie.theater
 		WHERE branchCode =
-		(SELECT branchCode FROM branch WHERE branchName = #{branchName});
+		(SELECT branchCode FROM branch WHERE branchName =
+		#{branchName});
 	</select>
 
+	<select id="getTimeScheduleInTheater" resultMap="movieInfo">
+			SELECT * FROM timeSchedule
+			where theaterCode = #{theaterNo} and movieDate = #{timeSchedule}
+	</select>
+
+
+	<select id="isViewTimeSchedule" resultType="int">
+		SELECT COUNT(*) countView FROM information_schema.tables 
+		WHERE table_schema = 'movie' AND table_name = 'timeSchedule'
+	</select>
+
+	<select id="createViewTimeSchedule">
+		CREATE VIEW timeSchedule AS
+		SELECT theater.theaterCode,theater.theaterName,
+		movie.movieCode, movie.movieName,
+		movieInfo.movieDate, movieInfo.movieStartTime, movieInfo.movieEndTime
+		FROM movie, theater, movieInfo
+		WHERE movie.movieCode = movieInfo.movieCode
+		AND theater.theaterCode = movieInfo.theaterCode
+		ORDER BY movieInfo.movieStartTime
+	</select>
+
+
+
+	<!-- INSERT -->
+
 	<insert id="insertTheater">
-			INSERT INTO
-			movieInfo(movieCode, theaterCode,movieDate)
-			VALUES
-			<foreach item="item" index="index" collection="theaterName" separator=","> 
+		INSERT INTO
+		movieInfo(movieCode, theaterCode,movieDate)
+		VALUES
+		<foreach item="item" index="index" collection="theaterName"
+			separator=",">
 			(
-			(SELECT movieCode FROM movie WHERE movieName = #{movieName}),
-			(SELECT theaterCode FROM theater WHERE theaterName = #{item}),
-			(SELECT date_format(now(),'%Y-%m-%d') FROM dual)
+			(SELECT movieCode FROM movie WHERE movieName =
+			#{movieName}),
+			(SELECT
+			theaterCode FROM theater WHERE theaterName =
+			#{item}),
+			(SELECT
+			date_format(now(),'%Y-%m-%d') FROM dual)
 			)
 		</foreach>
 	</insert>
+
+
 
 </mapper> 
   

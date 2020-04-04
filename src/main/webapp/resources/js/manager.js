@@ -12,7 +12,7 @@ $(function() {
 	selectBranchInTheater();
 	getTimeTable();
 	selectTheaterInTimeTable();
-	
+	//test();
 	//movieAddBranchAndTheater();
 })
 
@@ -29,11 +29,17 @@ $(function(){
 //font-green
 
 function selectTheaterInTimeTable(){
-	$('.timeTable .tit').on('click','.theaterTimeTable',function(event){
+	$('.timeTable .tit').on('click','.theaterTimeTable, span',function(event){
 		var target = $(event.target);
 		console.log(target);
-		$('.timeTable .tit span').removeClass('font-green');
-		target.addClass('font-green');
+		$('.timeTable .tit *').removeClass('font-green');
+		target.find('span').addClass('font-green');
+		var theaterNo = target.closest('a').attr("data-theater-no");
+		$('.theater-list-box > div').removeClass('on');
+		//console.log($('.theater-list-box div[data-theater-no="'+theaterNo+'"]'));
+		$('.theater-list-box div[data-theater-no="'+theaterNo+'"]').addClass('on');
+		
+		
 	})
 }
 
@@ -43,7 +49,7 @@ function selectTheater(){
 	$("#masterTheater .tab-list-choice ul").bind("click","a",function(event){
 		var target = $(event.target);
 		target.closest('.tab-list-choice').find('a').removeClass('on');
-		targetFuntion(target);
+		targetAddClassOn(target);
 		
 		var targetArea = target.attr('data-area-cd');
 		$('.list-section > div').removeClass('on');
@@ -55,9 +61,10 @@ function selectTheater(){
 function selectBranchInTheater(){
 	$("#masterTheater .list-section").bind("click","ul > li",function(event){
 		var target = $(event.target);
-		targetFuntion(target);
+		targetAddClassOn(target);
 		$('.timeTable > h3').append(
-				'<a href="" style="padding: 10px;" class="theaterTimeTable" onclick="return false">'
+				'<a href="" style="padding: 10px;" class="theaterTimeTable" '
+				+'onclick="return false" data-theater-no="'+target.attr("data-theater-no")+'">'
 				+'<span class="">'+target.text()+'</span>'
 				+'</a>'
 		);
@@ -67,19 +74,51 @@ function selectBranchInTheater(){
 
 function getTimeTable(){
 	$('.managerButton').on('click',function(event){
+		
+		// 상영관 한개도 클릭 안되있을 시 Alert창
 		if( $('#masterTheater .list-section ul' ).find('.on').length == 0  ){
 				alert('상영관을 선택해주세요');
 				return;
 			}
 		$('.timeTable').addClass('on');
+		
+		// 상영관Code번호 구하는 부분
+		var theaterNo = new Array();
+		var theaters = $('.timeTable > h3 > a');
+		$.each( theaters ,  function (index, value){
+			theaterNo.push($(this).attr('data-theater-no'));
+		})
+		console.log( theaterNo );
+		
+		//상영시간표  날짜 구하는 부분
+		var timeSchedule =  $('.timeTable .time-schedule .date-area').find(' div > .on').attr('date-data');
+		console.log(timeSchedule);
+		
+		
+		
+		
+		//해당 상영관 시간표 구해오는 Ajax  (return value : movieStartTime )
+		$.ajax({
+			url : "/getTheatersTimeTable",
+			type : "POST",
+			traditional : true,
+			data : {
+				theaterNo : theaterNo,
+				timeSchedule : timeSchedule
+			}
+		}).done(function(result){
+				console.log("ajax성공");
+		})	
+		
+		
 	})
 }
 /*	$(document).on("click","#masterTheater .list-section #tab10 button",function(event){
 var target = $(event.target);
 console.log(target);
-targetFuntion(target);
+targetAddClassOn(target);
 })*/
-function targetFuntion(target){
+function targetAddClassOn(target){
 	if( target.hasClass('on') == false){
 		// 브랜치 클릭 시 on Class 추가
 		target.addClass('on');
@@ -188,36 +227,44 @@ function movieAddBranchAndTheater(){
 		var movieName = $('#masterMovie').find('.list .on').val();
 		var branch = $('#masterBrch').find('.list-section ul').find('.on');
 		var branchName = new Array();
-		$.each(branch, function(key, value){
+		$.each(branch, function(index, value){
 			branchName.push($(this).text());
 		})
 		
 		var theater = $('#masterTheater').find('.list-section ul').find('.on');
 		var theaterName = new Array();
-		$.each(theater, function(key, value){
+		$.each(theater, function(index, value){
 			theaterName.push($(this).text());
 		})
-		''
+		
 		var movieStartTime = new Array();
 		movieStartTime.push('16:48');
 		movieStartTime.push('20:48');
 		movieStartTime.push('22:48');
-		
-		var data = {};
-		data["movieName"]= movieName;
-		data["branchName"] =branchName;
-		data["theaterName"] =  theaterName;
-		data["movieStartTime"] = movieStartTime;
-		console.log(data);
+		console.log(movieName);
+		console.log(branchName);
+		console.log(theaterName);
+		console.log(movieStartTime);
+
+
+//		var data = {};
+//		data["movieName"] = movieName;
+//		data["branchName"] =branchName;
+//		data["theaterName"] =  theaterName;
+//		data["movieStartTime"] = movieStartTime;
+
+//		$.ajaxSettings.traditional = true;
 		
 		$.ajax({
 			url:"/movieAddBranchAndTheater",
 			type:"POST",
-			traditional : true ,
-			dataType : "JSON",
-			contentType:"application/json;charset=UTF-8",
-			data : JSON.stringify(data),
-			//async: false,
+			traditional : true,
+			data : {
+				movieName : movieName,
+				branchName : branchName,
+				theaterName : theaterName,
+				movieStartTime : movieStartTime
+			}
 		}).done(function(result){
 			console.log("ajax 성공 !");
 		})
@@ -237,7 +284,7 @@ function movieAddBranchAndTheater(){
  * 
  * var tabId = $('#tab'+target.attr('data-area-cd')); tabId.addClass('on');
  * tabId.find('div').addClass('on'); tabId.find('div li').addClass('on');
- * tabId.find('ul').empty(); $.each(result,function(key,value){
+ * tabId.find('ul').empty(); $.each(result,function(index,value){
  * tabId.find('ul').append( '<li>' +'<button type="button" class="btn"
  * data-brch-no="'+value.branchCode+'">'+value.branchName+'</button>' +'</li>' ) }) } }) }) }
  */
@@ -261,9 +308,7 @@ function selectWhereRegiste(){
 		var contentsTarget = sectionTarget.find('.list-section');
 		contentsTarget.addClass('on');
 		var dataArea = $('.ltab-layer-wrap > .on').find('.tab-list-choice li').find('.on').attr('data-area-cd');
-		console.log(dataArea);
 		$('.ltab-layer-wrap > .on').find('.list-section > #tab'+dataArea).addClass('on');
-		console.log($('.ltab-layer-wrap > .on').find('.list-section > #tab'+dataArea));
 		// $(event.target).closest('.tab-layer-cont').addClass('on');
 		//var dataArea = $(event.target).attr('data-area-cd');
 		//contentsTarget.find($('#tab'+dataArea) ).addClass('on');
