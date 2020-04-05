@@ -1,9 +1,9 @@
 package com.show.movie.controller;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.sql.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -22,9 +22,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.show.movie.controller.util.parse.Parser;
 import com.show.movie.model.domain.Location;
 import com.show.movie.model.domain.Movie;
+import com.show.movie.model.domain.MovieInfo;
 import com.show.movie.model.service.ManagerService;
 
 import lombok.extern.log4j.Log4j;
@@ -91,7 +93,19 @@ public class ManagerController {
 	@ResponseBody
 	public String getTheatersTimeTable(Model model, 
 			@RequestParam List<String> theaterNo , Date timeSchedule ) {
-		return new Gson().toJson(managerService.getTimeScheduleInTheater(theaterNo, timeSchedule));
+		
+		List<List<MovieInfo>> list = managerService.getTimeScheduleInTheater(theaterNo, timeSchedule);
+		
+		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+		
+		for(List<MovieInfo> mo : list) {
+			for(MovieInfo m : mo) {
+				log.info("BEAN : "+m.getMovieDate());
+				log.info("GSON : "+gson.toJson(m.getMovieDate()));
+			}
+		}
+		
+		return gson.toJson(list);
 	}
 	
 

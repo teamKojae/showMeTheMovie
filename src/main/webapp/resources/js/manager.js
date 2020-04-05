@@ -145,8 +145,12 @@ function getTimeTable(){
 					);
 				
 				
-				
+				var canAddTime = new Array();
 				$.each(value, function(index, item){
+					console.log(item.movieDate);
+					var date = new Date (item.movieDate, item.movieStartTime);
+ 					canAddTime.push( parseFloat( item.movieStartTime ) );
+					
 					var test = $('.theater-list[data-theater-no="'+value[index].theater.theaterCode+'"');
 					test.find('table tr').append(
 							'<td class="" brch-no="1372" play-schdl-no="2003291372004" rpst-movie-no="20007800" theab-no="01" play-de="20200329" play-seq="4">'
@@ -159,7 +163,7 @@ function getTimeTable(){
 										+'<p class="time">'+item.movieStartTime+'</p>'
 										+'<div class="play-time">'
 											+'<p>'+item.movieStartTime+'~'+item.movieEndTime+'</p>'
-											+'<p>4회차</p>'
+											+'<p>'+index+'회차</p>'
 										+'</div>'
 									+'</a>'
 								+'</div>'
