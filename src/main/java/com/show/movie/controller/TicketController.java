@@ -54,23 +54,30 @@ public class TicketController {
 		return new Gson().toJson(movieService.getMovieInfo(movieInfo));
 	}
 
+
 	@RequestMapping(value="/getSelectScreen" ,method = {RequestMethod.GET, RequestMethod.POST})
 	public String getSelectScreen(Model model, @ModelAttribute("movieInfo") MovieInfo movieInfo, 
 									 Seat seat, HttpSession session) {
-		if( session.getAttribute("user") == null ) {
-			session.setAttribute("screenInfo", movieInfo);
-		}else {
-			if( session.getAttribute("screenInfo") != null) {
-			model.addAttribute("movieInfo", session.getAttribute("screenInfo"));
-			session.removeAttribute("screenInfo");
-			}
-		}
+		session.setAttribute("screenInfo", movieInfo);
 		model.addAttribute("seatList", movieService.getSeatList(seat));
-		log.info(seat.getSeatName());
+		//log.info(seat.getSeatName());
+		
+
+
+		
+		
 		
 		return "screen";
 	}
-	
+//	if( session.getAttribute("user") == null ) {
+//		session.setAttribute("screenInfo", movieInfo);
+//	}else {
+//		if( session.getAttribute("screenInfo") != null) {
+//		model.addAttribute("movieInfo", session.getAttribute("screenInfo"));
+//		log.info(session.getAttribute("screenInfo"));
+//		//session.removeAttribute("screenInfo");
+//		}
+//	}
 
 	
 }

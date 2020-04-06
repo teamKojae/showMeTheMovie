@@ -83,6 +83,12 @@
 	</select>
 
 
+ 
+ 	<select id="reservedSeat" resultType="seat">
+ 	INSERT INTO seat(seatStatus)
+		VALUES (1)
+ 	</select>
+ 
 	<select id="getMovie" resultMap="movie">
 		<!-- View로 처리좀 하고싶은데.. 강사님 HELP !! -->
 		SELECT movie.movieCode, movie.movieName, movie.movieAudience,
