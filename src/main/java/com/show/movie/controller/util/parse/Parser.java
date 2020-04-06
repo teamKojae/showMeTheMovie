@@ -55,11 +55,8 @@ public class Parser {
 			file = new File(filePath+files.get(i).getOriginalFilename());
 			files.get(i).transferTo(file);	
 			imageList.add(file.getName());
+			log.info(imageList);
 		}		
-		
-		
-		String returnValue= new Gson().toJson(imageList);
-		log.info("imageUpload returnValue :  "+imageList);
-		return returnValue;
+		return new Gson().toJson(imageList);
 	}
 }

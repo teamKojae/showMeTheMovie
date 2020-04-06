@@ -21,5 +21,6 @@ public class Login {
 	private String userPassword;
 	private int userSignupCode;
 //	private boolean useCookie;
+//	public String encrypt;
 
 }

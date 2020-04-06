@@ -12,7 +12,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
 import com.show.movie.model.domain.Movie;
+import com.show.movie.model.domain.MovieInfo;
+import com.show.movie.model.domain.Seat;
 import com.show.movie.model.domain.User;
 import com.show.movie.model.domain.kakao.KakaoPayApprovalVO;
 import com.show.movie.model.service.UserService;
@@ -40,7 +43,7 @@ public class KakaoController {
 		HashMap<String, Object> userInfo = kakaoAPI.getUserInfo(access_Token);
 		user.setUserId((String) userInfo.get("id"));
 		user.setUserName((String) userInfo.get("userName"));
-		//user.setUserCode(2);
+		user.setUserSignupCode(2);
 		if (userService.getUser(user.getUserId()) == null) {
 			userService.insertNewUser(user);
 		}
@@ -48,7 +51,15 @@ public class KakaoController {
 		if (user.getUserId() != null) {
 			session.setAttribute("user", user);
 		}
-		return "redirect:/";
+		String view = null;
+		if (session.getAttribute("kakaoPay") == null) {
+			view = "index";
+		}else if(session.getAttribute("kakaoPay") != null) {
+			model.addAttribute("movieInfo", session.getAttribute("screenInfo"));
+			session.removeAttribute("kakaoPay");
+			view = "redirect:/getSelectScreen";
+		}
+		return view;
 	}
 
 	// 카카오 페이 결제 완료 후 정보 갖고오기
@@ -70,31 +81,41 @@ public class KakaoController {
 		log.info("kakaoInfo :  " + kakaoInfo);
 
 		model.addAttribute("kakaoInfo", kakaoInfo);
+		kakaoInfo.getPartner_user_id();
+		kakaoInfo.getAmount().getTotal();
+		MovieInfo movieInfo = (MovieInfo)session.getAttribute("screenInfo");
+		//Seat seatList = (Seat)
+		log.info("movieInfo  : "+ movieInfo);
+		//movieName, theaterName, branchName,movieStartTime, movieEndTime
 //			 kakaoInfo에서 꺼내 쓰면 됩니다.
 //			 kakaoInfo.getPartner_user_id()
 //			 kakaoInfo.getAmount().total() 등등..
 //			 ↓ 밑에 예매내역 insert 하면 됩니다.
-
+		
 		return "redirect:/myPage";
 	}
 
 	// 카카오 페이 결제창 요청
 	@PostMapping("/kakaoPay")
-	public String kakaoPay(@ModelAttribute Movie movie, HttpSession session) {
+	public String kakaoPay(@ModelAttribute Movie movie, HttpSession session,
+			@ModelAttribute("movieInfo") MovieInfo movieInfo, Seat seat) {
+		log.info("movieInfo :  "+ seat);
 		log.info("kakaoPay post............................................");
+		
 		User user = (User) session.getAttribute("user");
 		// 유저아이디 없으면 메인페이지로 리턴
 		try {
 			if (user.getUserId() == null)
 				return "redirect:/notLogin";
 		} catch (NullPointerException e) {
-			return "redirect:/screen";
+			session.setAttribute("kakaoPay", "screen");
+			return "redirect:/login";
 		}
-
+		session.setAttribute("seatList", seat);
 		// 유저에 다른 정보 넣어주려면 User로 파라미터를 받고 필요없으면 session.userId쓰기
 		user.setUserId(user.getUserId());
 		// ↓ 필요한 parameter : 유저아이디, 영화이름, 표개수, 총액
-		return "redirect:" + kakaoPay.kakaoPayReady(movie, user);
+		return "redirect:" + kakaoPay.kakaoPayReady(movie, user,movieInfo);
 	}
 
 	@RequestMapping(value = "kakaoPayCancel")

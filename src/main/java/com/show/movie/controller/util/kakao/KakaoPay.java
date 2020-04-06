@@ -15,6 +15,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.show.movie.model.domain.kakao.KakaoPayReadyVO;
 import com.show.movie.model.domain.Movie;
+import com.show.movie.model.domain.MovieInfo;
 import com.show.movie.model.domain.User;
 import com.show.movie.model.domain.kakao.KakaoPayApprovalVO;
 
@@ -30,18 +31,18 @@ public class KakaoPay {
 	    private KakaoPayReadyVO kakaoPayReadyVO;
 	    private KakaoPayApprovalVO kakaoPayApprovalVO;
 	    
-	    public String kakaoPayReady(Movie movie, User user) {
+	    public String kakaoPayReady(Movie movie, User user,MovieInfo movieInfo) {
 	 
 	        RestTemplate restTemplate = new RestTemplate();
 	 
 	        // 서버로 요청할 Header
 	        HttpHeaders headers = new HttpHeaders();
 	        //카카오 개발자 인증. 꼭 Admin Key로 !
-	        headers.add("Authorization", "KakaoAK " + "5b50c16bc9b2c25a434fa19f62c330f9");
+	        headers.add("Authorization", "KakaoAK " + "14a59f898ea44ffd7ef323e0ddcfa713");
 	        //response.body를 JSON 타입으로 주기때문에 타입지정
 	        headers.add("Accept", MediaType.APPLICATION_JSON_UTF8_VALUE);
 	        //보낼때 JSON으로 보낸다.
-	        headers.add("Content-Type", MediaType.APPLICATION_FORM_URLENCODED_VALUE + ";charset=UTF-8");
+	        headers.add("Content-Type", MediaType.APPLICATION_FORM_URLENCODED_VALUE + ";charset=utf-8");
 	        
 	        
 	        // 서버로 요청할 Body
@@ -50,14 +51,14 @@ public class KakaoPay {
 	        params.add("partner_order_id", "1001");    			//관리자번호
 	        params.add("partner_user_id", user.getUserId());	//유저아이디
 	        params.add("item_name", movie.getMovieName());		//영화이름
-	        params.add("quantity", "2");						//영화표 몇 개 구매
-	        params.add("total_amount", "100");					//총액
+	        params.add("quantity", Integer.toString(movieInfo.getTotalPeople() ));						//영화표 몇 개 구매
+	        params.add("total_amount",  Integer.toString(movieInfo.getTotalPrice() ));					//총액
 	        params.add("tax_free_amount", "50");				//현금영수증용 
 																// ↑ 모두 필수
 	        // ↓고정
-	        params.add("approval_url", "http://192.168.0.23:5000//kakaoPaySuccess");		
-	        params.add("cancel_url", "http://192.168.0.23:5000//kakaoPayCancel");
-	        params.add("fail_url", "http://192.168.0.23:5000//kakaoPaySuccessFail");
+	        params.add("approval_url", "http://192.168.0.17:5000/kakaoPaySuccess");		
+	        params.add("cancel_url", "http://192.168.0.17:5000/kakaoPayCancel");
+	        params.add("fail_url", "http://192.168.0.17:5000/kakaoPaySuccessFail");
 	        HttpEntity<MultiValueMap<String, String>> body = 
 	        		 new HttpEntity<MultiValueMap<String, String>>(params, headers);
 	         System.out.println(body);
@@ -90,11 +91,11 @@ public class KakaoPay {
 	        // 서버로 요청할 Header
 	        HttpHeaders headers = new HttpHeaders();
 	        //카카오 개발자 인증. 꼭 Admin Key로 !
-	        headers.add("Authorization", "KakaoAK " + "5b50c16bc9b2c25a434fa19f62c330f9");
+	        headers.add("Authorization", "KakaoAK " + "14a59f898ea44ffd7ef323e0ddcfa713");
 	        //response.body를 JSON 타입으로 주기때문에 타입지정
 	        headers.add("Accept", MediaType.APPLICATION_JSON_UTF8_VALUE);
 	        //보낼때 JSON으로 보낸다.
-	        headers.add("Content-Type", MediaType.APPLICATION_FORM_URLENCODED_VALUE + ";charset=UTF-8");
+	        headers.add("Content-Type", MediaType.APPLICATION_FORM_URLENCODED_VALUE + ";charset=utf-8");
 	 
 	        // 서버로 요청할 Body
 	        MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();

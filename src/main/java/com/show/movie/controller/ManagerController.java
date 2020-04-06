@@ -3,7 +3,11 @@ package com.show.movie.controller;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -14,6 +18,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -62,8 +67,10 @@ public class ManagerController {
 	}
 	
 	@GetMapping("/addMovieInfo")
-	public String addMovieInfo(Model model) {
-		model.addAttribute("data",managerService.getMovieList());
+	public String addMovieInfo(Model model, HttpSession session) {
+		session.setAttribute("manager", "ko");
+		String managerId = (String)session.getAttribute("manager");
+		model.addAttribute("data",managerService.getMovieList(managerId));
 		return "addMovieInfo";
 	}
 	
@@ -73,5 +80,33 @@ public class ManagerController {
 		log.info("getBranchList : "+managerService.getBranchList(location));
 		return new Gson().toJson(managerService.getBranchList(location));
 	}
+	
+	@GetMapping(value = "/getTheaterInAddMovie" , produces = "application/json; charset=utf8")
+	@ResponseBody
+	public String getTheaterInAddMovie(String branchName) {
+		return new Gson().toJson(managerService.getTheaterList(branchName));
+	}
+	@PostMapping(value="/movieAddBranchAndTheater" , produces = "application/json; charset=utf8")
+	@ResponseBody
+	public String movieAddBranchAndTheater(String movieName, 
+			String[] branchName, String[] theaterName  ) {
+		log.info("movieName   "+movieName);
+		for(String bn : branchName) {
+		log.info("branchName  : "+ bn);
+		}
+		for(String tn : theaterName) {
+		log.info("theatherName  "+tn);
+		}
+		
+		return "";
+	}
 }
+
+
+
+
+
+
+
+
 

@@ -132,11 +132,11 @@
 								<li name="li_boxoRankList" class=""><a
 									href="" onclick="return false"
 									class="movie-list-info" title="영화상세 보기">
-									<input type="hidden"  name="movieName" value="시원찮은 그녀를 위한 육성방법 피날레" class="movie-info-hidden">
+									<input type="hidden"  name="movieName" value="킹 오브 프리즘 올 스타즈 -프리즘 쇼☆베스트10-" class="movie-info-hidden">
 										<p class="rank">
 											2<span class="ir">위</span>
 										</p> <!-- to 개발 : alt 값에 영화 제목 출력 --> <img
-										src="https://img.megabox.co.kr/SharedImg/2020/02/07/jO2LnVNFJxLzAL62WxHjDUBKbtPcV8ET_420.jpg"
+										src="/img/prisomPoster.jpg"
 										alt="시원찮은 그녀를 위한 육성방법 피날레" class="poster">
 										<div class="wrap">
 											<div class="summary">
@@ -191,7 +191,7 @@
 										<div class="case">
 											<!-- 개봉 예매가능 기본-->
 											
-											<button class="button gblue" name="movieName" value="시원찮은 그녀를 위한 육성방법 피날레">예매</button>
+											<button class="button gblue" name="movieName" value="킹 오브 프리즘 올 스타즈 -프리즘 쇼☆베스트10-">예매</button>
 											<!-- <a href="javascript:moveBokdPage('20000400');"
 												class="button gblue" title="영화 예매하기">예매</a> -->
 										</div>
