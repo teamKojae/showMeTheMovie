@@ -20,13 +20,12 @@ $(function(){
 
 $(document).on("click",".row__seat",function(event){
 
-	/*$(".TestClass").attr('class','NoClass');*/
-	
 	
 	var a = $(this).text();
-	/*var b=document.getElementById("test");*/
-   
-    
+
+	var count = $('#selectBox').val();
+	
+	
 	if($(this).attr('data-area')==0){
 	
     if($(event.target).hasClass('row__seat--reserved')){
@@ -36,11 +35,21 @@ $(document).on("click",".row__seat",function(event){
     	$('#test > p:contains('+seatName+') ').remove();
     	
     }else{
-    	 $(this).addClass('row__seat--reserved');
-    	 $("#test").append(
-    			 '<p">'+$(event.target).text()+'</p>'
-    			 +'<input type="hidden" name="seatName" value="'+$(event.target).text()+'">'
-    	 );
+    
+    	
+    		if(count>3){
+    			
+    			$(this).prop('checked', false);
+    			
+    			$(this).addClass('row__seat--reserved');
+    			$("#test").append(
+    					'<p>'+$(event.target).text()+'</p>'
+    					+'<input type="hidden" name="seatName" value="'+$(event.target).text()+'">'
+    			);
+    			
+    		}
+    		
+    	
     }
     
 	} else{

@@ -1,10 +1,10 @@
 package com.show.movie.controller;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.sql.Time;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -23,9 +23,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.show.movie.controller.util.parse.Parser;
 import com.show.movie.model.domain.Location;
 import com.show.movie.model.domain.Movie;
+import com.show.movie.model.domain.MovieInfo;
 import com.show.movie.model.service.ManagerService;
 
 import lombok.extern.log4j.Log4j;
@@ -35,6 +37,7 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 public class ManagerController {
 	
+	//웹에서 넘어온 Date 형식의 데이터를 java.sql.Date 형식에 맞춰 데이터 바인딩
 	@InitBinder
     protected void initBinder(WebDataBinder binder){
         DateFormat  dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -77,7 +80,7 @@ public class ManagerController {
 	@GetMapping(value = "/getBranchList" ,  produces = "application/json; charset=utf8")
 	@ResponseBody
 	public String getBranchList(Model model,Location location) {
-		log.info("getBranchList : "+managerService.getBranchList(location));
+		
 		return new Gson().toJson(managerService.getBranchList(location));
 	}
 	
@@ -86,20 +89,84 @@ public class ManagerController {
 	public String getTheaterInAddMovie(String branchName) {
 		return new Gson().toJson(managerService.getTheaterList(branchName));
 	}
-	@PostMapping(value="/movieAddBranchAndTheater" , produces = "application/json; charset=utf8")
+	
+	@PostMapping(value = "/getTheatersTimeTable" , produces = "application/json; charset=utf8")
 	@ResponseBody
-	public String movieAddBranchAndTheater(String movieName, 
-			String[] branchName, String[] theaterName  ) {
-		log.info("movieName   "+movieName);
-		for(String bn : branchName) {
-		log.info("branchName  : "+ bn);
-		}
-		for(String tn : theaterName) {
-		log.info("theatherName  "+tn);
+	public String getTheatersTimeTable(Model model, 
+			@RequestParam List<String> theaterNo , Date timeSchedule ) {
+		
+		List<List<MovieInfo>> list = managerService.getTimeScheduleInTheater(theaterNo, timeSchedule);
+		
+		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+		//Time time = new Time();
+		
+		for(List<MovieInfo> mo : list) {
+			int minTotalTime = 0;
+			int minMinus = 0;
+			int temp = 0;
+			for(MovieInfo m : mo) {
+				log.info("BEAN : "+m.getMovieStartTime());
+				String[] parse = m.getMovieStartTime().split(":");
+				minTotalTime =  ( Integer.parseInt(parse[0]) * 60 ) + Integer.parseInt(parse[1]);
+				minMinus  = minTotalTime - minMinus;
+				log.info("분으로 바꾸기 : "+ minTotalTime);
+				log.info("시간계산 : "+ minMinus);
+			}
 		}
 		
-		return "";
+		return gson.toJson(list);
 	}
+	
+
+//	public String movieAddBranchAndTheater(@RequestBody Map<String, Object> map) {
+//	public String movieAddBranchAndTheater(@RequestBody HashMap<String, Object> map) {
+//	,
+//	@RequestParam("theaterName") List<String> theaterName,
+//	@RequestParam("movieStartTime") List<String> movieStartTime)
+	
+	@PostMapping(value="/movieAddBranchAndTheater",  produces = "application/json; charset=utf8")
+	@ResponseBody
+	public String movieAddBranchAndTheater(
+			 @RequestParam String movieName,
+			 @RequestParam List<String> branchName,
+			 @RequestParam List<String> theaterName,
+			 @RequestParam List<String> movieStartTime
+			) {
+		log.info(movieName);
+		log.info(branchName);
+		log.info(theaterName);
+		log.info(movieStartTime);
+		
+		
+		
+		//managerService.insertTheater(movieName, theaterName);
+
+	//	log.info(movieStartTime);
+		
+
+		return "addMovieInfo";
+	}
+	
+	
+	
+//	@PostMapping(value="/movieAddBranchAndTheater",  produces = "application/json; charset=utf8")
+//	@ResponseBody
+//	public String movieAddBranchAndTheater(@RequestBody HashMap<String, Object> map) {
+//		log.info(map);
+//		log.info(map.get("theaterName"));
+//		String aa = (String)map.get("theaterName");
+//		String [] msg = (String[])map.get("theaterName");
+//
+//		log.info(aa);
+//		log.info(msg);
+//		//managerService.insertTheater(movieName, theaterName);
+//		log.info(theaterName);
+//		log.info(movieStartTime);
+//		
+//
+//		return "addMovieInfo";
+//	}
+	
 }
 
 

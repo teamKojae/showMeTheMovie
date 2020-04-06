@@ -51,6 +51,8 @@ public class KakaoController {
 		if (user.getUserId() != null) {
 			session.setAttribute("user", user);
 		}
+		//스크린창에서 로그인창으로 돌아온 경우에만 해당부분 실행 (스크린선택창에서 온게 아니면 메인페이지로 이동)
+		//영화선택한  정보값을 스크린선택 컨트롤러에 전달
 		String view = null;
 		if (session.getAttribute("kakaoPay") == null) {
 			view = "index";
@@ -62,10 +64,11 @@ public class KakaoController {
 		return view;
 	}
 
+
 	// 카카오 페이 결제 완료 후 정보 갖고오기
 	@GetMapping("/kakaoPaySuccess")
 	public String kakaoPay(Model model, @RequestParam("pg_token") String pg_token, HttpSession session) {
-		log.info("kakaoPaySuccess get............................................");
+		log.info("kakaoPaySuccess ............................................");
 		log.info("kakaoPaySuccess pg_token : " + pg_token);
 //			JSP 기준
 //			총 구매가격 : info.total 
@@ -81,12 +84,16 @@ public class KakaoController {
 		log.info("kakaoInfo :  " + kakaoInfo);
 
 		model.addAttribute("kakaoInfo", kakaoInfo);
+
 		kakaoInfo.getPartner_user_id();
 		kakaoInfo.getAmount().getTotal();
 		MovieInfo movieInfo = (MovieInfo)session.getAttribute("screenInfo");
 		//Seat seatList = (Seat)
 		log.info("movieInfo  : "+ movieInfo);
 		//movieName, theaterName, branchName,movieStartTime, movieEndTime
+
+//			 컨트롤러 기준
+
 //			 kakaoInfo에서 꺼내 쓰면 됩니다.
 //			 kakaoInfo.getPartner_user_id()
 //			 kakaoInfo.getAmount().total() 등등..

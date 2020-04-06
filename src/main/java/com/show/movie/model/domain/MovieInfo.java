@@ -1,6 +1,7 @@
 package com.show.movie.model.domain;
 
 import java.sql.Date;
+import java.util.List;
 
 import org.apache.ibatis.type.Alias;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,11 +47,12 @@ public class MovieInfo {
 	private int moiveInfoCode;
 	private String movieStartTime; 
 	private Date movieDate;
-
 	private String movieEndTime;
-	
+
 	private int totalPrice;
 	private int totalPeople;
+	private List<MovieInfo> info;
+
 	public MovieInfo(Movie movie, Theater theater, Branch branch, int moiveInfoCode, Date movieDate,
 			String movieStartTime, String movieEndTime) {
 		super();

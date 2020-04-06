@@ -94,7 +94,8 @@
 	</select>
 	
 	<select id="getMovieSynopsis" resultType="string">
-		SELECT movieSynopsis FROM movie where moviename = #{movieName};
+		SELECT movieSynopsis FROM movie 
+		WHERE movieName = #{movieName};
 	</select>
 		
 	<select id="getMovieInfo" resultMap="mvInfo" parameterType="movieInfo">
