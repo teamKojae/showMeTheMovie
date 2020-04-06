@@ -64,13 +64,13 @@
 	</select>
 
 	<select id="getMovieAllList" resultType="movie">
-		select * from movie
+		select movieName,movieCode from movie
 	</select>
 
-	<select id="getNotRegisMovie" resultType="movie">
+	<select id="getNotRegisMovie" resultType="movie" >
 		SELECT movie.movieCode,movie.movieName FROM movieInfo, movie
 		WHERE movie.movieCode = movieInfo.movieCode
-		AND movieDate =
+		AND movieInfo.movieDate =
 		<choose>
 			<when test='movieDate == null'>
 				'2020-04-06'

@@ -20,8 +20,8 @@
 		<c:import url="/resources/common/header.jsp"></c:import>
 		<div class="inner-wrap"
 			style="padding-top: 40px; padding-bottom: 100px;">
-			<input type="hidden" id="playDe" name="playDe" value="2020.03.17">
-			<input type="hidden" id="crtDe" name="crtDe" value="2020.03.17">
+			<input type="hidden" id="playDe" name="playDe" value="2020-03.17">
+			<input type="hidden" id="crtDe" name="crtDe" value="2020-03.17">
 
 			<!-- quick-reserve -->
 			<div class="quick-reserve">
@@ -47,7 +47,7 @@
 							<div class="date-list">
 								<!-- 년도, 월 표시 -->
 								<div class="year-area">
-									<div class="year" style="left: 30px; z-index: 1; opacity: 1;">2020.04</div>
+									<div class="year" style="left: 30px; z-index: 1; opacity: 1;">2020-04</div>
 									<div class="year" style="left: 450px; z-index: 1; opacity: 0;"></div>
 								</div>
 
@@ -55,7 +55,7 @@
 								<div class="date-area" id="formDeList">
 									<div class="wrap"
 										style="position: relative; width: 2100px; border: none; left: -70px;">
-										<button class="disabled" type="button" value="2020.04.05"
+										<button class="disabled" type="button" value="2020-04-05"
 											month="4" tabindex="-1">
 											<span class="ir">2020년 4월</span><em
 												style="pointer-events: none;">05<span
@@ -64,7 +64,7 @@
 												style="pointer-events: none; display: inline-block">일</span><span
 												class="day-en" style="pointer-events: none; display: none">Sun</span>
 										</button>
-										<button class="on" type="button" value="2020.04.06">
+										<button class="on" type="button" value="2020-04-06">
 											<span class="ir">2020년 4월</span><em
 												style="pointer-events: none;">06<span
 												style="pointer-events: none;" class="ir">일</span></em><span
@@ -72,7 +72,7 @@
 												style="pointer-events: none; display: inline-block">오늘</span><span
 												class="day-en" style="pointer-events: none; display: none">Mon</span>
 										</button>
-										<button class="" type="button" value="2020.04.07"
+										<button class="" type="button" value="2020-04-07"
 											month="4">
 											<span class="ir">2020년 4월</span><em
 												style="pointer-events: none;">07<span
@@ -81,7 +81,7 @@
 												style="pointer-events: none; display: inline-block">내일</span><span
 												class="day-en" style="pointer-events: none; display: none">Tue</span>
 										</button>
-										<button class="" type="button" value="2020.04.08"
+										<button class="" type="button" value="2020-04-08"
 											month="4">
 											<span class="ir">2020년 4월</span><em
 												style="pointer-events: none;">08<span
@@ -90,7 +90,7 @@
 												style="pointer-events: none; display: inline-block">수</span><span
 												class="day-en" style="pointer-events: none; display: none">Wen</span>
 										</button>
-										<button class="" type="button" value="2020.04.09"
+										<button class="" type="button" value="2020-04-09"
 											month="4">
 											<span class="ir">2020년 4월</span><em
 												style="pointer-events: none;">09<span
@@ -99,7 +99,7 @@
 												style="pointer-events: none; display: inline-block">목</span><span
 												class="day-en" style="pointer-events: none; display: none">Thu</span>
 										</button>
-										<button class="sat" type="button" value="2020.04.10"
+										<button class="" type="button" value="2020-04-10"
 											month="4">
 											<span class="ir">2020년 4월</span><em
 												style="pointer-events: none;">10<span
@@ -108,7 +108,7 @@
 												style="pointer-events: none; display: inline-block">금</span><span
 												class="day-en" style="pointer-events: none; display: none">Fri</span>
 										</button>
-										<button class="holi" type="button" value="2020.04.11"
+										<button class="sat" type="button" value="2020-04-11"
 											month="2">
 											<span class="ir">2020년 4월</span><em
 												style="pointer-events: none;">11<span
@@ -117,7 +117,7 @@
 												style="pointer-events: none; display: inline-block">토</span><span
 												class="day-en" style="pointer-events: none; display: none">Sat</span>
 										</button>
-										<button class="" type="button" value="2020.04.12"
+										<button class="holi" type="button" value="2020-04-12"
 											month="4">
 											<span class="ir">2020년 4월</span><em
 												style="pointer-events: none;">12<span
@@ -126,7 +126,7 @@
 												style="pointer-events: none; display: inline-block">일</span><span
 												class="day-en" style="pointer-events: none; display: none">Sun</span>
 										</button>
-										<button class="" type="button" value="2020.04.13"
+										<button class="" type="button" value="2020-04-13"
 											month="4">
 											<span class="ir">2020년 4월</span><em
 												style="pointer-events: none;">13<span
@@ -135,7 +135,7 @@
 												style="pointer-events: none; display: inline-block">월</span><span
 												class="day-en" style="pointer-events: none; display: none">Mon</span>
 										</button>
-										<button class="" type="button" value="2020.04.14"
+										<button class="" type="button" value="2020-04-14"
 											month="4">
 											<span class="ir">2020년 4월</span><em
 												style="pointer-events: none;">14<span
@@ -144,7 +144,7 @@
 												style="pointer-events: none; display: inline-block">화</span><span
 												class="day-en" style="pointer-events: none; display: none">Tue</span>
 										</button>
-										<button class="disabled" type="button" value="2020.04.15"
+										<button class="disabled" type="button" value="2020-04-15"
 											month="4">
 											<span class="ir">2020년 4월</span><em
 												style="pointer-events: none;">15<span
@@ -153,7 +153,7 @@
 												style="pointer-events: none; display: inline-block">수</span><span
 												class="day-en" style="pointer-events: none; display: none">Wen</span>
 										</button>
-										<button class="" type="button" value="2020.04.16"
+										<button class="disabled" type="button" value="2020-04-16"
 											month="4">
 											<span class="ir">2020년 4월</span><em
 												style="pointer-events: none;">16<span
@@ -162,7 +162,7 @@
 												style="pointer-events: none; display: inline-block">목</span><span
 												class="day-en" style="pointer-events: none; display: none">Thu</span>
 										</button>
-										<button class="sat" type="button" value="2020.04.17"
+										<button class="disabled" type="button" value="2020-04-17"
 											month="4">
 											<span class="ir">2020년 4월</span><em
 												style="pointer-events: none;">17<span
@@ -171,7 +171,7 @@
 												style="pointer-events: none; display: inline-block">금</span><span
 												class="day-en" style="pointer-events: none; display: none">Fri</span>
 										</button>
-										<button class="holi" type="button" value="2020.04.18"
+										<button class="disabled" type="button" value="2020-04-18"
 											month="4">
 											<span class="ir">2020년 4월</span><em
 												style="pointer-events: none;">18<span
@@ -180,7 +180,7 @@
 												style="pointer-events: none; display: inline-block">토</span><span
 												class="day-en" style="pointer-events: none; display: none">Sat</span>
 										</button>
-										<button class="disabled" type="button" value="2020.04.19"
+										<button class="disabled" type="button" value="2020-04-19"
 											month="4">
 											<span class="ir">2020년 4월</span><em
 												style="pointer-events: none;">19<span
@@ -189,7 +189,7 @@
 												style="pointer-events: none; display: inline-block">일</span><span
 												class="day-en" style="pointer-events: none; display: none">Sun</span>
 										</button>
-										<button class="" type="button" value="2020.04.20"
+										<button class="disabled" type="button" value="2020-04-20"
 											month="4" tabindex="-1">
 											<span class="ir">2020년 4월</span><em
 												style="pointer-events: none;">20<span
@@ -210,7 +210,7 @@
 
 							<!-- 달력보기 -->
 							<div class="bg-line">
-								<input type="hidden" id="datePicker" value="2020.03.17"
+								<input type="hidden" id="datePicker" value="2020-04-17"
 									class="hasDatepicker">
 								<button type="button" id="calendar"
 									onclick="$('#datePicker').datepicker('show')"
@@ -251,7 +251,23 @@
 																	<button type="button" class="btn" value="${movieList.movieName }" disabled>
 																		<i
 																			class="iconset ico-heart-small">보고싶어 설정안함</i>
-																			<span class="movie-grade small age-12">12세이상관람가</span>
+																			<c:choose>
+																				<c:when test="${status.index % 4 eq 0}">
+																					<span class="movie-grade small age-12">12세이상관람가</span>
+																				</c:when>
+																				
+																				<c:when test="${status.index % 4 eq 2}">
+																					<span class="movie-grade small age-15">15세이상관람가</span>
+																				</c:when>
+																				
+																				<c:when test="${status.index % 8 eq 5}">
+																					<span class="movie-grade small age-19">19세이상관람가</span>
+																				</c:when>
+																				
+																				<c:otherwise>
+																					<span class="movie-grade small age-all">전체관람가</span>
+																				</c:otherwise>
+																			</c:choose>
 																			<span
 																			class="txt">${movieList.movieName }</span>
 																	</button>
@@ -311,17 +327,6 @@
 																		
 
 																	</ul>
-																</div>
-																<div id="mCSB_4_scrollbar_vertical"
-																	class="mCSB_scrollTools mCSB_4_scrollbar mCS-light mCSB_scrollTools_vertical">
-																	<div class="mCSB_draggerContainer">
-																		<div id="mCSB_4_dragger_vertical" class="mCSB_dragger"
-																			style="position: absolute; min-height: 30px; display: none; top: 0px;">
-																			<div class="mCSB_dragger_bar"
-																				style="line-height: 30px;"></div>
-																		</div>
-																		<div class="mCSB_draggerRail"></div>
-																	</div>
 																</div>
 															</div>
 														</div>
@@ -619,23 +624,13 @@
 								</div>
 								
 								<div class="result0 no-result" id="playScheduleNonList" style="display:none">
-									<i class="iconset ico-movie-time"></i>
+									
+									 <i class="iconset ico-tab-theater"></i>
+									 <!-- <i class="iconset ico-tab-special"></i> --> 
+									<!-- <i class="iconset ico-tab-movie"></i> -->
 
-									<p class="txt">해당 영화가 없습니다<br></p>
+									<p class="txt">죄송합니다. 극장에 해당 영화를 상영중이지 않습니다.<br></p>
 								</div>
-								
-											
-											
-											<div id="mCSB_21_scrollbar_vertical"
-												class="mCSB_scrollTools mCSB_21_scrollbar mCS-light mCSB_scrollTools_vertical">
-												<div class="mCSB_draggerContainer">
-													<div id="mCSB_21_dragger_vertical" class="mCSB_dragger"
-														style="position: absolute; min-height: 30px; display: none; height: 554px; max-height: 420px; top: 0px;">
-														<div class="mCSB_dragger_bar" style="line-height: 30px;"></div>
-													</div>
-													<div class="mCSB_draggerRail"></div>
-												</div>
-											</div>
 										</div>
 									</div>
 

@@ -5,7 +5,6 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
-import com.show.movie.model.domain.Branch;
 import com.show.movie.model.domain.Movie;
 import com.show.movie.model.domain.MovieInfo;
 import com.show.movie.model.domain.Seat;
@@ -20,7 +19,7 @@ public interface MovieDAO {
 	public int isView();
 	public void createViewGetMovieInfo();
 	public List<Movie> getMovieAllList();
-	public List<Movie> getNotRegisMovie(String movieDate);
+	public List<Movie> getNotRegisMovie(@Param("movieDate") String movieDate);
 	
 	
 	
