@@ -37,7 +37,7 @@ public class KakaoAPI {
 			sb.append("&client_id=e7a638f0535094326fe38f8ae0fc6bde");
 
 //			sb.append("&redirect_uri=http://localhost:5000/kakaoCallback");
-			sb.append("&redirect_uri=http://192.168.0.17:5000/kakaoCallback");
+			sb.append("&redirect_uri=http://192.168.0.23:5000/kakaoCallback");
 
 			sb.append("&code=" + authorize_code);
 			bw.write(sb.toString());

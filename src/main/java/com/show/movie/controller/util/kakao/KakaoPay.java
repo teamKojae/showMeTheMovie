@@ -44,7 +44,6 @@ public class KakaoPay {
 	        //보낼때 JSON으로 보낸다.
 	        headers.add("Content-Type", MediaType.APPLICATION_FORM_URLENCODED_VALUE + ";charset=utf-8");
 	        
-	        
 	        // 서버로 요청할 Body
 	        MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
 	        params.add("cid", "TC0ONETIME");					//카카오페이 테스트버전 명시
@@ -56,7 +55,6 @@ public class KakaoPay {
 	        params.add("tax_free_amount", "50");				//현금영수증용 
 																// ↑ 모두 필수
 	        // ↓고정
-
 	        params.add("approval_url", "http://192.168.0.23:5000/kakaoPaySuccess");		
 	        params.add("cancel_url", "http://192.168.0.23:5000/kakaoPayCancel");
 	        params.add("fail_url", "http://192.168.0.23:5000/kakaoPaySuccessFail");
@@ -75,6 +73,7 @@ public class KakaoPay {
 	            return kakaoPayReadyVO.getNext_redirect_pc_url();
 	 
 	        } catch (RestClientException e) {
+	        	
 	        	System.out.println("restExc");
 	            e.printStackTrace();
 	        } catch (URISyntaxException e) {

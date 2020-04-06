@@ -132,12 +132,12 @@
 								<li name="li_boxoRankList" class=""><a
 									href="" onclick="return false"
 									class="movie-list-info" title="영화상세 보기">
-									<input type="hidden"  name="movieName" value="킹 오브 프리즘 올 스타즈 -프리즘 쇼☆베스트10-" class="movie-info-hidden">
+									<input type="hidden"  name="movieName" value="터미네이터: 다크 페이트" class="movie-info-hidden">
 										<p class="rank">
 											2<span class="ir">위</span>
 										</p> <!-- to 개발 : alt 값에 영화 제목 출력 --> <img
-										src="/img/prisomPoster.jpg"
-										alt="시원찮은 그녀를 위한 육성방법 피날레" class="poster">
+										src="/img/220px-터미네이터다크페이트_포스터.jpg"
+										alt="터미네이터: 다크 페이트" class="poster">
 										<div class="wrap">
 											<div class="summary">
 												어느 봄날, 아키 토모야는 벚꽃이 흩날리는 언덕길에서 운명적으로 만난 소녀 '카토 메구미'를 메인 히로인으로

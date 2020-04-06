@@ -161,7 +161,7 @@
 		ORDER BY movieStartTime ASC;
 	</select>
 
-
+	
 
 
 	<!-- 헤맨 것 : ViewTable을 Alias 해주면 접근이 안됬음 ㅜㅜ. 그래서 WHERE로 조건을 못줬음 해결 : resultMap으로 

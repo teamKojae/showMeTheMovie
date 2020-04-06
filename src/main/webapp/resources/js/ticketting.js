@@ -26,14 +26,14 @@ function changeChoiseMovie(){
 	$('#mCSB_1_container').find('button').bind('click',function(event){
 		$('.theater-choice .on').removeClass('on has-issue');
 		$('.result').find('ul').empty();
-		$.ajax({
+		/*$.ajax({
 			url:"",
 			data:{
 				movieName: $(event.target).val()
 			}
 		
 		}).done(function(result){})
-		
+		*/
 		$('#movie-schedule-area').attr('style', 'display:none');
 		$('#playScheduleNonList').attr('style', 'display:block');
 		
@@ -115,6 +115,9 @@ function getTheater(event) {
 														+ '<span>'+item+'</span>'
 														+ '</button></li>');
 									})
+									
+									
+									
 				}
 
 			});
@@ -159,6 +162,11 @@ function getMovieInfoAndTime(event) {
 			
 				
 				success : function(result) {
+					console.log(result.length);
+					$('.result0').attr('style','display:none');
+					if(result.length < 1 ){
+						$('.result0').attr('style','display:block');
+					}
 					$('#playScheduleNonList').attr('style', 'display:none');
 					$('.result').find('ul').empty();
 					$.each(result,function(index, item) {

@@ -295,7 +295,7 @@
 										<div class="scroll" id="brchList">
 											<ul>
 												<li><button type="button" class="btn" id="10" value="강북구">
-														<span calss="txt">강북구(20)</span>
+														<span calss="txt">강북구</span>
 													</button>
 													<%--  실제 구현할때 style 빼세요 --%>
 													<div class="depth" style="display:flex; " >
@@ -326,8 +326,8 @@
 															</div>
 														</div>
 													</div></li>
-												<li><button type="button" class="btn" id="30">
-														<span calss="txt">노원구(25)</span>
+												<li><button type="button" class="btn" id="30" value="노원구">
+														<span calss="txt">노원구</span>
 													</button>
 													<div class="depth">
 														<div
@@ -339,11 +339,7 @@
 																	class="mCSB_container mCS_no_scrollbar_y"
 																	style="position: relative; top: 0; left: 0;" dir="ltr">
 																	<ul>
-																		<li><button id="btn" type="button" brch-no="4121"
-																				brch-nm="고양스타필드" brch-eng-nm="Goyang Starfield"
-																				form-at="N" area-cd="30" area-cd-nm="경기"
-																				spclb-yn="N" brch-bokd-unable-at="N"
-																				brch-popup-at="Y" brch-popup-no="976">고양스타필드</button></li>
+																		
 
 																	</ul>
 																</div>
@@ -361,8 +357,8 @@
 															</div>
 														</div>
 													</div></li>
-												<li><button type="button" class="btn" id="35">
-														<span calss="txt">동대문구(6)</span>
+												<li><button type="button" class="btn" id="35" value="동대문구">
+														<span calss="txt">동대문구</span>
 													</button>
 													<div class="depth">
 														<div
@@ -374,11 +370,7 @@
 																	class="mCSB_container mCS_no_scrollbar_y"
 																	style="position: relative; top: 0; left: 0;" dir="ltr">
 																	<ul>
-																		<li><button id="btn" type="button" brch-no="4041"
-																				brch-nm="검단" brch-eng-nm="Geomdan" form-at="N"
-																				area-cd="35" area-cd-nm="인천" spclb-yn="N"
-																				brch-bokd-unable-at="N" brch-popup-at="Y"
-																				brch-popup-no="945">검단</button></li>
+																	
 
 																	</ul>
 																</div>
@@ -396,8 +388,8 @@
 															</div>
 														</div>
 													</div></li>
-												<li><button type="button" class="btn" id="45">
-														<span calss="txt">성동구(5)</span>
+												<li><button type="button" class="btn" id="45" value="성동구">
+														<span calss="txt">성동구</span>
 													</button>
 													<div class="depth">
 														<div
@@ -409,11 +401,7 @@
 																	class="mCSB_container mCS_no_scrollbar_y"
 																	style="position: relative; top: 0; left: 0;" dir="ltr">
 																	<ul>
-																		<li><button id="btn" type="button" brch-no="3141"
-																				brch-nm="공주" brch-eng-nm="Gongju" form-at="N"
-																				area-cd="45" area-cd-nm="대전/충청/세종" spclb-yn="N"
-																				brch-bokd-unable-at="N" brch-popup-at="N"
-																				brch-popup-no="0">공주</button></li>
+																		
 
 																	</ul>
 																</div>
@@ -431,8 +419,8 @@
 															</div>
 														</div>
 													</div></li>
-												<li><button type="button" class="btn" id="55">
-														<span calss="txt">강남구(23)</span>
+												<li><button type="button" class="btn" id="55" value="강남구">
+														<span calss="txt">강남구</span>
 													</button>
 													<div class="depth">
 														<div
@@ -444,11 +432,7 @@
 																	class="mCSB_container mCS_no_scrollbar_y"
 																	style="position: relative; top: 0; left: 0;" dir="ltr">
 																	<ul>
-																		<li><button id="btn" type="button" brch-no="6701"
-																				brch-nm="거창" brch-eng-nm="Geochang" form-at="N"
-																				area-cd="55" area-cd-nm="부산/대구/경상" spclb-yn="N"
-																				brch-bokd-unable-at="N" brch-popup-at="N"
-																				brch-popup-no="0">거창</button></li>
+																	
 																	</ul>
 																</div>
 																<div id="mCSB_8_scrollbar_vertical"
@@ -465,8 +449,8 @@
 															</div>
 														</div>
 													</div></li>
-												<li><button type="button" class="btn" id="65">
-														<span calss="txt">서초구(17)</span>
+												<li><button type="button" class="btn" id="65" value="서초구">
+														<span calss="txt">서초구</span>
 													</button>
 													<div class="depth">
 														<div
@@ -478,12 +462,7 @@
 																	class="mCSB_container mCS_no_scrollbar_y"
 																	style="position: relative; top: 0; left: 0;" dir="ltr">
 																	<ul>
-																		<li><button id="btn" type="button" brch-no="5021"
-																				brch-nm="광주상무" brch-eng-nm="Gwangju Sangmu"
-																				form-at="Y" area-cd="65" area-cd-nm="광주/전라"
-																				spclb-yn="N" brch-bokd-unable-at="N"
-																				brch-popup-at="Y" brch-popup-no="970">광주상무</button></li>
-
+																		
 																	</ul>
 																</div>
 																<div id="mCSB_9_scrollbar_vertical"
@@ -500,8 +479,8 @@
 															</div>
 														</div>
 													</div></li>
-												<li><button type="button" class="btn" id="70">
-														<span calss="txt">동작구(12)</span>
+												<li><button type="button" class="btn" id="70" value="동작구">
+														<span calss="txt">동작구</span>
 													</button>
 													<div class="depth">
 														<div
@@ -513,11 +492,7 @@
 																	class="mCSB_container mCS_no_scrollbar_y"
 																	style="position: relative; top: 0; left: 0;" dir="ltr">
 																	<ul>
-																		<li><button id="btn" type="button" brch-no="2001"
-																				brch-nm="남춘천" brch-eng-nm="Namchuncheon" form-at="N"
-																				area-cd="70" area-cd-nm="강원" spclb-yn="N"
-																				brch-bokd-unable-at="N" brch-popup-at="N"
-																				brch-popup-no="0">남춘천</button></li>
+																	
 
 																	</ul>
 																</div>
@@ -536,8 +511,8 @@
 															</div>
 														</div>
 													</div></li>
-												<li><button type="button" class="btn" id="80">
-														<span calss="txt">관악구(10)</span>
+												<li><button type="button" class="btn" id="80" value="관악구">
+														<span calss="txt">관악구</span>
 													</button>
 													<div class="depth">
 														<div
@@ -549,11 +524,7 @@
 																	class="mCSB_container mCS_no_scrollbar_y"
 																	style="position: relative; top: 0; left: 0;" dir="ltr">
 																	<ul>
-																		<li><button id="btn" type="button" brch-no="6901"
-																				brch-nm="제주" brch-eng-nm="Jeju" form-at="Y"
-																				area-cd="80" area-cd-nm="제주" spclb-yn="N"
-																				brch-bokd-unable-at="N" brch-popup-at="N"
-																				brch-popup-no="0">제주</button></li>
+																
 																	</ul>
 																</div>
 																<div id="mCSB_11_scrollbar_vertical"
@@ -584,188 +555,8 @@
 									<div class="list" id="specialBrchTab">
 										<div class="scroll" id="specialBrchList">
 											<ul>
-												<li><button type="button" class="btn" id="MX">
-														<span calss="txt">MX(9)</span>
-													</button>
-													<div class="depth">
-														<div
-															class="detail-list m-scroll area-cdMX mCustomScrollbar _mCS_12 mCS_no_scrollbar">
-															<div id="mCSB_12"
-																class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside"
-																style="max-height: none;" tabindex="0">
-																<div id="mCSB_12_container"
-																	class="mCSB_container mCS_no_scrollbar_y"
-																	style="position: relative; top: 0; left: 0;" dir="ltr">
-																	<ul>
-																		<li><button id="btn" type="button" brch-no="4121"
-																				brch-nm="고양스타필드" brch-eng-nm="Goyang Starfield"
-																				form-at="N" area-cd="MX" area-cd-nm="MX"
-																				spclb-yn="Y" ori-area-cd="30"
-																				brch-bokd-unable-at="N" brch-popup-at="Y"
-																				brch-popup-no="976">고양스타필드</button></li>
-
-																	</ul>
-																</div>
-																<div id="mCSB_12_scrollbar_vertical"
-																	class="mCSB_scrollTools mCSB_12_scrollbar mCS-light mCSB_scrollTools_vertical">
-																	<div class="mCSB_draggerContainer">
-																		<div id="mCSB_12_dragger_vertical"
-																			class="mCSB_dragger"
-																			style="position: absolute; min-height: 30px; display: none; top: 0px;">
-																			<div class="mCSB_dragger_bar"
-																				style="line-height: 30px;"></div>
-																		</div>
-																		<div class="mCSB_draggerRail"></div>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div></li>
-												<li><button type="button" class="btn" id="CFT">
-														<span calss="txt">COMFORT(27)</span>
-													</button>
-													<div class="depth">
-														<div
-															class="detail-list m-scroll area-cdCFT mCustomScrollbar _mCS_13 mCS_no_scrollbar">
-															<div id="mCSB_13"
-																class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside"
-																style="max-height: none;" tabindex="0">
-																<div id="mCSB_13_container"
-																	class="mCSB_container mCS_no_scrollbar_y"
-																	style="position: relative; top: 0; left: 0;" dir="ltr">
-																	<ul>
-																		<li><button id="btn" type="button" brch-no="4041"
-																				brch-nm="검단" brch-eng-nm="Geomdan" form-at="N"
-																				area-cd="CFT" area-cd-nm="COMFORT" spclb-yn="Y"
-																				ori-area-cd="35" brch-bokd-unable-at="N"
-																				brch-popup-at="Y" brch-popup-no="945">검단</button></li>
-
-																	</ul>
-																</div>
-																<div id="mCSB_13_scrollbar_vertical"
-																	class="mCSB_scrollTools mCSB_13_scrollbar mCS-light mCSB_scrollTools_vertical">
-																	<div class="mCSB_draggerContainer">
-																		<div id="mCSB_13_dragger_vertical"
-																			class="mCSB_dragger"
-																			style="position: absolute; min-height: 30px; display: none; top: 0px;">
-																			<div class="mCSB_dragger_bar"
-																				style="line-height: 30px;"></div>
-																		</div>
-																		<div class="mCSB_draggerRail"></div>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div></li>
-												<li><button type="button" class="btn" id="TBQ">
-														<span calss="txt">THE BOUTIQUE(6)</span>
-													</button>
-													<div class="depth">
-														<div
-															class="detail-list m-scroll area-cdTBQ mCustomScrollbar _mCS_14 mCS_no_scrollbar">
-															<div id="mCSB_14"
-																class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside"
-																style="max-height: none;" tabindex="0">
-																<div id="mCSB_14_container"
-																	class="mCSB_container mCS_no_scrollbar_y"
-																	style="position: relative; top: 0; left: 0;" dir="ltr">
-																	<ul>
-																		<li><button id="btn" type="button" brch-no="4631"
-																				brch-nm="분당" brch-eng-nm="Bundang" form-at="N"
-																				area-cd="TBQ" area-cd-nm="THE BOUTIQUE" spclb-yn="Y"
-																				ori-area-cd="30" brch-bokd-unable-at="N"
-																				brch-popup-at="Y" brch-popup-no="958">분당</button></li>
-
-																	</ul>
-																</div>
-																<div id="mCSB_14_scrollbar_vertical"
-																	class="mCSB_scrollTools mCSB_14_scrollbar mCS-light mCSB_scrollTools_vertical">
-																	<div class="mCSB_draggerContainer">
-																		<div id="mCSB_14_dragger_vertical"
-																			class="mCSB_dragger"
-																			style="position: absolute; min-height: 30px; display: none; top: 0px;">
-																			<div class="mCSB_dragger_bar"
-																				style="line-height: 30px;"></div>
-																		</div>
-																		<div class="mCSB_draggerRail"></div>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div></li>
-												<li><button type="button" class="btn" id="MKB">
-														<span calss="txt">MEGABOX KIDS(4)</span>
-													</button>
-													<div class="depth">
-														<div
-															class="detail-list m-scroll area-cdMKB mCustomScrollbar _mCS_15 mCS_no_scrollbar">
-															<div id="mCSB_15"
-																class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside"
-																style="max-height: none;" tabindex="0">
-																<div id="mCSB_15_container"
-																	class="mCSB_container mCS_no_scrollbar_y"
-																	style="position: relative; top: 0; left: 0;" dir="ltr">
-																	<ul>
-																		<li><button id="btn" type="button" brch-no="6312"
-																				brch-nm="마산" brch-eng-nm="Masan" form-at="N"
-																				area-cd="MKB" area-cd-nm="MEGABOX KIDS" spclb-yn="Y"
-																				ori-area-cd="55" brch-bokd-unable-at="N"
-																				brch-popup-at="Y" brch-popup-no="986">마산</button></li>
-
-																	</ul>
-																</div>
-																<div id="mCSB_15_scrollbar_vertical"
-																	class="mCSB_scrollTools mCSB_15_scrollbar mCS-light mCSB_scrollTools_vertical">
-																	<div class="mCSB_draggerContainer">
-																		<div id="mCSB_15_dragger_vertical"
-																			class="mCSB_dragger"
-																			style="position: absolute; min-height: 30px; display: none; top: 0px;">
-																			<div class="mCSB_dragger_bar"
-																				style="line-height: 30px;"></div>
-																		</div>
-																		<div class="mCSB_draggerRail"></div>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div></li>
-												<li><button type="button" class="btn" id="TFC">
-														<span calss="txt">THE FIRST CLUB(1)</span>
-													</button>
-																
-													<div class="depth" >
-														<div
-															class="detail-list m-scroll area-cdTFC mCustomScrollbar _mCS_16 mCS_no_scrollbar">
-															<div id="mCSB_16"
-																class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside"
-																style="max-height: none;" tabindex="0">
-																<div id="mCSB_16_container"
-																	class="mCSB_container mCS_no_scrollbar_y"
-																	style="position: relative; top: 0; left: 0;" dir="ltr">
-																	<ul>
-																		<li><button id="btn" type="button" brch-no="4112"
-																				brch-nm="킨텍스" brch-eng-nm="KINTEX" form-at="N"
-																				area-cd="TFC" area-cd-nm="THE FIRST CLUB"
-																				spclb-yn="Y" ori-area-cd="30"
-																				brch-bokd-unable-at="N" brch-popup-at="Y"
-																				brch-popup-no="981">킨텍스</button></li>
-																	</ul>
-																</div>
-																<div id="mCSB_16_scrollbar_vertical"
-																	class="mCSB_scrollTools mCSB_16_scrollbar mCS-light mCSB_scrollTools_vertical">
-																	<div class="mCSB_draggerContainer">
-																		<div id="mCSB_16_dragger_vertical"
-																			class="mCSB_dragger"
-																			style="position: absolute; min-height: 30px; display: none; top: 0px;">
-																			<div class="mCSB_dragger_bar"
-																				style="line-height: 30px;"></div>
-																		</div>
-																		<div class="mCSB_draggerRail"></div>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div></li>
+												
+												
 											</ul>
 										</div>
 									</div>
@@ -826,6 +617,13 @@
 										영화와 극장을 선택하시면<br> 상영시간표를 비교하여 볼 수 있습니다.
 									</p>
 								</div>
+								
+								<div class="result0 no-result" id="playScheduleNonList" style="display:none">
+									<i class="iconset ico-movie-time"></i>
+
+									<p class="txt">해당 영화가 없습니다<br></p>
+								</div>
+								
 											
 											
 											<div id="mCSB_21_scrollbar_vertical"
