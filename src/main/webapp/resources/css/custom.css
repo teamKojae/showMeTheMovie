@@ -139,3 +139,6 @@
 .theater-list{
 	width : 100%;
 }
+#mCSB_1{
+	overflow-y:scroll; 
+}

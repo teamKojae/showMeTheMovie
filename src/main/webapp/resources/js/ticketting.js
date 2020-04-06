@@ -4,9 +4,16 @@ $(function() {
 	getMovieName();
 	requestKakaoPay();
 	clickMovie();
+	movieNotRegis();
 })
 
 
+function movieNotRegis(){
+	var regisMovie = $('input[name="regisMovie"');
+	$.each(regisMovie,function(index,value){
+		$('#mCSB_1_container > ul li').find('span:contains('+value.value+')').closest('button').attr('disabled',false);
+	})
+}
 
 function requestKakaoPay() {
 	$('.button').on('click', function(event) {
@@ -19,6 +26,14 @@ function changeChoiseMovie(){
 	$('#mCSB_1_container').find('button').bind('click',function(event){
 		$('.theater-choice .on').removeClass('on has-issue');
 		$('.result').find('ul').empty();
+		$.ajax({
+			url:"",
+			data:{
+				movieName: $(event.target).val()
+			}
+		
+		}).done(function(result){})
+		
 		$('#movie-schedule-area').attr('style', 'display:none');
 		$('#playScheduleNonList').attr('style', 'display:block');
 		

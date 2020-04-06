@@ -38,6 +38,7 @@ public class MovieController {
 	
 	@GetMapping("/ticketing")
 	public String ticketing(Model model,Movie movie) {
+		model.addAttribute("movies",movieService.getMovieAllList(null));
 		return "ticketing";
 	}
 

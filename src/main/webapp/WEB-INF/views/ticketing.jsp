@@ -27,36 +27,8 @@
 			<div class="quick-reserve">
 				<div class="tit-util">
 					<h2 class="tit">빠른예매</h2>
-
-					<div id="btnLangChg" class="right btn-ticket" style="display: none">
-						<button type="button" class="button gray-line"
-							onclick="parent.setLangChg()">English</button>
-					</div>
 				</div>
 
-				<!-- cti 일때만 출력 -->
-				<div class="cti-area" style="display: none">
-					<p>이름</p>
-					<input maxlength="20" name="riaName" type="text" title="이름 출력"
-						class="input-text a-c w120px" placeholder="이름" value="">
-
-					<p>생년월일</p>
-					<input maxlength="8" name="riaBirthday" type="text" title="생년월일 출력"
-						class="input-text a-c w150px" placeholder="6자리 또는 8자리" value="">
-
-					<p>휴대폰번호</p>
-					<input maxlength="11" name="riaMobileNo" type="text"
-						title="휴대폰번호 출력" class="input-text a-c w150px"
-						placeholder="- 없이 입력" value="">
-
-					<p>회원</p>
-					<input name="riaMemberYn" type="text" title="회원여부 출력"
-						class="input-text a-c w100px" value="" readyonly="readyonly">
-
-
-					<button type="button" class="button gray ml10" login-at="N"></button>
-
-				</div>
 
 				<!-- mege-quick-reserve-inculde : 다른 페이지에서 iframe 으로 설정될 영역 -->
 				<div class="mege-quick-reserve-inculde">
@@ -75,7 +47,7 @@
 							<div class="date-list">
 								<!-- 년도, 월 표시 -->
 								<div class="year-area">
-									<div class="year" style="left: 30px; z-index: 1; opacity: 1;">2020.03</div>
+									<div class="year" style="left: 30px; z-index: 1; opacity: 1;">2020.04</div>
 									<div class="year" style="left: 450px; z-index: 1; opacity: 0;"></div>
 								</div>
 
@@ -83,148 +55,148 @@
 								<div class="date-area" id="formDeList">
 									<div class="wrap"
 										style="position: relative; width: 2100px; border: none; left: -70px;">
-										<button class="disabled" type="button" value="2020.03.16"
-											month="2" tabindex="-1">
-											<span class="ir">2020년 3월</span><em
-												style="pointer-events: none;">16<span
+										<button class="disabled" type="button" value="2020.04.05"
+											month="4" tabindex="-1">
+											<span class="ir">2020년 4월</span><em
+												style="pointer-events: none;">05<span
 												style="pointer-events: none;" class="ir">일</span></em><span
 												class="day-kr"
-												style="pointer-events: none; display: inline-block">월</span><span
-												class="day-en" style="pointer-events: none; display: none">Mon</span>
+												style="pointer-events: none; display: inline-block">일</span><span
+												class="day-en" style="pointer-events: none; display: none">Sun</span>
 										</button>
-										<button class="on" type="button" value="2020.03.17">
-											<span class="ir">2020년 3월</span><em
-												style="pointer-events: none;">17<span
+										<button class="on" type="button" value="2020.04.06">
+											<span class="ir">2020년 4월</span><em
+												style="pointer-events: none;">06<span
 												style="pointer-events: none;" class="ir">일</span></em><span
 												class="day-kr"
 												style="pointer-events: none; display: inline-block">오늘</span><span
-												class="day-en" style="pointer-events: none; display: none">Tue</span>
+												class="day-en" style="pointer-events: none; display: none">Mon</span>
 										</button>
-										<button class="" type="button" date-data="2020.03.18"
-											month="2">
-											<span class="ir">2020년 3월</span><em
-												style="pointer-events: none;">18<span
+										<button class="" type="button" value="2020.04.07"
+											month="4">
+											<span class="ir">2020년 4월</span><em
+												style="pointer-events: none;">07<span
 												style="pointer-events: none;" class="ir">일</span></em><span
 												class="day-kr"
 												style="pointer-events: none; display: inline-block">내일</span><span
-												class="day-en" style="pointer-events: none; display: none">Wed</span>
-										</button>
-										<button class="" type="button" date-data="2020.03.19"
-											month="2">
-											<span class="ir">2020년 3월</span><em
-												style="pointer-events: none;">19<span
-												style="pointer-events: none;" class="ir">일</span></em><span
-												class="day-kr"
-												style="pointer-events: none; display: inline-block">목</span><span
-												class="day-en" style="pointer-events: none; display: none">Thu</span>
-										</button>
-										<button class="" type="button" date-data="2020.03.20"
-											month="2">
-											<span class="ir">2020년 3월</span><em
-												style="pointer-events: none;">20<span
-												style="pointer-events: none;" class="ir">일</span></em><span
-												class="day-kr"
-												style="pointer-events: none; display: inline-block">금</span><span
-												class="day-en" style="pointer-events: none; display: none">Fri</span>
-										</button>
-										<button class="sat" type="button" date-data="2020.03.21"
-											month="2">
-											<span class="ir">2020년 3월</span><em
-												style="pointer-events: none;">21<span
-												style="pointer-events: none;" class="ir">일</span></em><span
-												class="day-kr"
-												style="pointer-events: none; display: inline-block">토</span><span
-												class="day-en" style="pointer-events: none; display: none">Sat</span>
-										</button>
-										<button class="holi" type="button" date-data="2020.03.22"
-											month="2">
-											<span class="ir">2020년 3월</span><em
-												style="pointer-events: none;">22<span
-												style="pointer-events: none;" class="ir">일</span></em><span
-												class="day-kr"
-												style="pointer-events: none; display: inline-block">일</span><span
-												class="day-en" style="pointer-events: none; display: none">Sun</span>
-										</button>
-										<button class="" type="button" date-data="2020.03.23"
-											month="2">
-											<span class="ir">2020년 3월</span><em
-												style="pointer-events: none;">23<span
-												style="pointer-events: none;" class="ir">일</span></em><span
-												class="day-kr"
-												style="pointer-events: none; display: inline-block">월</span><span
-												class="day-en" style="pointer-events: none; display: none">Mon</span>
-										</button>
-										<button class="" type="button" date-data="2020.03.24"
-											month="2">
-											<span class="ir">2020년 3월</span><em
-												style="pointer-events: none;">24<span
-												style="pointer-events: none;" class="ir">일</span></em><span
-												class="day-kr"
-												style="pointer-events: none; display: inline-block">화</span><span
 												class="day-en" style="pointer-events: none; display: none">Tue</span>
 										</button>
-										<button class="" type="button" date-data="2020.03.25"
-											month="2">
-											<span class="ir">2020년 3월</span><em
-												style="pointer-events: none;">25<span
+										<button class="" type="button" value="2020.04.08"
+											month="4">
+											<span class="ir">2020년 4월</span><em
+												style="pointer-events: none;">08<span
 												style="pointer-events: none;" class="ir">일</span></em><span
 												class="day-kr"
 												style="pointer-events: none; display: inline-block">수</span><span
-												class="day-en" style="pointer-events: none; display: none">Wed</span>
+												class="day-en" style="pointer-events: none; display: none">Wen</span>
 										</button>
-										<button class="disabled" type="button" date-data="2020.03.26"
-											month="2">
-											<span class="ir">2020년 3월</span><em
-												style="pointer-events: none;">26<span
+										<button class="" type="button" value="2020.04.09"
+											month="4">
+											<span class="ir">2020년 4월</span><em
+												style="pointer-events: none;">09<span
 												style="pointer-events: none;" class="ir">일</span></em><span
 												class="day-kr"
 												style="pointer-events: none; display: inline-block">목</span><span
 												class="day-en" style="pointer-events: none; display: none">Thu</span>
 										</button>
-										<button class="" type="button" date-data="2020.03.27"
-											month="2">
-											<span class="ir">2020년 3월</span><em
-												style="pointer-events: none;">27<span
+										<button class="sat" type="button" value="2020.04.10"
+											month="4">
+											<span class="ir">2020년 4월</span><em
+												style="pointer-events: none;">10<span
 												style="pointer-events: none;" class="ir">일</span></em><span
 												class="day-kr"
 												style="pointer-events: none; display: inline-block">금</span><span
 												class="day-en" style="pointer-events: none; display: none">Fri</span>
 										</button>
-										<button class="sat" type="button" date-data="2020.03.28"
+										<button class="holi" type="button" value="2020.04.11"
 											month="2">
-											<span class="ir">2020년 3월</span><em
-												style="pointer-events: none;">28<span
+											<span class="ir">2020년 4월</span><em
+												style="pointer-events: none;">11<span
 												style="pointer-events: none;" class="ir">일</span></em><span
 												class="day-kr"
 												style="pointer-events: none; display: inline-block">토</span><span
 												class="day-en" style="pointer-events: none; display: none">Sat</span>
 										</button>
-										<button class="holi" type="button" date-data="2020.03.29"
-											month="2">
-											<span class="ir">2020년 3월</span><em
-												style="pointer-events: none;">29<span
+										<button class="" type="button" value="2020.04.12"
+											month="4">
+											<span class="ir">2020년 4월</span><em
+												style="pointer-events: none;">12<span
 												style="pointer-events: none;" class="ir">일</span></em><span
 												class="day-kr"
 												style="pointer-events: none; display: inline-block">일</span><span
 												class="day-en" style="pointer-events: none; display: none">Sun</span>
 										</button>
-										<button class="disabled" type="button" date-data="2020.03.30"
-											month="2">
-											<span class="ir">2020년 3월</span><em
-												style="pointer-events: none;">30<span
+										<button class="" type="button" value="2020.04.13"
+											month="4">
+											<span class="ir">2020년 4월</span><em
+												style="pointer-events: none;">13<span
 												style="pointer-events: none;" class="ir">일</span></em><span
 												class="day-kr"
 												style="pointer-events: none; display: inline-block">월</span><span
 												class="day-en" style="pointer-events: none; display: none">Mon</span>
 										</button>
-										<button class="" type="button" date-data="2020.03.31"
-											month="2" tabindex="-1">
-											<span class="ir">2020년 3월</span><em
-												style="pointer-events: none;">31<span
+										<button class="" type="button" value="2020.04.14"
+											month="4">
+											<span class="ir">2020년 4월</span><em
+												style="pointer-events: none;">14<span
 												style="pointer-events: none;" class="ir">일</span></em><span
 												class="day-kr"
 												style="pointer-events: none; display: inline-block">화</span><span
 												class="day-en" style="pointer-events: none; display: none">Tue</span>
+										</button>
+										<button class="disabled" type="button" value="2020.04.15"
+											month="4">
+											<span class="ir">2020년 4월</span><em
+												style="pointer-events: none;">15<span
+												style="pointer-events: none;" class="ir">일</span></em><span
+												class="day-kr"
+												style="pointer-events: none; display: inline-block">수</span><span
+												class="day-en" style="pointer-events: none; display: none">Wen</span>
+										</button>
+										<button class="" type="button" value="2020.04.16"
+											month="4">
+											<span class="ir">2020년 4월</span><em
+												style="pointer-events: none;">16<span
+												style="pointer-events: none;" class="ir">일</span></em><span
+												class="day-kr"
+												style="pointer-events: none; display: inline-block">목</span><span
+												class="day-en" style="pointer-events: none; display: none">Thu</span>
+										</button>
+										<button class="sat" type="button" value="2020.04.17"
+											month="4">
+											<span class="ir">2020년 4월</span><em
+												style="pointer-events: none;">17<span
+												style="pointer-events: none;" class="ir">일</span></em><span
+												class="day-kr"
+												style="pointer-events: none; display: inline-block">금</span><span
+												class="day-en" style="pointer-events: none; display: none">Fri</span>
+										</button>
+										<button class="holi" type="button" value="2020.04.18"
+											month="4">
+											<span class="ir">2020년 4월</span><em
+												style="pointer-events: none;">18<span
+												style="pointer-events: none;" class="ir">일</span></em><span
+												class="day-kr"
+												style="pointer-events: none; display: inline-block">토</span><span
+												class="day-en" style="pointer-events: none; display: none">Sat</span>
+										</button>
+										<button class="disabled" type="button" value="2020.04.19"
+											month="4">
+											<span class="ir">2020년 4월</span><em
+												style="pointer-events: none;">19<span
+												style="pointer-events: none;" class="ir">일</span></em><span
+												class="day-kr"
+												style="pointer-events: none; display: inline-block">일</span><span
+												class="day-en" style="pointer-events: none; display: none">Sun</span>
+										</button>
+										<button class="" type="button" value="2020.04.20"
+											month="4" tabindex="-1">
+											<span class="ir">2020년 4월</span><em
+												style="pointer-events: none;">20<span
+												style="pointer-events: none;" class="ir">일</span></em><span
+												class="day-kr"
+												style="pointer-events: none; display: inline-block">월</span><span
+												class="day-en" style="pointer-events: none; display: none">Mon</span>
 										</button>
 									</div>
 								</div>
@@ -274,340 +246,37 @@
 													style="position: relative; left: 0px;"
 													dir="ltr">
 													<ul>
-														<li><button type="button" class="btn" value="라라랜드">
-																<span class="movie-grade small age-12">12세이상관람가</span><i
-																	class="iconset ico-heart-small">보고싶어 설정안함</i><span
-																	class="txt">라라랜드</span>
-															</button></li>
-														<li><button type="button" class="btn"
-																value="시원찮은 그녀를 위한 육성방법 피날레" >
-																<span class="movie-grade small age-12">12세이상관람가</span><i
-																	class="iconset ico-heart-small">보고싶어 설정안함</i><span
-																	class="txt">시원찮은 그녀를 위한 육성방법 피날레</span>
-															</button></li>
-														<li><button type="button" class="btn" movie-nm="1917"
-																movie-no="01685000"
-																img-path="/SharedImg/2020/02/21/IyeZJvAzV3QgEoW4F7HzdS97zfLYfcni_150.jpg"
-																movie-popup-at="N" movie-popup-no="0" form-at="Y">
-																<span class="movie-grade small age-15">15세이상관람가</span><i
-																	class="iconset ico-heart-small">보고싶어 설정안함</i><span
-																	class="txt">1917</span>
-															</button></li>
-																<li><button type="button" class="btn" movie-nm="레토"
-																movie-no="01492400"
-																img-path="/SharedImg/asis/system/mop/poster/2018/FB/2BAA70-3391-4FB0-A22C-F4476AA2BADB.small.jpg"
-																movie-popup-at="N" movie-popup-no="0" form-at="N">
-																<span class="movie-grade small age-15">15세이상관람가</span><i
-																	class="iconset ico-heart-small">보고싶어 설정안함</i><span
-																	class="txt">Dark Waters</span>
-															</button></li>
-														<li><button type="button" class="btn" movie-nm="레토"
-																movie-no="01492400"
-																img-path="/SharedImg/asis/system/mop/poster/2018/FB/2BAA70-3391-4FB0-A22C-F4476AA2BADB.small.jpg"
-																movie-popup-at="N" movie-popup-no="0" form-at="N">
-																<span class="movie-grade small age-15">15세이상관람가</span><i
-																	class="iconset ico-heart-small">보고싶어 설정안함</i><span
-																	class="txt">레토</span>
-															</button></li>
-														<li><button type="button" class="btn"
-																movie-nm="인비저블맨" movie-no="01694800"
-																img-path="/SharedImg/2020/02/25/cH7qHYtiXhvrIwZVNraUkjfGPPUj4M5W_150.jpg"
-																movie-popup-at="N" movie-popup-no="0" form-at="Y">
-																<span class="movie-grade small age-15">15세이상관람가</span><i
-																	class="iconset ico-heart-small">보고싶어 설정안함</i><span
-																	class="txt">인비저블맨</span>
-															</button></li>
-														<li><button type="button" class="btn"
-																movie-nm="바이올렛 에버가든 – 영원과 자동 수기 인형 -"
-																movie-no="20006800"
-																img-path="/SharedImg/2020/03/03/75uijLWJo1DGxC7zFNo0rZix01dXa3Ea_150.jpg"
-																movie-popup-at="N" movie-popup-no="0" form-at="N">
-																<span class="movie-grade small age-all">전체관람가</span><i
-																	class="iconset ico-heart-small">보고싶어 설정안함</i><span
-																	class="txt">바이올렛 에버가든 – 영원과 자동 수기 인형 -</span>
-															</button></li>
-														<li><button type="button" class="btn"
-																movie-nm="스타 이즈 본" movie-no="01438700"
-																img-path="/SharedImg/asis/system/mop/poster/2018/C6/013959-C07F-401A-AAC0-CA9A76DB48AE.small.jpg"
-																movie-popup-at="N" movie-popup-no="0" form-at="Y">
-																<span class="movie-grade small age-15">15세이상관람가</span><i
-																	class="iconset ico-heart-small">보고싶어 설정안함</i><span
-																	class="txt">스타 이즈 본</span>
-															</button></li>
-														<li><button type="button" class="btn"
-																movie-nm="작은 아씨들" movie-no="01680400"
-																img-path="/SharedImg/asis/system/mop/poster/2020/73/C2E59B-7D34-4220-8D51-580299453B88.small.jpg"
-																movie-popup-at="N" movie-popup-no="0" form-at="N">
-																<span class="movie-grade small age-all">전체관람가</span><i
-																	class="iconset ico-heart-small">보고싶어 설정안함</i><span
-																	class="txt">작은 아씨들</span>
-															</button></li>
-														<li><button type="button" class="btn"
-																movie-nm="[뮤지컬] 안나 카레니나" movie-no="20008100"
-																img-path="/SharedImg/2020/03/13/lO50Lzt8jtvavM9Rjj3LrW5TeRHj6sPn_150.jpg"
-																movie-popup-at="N" movie-popup-no="0" form-at="N">
-																<span class="movie-grade small age-12">12세이상관람가</span><i
-																	class="iconset ico-heart-small">보고싶어 설정안함</i><span
-																	class="txt">[뮤지컬] 안나 카레니나</span>
-															</button></li>
-														<li><button type="button" class="btn"
-																movie-nm="찬실이는 복도 많지" movie-no="01695700"
-																img-path="/SharedImg/2020/02/28/Mz9o5hkBM8JVixfUCyZY4NDnkIFTY4pk_150.jpg"
-																movie-popup-at="N" movie-popup-no="0" form-at="Y">
-																<span class="movie-grade small age-all">전체관람가</span><i
-																	class="iconset ico-heart-small">보고싶어 설정안함</i><span
-																	class="txt">찬실이는 복도 많지</span>
-															</button></li>
-														<li><button type="button" class="btn"
-																movie-nm="그랜드 부다페스트 호텔" movie-no="01447500"
-																img-path="/SharedImg/asis/system/mop/poster/2018/2A/D7FA43-5B42-46FB-982E-0BF2344AA0BA.small.jpg"
-																movie-popup-at="N" movie-popup-no="0" form-at="N">
-																<span class="movie-grade small age-15">15세이상관람가</span><i
-																	class="iconset ico-heart-small">보고싶어 설정안함</i><span
-																	class="txt">그랜드 부다페스트 호텔</span>
-															</button></li>
-														<li><button type="button" class="btn" movie-nm="파바로티"
-																movie-no="01671300"
-																img-path="/SharedImg/asis/system/mop/poster/2019/71/2F8D96-22A7-40E9-8024-F0F887E7506A.small.jpg"
-																movie-popup-at="N" movie-popup-no="0" form-at="N">
-																<span class="movie-grade small age-12">12세이상관람가</span><i
-																	class="iconset ico-heart-small">보고싶어 설정안함</i><span
-																	class="txt">파바로티</span>
-															</button></li>
-														<li><button type="button" class="btn"
-																movie-nm="하이큐!! 땅 VS 하늘" movie-no="01680800"
-																img-path="/SharedImg/asis/system/mop/poster/2020/E9/D8512A-EDC9-41E1-868E-2C5262B5BF83.small.jpg"
-																movie-popup-at="N" movie-popup-no="0" form-at="N">
-																<span class="movie-grade small age-all">전체관람가</span><i
-																	class="iconset ico-heart-small">보고싶어 설정안함</i><span
-																	class="txt">하이큐!! 땅 VS 하늘</span>
-															</button></li>
+														<c:forEach items="${movies.movieList }" var="movieList" varStatus="status">
+																<li>
+																	<button type="button" class="btn" value="${movieList.movieName }" disabled>
+																		<i
+																			class="iconset ico-heart-small">보고싶어 설정안함</i>
+																			<span class="movie-grade small age-12">12세이상관람가</span>
+																			<span
+																			class="txt">${movieList.movieName }</span>
+																	</button>
+																</li>
+														</c:forEach>
+														
+														<c:forEach items="${movies.movie }" var="movie">
+															<input type="hidden" value="${movie.movieName }" class="regisMovie" name="regisMovie">
+														</c:forEach>
+														
 													</ul>
-												</div>
-												<div id="mCSB_1_scrollbar_vertical"
-													class="mCSB_scrollTools mCSB_1_scrollbar mCS-light mCSB_scrollTools_vertical"
-													style="display: block;">
-													<div class="mCSB_draggerContainer">
-														<div id="mCSB_1_dragger_vertical" class="mCSB_dragger"
-															style="position: absolute; min-height: 30px; display: block; max-height: 310px; top: 48px; height: 272px;">
-															<div class="mCSB_dragger_bar" style="line-height: 30px;"></div>
-														</div>
-														<div class="mCSB_draggerRail"></div>
-													</div>
 												</div>
 											</div>
 										</div>
 									</div>
 								</div>
-								<!--// all : 전체 -->
-
-								<!-- other-list  : 큐레이션 -->
+								
+								<!--// 영화탭 끝  -->
 								<div class="other-list">
 									<button type="button" class="btn-tab" id="movieCrtn">TEMP</button>
-									<div class="list">
-										<div
-											class="scroll m-scroll mCustomScrollbar _mCS_2 mCS_no_scrollbar"
-											id="crtnMovieList">
-											<div id="mCSB_2"
-												class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside"
-												style="max-height: none;" tabindex="0">
-												<div id="mCSB_2_container"
-													class="mCSB_container mCS_no_scrollbar_y"
-													style="position: relative; top: 0; left: 0;" dir="ltr">
-													<ul>
-														<li><button type="button" class="btn"
-																movie-nm="[뮤지컬] 안나 카레니나" movie-no="20008100"
-																img-path="/SharedImg/2020/03/13/lO50Lzt8jtvavM9Rjj3LrW5TeRHj6sPn_150.jpg"
-																movie-popup-at="N" movie-popup-no="0" form-at="N">
-																<span class="movie-grade small age-12">12세이상관람가</span><i
-																	class="iconset ico-heart-small">보고싶어 설정안함</i><span
-																	class="txt">[뮤지컬] 안나 카레니나</span>
-															</button></li>
-														<li><button type="button" class="btn"
-																movie-nm="찬실이는 복도 많지" movie-no="01695700"
-																img-path="/SharedImg/2020/02/28/Mz9o5hkBM8JVixfUCyZY4NDnkIFTY4pk_150.jpg"
-																movie-popup-at="N" movie-popup-no="0" form-at="Y">
-																<span class="movie-grade small age-all">전체관람가</span><i
-																	class="iconset ico-heart-small">보고싶어 설정안함</i><span
-																	class="txt">찬실이는 복도 많지</span>
-															</button></li>
-														<li><button type="button" class="btn"
-																movie-nm="[오페라] 투란도트 @ The Met" movie-no="01693100"
-																img-path="/SharedImg/asis/system/mop/poster/2020/88/3AE4B6-4E71-4828-B553-2A48ECC8B3EE.small.jpg"
-																movie-popup-at="N" movie-popup-no="0" form-at="N">
-																<span class="movie-grade small age-12">12세이상관람가</span><i
-																	class="iconset ico-heart-small">보고싶어 설정안함</i><span
-																	class="txt">[오페라] 투란도트 @ The Met</span>
-															</button></li>
-														<li><button type="button" class="btn"
-																movie-nm="[유니텔 앙코르] 오르페오와 에우리디체" movie-no="20004500"
-																img-path="/SharedImg/2020/02/18/ePaV0pMZEmSTm0aaLbB40MUx9BWZP9Iw_150.jpg"
-																movie-popup-at="N" movie-popup-no="0" form-at="N">
-																<span class="movie-grade small age-all">전체관람가</span><i
-																	class="iconset ico-heart-small">보고싶어 설정안함</i><span
-																	class="txt">[유니텔 앙코르] 오르페오와 에우리디체</span>
-															</button></li>
-														<li><button type="button" class="btn"
-																movie-nm="[오페라] 리골레토" movie-no="20000100"
-																img-path="/SharedImg/2020/02/18/JR4a3oWNNricpgDfDeGdrZP8bY2DZkLT_150.jpg"
-																movie-popup-at="N" movie-popup-no="0" form-at="N">
-																<span class="movie-grade small age-12">12세이상관람가</span><i
-																	class="iconset ico-heart-small">보고싶어 설정안함</i><span
-																	class="txt">[오페라] 리골레토</span>
-															</button></li>
-														<li><button type="button" class="btn"
-																movie-nm="작가 미상" movie-no="01694300"
-																img-path="/SharedImg/2020/02/10/vZBqbvO5prnUcTnNa45VtY0nStlT2zBw_150.jpg"
-																movie-popup-at="N" movie-popup-no="0" form-at="N">
-																<span class="movie-grade small age-19">청소년관람불가</span><i
-																	class="iconset ico-heart-small">보고싶어 설정안함</i><span
-																	class="txt">작가 미상</span>
-															</button></li>
-														<li><button type="button" class="btn"
-																movie-nm="조조 래빗" movie-no="01687800"
-																img-path="/SharedImg/2020/02/18/4iTesYoC8NXnMzWQWZjs0jt9a2xvhMBo_150.jpg"
-																movie-popup-at="N" movie-popup-no="0" form-at="N">
-																<span class="movie-grade small age-12">12세이상관람가</span><i
-																	class="iconset ico-heart-small">보고싶어 설정안함</i><span
-																	class="txt">조조 래빗</span>
-															</button></li>
-														<li><button type="button" class="btn"
-																movie-nm="파라다이스 힐스" movie-no="20005500"
-																img-path="/SharedImg/2020/02/28/1UawwDaQy3wvv0Q9whlWS4aMtgRrgA7F_150.jpg"
-																movie-popup-at="N" movie-popup-no="0" form-at="N">
-																<span class="movie-grade small age-12">12세이상관람가</span><i
-																	class="iconset ico-heart-small">보고싶어 설정안함</i><span
-																	class="txt">파라다이스 힐스</span>
-															</button></li>
-														<li><button type="button" class="btn"
-																movie-nm="용길이네 곱창집" movie-no="20006900"
-																img-path="/SharedImg/2020/03/03/TsBP4S9rfBSHhTcRwks6RZCt4S2hPl67_150.jpg"
-																movie-popup-at="N" movie-popup-no="0" form-at="Y">
-																<span class="movie-grade small age-15">15세이상관람가</span><i
-																	class="iconset ico-heart-small">보고싶어 설정안함</i><span
-																	class="txt">용길이네 곱창집</span>
-															</button></li>
-														<li><button type="button" class="btn"
-																movie-nm="[오페라] 마농 @ The Met" movie-no="20007900"
-																img-path="/SharedImg/2020/03/12/yZRChDE2ZGDqoLxVrhPf9J21CgwUAGhr_150.jpg"
-																movie-popup-at="N" movie-popup-no="0" form-at="N">
-																<span class="movie-grade small age-12">12세이상관람가</span><i
-																	class="iconset ico-heart-small">보고싶어 설정안함</i><span
-																	class="txt">[오페라] 마농 @ The Met</span>
-															</button></li>
-														<li><button type="button" class="btn" movie-nm="샤인"
-																movie-no="01694000"
-																img-path="/SharedImg/2020/02/10/SBuyrEnlyuNVVNPAecxkzdENpTVEGhOZ_150.jpg"
-																movie-popup-at="N" movie-popup-no="0" form-at="N">
-																<span class="movie-grade small age-15">15세이상관람가</span><i
-																	class="iconset ico-heart-small">보고싶어 설정안함</i><span
-																	class="txt">샤인</span>
-															</button></li>
-														<li><button type="button" class="btn" movie-nm="스킨"
-																movie-no="20007500"
-																img-path="/SharedImg/2020/03/10/7CZPuvQKvzfqbzc6iuOlNRrOjVdpzC8L_150.jpg"
-																movie-popup-at="N" movie-popup-no="0" form-at="N">
-																<span class="movie-grade small age-19">청소년관람불가</span><i
-																	class="iconset ico-heart-small">보고싶어 설정안함</i><span
-																	class="txt">스킨</span>
-															</button></li>
-														<li><button type="button" class="btn" movie-nm="빈폴"
-																movie-no="01693900"
-																img-path="/SharedImg/2020/02/10/4g6tizvzxksWGGyQ5WbqzADrFxG0p0zR_150.jpg"
-																movie-popup-at="N" movie-popup-no="0" form-at="N">
-																<span class="movie-grade small age-15">15세이상관람가</span><i
-																	class="iconset ico-heart-small">보고싶어 설정안함</i><span
-																	class="txt">빈폴</span>
-															</button></li>
-														<li><button type="button" class="btn" movie-nm="비행"
-																movie-no="20005600"
-																img-path="/SharedImg/2020/02/25/VLrXJa5MCtWXQyBlLS3PPLaL8BLUxSj3_150.jpg"
-																movie-popup-at="N" movie-popup-no="0" form-at="N">
-																<span class="movie-grade small age-15">15세이상관람가</span><i
-																	class="iconset ico-heart-small">보고싶어 설정안함</i><span
-																	class="txt">비행</span>
-															</button></li>
-														<li><button type="button" class="btn"
-																movie-nm="기억의 전쟁" movie-no="01694500"
-																img-path="/SharedImg/2020/02/18/tqnd5A4yQ8RlHCu2O8VUsPw62C48tzWk_150.jpg"
-																movie-popup-at="N" movie-popup-no="0" form-at="N">
-																<span class="movie-grade small age-12">12세이상관람가</span><i
-																	class="iconset ico-heart-small">보고싶어 설정안함</i><span
-																	class="txt">기억의 전쟁</span>
-															</button></li>
-														<li><button type="button" class="btn"
-																movie-nm="집에 돌아오면, 언제나 아내가 죽은 척을 하고 있다"
-																movie-no="01694200"
-																img-path="/SharedImg/asis/system/mop/poster/2020/33/155B39-BB58-4DB4-A25E-E37255D3224E.small.jpg"
-																movie-popup-at="N" movie-popup-no="0" form-at="N">
-																<span class="movie-grade small age-12">12세이상관람가</span><i
-																	class="iconset ico-heart-small">보고싶어 설정안함</i><span
-																	class="txt">집에 돌아오면, 언제나 아내가 죽은 척을 하고 있다</span>
-															</button></li>
-														<li><button type="button" class="btn"
-																movie-nm="고흐, 영원의 문에서" movie-no="01663500"
-																img-path="/SharedImg/asis/system/mop/poster/2019/9C/687967-1DC4-4DE4-802D-B7DB43302FFC.small.jpg"
-																movie-popup-at="N" movie-popup-no="0" form-at="N">
-																<span class="movie-grade small age-12">12세이상관람가</span><i
-																	class="iconset ico-heart-small">보고싶어 설정안함</i><span
-																	class="txt">고흐, 영원의 문에서</span>
-															</button></li>
-														<li><button type="button" class="btn"
-																movie-nm="피아니스트의 전설" movie-no="01671900"
-																img-path="/SharedImg/asis/system/mop/poster/2019/DF/75D37E-31D8-4EDA-8100-1F0E45CEC07B.small.jpg"
-																movie-popup-at="N" movie-popup-no="0" form-at="N">
-																<span class="movie-grade small age-15">15세이상관람가</span><i
-																	class="iconset ico-heart-small">보고싶어 설정안함</i><span
-																	class="txt">피아니스트의 전설</span>
-															</button></li>
-														<li><button type="button" class="btn"
-																movie-nm="산티아고의 흰 지팡이" movie-no="20008000"
-																img-path="/SharedImg/2020/03/12/d28Q5dbZKzvCRd1eb4DJErA2Cy6FKcQU_150.jpg"
-																movie-popup-at="N" movie-popup-no="0" form-at="N">
-																<span class="movie-grade small age-all">전체관람가</span><i
-																	class="iconset ico-heart-small">보고싶어 설정안함</i><span
-																	class="txt">산티아고의 흰 지팡이</span>
-															</button></li>
-														<li><button type="button" class="btn"
-																movie-nm="카잔자키스" movie-no="01689700"
-																img-path="/SharedImg/asis/system/mop/poster/2020/80/99C961-C41B-4CB3-8E40-77DAA7FE306A.small.jpg"
-																movie-popup-at="N" movie-popup-no="0" form-at="N">
-																<span class="movie-grade small age-12">12세이상관람가</span><i
-																	class="iconset ico-heart-small">보고싶어 설정안함</i><span
-																	class="txt">카잔자키스</span>
-															</button></li>
-														<li><button type="button" class="btn" movie-nm="파바로티"
-																movie-no="01671300"
-																img-path="/SharedImg/asis/system/mop/poster/2019/71/2F8D96-22A7-40E9-8024-F0F887E7506A.small.jpg"
-																movie-popup-at="N" movie-popup-no="0" form-at="N">
-																<span class="movie-grade small age-12">12세이상관람가</span><i
-																	class="iconset ico-heart-small">보고싶어 설정안함</i><span
-																	class="txt">파바로티</span>
-															</button></li>
-													</ul>
-												</div>
-												<div id="mCSB_2_scrollbar_vertical"
-													class="mCSB_scrollTools mCSB_2_scrollbar mCS-light mCSB_scrollTools_vertical">
-													<div class="mCSB_draggerContainer">
-														<div id="mCSB_2_dragger_vertical" class="mCSB_dragger"
-															style="position: absolute; min-height: 30px; display: none; top: 0px;">
-															<div class="mCSB_dragger_bar" style="line-height: 30px;"></div>
-														</div>
-														<div class="mCSB_draggerRail"></div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
 								</div>
-								<!--// other-list  : 큐레이션 -->
+
 							</div>
-							<!--// list-area -->
-
-							<!-- view-area -->
-
-							<!--// view-area -->
 						</div>
+						<!--// 영화선택 끝  -->
 						<!--// movie-choice : 영화 선택  -->
 
 						<!-- theater-choice : 극장 선택  -->
