@@ -33,6 +33,7 @@
 		<association property="movie" javaType="movie">
 			<result column="movieCode" property="movieCode" />
 			<result column="movieName" property="movieName" />
+			<result column="movieTime" property="movieTime" />
 		</association>
 		<association property="theater" javaType="theater">
 			<result column="theaterCode" property="theaterCode" />

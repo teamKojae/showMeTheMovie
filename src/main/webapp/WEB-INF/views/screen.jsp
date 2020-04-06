@@ -494,7 +494,7 @@ ${session.user}
 									<div class="pay">
 										<p class="tit">최종결제금액</p>
 										<div class="money">
-											<em><%=sum %></em> <span>원</span>
+											<em name = "totalPrice"><%=sum %></em> <span>원</span>
 										</div>
 									</div>
 								</div>

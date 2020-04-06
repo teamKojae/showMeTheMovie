@@ -48,6 +48,8 @@ public class MovieInfo {
 	private String movieStartTime; 
 	private Date movieDate;
 	private String movieEndTime;
+	private int totalPrice;
+	private int totalPeople;
 	private List<MovieInfo> info;
 	public MovieInfo(Movie movie, Theater theater, Branch branch, int moiveInfoCode, Date movieDate,
 			String movieStartTime, String movieEndTime) {

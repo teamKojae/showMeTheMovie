@@ -2,6 +2,7 @@ package com.show.movie.controller;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.sql.Time;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -97,11 +98,19 @@ public class ManagerController {
 		List<List<MovieInfo>> list = managerService.getTimeScheduleInTheater(theaterNo, timeSchedule);
 		
 		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+		//Time time = new Time();
 		
 		for(List<MovieInfo> mo : list) {
+			int minTotalTime = 0;
+			int minMinus = 0;
+			int temp = 0;
 			for(MovieInfo m : mo) {
-				log.info("BEAN : "+m.getMovieDate());
-				log.info("GSON : "+gson.toJson(m.getMovieDate()));
+				log.info("BEAN : "+m.getMovieStartTime());
+				String[] parse = m.getMovieStartTime().split(":");
+				minTotalTime =  ( Integer.parseInt(parse[0]) * 60 ) + Integer.parseInt(parse[1]);
+				minMinus  = minTotalTime - minMinus;
+				log.info("분으로 바꾸기 : "+ minTotalTime);
+				log.info("시간계산 : "+ minMinus);
 			}
 		}
 		

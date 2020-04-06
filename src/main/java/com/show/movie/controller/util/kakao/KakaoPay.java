@@ -37,7 +37,7 @@ public class KakaoPay {
 	        // 서버로 요청할 Header
 	        HttpHeaders headers = new HttpHeaders();
 	        //카카오 개발자 인증. 꼭 Admin Key로 !
-	        headers.add("Authorization", "KakaoAK " + "5b50c16bc9b2c25a434fa19f62c330f9");
+	        headers.add("Authorization", "KakaoAK " + "14a59f898ea44ffd7ef323e0ddcfa713");
 	        //response.body를 JSON 타입으로 주기때문에 타입지정
 	        headers.add("Accept", MediaType.APPLICATION_JSON_UTF8_VALUE);
 	        //보낼때 JSON으로 보낸다.
@@ -55,9 +55,12 @@ public class KakaoPay {
 	        params.add("tax_free_amount", "50");				//현금영수증용 
 																// ↑ 모두 필수
 	        // ↓고정
-	        params.add("approval_url", "http://192.168.0.23:5000//kakaoPaySuccess");		
-	        params.add("cancel_url", "http://192.168.0.23:5000//kakaoPayCancel");
-	        params.add("fail_url", "http://192.168.0.23:5000//kakaoPaySuccessFail");
+	        params.add("approval_url", "http://192.168.0.23:5000/kakaoPaySuccess");		
+	        params.add("cancel_url", "http://192.168.0.23:5000/kakaoPayCancel");
+	        params.add("fail_url", "http://192.168.0.23:5000/kakaoPaySuccessFail");
+//	        params.add("approval_url", "http://localhost:5000/kakaoPaySuccess");		
+//	        params.add("cancel_url", "http://localhost:5000/kakaoPayCancel");
+//	        params.add("fail_url", "http://localhost:5000/kakaoPaySuccessFail");
 	        HttpEntity<MultiValueMap<String, String>> body = 
 	        		 new HttpEntity<MultiValueMap<String, String>>(params, headers);
 	         System.out.println(body);
@@ -90,11 +93,11 @@ public class KakaoPay {
 	        // 서버로 요청할 Header
 	        HttpHeaders headers = new HttpHeaders();
 	        //카카오 개발자 인증. 꼭 Admin Key로 !
-	        headers.add("Authorization", "KakaoAK " + "5b50c16bc9b2c25a434fa19f62c330f9");
+	        headers.add("Authorization", "KakaoAK " + "14a59f898ea44ffd7ef323e0ddcfa713");
 	        //response.body를 JSON 타입으로 주기때문에 타입지정
 	        headers.add("Accept", MediaType.APPLICATION_JSON_UTF8_VALUE);
 	        //보낼때 JSON으로 보낸다.
-	        headers.add("Content-Type", MediaType.APPLICATION_FORM_URLENCODED_VALUE + ";charset=UTF-8");
+	        headers.add("Content-Type", MediaType.APPLICATION_FORM_URLENCODED_VALUE + ";charset=utf-8");
 	 
 	        // 서버로 요청할 Body
 	        MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();

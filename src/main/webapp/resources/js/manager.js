@@ -122,7 +122,7 @@ function getTimeTable(){
 					+'<div class="theater-tit">'
 						+'<p>'+value[index].theater.theaterName+'</p>'
 						+'<p class="infomation">'
-							+'<span>'+movieName+'</span>/상영시간 '+$('#'+movieName).val()+'분'
+							+'<span>등록하려는 영화 : '+movieName+'</span>/상영시간 '+$('#'+movieName).val()+'분'
 						+'</p>'
 					+'</div>'
 					+'<div class="theater-type-box">'
@@ -150,7 +150,7 @@ function getTimeTable(){
 					console.log(item.movieDate);
 					var date = new Date (item.movieDate, item.movieStartTime);
  					canAddTime.push( parseFloat( item.movieStartTime ) );
-					
+					console.log(item);
 					var test = $('.theater-list[data-theater-no="'+value[index].theater.theaterCode+'"');
 					test.find('table tr').append(
 							'<td class="" brch-no="1372" play-schdl-no="2003291372004" rpst-movie-no="20007800" theab-no="01" play-de="20200329" play-seq="4">'
@@ -161,6 +161,7 @@ function getTimeTable(){
 											+'<i class="iconset ico-off"></i>'
 										+'</div>'
 										+'<p class="time">'+item.movieStartTime+'</p>'
+										+'<p class="movieName">'+item.movie.movieName+'</p>'
 										+'<div class="play-time">'
 											+'<p>'+item.movieStartTime+'~'+item.movieEndTime+'</p>'
 											+'<p>'+index+'회차</p>'
