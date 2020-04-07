@@ -115,11 +115,100 @@ function getTimeTable(){
 //				timeSchedule : timeSchedule
 			}
 		}).done(function(result){
-				$.each(result,function(index, value){
+			for(var i = 0 ; i< result.resigMovieTime.length; i++){
+				//console.log(result.resigMovieTime[i]);
+				//console.log(result.resigMovieTime[i].movieStartTime);
 				$('.theater-list-box').append(
-					'<div class="theater-list" data-theater-no="'+value[index].theater.theaterCode+'">'
+						'<div class="theater-list" data-theater-no="'+result.resigMovieTime[i][0].theater.theaterCode+'">'
+						+'<div class="theater-tit">'
+							+'<p>'+result.resigMovieTime[i][0].theater.theaterName+'</p>'
+							+'<p class="infomation">'
+								+'<span>등록하려는 영화 : '+movieName+'</span>/상영시간 '+$('#'+movieName).val()+'분'
+							+'</p>'
+						+'</div>'
+						+'<div class="theater-type-box">'
+							+'<div class="theater-time">'
+								+'<div class="theater-time-box">'
+									+'<table class="time-list-table">'
+										+'<caption>상영시간을 보여주는 표 입니다.</caption>'
+										 +colGroup
+										+'<tbody>'
+											+'<tr>'
+											 
+											+'</tr>'
+										+'</tbody>'
+									+'</table>'
+								+'</div>'
+							+'</div>'
+						+'</div>'
+					+'</div>'
+					)
+			$.each(result.resigMovieTime[i], function(index, item){
+			console.log(item);
+					var test = $('.theater-list[data-theater-no="'+result.resigMovieTime[i][0].theater.theaterCode+'"');
+					test.find('table tr').append(
+							'<td class="" brch-no="1372" play-schdl-no="2003291372004" rpst-movie-no="20007800" theab-no="01" play-de="20200329" play-seq="4">'
+							+'<div class="td-ab">'
+								+'<div class="txt-center">'
+									+'<a href="" title="영화예매하기">'
+										+'<div class="ico-box">'
+											+'<i class="iconset ico-off"></i>'
+										+'</div>'
+										+'<p class="time">'+item.movieStartTime+'</p>'
+										+'<p class="movieName">'+item.movie.movieName+'</p>'
+										+'<div class="play-time">'
+											+'<p>'+item.movieStartTime+'~'+item.movieEndTime+'</p>'
+											+'<p>'+index+'회차</p>'
+										+'</div>'
+									+'</a>'
+								+'</div>'
+							+'</div>'
+						+'</td>'
+					)
+				
+			})
+			
+			$.each(result.canAddMovieTime[i], function(index, item){
+					var test = $('.theater-list[data-theater-no="'+result.resigMovieTime[i][0].theater.theaterCode+'"');
+					test.find('table tr').append(
+							'<td class="" brch-no="1372" play-schdl-no="2003291372004" rpst-movie-no="20007800" theab-no="01" play-de="20200329" play-seq="4">'
+							+'<div class="td-ab">'
+								+'<div class="txt-center">'
+									+'<a href="" title="영화예매하기">'
+										+'<div class="ico-box">'
+											+'<i class="iconset ico-off"></i>'
+										+'</div>'
+										+'<p class="time">'+item.movieStartTime+'</p>'
+										+'<p class="movieName"></p>'
+										+'<div class="play-time">'
+											+'<p>'+item.movieStartTime+'~'+item.movieEndTime+'</p>'
+											+'<p>'+index+'회차</p>'
+										+'</div>'
+									+'</a>'
+								+'</div>'
+							+'</div>'
+						+'</td>'
+					)
+				
+			})
+			
+					
+					
+			}
+			//console.log(item.movieDate);
+			//var date = new Date (item.movieDate, item.movieStartTime);
+				//canAddTime.push( parseFloat( item.movieStartTime ) );
+			
+			
+				//기존 영화
+//				$.each(data,function(index, value){
+//					console.log(value);
+					//console.log(value);
+				/*
+					$('.theater-list-box').append(
+					'<div class="theater-list" data-theater-no="'+value.resigMovieTime[index].theater.theaterCode+'">'
 					+'<div class="theater-tit">'
-						+'<p>'+value[index].theater.theaterName+'</p>'
+						+'<p>'+value.resigMovieTime[index].theater.theaterName+'</p>'
 						+'<p class="infomation">'
 							+'<span>등록하려는 영화 : '+movieName+'</span>/상영시간 '+$('#'+movieName).val()+'분'
 						+'</p>'
@@ -143,14 +232,13 @@ function getTimeTable(){
 				//append끝
 					);
 				
-				
 				//var canAddTime = new Array();
-				$.each(value, function(index, item){
+				$.each(value.resigMovieTime, function(index, item){
 					//console.log(item.movieDate);
 					//var date = new Date (item.movieDate, item.movieStartTime);
  					//canAddTime.push( parseFloat( item.movieStartTime ) );
 					console.log(item);
-					var test = $('.theater-list[data-theater-no="'+value[index].theater.theaterCode+'"');
+					var test = $('.theater-list[data-theater-no="'+value.resigMovieTime[index].theater.theaterCode+'"');
 					test.find('table tr').append(
 							'<td class="" brch-no="1372" play-schdl-no="2003291372004" rpst-movie-no="20007800" theab-no="01" play-de="20200329" play-seq="4">'
 							+'<div class="td-ab">'
@@ -171,10 +259,10 @@ function getTimeTable(){
 						+'</td>'
 					)
 				})
-				
+				*/
 				
 			//each끝
-				});
+//				});
 		//ajax끝
 		})	
 		
