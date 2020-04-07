@@ -1,7 +1,11 @@
 package com.show.movie.controller;
 
+import static org.junit.Assert.assertTrue;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
+
 import java.io.IOException;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
@@ -47,31 +51,25 @@ public class LoginController {
 	@Autowired
 	UserService userService;
 
-	//  일반로그인
-	@RequestMapping(value="/loginSuccess", method = RequestMethod.GET)
-	public String longinGet(@ModelAttribute("User") User user) {
-		
-		
-		return "/loginPost"; 
-		
-	}
-	
-	// 로그인 처리
-	
-	
+
 	  @RequestMapping(value = "/loginPost", method = RequestMethod.POST) 
-	  public String loginPost(User user,Login login, HttpSession httpSession, Model model) { 
+	  public String loginPost(User user,User login, HttpServletRequest request,HttpSession httpSession, Model model) { 
 		  log.info("param : "+login);
-		  login = userService.getLogin(login.getUserId()); 
-		  user = userService.getUser(user.getUserId()); // xml에서 Login값이 들어감 user query문이 들어가야함
-		  log.info("return login : "+login);
-		  log.info("return user: " + user );
-	 if(user == null || ! BCrypt.checkpw(user.getUserPassword(), login.getUserPassword())){
-		 return "loginPost" ;
-		 }
-	 
-	 model.addAttribute("user",user); 
-	  return "/";
+		  log.info("param : " + user);
+		  login = userService.getLogin(user);
+		  user = userService.getUser(user.getUserId());
+		  log.info("return login : " + login);
+		  log.info("return user : " + user);
+		  
+
+		if (login == null ) {
+			  return "login";
+		  }else {
+			  request.getSession().setAttribute("user",user);
+			  model.addAttribute("user",user);
+			  return "redirect:/";
+		  }
+		  
 	  }
 	  
 	  
@@ -141,7 +139,7 @@ public class LoginController {
 		user.setUserId((String)obj.get("id"));
 		user.setUserName((String)obj.get("name"));
 		user.setUserBirth((String)obj.get("birthday"));
-		//user.getUserSignupCode(1);
+		user.setUserSignupCode(1);
 		return user;
 	}
 	

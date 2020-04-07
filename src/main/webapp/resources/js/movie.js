@@ -7,12 +7,9 @@ $(function(){
 	tabListSynopsis();
 	
 })
-
-
 function totalWon(){
-	
+	//var o = document.querySelectorAll('li');
 }
-
 function infoMore(){
 $('.btn').on('click',function(event){
 	if($('.btn-more').hasClass("on") == true){
@@ -53,7 +50,7 @@ function tabListStilCut(){
 function tabListSynopsis(){
 	$('.tab-list li:nth-child(1)').on('click',function(event){
 		$('.tab-list li').closest('li').removeClass('on');
-		$(event.target).addClass('on');
+		$(event.target).closest('li').addClass('on');
 		
 		$('.inner-wrap div').addClass('on');
 		$('.tab-list').removeClass('on');
@@ -76,7 +73,7 @@ function slidSynopsis(){
 			$('.synopsis').slideDown();
 			$('.btn-more').addClass('on');
 		}
-		
+	
 		
 	})
 }*/

@@ -11,6 +11,7 @@ import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
 import com.show.movie.model.domain.Location;
+import com.show.movie.model.domain.Movie;
 import com.show.movie.model.domain.MovieInfo;
 import com.show.movie.model.domain.Seat;
 import com.show.movie.model.service.MovieService;
@@ -54,23 +56,39 @@ public class TicketController {
 		return new Gson().toJson(movieService.getMovieInfo(movieInfo));
 	}
 
+
 	@RequestMapping(value="/getSelectScreen" ,method = {RequestMethod.GET, RequestMethod.POST})
 	public String getSelectScreen(Model model, @ModelAttribute("movieInfo") MovieInfo movieInfo, 
 									 Seat seat, HttpSession session) {
-		if( session.getAttribute("user") == null ) {
-			session.setAttribute("screenInfo", movieInfo);
-		}else {
-			if( session.getAttribute("screenInfo") != null) {
-			model.addAttribute("movieInfo", session.getAttribute("screenInfo"));
-			session.removeAttribute("screenInfo");
-			}
-		}
+		session.setAttribute("screenInfo", movieInfo);
 		model.addAttribute("seatList", movieService.getSeatList(seat));
-		log.info(seat.getSeatName());
-		
+		//log.info(seat.getSeatName());
 		return "screen";
 	}
 	
+	@GetMapping("/ticketing")
+	public String ticketing(Model model,Movie movie) {
+		model.addAttribute("movies",movieService.getMovieAllList(null));
+		return "ticketing";
+	}
+	
+	@GetMapping(value="/getMovieForDate", produces = "application/json; charset=utf8")
+	@ResponseBody
+	public String getMovieForDate(Model model, String movieDate) {
+		return new Gson().toJson(movieService.getMovieAllList(movieDate));
+	}
+
+	
+	
+//	if( session.getAttribute("user") == null ) {
+//		session.setAttribute("screenInfo", movieInfo);
+//	}else {
+//		if( session.getAttribute("screenInfo") != null) {
+//		model.addAttribute("movieInfo", session.getAttribute("screenInfo"));
+//		log.info(session.getAttribute("screenInfo"));
+//		//session.removeAttribute("screenInfo");
+//		}
+//	}
 
 	
 }

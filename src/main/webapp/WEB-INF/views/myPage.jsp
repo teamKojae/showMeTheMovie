@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	request.setCharacterEncoding("UTF-8");
@@ -43,81 +44,6 @@
 					<!-- 예매내역 -->
 					<div id="myBokdArea" class="tab-cont on">
 						<a href="" class="ir">예매 탭 화면 입니다.</a>
-
-						<!-- 예매 조회 조건 -->
-						<div class="board-list-search mt20">
-							<table summary="예매 조회 조건">
-								<colgroup>
-									<col style="width: 75px;">
-									<col>
-								</colgroup>
-								<tbody>
-									<tr>
-										<th scope="row">구분</th>
-										<td><input type="radio" id="radBokd01" name="radBokd"
-											value="B" checked="checked"> <label for="radBokd01">예매내역
-										</label> <input type="radio" id="radBokd02" name="radBokd" value="E">
-											<label for="radBokd02">지난내역 </label>
-
-											<div class="dropdown bootstrap-select disabled small bs3">
-												<select name="selYM" class="selectpicker small"
-													disabled="disabled" tabindex="-98">
-
-													<option value="202003">2020년 3월</option>
-
-													<option value="202002">2020년 2월</option>
-
-													<option value="202001">2020년 1월</option>
-
-													<option value="201912">2019년 12월</option>
-
-													<option value="201911">2019년 11월</option>
-
-													<option value="201910">2019년 10월</option>
-
-													<option value="201909">2019년 9월</option>
-
-													<option value="201908">2019년 8월</option>
-
-													<option value="201907">2019년 7월</option>
-
-													<option value="201906">2019년 6월</option>
-
-													<option value="201905">2019년 5월</option>
-
-													<option value="201904">2019년 4월</option>
-
-												</select>
-												<button type="button"
-													class="btn dropdown-toggle disabled btn-default"
-													data-toggle="dropdown" role="button" tabindex="-1"
-													aria-disabled="true" title="2020년 3월">
-													<div class="filter-option">
-														<div class="filter-option-inner">
-															<div class="filter-option-inner-inner">2020년 3월</div>
-														</div>
-													</div>
-													<span class="bs-caret">                            <span class="caret"></span></span>
-												</button>
-												<div class="dropdown-menu open" role="combobox">
-													<div class="inner open" role="listbox"
-														aria-expanded="false" tabindex="-1">
-														<ul class="dropdown-menu inner "></ul>
-													</div>
-												</div>
-											</div>
-
-											<button type="button" class="button gray-line small ml05"
-												name="search"> 
-												<i class="iconset ico-search-gray"></i> 조회
-											</button></td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-						<!-- 예매 조회 조건 End -->
-
-						<!-- 예매 영화 목록 -->
 						<div id="bokdList">
 							<div class="board-list-util">
 								<p class="result-count pt00">
@@ -127,68 +53,77 @@
 							</div>
 							<div class="history-reservation">
 								<ul>
-									<li sell-tran-no="13722003170094915348">
-										<div class="round">
-											<a href="/movie-detail?rpstMovieNo=20003000" class="img"
-												title="다크 워터스 "><img
-												src="https://img.megabox.co.kr/SharedImg/2020/02/21/lczdtI1vz3Dd1ShuXb0iXj8pTJGbh4wa_316.jpg"
-												alt="다크 워터스" onerror="noImg(this)"></a>
-											<table class="table">
-												<colgroup>
-													<col style="width: 75px;">
-													<col style="width: 230px;">
-													<col style="width: 80px;">
-													<col>
-												</colgroup>
-												<tbody>
-													<tr>
-														<th scope="row" class="a-r">예매번호</th>
-														<td colspan="3"><em class="num">${bookingList.bookingCode}</em></td>
-													</tr>
-													<tr>
-														<th scope="row" class="a-r">영화명</th>
-														<td colspan="3">
-															<p class="tit-movie">
-																<span>${bookingList.movieInfoCode}</span> <span>2D(자막)</span>
-															</p>
-														</td>
-													</tr>
-													<tr>
-														<th scope="row" class="a-r">극장/상영관</th>
-														<td>강남/1관</td>
-														<th scope="row">관람인원</th>
-														<td>성인 1명</td>
-													</tr>
-													<tr>
-														<th scope="row" class="a-r">관람일시</th>
-														<td>2020.03.18 (수) 19:55 (4회차)</td>
-														<th scope="row">관람좌석</th>
-														<td>F열 11</td>
-													</tr>
-												</tbody>
-											</table>
-											<div class="bg-round">
+									<c:forEach items="${bookingList.booking}" var="booking"
+										varStatus="status">
+										<input type="hidden" id="bookingCode" name="bookingCode" value="${booking.bookingCode }" >
+										<li sell-tran-no="13722003170094915348">
+											<div class="round" >           <!-- 여기에 추가 :) ->  -->                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+												<a href="/movie-detail?rpstMovieNo=20003000" class="img"
+													title="다크 워터스 "><img
+													src=" /img/${booking.movie.moviePosterBG} "
+													alt="다크 워터스" onerror="noImg(this)"></a>
 												<table class="table">
 													<colgroup>
 														<col style="width: 75px;">
 														<col style="width: 230px;">
-														<col style="width: 100px;">
+														<col style="width: 80px;">
 														<col>
 													</colgroup>
 													<tbody>
 														<tr>
-															<th scope="row" class="a-r">결제일시</th>
-															<td>2020.03.17</td>
+															<th scope="row" class="a-r">예매번호</th>
+															<td colspan="3"><em class="num">${booking.bookingCode}</em></td>
 														</tr>
+														<tr>
+															<th scope="row" class="a-r">영화명</th>
+															<td colspan="3">${booking.movie.movieName}
+																<p class="tit-movie">
+																	<!-- <span></span>  -->
+																	<span>2D(자막)</span>
+																</p>
+															</td>
+														</tr>
+														<tr>
+															<th scope="row" class="a-r">극장/상영관</th>
+															<td>${booking.branch.branchName}/
+																${booking.movieInfo.theater.theaterName}</td>
+															<th scope="row">관람인원</th>
+															<td>${booking.bookingPeople}</td>
+														</tr>
+														<tr>
+															<th scope="row" class="a-r">관람일시</th>
+															<td>${booking.movieInfo.movieDate}</td>
+															<th scope="row">관람좌석</th>
+															<td>추가예정</td>
+														</tr>
+
 													</tbody>
 												</table>
+												<div class="bg-round">
+													<table class="table">
+														<colgroup>
+															<col style="width: 75px;">
+															<col style="width: 230px;">
+															<col style="width: 100px;">
+															<col>
+														</colgroup>
+														<tbody>
+															<tr>
+																<th scope="row" class="a-r">결제일시</th>
+																<td>${booking.bookingDate}</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+												<div class="btn-group">
+													<button class="button gray" id="btnCancelBokd"
+														title="예매취소" >예매취소</button>
+													
+
+												</div>
 											</div>
-											<div class="btn-group">
-												<a href="" class="button gray" name="btnCancelBokd"
-													title="예매취소">예매취소</a>
-											</div>
-										</div>
-									</li>
+										</li>
+									</c:forEach>
 								</ul>
 							</div>
 						</div>
@@ -220,14 +155,16 @@
 										<th scope="col">취소금액</th>
 									</tr>
 								</thead>
+											<c:forEach items="${bookingList.cancellationList}" var="cancellation" varStatus="status">
 								<tbody>
-									<tr>
-										<td>2020.03.17 (23:14)</td>
-										<th scope="row">다크 워터스</th>
-										<td>강남</td>
-										<td>2020.03.18 (수) 19:55</td>
-										<td class="a-r"><span class="font-red">11,000원</span></td>
-									</tr>
+										<tr>
+											<td>${cancellation.cancelDate}</td>
+											<td scope="row">${cancellation.movieName}</td>
+											<td>${cancellation.branchName}</td>
+											<td>${cancellation.movieDate}${movieStartTime}</td>
+											<td class="a-r"><span class="font-red">${cancellation.bookingPrice}</span></td>
+										</tr>
+												</c:forEach>
 								</tbody>
 							</table>
 						</div>
@@ -277,14 +214,15 @@
 						</div>
 						<!-- 예매 안내상황 End -->
 					</div>
-					
-					
-					
+
+
+
 				</div>
 			</div>
 
 		</div>
 		<c:import url="/resources/common/footer.jsp"></c:import>
 	</div>
+	<script src="/js/user.js"></script>
 </body>
 </html>

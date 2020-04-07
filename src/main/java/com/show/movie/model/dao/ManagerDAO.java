@@ -1,10 +1,14 @@
 package com.show.movie.model.dao;
 
+import java.sql.Date;
 import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
 
 import com.show.movie.model.domain.Branch;
 import com.show.movie.model.domain.Location;
 import com.show.movie.model.domain.Movie;
+import com.show.movie.model.domain.MovieInfo;
 import com.show.movie.model.domain.Theater;
 
 public interface ManagerDAO {
@@ -15,4 +19,9 @@ public interface ManagerDAO {
 	public List<Branch> getBranchList();
 	public List<Branch> getBranchList(Location location);
 	public List<Theater> getTheaterList(String branchName);
+	public void insertTheater(@Param("movieName")String movieName, @Param("theaterName") List<String> theaterName);
+	public List<MovieInfo> getTimeScheduleInTheater(@Param("theaterNo") String theaterNo , @Param("timeSchedule") Date timeSchedule);
+	public int isViewTimeSchedule();
+	public void createViewTimeSchedule();
+	
 }

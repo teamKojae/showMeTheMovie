@@ -6,20 +6,52 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.show.movie.model.dao.CancellationDAO;
+import com.show.movie.model.domain.Cancellation;
 import com.show.movie.model.service.BookingService;
 
+import lombok.extern.log4j.Log4j;
+
 @Controller
+@Log4j
 public class BookingController {
 
-	
 	@Autowired
 	private BookingService bookingService;
+
+	/*
+	 * public Map<String,Object> getMyPage(String userId) { Map<String,Object> map =
+	 * new HashMap<String, Object>(); map.put("booking",
+	 * bookingDAO.getAllbooking(userId)); map.put("cancellationList",
+	 * cancellationDAO.getAllcancellation(1)); return map; }
+	 */
 	
-	@RequestMapping(value="/booking", method=RequestMethod.GET)
-	public String getEmpCount(Model model) {
-		System.out.println(bookingService.getAllmovieName());
-		model.addAttribute("bookingList", bookingService.allgetBooking());
+	@RequestMapping(value = "/myPage", method = RequestMethod.GET)
+	public String getMyPage(Model model) {
+		model.addAttribute("bookingList", bookingService.getMyPage("jeongmin"));
 		return "myPage";
 	}
+	//수정
+	@RequestMapping(value = "/cancellation", method = RequestMethod.GET)
+	public String cancellation(Model model , int  bookingCode) {
+		//log.info(bookingCode); 밑에 줄도 수정 
+		bookingService.cancelDate(bookingCode);
+		return "redirect:/myPage"; //컨트롤러로 보냄
+	}
 	
+//	@RequestMapping(value = "/myPage", method = RequestMethod.GET)
+//	public String getEmpCount(Model model) {
+//		model.addAttribute("bookingList", bookingService.getAllBooking("jeongmin"));
+//		System.out.println(bookingService.getAllBooking("jeongmin"));
+//		return "myPage";
+//	}
+//	@RequestMapping(value = "/myPage", method =RequestMethod.GET)
+//	public String getAllcancellation (Model model) {
+//		model.addAttribute("cancellationList",bookingService.getAllcancellation(1));
+//		System.out.println(bookingService.getAllcancellation(1));
+//		return "myPage";
+//	}
+	/* cancellation 불러와서 리턴할 자리. 
+	 * 예매관련 controller와 view는 하나로만 할 예정 
+	 */
 }

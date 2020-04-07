@@ -10,7 +10,10 @@ $(function() {
 	
 	selectTheater();
 	selectBranchInTheater();
-	movieAddBranchAndTheater();
+	getTimeTable();
+	selectTheaterInTimeTable();
+	//test();
+	//movieAddBranchAndTheater();
 })
 
 $(function(){
@@ -23,7 +26,23 @@ $(function(){
 	$('#tab10').addClass("on");
 })
 
+//font-green
 
+function selectTheaterInTimeTable(){
+	$('.timeTable .tit').on('click','a , a > span',function(event){
+		var target = $(event.target);
+		console.log(target);
+		$('.timeTable .tit *').removeClass('font-green');
+		target.addClass('font-green');
+		target.find('span').addClass('font-green');
+		var theaterNo = target.closest('a').attr("data-theater-no");
+		$('.theater-list-box > div').removeClass('on');
+		//console.log($('.theater-list-box div[data-theater-no="'+theaterNo+'"]'));
+		$('.theater-list-box div[data-theater-no="'+theaterNo+'"]').addClass('on');
+		
+		
+	})
+}
 
 
 
@@ -31,27 +50,144 @@ function selectTheater(){
 	$("#masterTheater .tab-list-choice ul").bind("click","a",function(event){
 		var target = $(event.target);
 		target.closest('.tab-list-choice').find('a').removeClass('on');
-		targetFuntion(target);
+		targetAddClassOn(target);
 		
 		var targetArea = target.attr('data-area-cd');
 		$('.list-section > div').removeClass('on');
 		$('#masterTheater #tab'+targetArea).addClass('on');
+		
 	})
 }
 
 function selectBranchInTheater(){
 	$("#masterTheater .list-section").bind("click","ul > li",function(event){
 		var target = $(event.target);
-		targetFuntion(target);
+		targetAddClassOn(target);
+		$('.timeTable > h3').append(
+				'<a href="" style="padding: 10px;" class="theaterTimeTable" '
+				+'onclick="return false" data-theater-no="'+target.attr("data-theater-no")+'">'
+				+'<span class="">'+target.text()+'</span>'
+				+'</a>'
+		);
 	})
 }
 
+
+function getTimeTable(){
+	$('.managerButton').on('click',function(event){
+		
+		// 상영관 한개도 클릭 안되있을 시 Alert창
+		if( $('#masterTheater .list-section ul' ).find('.on').length == 0  ){
+				alert('상영관을 선택해주세요');
+				return;
+			}
+		$('.timeTable').addClass('on');
+		
+		// 상영관Code번호 구하는 부분
+		var theaterNo = new Array();
+		var theaters = $('.timeTable > h3 > a');
+		$.each( theaters ,  function (index, value){
+			theaterNo.push($(this).attr('data-theater-no'));
+		})
+		
+		//상영시간표  날짜 구하는 부분
+		var timeSchedule =  $('.timeTable .time-schedule .date-area').find(' div > .on').attr('date-data');
+		
+		var colGroup = '<colgroup>'
+							+'<col style="width: 99px;">'
+							+'<col style="width: 99px;">'
+							+'<col style="width: 99px;">'
+							+'<col style="width: 99px;">'
+							+'<col style="width: 99px;">'
+							+'<col style="width: 99px;">'
+							+'<col style="width: 99px;">'
+							+'<col style="width: 99px;">'
+						+'</colgroup>';
+		var movieName = $('#masterMovie').find('.list .on').val();
+		
+		//해당 상영관 시간표 구해오는 Ajax  (return value : movieStartTime )
+		$.ajax({
+			url : "/getTheatersTimeTable",
+			type : "POST",
+			traditional : true,
+			data : {
+				theaterNo : theaterNo,
+				timeSchedule : '2020-04-07'
+//				timeSchedule : timeSchedule
+			}
+		}).done(function(result){
+				$.each(result,function(index, value){
+				$('.theater-list-box').append(
+					'<div class="theater-list" data-theater-no="'+value[index].theater.theaterCode+'">'
+					+'<div class="theater-tit">'
+						+'<p>'+value[index].theater.theaterName+'</p>'
+						+'<p class="infomation">'
+							+'<span>등록하려는 영화 : '+movieName+'</span>/상영시간 '+$('#'+movieName).val()+'분'
+						+'</p>'
+					+'</div>'
+					+'<div class="theater-type-box">'
+						+'<div class="theater-time">'
+							+'<div class="theater-time-box">'
+								+'<table class="time-list-table">'
+									+'<caption>상영시간을 보여주는 표 입니다.</caption>'
+									 +colGroup
+									+'<tbody>'
+										+'<tr>'
+										 
+										+'</tr>'
+									+'</tbody>'
+								+'</table>'
+							+'</div>'
+						+'</div>'
+					+'</div>'
+				+'</div>'
+				//append끝
+					);
+				
+				
+				var canAddTime = new Array();
+				$.each(value, function(index, item){
+					console.log(item.movieDate);
+					var date = new Date (item.movieDate, item.movieStartTime);
+ 					canAddTime.push( parseFloat( item.movieStartTime ) );
+					console.log(item);
+					var test = $('.theater-list[data-theater-no="'+value[index].theater.theaterCode+'"');
+					test.find('table tr').append(
+							'<td class="" brch-no="1372" play-schdl-no="2003291372004" rpst-movie-no="20007800" theab-no="01" play-de="20200329" play-seq="4">'
+							+'<div class="td-ab">'
+								+'<div class="txt-center">'
+									+'<a href="" title="영화예매하기">'
+										+'<div class="ico-box">'
+											+'<i class="iconset ico-off"></i>'
+										+'</div>'
+										+'<p class="time">'+item.movieStartTime+'</p>'
+										+'<p class="movieName">'+item.movie.movieName+'</p>'
+										+'<div class="play-time">'
+											+'<p>'+item.movieStartTime+'~'+item.movieEndTime+'</p>'
+											+'<p>'+index+'회차</p>'
+										+'</div>'
+									+'</a>'
+								+'</div>'
+							+'</div>'
+						+'</td>'
+					)
+				})
+				
+				
+			//each끝
+				});
+		//ajax끝
+		})	
+		
+		
+	})
+}
 /*	$(document).on("click","#masterTheater .list-section #tab10 button",function(event){
 var target = $(event.target);
 console.log(target);
-targetFuntion(target);
+targetAddClassOn(target);
 })*/
-function targetFuntion(target){
+function targetAddClassOn(target){
 	if( target.hasClass('on') == false){
 		// 브랜치 클릭 시 on Class 추가
 		target.addClass('on');
@@ -62,12 +198,13 @@ function targetFuntion(target){
 
 function selectMovie(){
 	$('#masterMovie .list-section button').on('click',function(event){
-		var target = $(event.target)
+		var target = $(event.target);
 		target.closest('ul').find('button').removeClass('on');
 		target.addClass('on');
 		
 		var imagePoster = target.attr('data-img-path');
 		$('.poster').attr('src',"/img/"+imagePoster);
+		
 	})
 }
 
@@ -160,28 +297,43 @@ function movieAddBranchAndTheater(){
 		var movieName = $('#masterMovie').find('.list .on').val();
 		var branch = $('#masterBrch').find('.list-section ul').find('.on');
 		var branchName = new Array();
-		$.each(branch, function(key, value){
+		$.each(branch, function(index, value){
 			branchName.push($(this).text());
 		})
 		
 		var theater = $('#masterTheater').find('.list-section ul').find('.on');
 		var theaterName = new Array();
-		$.each(theater, function(key, value){
+		$.each(theater, function(index, value){
 			theaterName.push($(this).text());
 		})
 		
+		var movieStartTime = new Array();
+		movieStartTime.push('16:48');
+		movieStartTime.push('20:48');
+		movieStartTime.push('22:48');
+		console.log(movieName);
 		console.log(branchName);
 		console.log(theaterName);
+		console.log(movieStartTime);
+
+
+//		var data = {};
+//		data["movieName"] = movieName;
+//		data["branchName"] =branchName;
+//		data["theaterName"] =  theaterName;
+//		data["movieStartTime"] = movieStartTime;
+
+//		$.ajaxSettings.traditional = true;
 		
 		$.ajax({
 			url:"/movieAddBranchAndTheater",
-			method:"POST",
-			traditional : true ,
-			//data : "JSON",
+			type:"POST",
+			traditional : true,
 			data : {
 				movieName : movieName,
 				branchName : branchName,
-				theaterName : theaterName
+				theaterName : theaterName,
+				movieStartTime : movieStartTime
 			}
 		}).done(function(result){
 			console.log("ajax 성공 !");
@@ -202,7 +354,7 @@ function movieAddBranchAndTheater(){
  * 
  * var tabId = $('#tab'+target.attr('data-area-cd')); tabId.addClass('on');
  * tabId.find('div').addClass('on'); tabId.find('div li').addClass('on');
- * tabId.find('ul').empty(); $.each(result,function(key,value){
+ * tabId.find('ul').empty(); $.each(result,function(index,value){
  * tabId.find('ul').append( '<li>' +'<button type="button" class="btn"
  * data-brch-no="'+value.branchCode+'">'+value.branchName+'</button>' +'</li>' ) }) } }) }) }
  */
@@ -226,9 +378,7 @@ function selectWhereRegiste(){
 		var contentsTarget = sectionTarget.find('.list-section');
 		contentsTarget.addClass('on');
 		var dataArea = $('.ltab-layer-wrap > .on').find('.tab-list-choice li').find('.on').attr('data-area-cd');
-		console.log(dataArea);
 		$('.ltab-layer-wrap > .on').find('.list-section > #tab'+dataArea).addClass('on');
-		console.log($('.ltab-layer-wrap > .on').find('.list-section > #tab'+dataArea));
 		// $(event.target).closest('.tab-layer-cont').addClass('on');
 		//var dataArea = $(event.target).attr('data-area-cd');
 		//contentsTarget.find($('#tab'+dataArea) ).addClass('on');

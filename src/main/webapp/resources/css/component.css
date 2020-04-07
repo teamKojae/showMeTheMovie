@@ -91,7 +91,7 @@
   margin-left : 0px !important;
 }
 
-.rows--mini .row:nth-child(9) {
+.rows--mini .row:nth-child(10) {
 	margin : 0 0 15px 0 !important;
 }
 
@@ -134,11 +134,11 @@
   background-size: 100%;
 }
 
-.rows--mini .row__seat:nth-child(9) {
+.rows--mini .row__seat:nth-child(10) {
   margin-right: 15px;
 }
 
-.rows--large .row__seat:nth-child(9) {
+.rows--large .row__seat:nth-child(10) {
   margin-right: 160px;
 }
 
