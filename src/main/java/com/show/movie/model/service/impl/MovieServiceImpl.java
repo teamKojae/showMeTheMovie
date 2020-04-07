@@ -66,12 +66,11 @@ public class MovieServiceImpl implements MovieService {
 	}
 
 	@Override
-<<<<<<< HEAD
 	public List<Movie> moviePageList(Movie movie) {
 		return movieDAO.moviePageList();
 	}
 
-=======
+	@Override
 	public List<Movie> getIndexMovie(Movie movie) {
 		return movieDAO.getIndexMovie();
 	}
@@ -81,6 +80,5 @@ public class MovieServiceImpl implements MovieService {
 		map.put("movie",movieDAO.getNotRegisMovie(movieDate));
 		return map;
 	}
->>>>>>> 771dbfffa20ffc7c3bc0483547bc95228d51b831
 
 }

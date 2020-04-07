@@ -25,18 +25,12 @@ public class MovieController {
 	@Autowired
 	MovieService movieService;
 	
-<<<<<<< HEAD
-	@RequestMapping(value="/movie")
+	@RequestMapping(value="/movie" ,method = {RequestMethod.GET, RequestMethod.POST} )
 	public String movie(Model model, Movie movie) {
 		//여기
 		List<Movie> movies = movieService.moviePageList(movie);
 		model.addAttribute("movies", movies);
 		
-=======
-	@RequestMapping(value="/movie" ,method = {RequestMethod.GET, RequestMethod.POST} )
-	public String movie(Model model,String movieName) {
-		model.addAttribute("movieName",movieName);
->>>>>>> 771dbfffa20ffc7c3bc0483547bc95228d51b831
 		return "movie";
 	}
 	

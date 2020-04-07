@@ -16,12 +16,11 @@ public interface MovieService {
 	public String getMovieImages(String movieName);
 	public String getMovieSynopsis(String movieName);
 	public List<Seat> getSeatList(Seat seat);
-<<<<<<< HEAD
 	
 	//예나
 	public List<Movie> moviePageList(Movie movie);
-=======
+
 	public List<Movie> getIndexMovie(Movie movie);
 	public Map<String, Object> getMovieAllList(String movieDate);
->>>>>>> 771dbfffa20ffc7c3bc0483547bc95228d51b831
+
 }
