@@ -84,8 +84,7 @@
 	</select>
  
  	<select id="reservedSeat" resultType="seat">
- 	INSERT INTO seat(seatStatus)
-		VALUES (1)
+ 	update seat set seatStatus=1 where seatName=#{seatName}
  	</select>
  
 	<select id="getMovie" resultMap="movie">
@@ -191,6 +190,7 @@
 		SELECT COUNT(*) FROM moviePageList
 	</select>
 	
+
 
 	<!-- 헤맨 것 : ViewTable을 Alias 해주면 접근이 안됬음 ㅜㅜ. 그래서 WHERE로 조건을 못줬음 해결 : resultMap으로 
 		해결... 아 뻘짓했넹.. 왜 Mybatis에서 resultMap이랑 typeAlias가 강력한 기능이라고 주장했는지 알았음.. 호우 

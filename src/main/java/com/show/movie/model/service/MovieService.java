@@ -20,6 +20,7 @@ public interface MovieService {
 	//예나
 	public List<Movie> moviePageList(Movie movie);
 
+
 	public List<Movie> getIndexMovie(Movie movie);
 	public Map<String, Object> getMovieAllList(String movieDate);
 
