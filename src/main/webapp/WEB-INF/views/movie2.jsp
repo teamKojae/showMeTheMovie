@@ -14,27 +14,6 @@
 <link href="/css/custom.css" rel="stylesheet">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script type="text/javascript">
-
-//더보기 버튼
-$('#btnAddMovie').on('click', function() {
-	console.log("더보기 버튼");
-	addMovieList();
-});
-
-//function addMovieList(){
-//	$(function(){ //btn-more v1 ?
-//		${".movie-list" }.slice(0,8).show();
-//		$("#addMovieDiv").click(function(e){
-//			e.preventDefault();
-//			${".movie-list:hidden" }.slice(0,8).show();
-//			if($(".movie-list:hidden").length==0){
-//				$("#addMovieDiv").css("display","none");
-//			}});
-//	});
-//}
-
-</script>
 </head>
 <body>
 	<c:import url="/resources/common/header.jsp"></c:import>
@@ -82,7 +61,7 @@ $('#btnAddMovie').on('click', function() {
 
 						</div>
 
-
+						
 					</div>
 					<!--// 필름소사이어티 -->
 
@@ -109,11 +88,12 @@ $('#btnAddMovie').on('click', function() {
 
 					<div class="movie-search">
 						<input type="text" title="영화명을 입력하세요" id="ibxMovieNmSearch"
-							name="ibxMovieNmSearch" placeholder="영화명 검색" class="input-text" value="${movieName }">
+							name="ibxMovieNmSearch" placeholder="영화명 검색" class="input-text">
 						<button type="button" class="btn-search-input" id="btnSearch">검색</button>
 					</div>
 				</div>
 				<!--// movie-list-util -->
+
 				<div class="bg-loading" style="display: none;">
 					<div class="spinner-border" role="status">
 						<span class="sr-only">Loading...</span>
@@ -123,128 +103,128 @@ $('#btnAddMovie').on('click', function() {
 				<!-- movie-list -->
 				<div class="movie-list">
 					<ol class="list" id="movieList">
-<<<<<<< HEAD
-					<c:forEach var="movie" items="${movies }" varStatus="vs"> 
-						<li tabindex="0" class="no-img">
-							<div class="movie-list-info">
-								<input type="hidden" name="movieName"
-									value="${movie.movieName }" class="movie-info-hidden">
-=======
 						<li tabindex="0" class="no-img"><div class="movie-list-info">
-						<input type="hidden"  name="movieName" value="다크 워터스" class="movie-info-hidden">
->>>>>>> 771dbfffa20ffc7c3bc0483547bc95228d51b831
+						<input type="hidden"  name="movieName" value="라라랜드" class="movie-info-hidden">
 								<p class="rank" style="">
-									${vs.count }<span class="ir">위</span>
+									1<span class="ir">위</span>
 								</p>
-<<<<<<< HEAD
-								<img src="/img/${movie.moviePoster }" alt="${movie.movieName }"
-									class="poster lozad" onerror="noImg(this)">
-=======
 								<img
-									src="/img/lalaland_snapshot1.jpg"
-									alt="라라랜드" class="poster lozad" >
->>>>>>> 771dbfffa20ffc7c3bc0483547bc95228d51b831
+									src="/img/alaland_snapshot1.jpg"
+									alt="라라랜드" class="poster lozad" onerror="noImg(this)">
 								<div class="movie-score" style="opacity: 0;">
 									<a href="#" class="wrap movieBtn" data-no="20003000"
-										title="${movie.movieName } 상세보기">
-										<div class="summary"> ${movie.movieSynopsis} </div>
+										title="다크 워터스 상세보기">
+										<div class="summary">인류의 99%는 이미 중독되었다 &lt;스포트라이트&gt;
+											제작진의 충격 고발 실화 젖소 190마리의 떼죽음 메스꺼움과 고열에 시달리는 사람들 기형아들의 출생 그리고,
+											한 마을에 퍼지기 시작한 중증 질병들... 대기업의 변호를 담당하는 대형 로펌의 변호사 ‘롭 빌럿’(마크
+											러팔로)은 세계 최대의 화학기업 듀폰의 독성 폐기물질(PFOA) 유출 사실을 폭로한다. 그는 사건을 파헤칠수록
+											독성 물질이 프라이팬부터 콘택트렌즈, 아기 매트까지 우리 일상 속에 침투해 있다는 끔찍한 사실을 알게 되고
+											자신의 커리어는 물론 아내 ‘사라’(앤 해서웨이)와 가족들, 모든 것을 건 용기 있는 싸움을 시작한다.
+
+											대한민국에서도 일어나고 있는 현재진행형 실화가 공개된다</div>
+										<div class="my-score smal">
+											<div class="preview">
+												<p class="tit">기대평</p>
+												<p class="number">
+													9.4<span class="ir">점</span>
+												</p>
+											</div>
+											<span class="sign smal">pointText</span>
+											<div class="review">
+												<p class="tit">관람평</p>
+												<p class="number after">
+													8.7<span class="ir">점</span>
+												</p>
+											</div>
+										</div>
 									</a>
 								</div>
 							</div>
 							<div class="tit-area">
 								<p class="movie-grade age-12">,</p>
-								<p title="${movie.movieName }" class="tit">${movie.movieName }</p>
+								<p title="다크 워터스" class="tit">다크 워터스</p>
 							</div>
 							<div class="rate-date">
-								<span class="rate">예매율 ${movie.movieTicketRatePersent}%</span> <span
-									class="date">개봉일 ${movie.movieUpdate }</span>
+								<span class="rate">예매율 10.1%</span> <span class="date">개봉일
+									2020.03.11</span>
 							</div>
 							<div class="btn-util">
 								<div class="case movieStat4" style="">
-									<button value="${movie.movieName }"
-										class="button purple bokdBtn" data-no="20003000"
+									<button value="라라랜드" class="button purple bokdBtn" data-no="20003000"
 										title="영화 예매하기">예매</button>
 								</div>
-<<<<<<< HEAD
-							</div>
-						</li>
-						</c:forEach>
-=======
 							</div></li>
 						<li tabindex="0" class="no-img"><div class="movie-list-info">
-								<input type="hidden"  name="movieName" value="시원찮은 그녀를 위한 육성방법 피날레" class="movie-info-hidden">
-										<p class="rank" style="">
-											2<span class="ir">위</span>
-										</p>
-										<img
-											src="https://img.megabox.co.kr/SharedImg/2020/02/07/jO2LnVNFJxLzAL62WxHjDUBKbtPcV8ET_420.jpg"
-											alt="시원찮은 그녀를 위한 육성방법 피날레" class="poster lozad"
-											onerror="noImg(this)">
-										<div class="curation">
-											<p class="film" style="display: none">필름 소사이어티</p>
-											<p class="classic" style="display: none">클래식 소사이어티</p>
+								<p class="rank" style="">
+									2<span class="ir">위</span>
+								</p>
+								<img
+									src="https://img.megabox.co.kr/SharedImg/2020/02/07/jO2LnVNFJxLzAL62WxHjDUBKbtPcV8ET_420.jpg"
+									alt="시원찮은 그녀를 위한 육성방법 피날레" class="poster lozad"
+									onerror="noImg(this)">
+								<div class="curation">
+									<p class="film" style="display: none">필름 소사이어티</p>
+									<p class="classic" style="display: none">클래식 소사이어티</p>
+								</div>
+								<div class="screen-type">
+									<p class="boutqScreen" style="display: none">부티크</p>
+									<p class="mxScreen" style="display: none">MX</p>
+								</div>
+								<div class="movie-score" style="opacity: 0;">
+									<a href="#" class="wrap movieBtn" data-no="20000400"
+										title="시원찮은 그녀를 위한 육성방법 피날레 상세보기">
+										<div class="summary">어느 봄날, 아키 토모야는 벚꽃이 흩날리는 언덕길에서 운명적으로
+											만난 소녀 '카토 메구미'를 메인 히로인으로 삼아서 동인 게임을 제작하기로 마음을 먹는다. 미술부 소속이지만
+											동인 일러스트레이터로도 활동 중인 ‘사와무라 스펜서 에리리’, 우등생이면서 라이트노벨 작가로도 활약하고 있는
+											3학년 선배 ‘카스미가오카 우타하’를 영입한 그는, 게임 제작 동아리 ‘블레싱 소프트웨어’를 결성해서 시행착오
+											끝에 첫 작품을 발표한다ㅡ. 에리리와 우타하는 인기 크리에이터 코사카 아카네가 기획을 맡은 대작 게임 [필즈
+											크로니클]의 개발 멤버로 스카우트된다. 한편 블레싱 소프트웨어 대표인 토모야는 서클 활동을 이어 나가면서
+											일러스트레이터인 하시마 이즈미, 프로듀서인 하시마 이오리, 음악 밴드 아이시 테일의 효도 미치루, 그리고
+											부대표 메구미와 함께 신작 게임의 개발을 시작하는데…</div>
+										<div class="my-score big">
+											<div class="preview">
+												<p class="tit">기대평</p>
+												<p class="number">
+													8.8<span class="ir">점</span>
+												</p>
+											</div>
+											<span class="sign big">pointText</span>
+											<div class="review">
+												<p class="tit">관람평</p>
+												<p class="number after">
+													9.4<span class="ir">점</span>
+												</p>
+											</div>
 										</div>
-										<div class="screen-type">
-											<p class="boutqScreen" style="display: none">부티크</p>
-											<p class="mxScreen" style="display: none">MX</p>
-										</div>
-										<div class="movie-score" style="opacity: 0;">
-											<a href="#" class="wrap movieBtn" data-no="20000400"
-												title="시원찮은 그녀를 위한 육성방법 피날레 상세보기">
-												<div class="summary">어느 봄날, 아키 토모야는 벚꽃이 흩날리는 언덕길에서 운명적으로
-													만난 소녀 '카토 메구미'를 메인 히로인으로 삼아서 동인 게임을 제작하기로 마음을 먹는다. 미술부 소속이지만
-													동인 일러스트레이터로도 활동 중인 ‘사와무라 스펜서 에리리’, 우등생이면서 라이트노벨 작가로도 활약하고 있는
-													3학년 선배 ‘카스미가오카 우타하’를 영입한 그는, 게임 제작 동아리 ‘블레싱 소프트웨어’를 결성해서 시행착오
-													끝에 첫 작품을 발표한다ㅡ. 에리리와 우타하는 인기 크리에이터 코사카 아카네가 기획을 맡은 대작 게임 [필즈
-													크로니클]의 개발 멤버로 스카우트된다. 한편 블레싱 소프트웨어 대표인 토모야는 서클 활동을 이어 나가면서
-													일러스트레이터인 하시마 이즈미, 프로듀서인 하시마 이오리, 음악 밴드 아이시 테일의 효도 미치루, 그리고
-													부대표 메구미와 함께 신작 게임의 개발을 시작하는데…</div>
-												<div class="my-score big">
-													<div class="preview">
-														<p class="tit">기대평</p>
-														<p class="number">
-															8.8<span class="ir">점</span>
-														</p>
-													</div>
-													<span class="sign big">pointText</span>
-													<div class="review">
-														<p class="tit">관람평</p>
-														<p class="number after">
-															9.4<span class="ir">점</span>
-														</p>
-													</div>
-												</div>
-											</a>
-										</div>
-									</div>
-									<div class="tit-area">
-										<p class="movie-grade age-12">,</p>
-										<p title="시원찮은 그녀를 위한 육성방법 피날레" class="tit">시원찮은 그녀를 위한 육성방법
-											피날레</p>
-									</div>
-									<div class="rate-date">
-										<span class="rate">예매율 9.6%</span> <span class="date">개봉일
-											2020.02.27</span>
-									</div>
-									<div class="btn-util">
-										<p class="txt movieStat1" style="display: none">상영예정</p>
-										<p class="txt movieStat2" style="display: none">2월 개봉예정</p>
-										<p class="txt movieStat5" style="display: none">개봉예정</p>
-										<p class="txt movieStat6" style="display: none">상영종료</p>
-										<div class="case movieStat4" style="">
-											<a href="#" class="button purple bokdBtn" data-no="20000400"
-												title="영화 예매하기">예매</a>
-										</div>
-									</div>
-						</li>
+									</a>
+								</div>
+							</div>
+							<div class="tit-area">
+								<p class="movie-grade age-12">,</p>
+								<p title="시원찮은 그녀를 위한 육성방법 피날레" class="tit">시원찮은 그녀를 위한 육성방법
+									피날레</p>
+							</div>
+							<div class="rate-date">
+								<span class="rate">예매율 9.6%</span> <span class="date">개봉일
+									2020.02.27</span>
+							</div>
+							<div class="btn-util">
+								<p class="txt movieStat1" style="display: none">상영예정</p>
+								<p class="txt movieStat2" style="display: none">2월 개봉예정</p>
+								<p class="txt movieStat5" style="display: none">개봉예정</p>
+								<p class="txt movieStat6" style="display: none">상영종료</p>
+								<div class="case movieStat4" style="">
+									<a href="#" class="button purple bokdBtn" data-no="20000400"
+										title="영화 예매하기">예매</a>
+								</div>
+							</div></li>
 						<li tabindex="0" class="no-img"><div class="movie-list-info">
-						<input type="hidden"  name="movieName" value="1917" class="movie-info-hidden">
 								<p class="rank" style="">
 									3<span class="ir">위</span>
 								</p>
 								<img
 									src="https://img.megabox.co.kr/SharedImg/2020/02/21/IyeZJvAzV3QgEoW4F7HzdS97zfLYfcni_420.jpg"
-									alt="1917" class="poster lozad" >
+									alt="1917" class="poster lozad" onerror="noImg(this)">
 								<div class="movie-score" style="opacity: 0;">
 									<a href="#" class="wrap movieBtn" data-no="01685000"
 										title="1917 상세보기">
@@ -292,7 +272,7 @@ $('#btnAddMovie').on('click', function() {
 								</p>
 								<img
 									src="https://img.megabox.co.kr/SharedImg/asis/system/mop/poster/2018/FB/2BAA70-3391-4FB0-A22C-F4476AA2BADB.large.jpg"
-									alt="레토" class="poster lozad" >
+									alt="레토" class="poster lozad" onerror="noImg(this)">
 								<div class="movie-score" style="opacity: 0;">
 									<a href="#" class="wrap movieBtn" data-no="01492400"
 										title="레토 상세보기">
@@ -339,7 +319,7 @@ $('#btnAddMovie').on('click', function() {
 								</p>
 								<img
 									src="https://img.megabox.co.kr/SharedImg/2020/02/25/cH7qHYtiXhvrIwZVNraUkjfGPPUj4M5W_420.jpg"
-									alt="인비저블맨" class="poster lozad" >
+									alt="인비저블맨" class="poster lozad" onerror="noImg(this)">
 								<div class="movie-score" style="opacity: 0;">
 									<a href="#" class="wrap movieBtn" data-no="01694800"
 										title="인비저블맨 상세보기">
@@ -396,7 +376,7 @@ $('#btnAddMovie').on('click', function() {
 											부탁하는데… 무수히 늘어놓은 아름다운 말보다, 단 한마디로도 소중한 마음을 전할 수 있다 - 바이올렛 에버가든</div>
 										<div class="my-score smal">
 											<div class="preview">
-												<p class="tit" > </p>
+												<p class="tit">기대평</p>
 												<p class="number">
 													9.8<span class="ir">점</span>
 												</p>
@@ -433,7 +413,7 @@ $('#btnAddMovie').on('click', function() {
 								</p>
 								<img
 									src="https://img.megabox.co.kr/SharedImg/asis/system/mop/poster/2018/C6/013959-C07F-401A-AAC0-CA9A76DB48AE.large.jpg"
-									alt="스타 이즈 본" class="poster lozad" >
+									alt="스타 이즈 본" class="poster lozad" onerror="noImg(this)">
 								<div class="movie-score" style="opacity: 0;">
 									<a href="#" class="wrap movieBtn" data-no="01438700"
 										title="스타 이즈 본 상세보기">
@@ -480,7 +460,7 @@ $('#btnAddMovie').on('click', function() {
 								</p>
 								<img
 									src="https://img.megabox.co.kr/SharedImg/asis/system/mop/poster/2020/73/C2E59B-7D34-4220-8D51-580299453B88.large.jpg"
-									alt="작은 아씨들" class="poster lozad" >
+									alt="작은 아씨들" class="poster lozad" onerror="noImg(this)">
 								<div class="movie-score" style="opacity: 0;">
 									<a href="#" class="wrap movieBtn" data-no="01680400"
 										title="작은 아씨들 상세보기">
@@ -522,7 +502,6 @@ $('#btnAddMovie').on('click', function() {
 										title="영화 예매하기">예매</a>
 								</div>
 							</div></li>
->>>>>>> 771dbfffa20ffc7c3bc0483547bc95228d51b831
 					</ol>
 				</div>
 				<!--// movie-list -->
@@ -555,47 +534,6 @@ $('#btnAddMovie').on('click', function() {
 			<c:import url="/resources/common/footer.jsp"></c:import>
 		</div>
 	</div>
-<<<<<<< HEAD
-	<script src="/js/movie.js"></script>
-=======
-	
-	
-	
-	
-	
-	
-	
-	<script src="/js/movie.js"></script>
-    <script>
-    
-    $(function(){
-    	search();
-    })
-    
-        $(document).ready(function() {
-            $('#ibxMovieNmSearch').on('change', search);
-            $('#btnSearch').on('click', search);
-        });
-        function search(){
-            var key =	 $('#ibxMovieNmSearch').val();
-            console.log("key :  "+key);
-            
-            var movieList = $('#movieList > li');
-         //   var movies = $('li.no-img');
-            $.each(movieList, function(index, item){
-                var title = $(this).find(".tit-area .tit").text();
-                console.log("title :  "+title);
-                
-                if( title.includes(key) ){
-                    $(this).show();
-                }else{
-                    $(this).hide();
-                }
-            });
-        }
-
-    </script>	
-   
->>>>>>> 771dbfffa20ffc7c3bc0483547bc95228d51b831
+	<script src="/js/movie.js"></script>	
 </body>
 </html>

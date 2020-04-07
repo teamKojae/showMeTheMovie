@@ -1,21 +1,40 @@
 /**
  * 
  */
-
-$(function(){
-	$(".sighUpLogo").on('click',function(event){
-		$(location).attr('href', '/');
-
-	})
-})
-
 $(function(){
 	checkUserId();
 	checkPassword();
 	checkSamePassword();
+	goGetSignUp();
+	goPostSignUp();
 })
 
 
+function goGetSignUp(){
+	$('.get').on('click',function(){
+		/*var dataArray = new Array();
+		$.each($(".input-text"), function(key, value){
+			dataArray.push($(this).val()+"/");
+		})*/
+		const userId = $('#ibxJoinInfoRegLoginId').val();
+		const userPassword = $('#ibxJoinInfoRegLoginPwd').val();
+		const userBirth = $('#ibxJoinInfoRegLoginBirthConfirm').val();
+		const userPhoneNum = $('#ibxJoinInfoRegLoginPhoneNum').val();
+		
+		$(location).attr('href','/getDataSignUpdata?userId='+userId+'&userPassword='+userPassword+
+				'&userBirth='+userBirth+'&userPhoneNum='+userPhoneNum);
+		// Json 데이터 또는 배열(PathVariable)권장
+	})
+}
+
+function goPostSignUp(){
+	$('.post').on('click',function(){
+		const form = $('#formData');
+		console.log(form);
+		form.serialize();
+		form.submit();
+	})
+}
 
 function checkUserId(){
 	$('#ibxJoinInfoRegLoginId').on('keypress',function(event){

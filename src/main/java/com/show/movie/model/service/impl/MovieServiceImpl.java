@@ -1,5 +1,6 @@
 package com.show.movie.model.service.impl;
 
+import java.sql.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -65,6 +66,10 @@ public class MovieServiceImpl implements MovieService {
 	}
 
 	@Override
+
+	public List<Movie> getIndexMovie(Movie movie) {
+		return movieDAO.getIndexMovie();
+	}
 	public Map<String, Object> getMovieAllList(String movieDate) {
 		Map<String,Object> map = new HashMap<String, Object>();
 		map.put("movieList", movieDAO.getMovieAllList());

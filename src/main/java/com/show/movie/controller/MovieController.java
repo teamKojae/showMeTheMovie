@@ -1,10 +1,13 @@
 package com.show.movie.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
@@ -22,8 +25,11 @@ public class MovieController {
 	@Autowired
 	MovieService movieService;
 	
-	@RequestMapping(value="/movie")
-	public String movie(Model model) {
+
+	@RequestMapping(value="/movie" ,method = {RequestMethod.GET, RequestMethod.POST} )
+	public String movie(Model model,String movieName) {
+		model.addAttribute("movieName",movieName);
+
 		return "movie";
 	}
 	
@@ -35,15 +41,6 @@ public class MovieController {
 		model.addAttribute("movieImages",new Parser().stringParser(movie.getMovieImages()));
 		return "movieDetail";
 	}
-	
-	@GetMapping("/ticketing")
-	public String ticketing(Model model,Movie movie) {
-		model.addAttribute("movies",movieService.getMovieAllList(null));
-		return "ticketing";
-	}
-
-	
-	
 	
 	@GetMapping(value="/getMovieImages" ,  produces = "application/json; charset=utf8")
 	@ResponseBody

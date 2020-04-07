@@ -5,9 +5,75 @@ $(function() {
 	requestKakaoPay();
 	clickMovie();
 	movieNotRegis();
+	getMovieForDate();
 })
 
-
+function getMovieForDate(){
+	$('.date-area button').on('click',function(event){
+		$(this).closest('div').find('button').removeClass('on');
+		var target = $(event.target);
+		target.addClass('on');
+		$.ajax({
+			url:"/getMovieForDate",
+			data:{
+				movieDate:target.val()
+			}
+		}).done(function(result){
+			$('.movie-choice .list #mCSB_1_container > ul').empty();
+		/*	
+			<c:when test="${status.index % 4 eq 0}">
+			<span class="movie-grade small age-12">12세이상관람가</span>
+		</c:when>
+		
+		<c:when test="${status.index % 4 eq 2}">
+			<span class="movie-grade small age-15">15세이상관람가</span>
+		</c:when>
+		
+		<c:when test="${status.index % 8 eq 5}">
+			<span class="movie-grade small age-19">19세이상관람가</span>
+		</c:when>
+		
+		<c:otherwise>
+			<span class="movie-grade small age-all">전체관람가</span>
+		</c:otherwise>*/
+			
+			$.each(result.movieList,function(index,value){
+				$('#mCSB_21_container').attr('style','display:none');
+//				$('.result #mCSB_21_container ul').empty();
+				$('#playScheduleNonList').attr('style','display:block');
+				$('.theater-choice .list .on').removeClass('on');
+				$('.theater-choice .depth li').empty();
+				var span ;
+				if( index %4 == 0 ){
+					span = '<span class="movie-grade small age-12">12세이상관람가</span>'
+				}else if( index %4 == 2){
+					span = '<span class="movie-grade small age-15">15세이상관람가</span>'
+				}else if( index %8 == 5){
+					span = '<span class="movie-grade small age-19">19세이상관람가</span>'
+				}else{
+					span = '<span class="movie-grade small age-all">전체관람가</span>'
+				}
+				
+				
+				$('#mCSB_1_container > ul').append(
+				'<li>'
+					+'<button type="button" class="btn" value="'+value.movieName+'" disabled>'
+					+'<i class="iconset ico-heart-small">보고싶어 설정안함</i>'
+					+ span
+					+'<span class="txt">'+value.movieName+'</span>'
+					+'</button>'
+				+'</li>'
+				);
+			})
+			$.each(result.movie,function(index,value){
+				$('#mCSB_1_container > ul').append(
+				'<input type="hidden" value="'+value.movieName+'" class="regisMovie" name="regisMovie">'
+				);
+			})
+			movieNotRegis();
+		})
+	})
+}
 function movieNotRegis(){
 	var regisMovie = $('input[name="regisMovie"');
 	$.each(regisMovie,function(index,value){
@@ -19,24 +85,26 @@ function requestKakaoPay() {
 	$('.button').on('click', function(event) {
 		$('#kakaoPay').submit();
 	})
-	
+
 }
 
 function changeChoiseMovie(){
-	$('#mCSB_1_container').find('button').bind('click',function(event){
+	$('#mCSB_1_container ul').on('click','li',function(event){
+		console.log($(event.target));
 		$('.theater-choice .on').removeClass('on has-issue');
+		$('.theater-choice').find('.all-list > button').addClass('on');
 		$('.result').find('ul').empty();
-		$.ajax({
+		/*$.ajax({
 			url:"",
 			data:{
 				movieName: $(event.target).val()
 			}
 		
 		}).done(function(result){})
-		
+		*/
 		$('#movie-schedule-area').attr('style', 'display:none');
 		$('#playScheduleNonList').attr('style', 'display:block');
-		
+
 	})
 }
 
@@ -48,14 +116,13 @@ function getMovieName() {
 	}
 }
 
-
 function clickMovie() {
-	$('.movie-choice .btn').bind('click', function(event) {
+	$('#mCSB_1_container ul').on('click','button',function(event){
 		addOnClass(event);
 		changeChoiseMovie();
+		$('.theater-choice .depth').attr('style','display:none');
 	})
 }
-
 
 function clickTheater() {
 	$('.theater-choice .mCSB_container').bind('click', function(event) {
@@ -80,7 +147,7 @@ function addOnClass(event) {
 		targetButton.removeClass('on has-issue');
 	}
 }
-
+// 69-106 theater
 function getTheater(event) {
 	event.preventDefault();
 	addOnClass(event);
@@ -91,7 +158,8 @@ function getTheater(event) {
 				contentType : "application/x-www-form-urlencoded; charset=UTF-8",
 				dataType : 'JSON',
 				data : {
-					locationName : $(event.target).closest('button').find('span').text()
+					locationName : $(event.target).closest('button').find(
+							'span').text()
 				/*
 				 * movieLocation : $(this).children().text()
 				 */
@@ -100,7 +168,8 @@ function getTheater(event) {
 					const targetLi = $(event.target).closest('li');
 					$('#brchList').find('.depth').attr('style', 'display:none');
 					targetLi.find('.depth').attr('style', 'display:flex');
-
+					$('#mCSB_21_container').attr('style', 'display:none');
+					$('#playScheduleNonList').attr('style', 'display:block');
 					// console.log($(event.target).closest('li').find('.depth'));
 					// 
 					const theater = targetLi.find('.mCSB_container ul');
@@ -111,61 +180,79 @@ function getTheater(event) {
 									result,
 									function(index, item) {
 										theater
-												.append('<li><button class="locationForTheater" id="btn" type="button" value="'+item+'">'
-														+ '<span>'+item+'</span>'
+												.append('<li><button class="locationForTheater" id="btn" type="button" value="'
+														+ item
+														+ '">'
+														+ '<span>'
+														+ item
+														+ '</span>'
 														+ '</button></li>');
 									})
+									
+									
+									
 				}
 
 			});
 }
 
 function getMovieInfoAndTime(event) {
-	
+
 	var dataArray = new Array();
-	$.each($(".on"), function(key, value){
-		if($(this).val() != ""){
-		dataArray.push($(this).val());
+	$.each($(".on"), function(key, value) {
+		if ($(this).val() != "") {
+			dataArray.push($(this).val());
 		}
 	})
-	if(dataArray.length < 3){
+	if (dataArray.length < 3) {
 		alert('영화, 극장을 모두 선택해주세요');
 		return;
 	}
-	
+
 	addOnClass(event);
-	
-	if(dataArray.length > 3 ){
-	dataArray.pop();
+
+	if (dataArray.length > 3) {
+		dataArray.pop();
 	}
-	
+
 	dataArray.push($(event.target).closest('button').val());
 	console.log(dataArray);
-		
+
 	$
 			.ajax({
 				url : "/getMovieInfoAndTime",
 				type : 'GET',
 				contentType : "application/x-www-form-urlencoded; charset=UTF-8",
 				dataType : 'JSON',
-			
+
 				data : {
 					/*'movieDate' : dataArray[0],*/
-					'movieDate' : '2020-04-07',
+					'movieDate' : $('#formDeList > div .on').val(),
 					'movie.movieName' : dataArray[1],
 					'branch.location.locationName' : dataArray[2],
 					'branch.branchName' : dataArray[3]
 				},
-			
-				
+
 				success : function(result) {
+					console.log(result.length);
+					$('.result0').attr('style','display:none');
 					$('#playScheduleNonList').attr('style', 'display:none');
+					$('#mCSB_21_container').attr('style', 'display:block');
+					if(result.length < 1 ){
+						$('.result0').attr('style','display:block');
+					}
+					
 					$('.result').find('ul').empty();
-					$.each(result,function(index, item) {
-										$('.result').find('ul').append(
+					$
+							.each(
+									result,
+									function(index, item) {
+										$('.result')
+												.find('ul')
+												.append(
 														'<li>'
-														+'<form action="/getSelectScreen" method="post">'
-														+'<button type="submit" class="btn" >'
+																+ '<form action="/getSelectScreen" method="post">'
+																+ '<button type="submit" class="btn" >'
 																+ '<div class="legend"></div>'
 																+ '<span class="time"><strong title="상영 시작">'
 																+ item.movieStartTime
@@ -183,7 +270,8 @@ function getMovieInfoAndTime(event) {
 																+ item.branch.branchName
 																+ '">'
 																+ item.branch.branchName
-																+ '<br>'+item.theater.theaterName
+																+ '<br>'
+																+ item.theater.theaterName
 																+ '</span><span class="seat"><strong class="now" title="잔여 좌석">'
 																+ item.theater.theaterLeftSeat
 																+ '</strong>'
@@ -191,14 +279,25 @@ function getMovieInfoAndTime(event) {
 																+ item.theater.theaterAllSeat
 																+ '</em></span>'
 																+ '</div></button>'
-																+'<input type="hidden" name="movie.movieName" value="'+item.movie.movieName+'" >'
-																+'<input type="hidden" name="movie.moviePoster" value="'+item.movie.moviePoster+'" >'
-																+'<input type="hidden" name="movieStartTime" value="'+item.movieStartTime+'" >'
-																+'<input type="hidden" name="movieEndTime" value="'+item.movieEndTime+'" >'
-																+'<input type="hidden" name="branch.branchName" value="'+item.branch.branchName+'" >'
-																+'<input type="hidden" name="theater.theaterName" value="'+item.theater.theaterName+'" ></form>'
-																+'</li>'
-												);
+																+ '<input type="hidden" name="movie.movieName" value="'
+																+ item.movie.movieName
+																+ '" >'
+																+ '<input type="hidden" name="movie.moviePoster" value="'
+																+ item.movie.moviePoster
+																+ '" >'
+																+ '<input type="hidden" name="movieStartTime" value="'
+																+ item.movieStartTime
+																+ '" >'
+																+ '<input type="hidden" name="movieEndTime" value="'
+																+ item.movieEndTime
+																+ '" >'
+																+ '<input type="hidden" name="branch.branchName" value="'
+																+ item.branch.branchName
+																+ '" >'
+																+ '<input type="hidden" name="theater.theaterName" value="'
+																+ item.theater.theaterName
+																+ '" ></form>'
+																+ '</li>');
 									})
 				}
 			})

@@ -1,22 +1,16 @@
-
-
-$(function(){
+$(function() {
 	var seat = $('.row__seat');
-	
-	$.each(seat, function(index, value){
+
+	$.each(seat, function(index, value) {
 		console.log($(this));
-		if( $(this).attr('data-area') == 1){
+		if ($(this).attr('data-area') == 1) {
 			console.log($(this));
 			$(this).addClass('row__seat--reserved');
-			
 
-			
-			
 		}
 	})
-	
-})
 
+})
 
 $(document).on("click",".row__seat",function(event){
 
@@ -54,41 +48,30 @@ $(document).on("click",".row__seat",function(event){
 	
 		false;
 	}
+	
+})
 
-});
-
-
-
-
-
-
-		
-		function OnChange(){
-			
-		var selected = document.getElementById("selectBox").options[document.getElementById("selectBox").selectedIndex].value;
-		
-		$('#totalPeople').val(selected);
-		
-		var fixedNum = 10000;
-		var sum=0;
-		
-		
-		sum = selected * fixedNum;
-		$('#totalPrice').val(sum);
-		
-		console.log(sum);
-		
-		if(  ! isNaN(sum)){
-			$('.seat-result .pay-area .total').find('em').text(sum);
-		}else{
-			$('.seat-result .pay-area .total').find('em').text('0');
-		}
+	
 	
 
+function OnChange() {
 
+	var selected = document.getElementById("selectBox").options[document.getElementById("selectBox").selectedIndex].value;
+
+	$('#totalPeople').val(selected);
+
+	var fixedNum = 10000;
+	var sum = 0;
+
+	sum = selected * fixedNum;
+	$('#totalPrice').val(sum);
+
+	console.log(sum);
+
+	if (!isNaN(sum)) {
+		$('.seat-result .pay-area .total').find('em').text(sum);
+	} else {
+		$('.seat-result .pay-area .total').find('em').text('0');
+	}
+	
 }
-
-
-
-
-
