@@ -72,11 +72,9 @@ function requestKakaoPay() {
 
 }
 
-
 function changeChoiseMovie(){
 	$('#mCSB_1_container ul').on('click','li',function(event){
 		console.log($(event.target));
-
 		$('.theater-choice .on').removeClass('on has-issue');
 		$('.theater-choice').find('.all-list > button').addClass('on');
 		$('.result').find('ul').empty();
@@ -212,6 +210,7 @@ function getMovieInfoAndTime(event) {
 				dataType : 'JSON',
 
 				data : {
+					/*'movieDate' : dataArray[0],*/
 					'movieDate' : $('#formDeList > div .on').val(),
 					'movie.movieName' : dataArray[1],
 					'branch.location.locationName' : dataArray[2],

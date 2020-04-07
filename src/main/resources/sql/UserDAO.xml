@@ -57,8 +57,8 @@
 		VALUES ( #{userId}, #{userName}, #{userPassword}, #{userBirth}, #{userPhoneNumber}, #{userSignupCode} )
   	</insert>
   	
-  	<select id="btnUserIdCheck" resultType="int">
-  		SELECT * fROM user WHERE userId = #{userId}
+  	<select id="userIdCheck" resultType="int" >
+  		SELECT COUNT(*) fROM user WHERE userId = #{userId}
   	</select>
   	
 </mapper>

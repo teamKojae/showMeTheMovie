@@ -16,6 +16,8 @@ public interface MovieService {
 	public String getMovieImages(String movieName);
 	public String getMovieSynopsis(String movieName);
 	public List<Seat> getSeatList(Seat seat);
+
 	public List<Movie> getIndexMovie(Movie movie);
 	public Map<String, Object> getMovieAllList(String movieDate);
+
 }

@@ -66,6 +66,7 @@ public class MovieServiceImpl implements MovieService {
 	}
 
 	@Override
+
 	public List<Movie> getIndexMovie(Movie movie) {
 		return movieDAO.getIndexMovie();
 	}

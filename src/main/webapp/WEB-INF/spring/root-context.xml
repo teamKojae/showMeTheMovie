@@ -6,5 +6,22 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+<<<<<<< HEAD
 
+=======
+		
+	<!-- Root Context: defines shared resources visible to all other web components -->
+  <!-- @ResponseBody로 String 처리할때 한글처리 -->
+	  <mvc:annotation-driven>
+		    <mvc:message-converters>
+		        <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+		            <property name="supportedMediaTypes">
+		                <list>
+		                    <value>text/html;charset=UTF-8</value>
+		                </list>
+		            </property>
+		        </bean>
+		    </mvc:message-converters>
+		</mvc:annotation-driven>  
+>>>>>>> fc3ba3c440fa90e1329bf8b980c9611bebdce137
 </beans>

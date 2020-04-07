@@ -22,6 +22,7 @@ public interface UserDAO {
 
 	//예나
 	public void signUpUser(User user);
+	public int userIdCheck(User user);
 
 	//중훈
 	public User getLogin(User login);

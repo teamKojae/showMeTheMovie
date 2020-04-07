@@ -12,55 +12,51 @@ $(function() {
 
 })
 
-$(document)
-		.on(
-				"click",
-				".row__seat",
-				function(event) {
+$(document).on("click",".row__seat",function(event){
 
-					var a = $(this).text();
+	
+	var a = $(this).text();
 
-					var count = $('#selectBox').val();
+	var count = $('#selectBox').val();
+	
+	
+	if($(this).attr('data-area')==0){
+	
+	    if($(event.target).hasClass('row__seat--reserved')){
+	    	$(this).removeClass('row__seat--reserved');
+	    	
+	    	var seatName = $(event.target).text();
+	    	$('#test > p:contains('+seatName+') ').remove();
+	    	
+	    }else{
+	    
+	    	
+	    	
+	    			
+	    			$(this).addClass('row__seat--reserved');
+	    			$("#test").append(
+	    					'<p>'+$(event.target).text()+'</p>'
+	    					+'<input type="hidden" name="seatName" value="'+$(event.target).text()+'">'
+	    			);
+	    			
+	    		
+	    		
+	    	
+	    	}
+    
+	} else{
+	
+		false;
+	}
+	
+})
 
-					if ($(this).attr('data-area') == 0) {
-
-						if ($(event.target).hasClass('row__seat--reserved')) {
-							$(this).removeClass('row__seat--reserved');
-
-							var seatName = $(event.target).text();
-							$('#test > p:contains(' + seatName + ') ').remove();
-
-						} else {
-
-							if (count > 3) {
-
-								$(this).prop('checked', false);
-
-								$(this).addClass('row__seat--reserved');
-								$("#test")
-										.append(
-												'<p>'
-														+ $(event.target)
-																.text()
-														+ '</p>'
-														+ '<input type="hidden" name="seatName" value="'
-														+ $(event.target)
-																.text() + '">');
-
-							}
-
-						}
-
-					} else {
-						false;
-					}
-
-				});
+	
+	
 
 function OnChange() {
 
-	var selected = document.getElementById("selectBox").options[document
-			.getElementById("selectBox").selectedIndex].value;
+	var selected = document.getElementById("selectBox").options[document.getElementById("selectBox").selectedIndex].value;
 
 	$('#totalPeople').val(selected);
 
@@ -77,5 +73,5 @@ function OnChange() {
 	} else {
 		$('.seat-result .pay-area .total').find('em').text('0');
 	}
-
+	
 }
