@@ -55,7 +55,7 @@ public class KakaoController {
 		//영화선택한  정보값을 스크린선택 컨트롤러에 전달
 		String view = null;
 		if (session.getAttribute("kakaoPay") == null) {
-			view = "index";
+			view = "redirect:/";
 		}else if(session.getAttribute("kakaoPay") != null) {
 			model.addAttribute("movieInfo", session.getAttribute("screenInfo"));
 			session.removeAttribute("kakaoPay");
