@@ -17,7 +17,6 @@ public interface UserService {
 	public void signUpUser(User user);
 
 	//중훈
-	public Login getLogin(Login login);
-	public Login encrypt(Login login);
-	//String encrypted = UserDAO.encrypt(userPassword);
+	public User getLogin(User login);
+	
 }

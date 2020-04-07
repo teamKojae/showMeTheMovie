@@ -62,4 +62,9 @@ public class MovieServiceImpl implements MovieService {
 		return movieDAO.getSeatList();
 	}
 
+	@Override
+	public List<Movie> getIndexMovie(Movie movie) {
+		return movieDAO.getIndexMovie();
+	}
+
 }

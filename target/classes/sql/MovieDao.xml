@@ -80,6 +80,17 @@
 		 AND movie.movieName = #{movieName};
 	</select>
 	
+	<select id="getIndexMovie" resultMap = "movie">
+		SELECT movie.movieCode, movie.movieName, movie.movieAudience, movie.movieUpdate, movie.movieSynopsis,
+		movie.moviePoster, movie.moviePosterBG, movie.movieImages,
+		ranking.movieTicketRate, rankPersent.movieTicketRatePersent
+		FROM movie,
+		(SELECT round( ( (SELECT movieAudience from movie where movieName= '라라랜드') / sum(movie.movieAudience)  )*100, 1) 
+		as movieTicketRatePersent FROM movie) AS rankPersent,
+		(SELECT movieCode, Rank() over(order by movieAudience DESC) as movieTicketRate FROM movie) AS ranking
+		 WHERE movie.movieCode = ranking.movieCode
+	</select>
+	
 	<select id="getBranch" resultType="string" >
 		SELECT branch.branchName FROM branch, location
 		WHERE location.locationCode = branch.locationCode 

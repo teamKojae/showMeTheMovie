@@ -24,7 +24,7 @@ public interface UserDAO {
 	public void signUpUser(User user);
 
 	//중훈
-	public Login getLogin(Login login);
+	public User getLogin(User login);
 	public Login encrypt(Login login);
 	//boolean isMatch(String userPassword, String hashed);
 

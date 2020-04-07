@@ -90,7 +90,7 @@
 
 					<div class="movie-search">
 						<input type="text" title="영화명을 입력하세요" id="ibxMovieNmSearch"
-							name="ibxMovieNmSearch" placeholder="영화명 검색" class="input-text">
+							name="ibxMovieNmSearch" placeholder="영화명 검색" class="input-text" value="${movieName }">
 						<button type="button" class="btn-search-input" id="btnSearch">검색</button>
 					</div>
 				</div>
@@ -105,13 +105,13 @@
 				<div class="movie-list">
 					<ol class="list" id="movieList">
 						<li tabindex="0" class="no-img"><div class="movie-list-info">
-						<input type="hidden"  name="movieName" value="라라랜드" class="movie-info-hidden">
+						<input type="hidden"  name="movieName" value="다크 워터스" class="movie-info-hidden">
 								<p class="rank" style="">
 									1<span class="ir">위</span>
 								</p>
 								<img
-									src="/img/alaland_snapshot1.jpg"
-									alt="라라랜드" class="poster lozad" onerror="noImg(this)">
+									src="/img/lalaland_snapshot1.jpg"
+									alt="라라랜드" class="poster lozad" >
 								<div class="movie-score" style="opacity: 0;">
 									<a href="#" class="wrap movieBtn" data-no="20003000"
 										title="다크 워터스 상세보기">
@@ -228,7 +228,7 @@
 								</p>
 								<img
 									src="https://img.megabox.co.kr/SharedImg/2020/02/21/IyeZJvAzV3QgEoW4F7HzdS97zfLYfcni_420.jpg"
-									alt="1917" class="poster lozad" onerror="noImg(this)">
+									alt="1917" class="poster lozad" >
 								<div class="movie-score" style="opacity: 0;">
 									<a href="#" class="wrap movieBtn" data-no="01685000"
 										title="1917 상세보기">
@@ -276,7 +276,7 @@
 								</p>
 								<img
 									src="https://img.megabox.co.kr/SharedImg/asis/system/mop/poster/2018/FB/2BAA70-3391-4FB0-A22C-F4476AA2BADB.large.jpg"
-									alt="레토" class="poster lozad" onerror="noImg(this)">
+									alt="레토" class="poster lozad" >
 								<div class="movie-score" style="opacity: 0;">
 									<a href="#" class="wrap movieBtn" data-no="01492400"
 										title="레토 상세보기">
@@ -323,7 +323,7 @@
 								</p>
 								<img
 									src="https://img.megabox.co.kr/SharedImg/2020/02/25/cH7qHYtiXhvrIwZVNraUkjfGPPUj4M5W_420.jpg"
-									alt="인비저블맨" class="poster lozad" onerror="noImg(this)">
+									alt="인비저블맨" class="poster lozad" >
 								<div class="movie-score" style="opacity: 0;">
 									<a href="#" class="wrap movieBtn" data-no="01694800"
 										title="인비저블맨 상세보기">
@@ -417,7 +417,7 @@
 								</p>
 								<img
 									src="https://img.megabox.co.kr/SharedImg/asis/system/mop/poster/2018/C6/013959-C07F-401A-AAC0-CA9A76DB48AE.large.jpg"
-									alt="스타 이즈 본" class="poster lozad" onerror="noImg(this)">
+									alt="스타 이즈 본" class="poster lozad" >
 								<div class="movie-score" style="opacity: 0;">
 									<a href="#" class="wrap movieBtn" data-no="01438700"
 										title="스타 이즈 본 상세보기">
@@ -464,7 +464,7 @@
 								</p>
 								<img
 									src="https://img.megabox.co.kr/SharedImg/asis/system/mop/poster/2020/73/C2E59B-7D34-4220-8D51-580299453B88.large.jpg"
-									alt="작은 아씨들" class="poster lozad" onerror="noImg(this)">
+									alt="작은 아씨들" class="poster lozad" >
 								<div class="movie-score" style="opacity: 0;">
 									<a href="#" class="wrap movieBtn" data-no="01680400"
 										title="작은 아씨들 상세보기">
@@ -545,6 +545,36 @@
 	
 	
 	
-	<script src="/js/movie.js"></script>	
+	<script src="/js/movie.js"></script>
+    <script>
+    
+    $(function(){
+    	search();
+    })
+    
+        $(document).ready(function() {
+            $('#ibxMovieNmSearch').on('change', search);
+            $('#btnSearch').on('click', search);
+        });
+        function search(){
+            var key =	 $('#ibxMovieNmSearch').val();
+            console.log("key :  "+key);
+            
+            var movieList = $('#movieList > li');
+         //   var movies = $('li.no-img');
+            $.each(movieList, function(index, item){
+                var title = $(this).find(".tit-area .tit").text();
+                console.log("title :  "+title);
+                
+                if( title.includes(key) ){
+                    $(this).show();
+                }else{
+                    $(this).hide();
+                }
+            });
+        }
+
+    </script>	
+   
 </body>
 </html>

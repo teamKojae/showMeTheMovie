@@ -35,8 +35,8 @@
 		UPDATE user SET userPassword=#{userPassword} WHERE userId = {userId}
 	</insert>
 	 
-	<select id = "getLogin" resultMap="login" parameterType="login">
-		SELECT * FROM user WHERE userId = #{userId} and userPassword = #{userPassword}
+	<select id = "getLogin" resultMap="user" parameterType="user">
+		SELECT * FROM user WHERE userId = #{userId} and userPassword = #{userPassword} and userSignupCode = '0'
 	</select>
 
 	<select id="getTime" resultType="string">

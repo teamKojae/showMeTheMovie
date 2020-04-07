@@ -38,7 +38,7 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
-	public Login getLogin(Login login) {
+	public User getLogin(User login) {
 		return userDAO.getLogin(login);
 	}
 	
@@ -50,12 +50,12 @@ public class UserServiceImpl implements UserService {
 	}
 
 	
-	//중훈
+	/*중훈
 	
 	@Override
 	public Login encrypt(Login login) {
 		return userDAO.encrypt(login);
-	}
+	}*/
 
 
 }

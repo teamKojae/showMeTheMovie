@@ -1,9 +1,12 @@
 package com.show.movie.controller;
 
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,24 +39,18 @@ public class HomeController {
 	
 	/*  ※   login은 LoginController에  있어요   */
 	@RequestMapping(value="/")
-	public String mainPage(Movie movie, Model model, HttpSession session) {
+	public String mainPage(Movie movie,Movie indexMovie, Model model, HttpSession session) {
 		log.info("movie : "+movie);
+		
+		movie = movieService.getMovie(movie.getMovieName() );
+		List<Movie> list = movieService.getIndexMovie(movie);
+		model.addAttribute("movie",  movie);
+		model.addAttribute("indexMovie", list);
 		
 		
 		
 		return "index";
 	}
-	
-	@RequestMapping(value="/search")
-	public String SearchMovie(Movie movie, Model model,HttpSession session) {
-		log.info("movie : " + movie);
-		movie = movieService.getMovie(movie.getMovieName());// getMovie -> getIncludeName MovieService에 movieIncludeList 만들고 값 insert
-		
-		model.addAttribute("movieList", movieService.getMovie(movie.getMovieName()));
-		
-		return "movie";
-	}
-
 	
 	
 	@RequestMapping(value="/myPage")
