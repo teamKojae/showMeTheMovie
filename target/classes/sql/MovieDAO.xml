@@ -14,11 +14,13 @@
 		<result column="moviePrice" property="moviePrice" />
 		<result column="moviePoster" property="moviePoster" />
 		<result column="moviePosterBG" property="moviePosterBG" />
-	</resultMap>
-	<!-- ID : JOIN 하는 POJO 클래스 type : FROM 대상인 POJO클래스 -->
-	<!-- resultMap 에는 해당 객체의 모든 속성을 넣어줄 필요가 없어서 @Alias를 똑같이 해줄필요가 없음. -->
-	<!-- ex) MovieInfo안에 branch,Movie가 있는데 movie로 바인딩 후 movieInfo로 리턴 할 수 있다. -->
-	<!-- ↓설명 : <select resultMap ="mvInfo">로 접근하면 movieInfo 객체로 반환함 -->
+	</resultMap> 
+
+	
+			<!-- ID : JOIN 하는 POJO 클래스     type : FROM 대상인 POJO클래스 -->
+			<!--  resultMap 에는 해당 객체의 모든 속성을 넣어줄 필요가 없어서 @Alias를 똑같이 해줄필요가 없음.-->
+			<!-- ex) MovieInfo안에 branch,Movie가 있는데 movie로 바인딩 후 movieInfo로 리턴 할 수 있다.-->
+			<!-- ↓설명 : <select  resultMap ="mvInfo">로 접근하면   movieInfo 객체로 반환함 -->
 	<resultMap id="mvInfo" type="movieInfo">
 		<!-- column : DB 컬럼명 property : POJO 클래스의 속성명 -->
 		<result column="moiveInfoCode" property="moviePosterBG" />
@@ -56,19 +58,17 @@
 
 	</resultMap>
 
-	<select id="getSeat" resultType="seat">
-		select seat.seatCode,
-		seat.seatName, seatStatus from seat
+	<select id="getSeatList" resultType="seat">
+		  select * from seat
 	</select>
 
 
 	<select id="getMovie" resultMap="movie">
-		<!-- View로 처리좀 하고싶은데.. 강사님 HELP !! -->
-		SELECT movie.movieCode, movie.movieName, movie.movieAudience,
-		movie.movieUpdate, movie.movieSynopsis,
-		movie.moviePoster,
-		movie.moviePosterBG, ranking.movieTicketRate,
-		rankPersent.movieTicketRatePersent
+
+	<!-- View로 처리좀 하고싶은데.. 강사님 HELP !! -->
+		SELECT movie.movieCode, movie.movieName, movie.movieAudience, movie.movieUpdate, movie.movieSynopsis,
+		movie.moviePoster, movie.moviePosterBG, movie.movieImages,
+		ranking.movieTicketRate, rankPersent.movieTicketRatePersent
 		FROM movie,
 		(SELECT round( ( (SELECT
 		movieAudience from movie where movieName= #{movieName}) /

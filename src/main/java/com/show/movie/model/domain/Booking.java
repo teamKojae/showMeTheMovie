@@ -3,6 +3,7 @@ package com.show.movie.model.domain;
 import java.sql.Date;
 
 import org.apache.ibatis.type.Alias;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -24,8 +25,11 @@ public class Booking {
 	private int bookingPrice;
 	private int bookingState;
 	
+	@Autowired(required = false)
 	private Movie movie;
+	@Autowired(required = false)
 	private MovieInfo movieInfo;
+	@Autowired(required = false)
 	private Branch branch;
 
 }
