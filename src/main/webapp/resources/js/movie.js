@@ -53,7 +53,7 @@ function tabListStilCut(){
 function tabListSynopsis(){
 	$('.tab-list li:nth-child(1)').on('click',function(event){
 		$('.tab-list li').closest('li').removeClass('on');
-		$(event.target).addClass('on');
+		$(event.target).closest('li').addClass('on');
 		
 		$('.inner-wrap div').addClass('on');
 		$('.tab-list').removeClass('on');

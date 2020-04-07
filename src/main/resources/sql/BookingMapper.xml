@@ -9,7 +9,8 @@
 		resultType="com.show.movie.model.domain.Booking">
 		select * from booking where userid=#{userid}
 	</select>
-
+	
+ 
 	<!-- booking과 movieinfo 테이블에서 movieInfoCode 같으면 movieinfocode가져옴 -->
 	<select id="getAllMovieinfo"
 		resultType="com.show.movie.model.domain.MovieInfo">

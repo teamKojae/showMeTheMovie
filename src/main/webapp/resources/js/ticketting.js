@@ -4,9 +4,82 @@ $(function() {
 	getMovieName();
 	requestKakaoPay();
 	clickMovie();
+	movieNotRegis();
+	getMovieForDate();
 })
 
-
+function getMovieForDate(){
+	$('.date-area button').on('click',function(event){
+		$(this).closest('div').find('button').removeClass('on');
+		var target = $(event.target);
+		target.addClass('on');
+		$.ajax({
+			url:"/getMovieForDate",
+			data:{
+				movieDate:target.val()
+			}
+		}).done(function(result){
+			$('.movie-choice .list #mCSB_1_container > ul').empty();
+		/*	
+			<c:when test="${status.index % 4 eq 0}">
+			<span class="movie-grade small age-12">12세이상관람가</span>
+		</c:when>
+		
+		<c:when test="${status.index % 4 eq 2}">
+			<span class="movie-grade small age-15">15세이상관람가</span>
+		</c:when>
+		
+		<c:when test="${status.index % 8 eq 5}">
+			<span class="movie-grade small age-19">19세이상관람가</span>
+		</c:when>
+		
+		<c:otherwise>
+			<span class="movie-grade small age-all">전체관람가</span>
+		</c:otherwise>*/
+			
+			$.each(result.movieList,function(index,value){
+				$('#mCSB_21_container').attr('style','display:none');
+//				$('.result #mCSB_21_container ul').empty();
+				$('#playScheduleNonList').attr('style','display:block');
+				$('.theater-choice .list .on').removeClass('on');
+				$('.theater-choice .depth li').empty();
+				var span ;
+				if( index %4 == 0 ){
+					span = '<span class="movie-grade small age-12">12세이상관람가</span>'
+				}else if( index %4 == 2){
+					span = '<span class="movie-grade small age-15">15세이상관람가</span>'
+				}else if( index %8 == 5){
+					span = '<span class="movie-grade small age-19">19세이상관람가</span>'
+				}else{
+					span = '<span class="movie-grade small age-all">전체관람가</span>'
+				}
+				
+				
+				$('#mCSB_1_container > ul').append(
+				'<li>'
+					+'<button type="button" class="btn" value="'+value.movieName+'" disabled>'
+					+'<i class="iconset ico-heart-small">보고싶어 설정안함</i>'
+					+ span
+					+'<span class="txt">'+value.movieName+'</span>'
+					+'</button>'
+				+'</li>'
+				);
+			})
+			$.each(result.movie,function(index,value){
+				$('#mCSB_1_container > ul').append(
+				'<input type="hidden" value="'+value.movieName+'" class="regisMovie" name="regisMovie">'
+				);
+			})
+			movieNotRegis();
+		})
+	})
+}
+function movieNotRegis(){
+	var regisMovie = $('input[name="regisMovie"');
+	$.each(regisMovie,function(index,value){
+		$('#mCSB_1_container > ul li').find('span:contains('+value.value+')').closest('button').attr('disabled',false);
+	})
+}
 
 function requestKakaoPay() {
 	$('.button').on('click', function(event) {
@@ -16,9 +89,19 @@ function requestKakaoPay() {
 }
 
 function changeChoiseMovie(){
-	$('#mCSB_1_container').find('button').bind('click',function(event){
+	$('#mCSB_1_container ul').on('click','li',function(event){
+		console.log($(event.target));
 		$('.theater-choice .on').removeClass('on has-issue');
+		$('.theater-choice').find('.all-list > button').addClass('on');
 		$('.result').find('ul').empty();
+		/*$.ajax({
+			url:"",
+			data:{
+				movieName: $(event.target).val()
+			}
+		
+		}).done(function(result){})
+		*/
 		$('#movie-schedule-area').attr('style', 'display:none');
 		$('#playScheduleNonList').attr('style', 'display:block');
 		
@@ -35,9 +118,10 @@ function getMovieName() {
 
 
 function clickMovie() {
-	$('.movie-choice .btn').bind('click', function(event) {
+	$('#mCSB_1_container ul').on('click','button',function(event){
 		addOnClass(event);
 		changeChoiseMovie();
+		$('.theater-choice .depth').attr('style','display:none');
 	})
 }
 
@@ -85,7 +169,8 @@ function getTheater(event) {
 					const targetLi = $(event.target).closest('li');
 					$('#brchList').find('.depth').attr('style', 'display:none');
 					targetLi.find('.depth').attr('style', 'display:flex');
-
+					$('#mCSB_21_container').attr('style', 'display:none');
+					$('#playScheduleNonList').attr('style', 'display:block');
 					// console.log($(event.target).closest('li').find('.depth'));
 					// 
 					const theater = targetLi.find('.mCSB_container ul');
@@ -100,6 +185,9 @@ function getTheater(event) {
 														+ '<span>'+item+'</span>'
 														+ '</button></li>');
 									})
+									
+									
+									
 				}
 
 			});
@@ -136,7 +224,7 @@ function getMovieInfoAndTime(event) {
 			
 				data : {
 					/*'movieDate' : dataArray[0],*/
-					'movieDate' : '2020-04-07',
+					'movieDate' : $('#formDeList > div .on').val(),
 					'movie.movieName' : dataArray[1],
 					'branch.location.locationName' : dataArray[2],
 					'branch.branchName' : dataArray[3]
@@ -144,7 +232,14 @@ function getMovieInfoAndTime(event) {
 			
 				
 				success : function(result) {
+					console.log(result.length);
+					$('.result0').attr('style','display:none');
 					$('#playScheduleNonList').attr('style', 'display:none');
+					$('#mCSB_21_container').attr('style', 'display:block');
+					if(result.length < 1 ){
+						$('.result0').attr('style','display:block');
+					}
+					
 					$('.result').find('ul').empty();
 					$.each(result,function(index, item) {
 										$('.result').find('ul').append(

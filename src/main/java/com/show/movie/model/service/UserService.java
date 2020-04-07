@@ -18,5 +18,4 @@ public interface UserService {
 
 	//중훈
 	public User getLogin(User login);
-	
 }

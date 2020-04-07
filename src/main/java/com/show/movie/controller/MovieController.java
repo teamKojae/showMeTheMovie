@@ -38,14 +38,6 @@ public class MovieController {
 		return "movieDetail";
 	}
 	
-	@GetMapping("/ticketing")
-	public String ticketing(Model model,Movie movie) {
-		return "ticketing";
-	}
-
-	
-	
-	
 	@GetMapping(value="/getMovieImages" ,  produces = "application/json; charset=utf8")
 	@ResponseBody
 	public String getMovieImages(String movieName) {

@@ -12,9 +12,7 @@ public class PojoAspectJ {
 	public PojoAspectJ(){
 		System.out.println("::" + getClass() + " default Construct");
 	}
-//	@Pointcut("execution(* com.show.movie.controller..*(..)")
-	private void target() {};
-	
+
 		@Around("execution(* com.show.movie.model.dao..*(..))")
 		public Object invoke(ProceedingJoinPoint joinPoint) throws Throwable {
 			System.out.println("-------------------------------------------------------");

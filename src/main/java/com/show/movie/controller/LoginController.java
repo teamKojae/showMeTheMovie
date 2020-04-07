@@ -61,7 +61,7 @@ public class LoginController {
 		  log.info("return login : " + login);
 		  log.info("return user : " + user);
 		  
-		  
+
 		if (login == null ) {
 			  return "login";
 		  }else {
@@ -139,7 +139,7 @@ public class LoginController {
 		user.setUserId((String)obj.get("id"));
 		user.setUserName((String)obj.get("name"));
 		user.setUserBirth((String)obj.get("birthday"));
-		//user.getUserSignupCode(1);
+		user.setUserSignupCode(1);
 		return user;
 	}
 	
