@@ -61,7 +61,7 @@ public class ManagerServiceImpl implements ManagerService {
 	}
 
 	@Override
-	public List<List<MovieInfo>> getTimeScheduleInTheater(List<String> theaterNumbers, Date timeSchedule) {
+	public List<List<MovieInfo>> getTimeScheduleInTheater(List<String> theaterNumbers, String timeSchedule) {
 
 		if (managerDAO.isViewTimeSchedule() == 0) {
 			managerDAO.createViewTimeSchedule();

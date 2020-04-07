@@ -60,18 +60,17 @@ function selectTheater(){
 }
 
 function selectBranchInTheater(){
-	$("#masterTheater .list-section").bind("click","ul > li",function(event){
+	$("#masterTheater .list-section").bind("click","ul > li",function(event) {
 		var target = $(event.target);
 		targetAddClassOn(target);
-		$('.timeTable > h3').append(
-				'<a href="" style="padding: 10px;" class="theaterTimeTable" '
-				+'onclick="return false" data-theater-no="'+target.attr("data-theater-no")+'">'
-				+'<span class="">'+target.text()+'</span>'
-				+'</a>'
-		);
+			$('.timeTable > h3').append(
+					'<a href="" style="padding: 10px;" class="theaterTimeTable" '
+					+'onclick="return false" data-theater-no="'+target.attr("data-theater-no")+'">'
+					+'<span class="">'+target.text()+'</span>'
+					+'</a>'
+			)
 	})
 }
-
 
 function getTimeTable(){
 	$('.managerButton').on('click',function(event){
@@ -145,11 +144,11 @@ function getTimeTable(){
 					);
 				
 				
-				var canAddTime = new Array();
+				//var canAddTime = new Array();
 				$.each(value, function(index, item){
-					console.log(item.movieDate);
-					var date = new Date (item.movieDate, item.movieStartTime);
- 					canAddTime.push( parseFloat( item.movieStartTime ) );
+					//console.log(item.movieDate);
+					//var date = new Date (item.movieDate, item.movieStartTime);
+ 					//canAddTime.push( parseFloat( item.movieStartTime ) );
 					console.log(item);
 					var test = $('.theater-list[data-theater-no="'+value[index].theater.theaterCode+'"');
 					test.find('table tr').append(

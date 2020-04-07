@@ -17,5 +17,5 @@ public interface ManagerService {
 	public List<Branch> getBranchList(Location location);
 	public List<Theater> getTheaterList(String branchName);
 	public void insertTheater(String movieName ,List<String> theaterName);
-	public List<List<MovieInfo>> getTimeScheduleInTheater(List<String> theaterNo , Date timeSchedule);
+	public List<List<MovieInfo>> getTimeScheduleInTheater(List<String> theaterNo , String timeSchedule);
 }
