@@ -61,5 +61,4 @@
   		SELECT * fROM user WHERE userId = #{userId}
   	</select>
   	
-  	
 </mapper>

@@ -8,8 +8,6 @@ $(function() {
 	getMovieForDate();
 })
 
-<<<<<<< HEAD
-=======
 function getMovieForDate(){
 	$('.date-area button').on('click',function(event){
 		$(this).closest('div').find('button').removeClass('on');
@@ -22,23 +20,7 @@ function getMovieForDate(){
 			}
 		}).done(function(result){
 			$('.movie-choice .list #mCSB_1_container > ul').empty();
-		/*	
-			<c:when test="${status.index % 4 eq 0}">
-			<span class="movie-grade small age-12">12세이상관람가</span>
-		</c:when>
 		
-		<c:when test="${status.index % 4 eq 2}">
-			<span class="movie-grade small age-15">15세이상관람가</span>
-		</c:when>
-		
-		<c:when test="${status.index % 8 eq 5}">
-			<span class="movie-grade small age-19">19세이상관람가</span>
-		</c:when>
-		
-		<c:otherwise>
-			<span class="movie-grade small age-all">전체관람가</span>
-		</c:otherwise>*/
-			
 			$.each(result.movieList,function(index,value){
 				$('#mCSB_21_container').attr('style','display:none');
 //				$('.result #mCSB_21_container ul').empty();
@@ -83,7 +65,6 @@ function movieNotRegis(){
 	})
 }
 
->>>>>>> 5410ff1cb4f560a3938ced51439ea24db4215ff4
 function requestKakaoPay() {
 	$('.button').on('click', function(event) {
 		$('#kakaoPay').submit();
@@ -91,14 +72,11 @@ function requestKakaoPay() {
 
 }
 
-<<<<<<< HEAD
-function changeChoiseMovie() {
-	$('#mCSB_1_container').find('button').bind('click', function(event) {
-=======
+
 function changeChoiseMovie(){
 	$('#mCSB_1_container ul').on('click','li',function(event){
 		console.log($(event.target));
->>>>>>> 5410ff1cb4f560a3938ced51439ea24db4215ff4
+
 		$('.theater-choice .on').removeClass('on has-issue');
 		$('.theater-choice').find('.all-list > button').addClass('on');
 		$('.result').find('ul').empty();
@@ -234,13 +212,7 @@ function getMovieInfoAndTime(event) {
 				dataType : 'JSON',
 
 				data : {
-<<<<<<< HEAD
-					/* 'movieDate' : dataArray[0], */
-					'movieDate' : '2020-04-07',
-=======
-					/*'movieDate' : dataArray[0],*/
 					'movieDate' : $('#formDeList > div .on').val(),
->>>>>>> 5410ff1cb4f560a3938ced51439ea24db4215ff4
 					'movie.movieName' : dataArray[1],
 					'branch.location.locationName' : dataArray[2],
 					'branch.branchName' : dataArray[3]

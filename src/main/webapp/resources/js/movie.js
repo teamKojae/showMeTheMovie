@@ -8,10 +8,7 @@ $(function(){
 	
 })
 function totalWon(){
-<<<<<<< HEAD
-=======
 	//var o = document.querySelectorAll('li');
->>>>>>> 5410ff1cb4f560a3938ced51439ea24db4215ff4
 }
 function infoMore(){
 $('.btn').on('click',function(event){
