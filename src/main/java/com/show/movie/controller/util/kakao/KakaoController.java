@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.show.movie.model.domain.Booking;
 import com.show.movie.model.domain.Movie;
 import com.show.movie.model.domain.MovieInfo;
 import com.show.movie.model.domain.Seat;
@@ -67,7 +68,8 @@ public class KakaoController {
 
 	// 카카오 페이 결제 완료 후 정보 갖고오기
 	@GetMapping("/kakaoPaySuccess")
-	public String kakaoPay(Model model, @RequestParam("pg_token") String pg_token, HttpSession session) {
+	public String kakaoPay(Model model, @RequestParam("pg_token") String pg_token, HttpSession session, Seat seat,
+			Booking booking) {
 		log.info("kakaoPaySuccess ............................................");
 		log.info("kakaoPaySuccess pg_token : " + pg_token);
 //			JSP 기준
@@ -92,6 +94,8 @@ public class KakaoController {
 		log.info("movieInfo  : "+ movieInfo);
 		//movieName, theaterName, branchName,movieStartTime, movieEndTime
 
+		model.addAttribute("booking", booking);
+		
 //			 컨트롤러 기준
 
 //			 kakaoInfo에서 꺼내 쓰면 됩니다.

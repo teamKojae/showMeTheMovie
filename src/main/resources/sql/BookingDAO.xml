@@ -44,7 +44,7 @@ Create View getBooking AS SELECT
 booking.bookingCode, 
 booking.bookingState,
 movie.movieName, 
-movie.moviePoster
+movie.moviePoster,
 branch.branchName, 
 theater.theaterName, 
 movieInfo.movieDate, 

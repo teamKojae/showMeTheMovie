@@ -46,5 +46,11 @@ public class BookingServiceImpl implements BookingService {
 	public void cancelDate(int bookingCode) {
 		cancellationDAO.cancelDate(bookingCode);
 		
+	}
+
+	@Override
+	public void insertBookingInfo(Booking booking) {
+		bookingDAO.insertBookingInfo(booking);
+		
 	};
 }
