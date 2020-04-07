@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.show.movie.model.domain.Movie;
+import com.show.movie.model.domain.MovieInfo;
 import com.show.movie.model.domain.User;
 import com.show.movie.model.domain.kakao.KakaoPayApprovalVO;
 import com.show.movie.model.service.UserService;
@@ -48,7 +49,15 @@ public class KakaoController {
 		if (user.getUserId() != null) {
 			session.setAttribute("user", user);
 		}
-		return "redirect:/";
+		String view = null;
+		if (session.getAttribute("kakaoPay") == null) {
+			view = "index";
+		}else if(session.getAttribute("kakaoPay") != null) {
+			model.addAttribute("movieInfo", session.getAttribute("screenInfo"));
+			session.removeAttribute("kakaoPay");
+			view = "redirect:/getSelectScreen";
+		}
+		return view;
 	}
 
 	// 카카오 페이 결제 완료 후 정보 갖고오기
@@ -74,13 +83,14 @@ public class KakaoController {
 //			 kakaoInfo.getPartner_user_id()
 //			 kakaoInfo.getAmount().total() 등등..
 //			 ↓ 밑에 예매내역 insert 하면 됩니다.
-
+		
 		return "redirect:/myPage";
 	}
 
 	// 카카오 페이 결제창 요청
 	@PostMapping("/kakaoPay")
 	public String kakaoPay(@ModelAttribute Movie movie, HttpSession session) {
+		
 		log.info("kakaoPay post............................................");
 		User user = (User) session.getAttribute("user");
 		// 유저아이디 없으면 메인페이지로 리턴
@@ -88,7 +98,8 @@ public class KakaoController {
 			if (user.getUserId() == null)
 				return "redirect:/notLogin";
 		} catch (NullPointerException e) {
-			return "redirect:/screen";
+			session.setAttribute("kakaoPay", "screen");
+			return "redirect:/login";
 		}
 
 		// 유저에 다른 정보 넣어주려면 User로 파라미터를 받고 필요없으면 session.userId쓰기

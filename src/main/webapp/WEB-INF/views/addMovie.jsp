@@ -43,7 +43,7 @@
 								<tr>
 									<th scope="row"><label for="hpNum1">영화 상영 시간</label> <em
 										class="font-orange">*</em></th>
-									<td><input type="text" name="movieUpdate"
+									<td><input type="text" name="movieTime"
 										class="input-text width100  numType" maxlength="15"
 										title="상영끝시간" placeholder="상영시간을 적어주세용"></td>
 

@@ -15,6 +15,7 @@
 		<result column="moviePoster" property="moviePoster" />
 		<result column="moviePosterBG" property="moviePosterBG" />
 	</resultMap> 
+
 	
 			<!-- ID : JOIN 하는 POJO 클래스     type : FROM 대상인 POJO클래스 -->
 			<!--  resultMap 에는 해당 객체의 모든 속성을 넣어줄 필요가 없어서 @Alias를 똑같이 해줄필요가 없음.-->
@@ -66,7 +67,8 @@
 	<select id="getMovie" resultMap="movie">
 	<!-- View로 처리좀 하고싶은데.. 강사님 HELP !! -->
 		SELECT movie.movieCode, movie.movieName, movie.movieAudience, movie.movieUpdate, movie.movieSynopsis,
-		movie.moviePoster, movie.moviePosterBG, ranking.movieTicketRate, rankPersent.movieTicketRatePersent
+		movie.moviePoster, movie.moviePosterBG, movie.movieImages,
+		ranking.movieTicketRate, rankPersent.movieTicketRatePersent
 		FROM movie,
 		(SELECT round( ( (SELECT movieAudience from movie where movieName= #{movieName}) / sum(movie.movieAudience)  )*100, 1) 
 		as movieTicketRatePersent FROM movie) AS rankPersent,
@@ -120,6 +122,26 @@
 			AND movieinfo.movieCode = movie.movieCode 
 			AND theater.branchCode = branch.branchCode 
 			ORDER BY movieStartTime ASC;
+	</select>
+	
+	<!-- 영화페이지 -->
+	<select id="createViewMoviePageList">
+		CREATE VIEW moviePageList AS
+        SELECT movie.movieCode, movie.movieName, movie.movieAudience, movie.movieUpdate, movie.movieSynopsis,
+		movie.moviePoster, movie.moviePosterBG, movie.movieImages,
+		ranking.movieTicketRate
+		FROM movie,
+		(SELECT movieCode, Rank() over(order by movieAudience DESC) as movieTicketRate FROM movie) AS ranking
+		 WHERE movie.movieCode = ranking.movieCode
+         ORDER BY ranking.movieTicketRate
+	</select>
+	
+	<select id="moviePageList" resultType="movie"> <!-- 리설트 타입, 파라메터 타입?  -->
+		select * from moviePageList
+	</select>
+	
+	<select id="movieListCnt" resultType="int">
+		SELECT COUNT(*) FROM moviePageList
 	</select>
 	
 <!-- 	

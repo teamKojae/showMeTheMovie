@@ -31,5 +31,7 @@ public interface MovieDAO {
 	
 	public List<Seat> getSeatList();
 	
+	//예나
+	public List<Movie> moviePageList();
 	
 }

@@ -1,5 +1,7 @@
 package com.show.movie.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,13 +25,20 @@ public class MovieController {
 	MovieService movieService;
 	
 	@RequestMapping(value="/movie")
-	public String movie(Model model) {
+	public String movie(Model model, Movie movie) {
+		//여기
+		List<Movie> movies = movieService.moviePageList(movie);
+		model.addAttribute("movies", movies);
+		
 		return "movie";
 	}
 	
 	@GetMapping(value="/movieDetail")
 	public String movieDetail(Model model, Movie movie) {
-		model.addAttribute("movie",  movieService.getMovie(movie.getMovieName() ) );
+		movie = movieService.getMovie(movie.getMovieName() );
+		model.addAttribute("movie",  movie);
+		log.info(new Parser().stringParser(movie.getMovieImages()));
+		model.addAttribute("movieImages",new Parser().stringParser(movie.getMovieImages()));
 		return "movieDetail";
 	}
 	

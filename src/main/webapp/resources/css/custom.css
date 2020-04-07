@@ -94,3 +94,21 @@
 	margin:auto;
 }
 
+.managerButton{
+	width: 120px;
+    display: inline-block;
+    height: 40px;
+    margin: 0;
+    padding: 0 15px;
+    text-align: center;
+    line-height: 34px;
+    color: white;
+    font-weight: 400;
+    border-radius: 4px;
+    font-family: NanumBarunGothic,Dotum,'돋움',sans-serif;
+    text-decoration: none;
+    border: 1px solid #503396;
+    vertical-align: middle;
+    background-color: #503396;
+    cursor: pointer;
+}
