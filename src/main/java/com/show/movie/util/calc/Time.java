@@ -21,19 +21,26 @@ public class Time<T> {
 		return t;
 	}
 
-	public List<List<MovieInfo>> calcMovieTime(T list) {
-		
+	public T calcMovieTime(T list) {
+
 		List<List<MovieInfo>> returnValue = new ArrayList<List<MovieInfo>>();
-		//List<Object> returnValue = new ArrayList<Object>();
-		
+		// List<Object> returnValue = new ArrayList<Object>();
+
 		try {
+
 			for (List<MovieInfo> mo : (List<List<MovieInfo>>) list) {
 				List<MovieInfo> emptyAddMovie = new ArrayList<MovieInfo>();
 				int afterTime = 0;
 				int calcTime = 0;
 				int beforeTime = 0;
 				for (int i = 0; i < mo.size(); i++) {
-					int movieTime = mo.get(i).getMovie().getMovieTime();
+					int movieTime = 0;
+					try {
+						movieTime = mo.get(i).getMovie().getMovieTime();
+					} catch (NullPointerException e) {
+						System.out.println("여기오겠군 ?");
+						return null;
+					}
 					afterTime = parseTime(mo.get(i).getMovieStartTime());
 					if (i != 0) {
 						beforeTime = parseTime(mo.get(i - 1).getMovieEndTime());
@@ -41,16 +48,16 @@ public class Time<T> {
 						beforeTime = afterTime;
 					}
 					// 9시부터 최초 등록된 영화상영시간까지 루프
-					if ( i  == 0) {
+					if (i == 0) {
 						int firstMovie = afterTime - 540;
 						int firstAddMovieTime = 540;
 						int calcFirstMovieTimeCount = firstMovie / movieTime;
 						for (int j = 0; j < calcFirstMovieTimeCount; j++) {
-							String[] times = times(firstAddMovieTime,movieTime);
+							String[] times = times(firstAddMovieTime, movieTime);
 //							String startTime = transStartTime(firstAddMovieTime);
 //							String endTime = transEndTime(firstAddMovieTime, movieTime);
 							emptyAddMovie.add(setTime(times[0], times[1]));
-							firstAddMovieTime += (10+movieTime);
+							firstAddMovieTime += (10 + movieTime);
 						}
 					}
 
@@ -62,9 +69,9 @@ public class Time<T> {
 
 //						String startTime = transStartTime(beforeTime);
 //						String endTime = transEndTime(beforeTime, movieTime);
-						
-						String[] times = times(beforeTime,movieTime);
-						
+
+						String[] times = times(beforeTime, movieTime);
+
 						System.out.println("시간 :  " + times[0] + "  ~  " + times[1]);
 						for (int j = 0; j < addMovieCount; j++) {
 							emptyAddMovie.add(setTime(times[0], times[1]));
@@ -78,23 +85,22 @@ public class Time<T> {
 					}
 				}
 				returnValue.add(emptyAddMovie);
-				
+
 			}
 			for (List<MovieInfo> movieInfos : returnValue) {
-					for(MovieInfo movieInfo : movieInfos) {
-						System.out.println("결과값   =  시작시간 :    " + movieInfo.getMovieStartTime() + "     끝 시간 :    "
-								+ movieInfo.getMovieEndTime());
+				for (MovieInfo movieInfo : movieInfos) {
+					System.out.println("결과값   =  시작시간 :    " + movieInfo.getMovieStartTime() + "     끝 시간 :    "
+							+ movieInfo.getMovieEndTime());
 
-					}
+				}
 			}
-			
-			
+
 		} catch (IndexOutOfBoundsException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return returnValue;
+		return (T) returnValue;
 	}
 
 	public String transStartTime(int time) {
@@ -127,26 +133,33 @@ public class Time<T> {
 		return movieInfo;
 	}
 
-	public void calcCanAddMovieFor24Hour(String time, int movieTime, List<MovieInfo> emptyAddMovie) {
+	public List<MovieInfo> calcCanAddMovieFor24Hour(String time, int movieTime, List<MovieInfo> emptyAddMovie) {
 		System.out.println("24 :  " + time);
-		int registeredEndTime = parseTime(time);
-		int canAddMovieTimeFor24hour = 1500 - registeredEndTime;
-		int canAddMovieCount = canAddMovieTimeFor24hour / movieTime;
-		for (int j = 0; j < canAddMovieCount; j++) {
-			if (j == 0) {
-				registeredEndTime += 10;
-			} else {
-				registeredEndTime += movieTime;
-			}
+		try {
+			int registeredEndTime = parseTime(time);
+			int canAddMovieTimeFor24hour = 1500 - registeredEndTime;
+			int canAddMovieCount = canAddMovieTimeFor24hour / movieTime;
+			for (int j = 0; j < canAddMovieCount; j++) {
+				if (j == 0) {
+					registeredEndTime += 10;
+				} else {
+					registeredEndTime += movieTime;
+				}
 //			String startTime = transStartTime(registeredEndTime);
 //			String endTime = transEndTime(registeredEndTime, movieTime);
-			String[] times = times(registeredEndTime,movieTime);
-			emptyAddMovie.add(setTime(times[0], times[1]));
+				String[] times = times(registeredEndTime, movieTime);
+				emptyAddMovie.add(setTime(times[0], times[1]));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+
+		return emptyAddMovie;
 	}
+
 	public String[] times(int time, int movieTime) {
 		String startTime = transStartTime(time);
 		String endTime = transEndTime(time, movieTime);
-		return new String[] {startTime,endTime};
+		return new String[] { startTime, endTime };
 	}
 }

@@ -3,17 +3,16 @@ $(function() {
 	// checkThumbNailAndBG();
 	selectWhereRegiste();
 	selectMovie();
-	// selectLocation();
-	
 	selectLocation();
 	selectBranch();
-	
 	selectTheater();
 	selectBranchInTheater();
 	getTimeTable();
 	selectTheaterInTimeTable();
-	//test();
-	//movieAddBranchAndTheater();
+	clickTimeInTimeTable();
+	addMovieInfo();
+	// test();
+	
 })
 
 $(function(){
@@ -26,18 +25,102 @@ $(function(){
 	$('#tab10').addClass("on");
 })
 
-//font-green
+
+// 타임테이블 시간대 클릭 시
+function clickTimeInTimeTable(){
+	$('.theater-list-box').bind('click','table tr > td',function(event){
+		var target = $(event.target);
+		var tdTag = target.closest('td');
+		tdTag.find('a').addClass('on');
+		tdTag.find('.time').addClass('on');
+		tdTag.find('.movieTime').addClass('on');
+		console.log(tdTag);
+		
+		
+	})
+}
+
+// movieInfo 등록
+function addMovieInfo(){
+	
+	$('.inner-wrap').on('click','.top-100 > #addMovieInfo', function(event){
+		
+		var movieName = $('#masterMovie').find('.list .on').val();
+		var branch = $('#masterBrch').find('.list-section ul').find('.on');
+		var branchName = new Array();
+		$.each(branch, function(index, value){
+			branchName.push($(this).text());
+		})
+		
+		var theater = $('#masterTheater').find('.list-section ul').find('.on');
+		var theaterName = new Array();
+		$.each(theater, function(index, value){
+			theaterName.push($(this).text());
+		})
+		
+		var movieStartTime = new Array();
+		var movieEndTime = new Array();
+		var time = $('.inner-wrap .time-list-table td .play-time').find('.on');
+		console.log(time);
+		
+		time.each(function(index,value){
+			var time = $(this).text();
+			console.log(time);
+			movieStartTime.push(time.split('~')[0]);
+			movieEndTime.push(time.split('~')[1]);
+		})
+		
+		console.log("영화이름 :  "+movieName);
+		console.log("브랜치 이름  : "+ branchName);
+		console.log("상영관 이름  : "+theaterName);
+		console.log("영화시작시간  : "+movieStartTime);
+		console.log("영화 끝시간  : "+movieEndTime);
+
+
+// var data = {};
+// data["movieName"] = movieName;
+// data["branchName"] =branchName;
+// data["theaterName"] = theaterName;
+// data["movieStartTime"] = movieStartTime;
+
+// $.ajaxSettings.traditional = true;
+		
+// $.ajax({
+// url:"/movieAddBranchAndTheater",
+// type:"POST",
+// traditional : true,
+// data : {
+// movieName : movieName,
+// branchName : branchName,
+// theaterName : theaterName,
+// movieStartTime : movieStartTime
+// }
+// }).done(function(result){
+// console.log("ajax 성공 !");
+// })
+		
+		
+	})
+}
+
+
+
+
+
 
 function selectTheaterInTimeTable(){
 	$('.timeTable .tit').on('click','a , a > span',function(event){
 		var target = $(event.target);
-		console.log(target);
 		$('.timeTable .tit *').removeClass('font-green');
 		target.addClass('font-green');
 		target.find('span').addClass('font-green');
+		var timeTableTheaterName = $('.timeTable').find('div[data-theater-no="'+target.closest('a').attr('data-theater-no')+'"]');
+		
+		timeTableTheaterName.find('.theater-tit p:first-child').text(target.closest('a').find('span').text());
 		var theaterNo = target.closest('a').attr("data-theater-no");
 		$('.theater-list-box > div').removeClass('on');
-		//console.log($('.theater-list-box div[data-theater-no="'+theaterNo+'"]'));
+		// console.log($('.theater-list-box
+		// div[data-theater-no="'+theaterNo+'"]'));
 		$('.theater-list-box div[data-theater-no="'+theaterNo+'"]').addClass('on');
 		
 		
@@ -72,6 +155,11 @@ function selectBranchInTheater(){
 	})
 }
 
+
+
+
+
+// 타임테이블 가져오기 ( 등록된 영화 시간대, 등록할수 있는 시간대 둘다 나오게)
 function getTimeTable(){
 	$('.managerButton').on('click',function(event){
 		
@@ -89,7 +177,7 @@ function getTimeTable(){
 			theaterNo.push($(this).attr('data-theater-no'));
 		})
 		
-		//상영시간표  날짜 구하는 부분
+		// 상영시간표 날짜 구하는 부분
 		var timeSchedule =  $('.timeTable .time-schedule .date-area').find(' div > .on').attr('date-data');
 		
 		var colGroup = '<colgroup>'
@@ -104,24 +192,29 @@ function getTimeTable(){
 						+'</colgroup>';
 		var movieName = $('#masterMovie').find('.list .on').val();
 		
-		//해당 상영관 시간표 구해오는 Ajax  (return value : movieStartTime )
+		$('.inner-wrap').append(
+				'<div class="box-alert top-100">'
+					+'<button type="button" class="managerButton" id="addMovieInfo" value="null">등록하기</button>'
+				+'</div>'
+			);
+		
+		// 해당 상영관 시간표 구해오는 Ajax (return value : movieStartTime )
 		$.ajax({
 			url : "/getTheatersTimeTable",
 			type : "POST",
 			traditional : true,
 			data : {
 				theaterNo : theaterNo,
-				timeSchedule : '2020-04-07'
-//				timeSchedule : timeSchedule
+				timeSchedule : '2020-04-07',
+				movieName : $('#masterMovie #mCSB_2 ul .on').val()
+// timeSchedule : timeSchedule
 			}
 		}).done(function(result){
 			for(var i = 0 ; i< result.resigMovieTime.length; i++){
-				//console.log(result.resigMovieTime[i]);
-				//console.log(result.resigMovieTime[i].movieStartTime);
 				$('.theater-list-box').append(
 						'<div class="theater-list" data-theater-no="'+result.resigMovieTime[i][0].theater.theaterCode+'">'
 						+'<div class="theater-tit">'
-							+'<p>'+result.resigMovieTime[i][0].theater.theaterName+'</p>'
+							+'<p>'+$('.timeTable > .mt100 .font-green').text()+'</p>'
 							+'<p class="infomation">'
 								+'<span>등록하려는 영화 : '+movieName+'</span>/상영시간 '+$('#'+movieName).val()+'분'
 							+'</p>'
@@ -143,114 +236,47 @@ function getTimeTable(){
 						+'</div>'
 					+'</div>'
 					)
-			$.each(result.resigMovieTime[i], function(index, item){
-			console.log(item);
-					var test = $('.theater-list[data-theater-no="'+result.resigMovieTime[i][0].theater.theaterCode+'"');
-					test.find('table tr').append(
-							'<td class="" brch-no="1372" play-schdl-no="2003291372004" rpst-movie-no="20007800" theab-no="01" play-de="20200329" play-seq="4">'
-							+'<div class="td-ab">'
-								+'<div class="txt-center">'
-									+'<a href="" title="영화예매하기">'
-										+'<div class="ico-box">'
-											+'<i class="iconset ico-off"></i>'
-										+'</div>'
-										+'<p class="time">'+item.movieStartTime+'</p>'
-										+'<p class="movieName">'+item.movie.movieName+'</p>'
-										+'<div class="play-time">'
-											+'<p>'+item.movieStartTime+'~'+item.movieEndTime+'</p>'
-											+'<p>'+index+'회차</p>'
-										+'</div>'
-									+'</a>'
+					// 기존 영화
+			if(result.resigMovieTime[i].length > 1){
+				$.each(result.resigMovieTime[i], function(index, item){
+						var test = $('.theater-list[data-theater-no="'+result.resigMovieTime[i][0].theater.theaterCode+'"');
+						test.find('table tr').append(
+								'<td class="" brch-no="1372" play-schdl-no="2003291372004" rpst-movie-no="20007800" theab-no="01" play-de="20200329" play-seq="4">'
+								+'<div class="td-ab">'
+									+'<div class="txt-center">'
+										+'<a href="" title="영화예매하기" style="color:red;" onclick="return false">'
+											+'<div class="ico-box">'
+												+'<i class="iconset ico-off"></i>'
+											+'</div>'
+											+'<p class="time" style="color:red;">'+item.movieStartTime+'</p>'
+											+'<p class="movieName">'+item.movie.movieName+'</p>'
+											+'<div class="play-time">'
+												+'<p>'+item.movieStartTime+'~'+item.movieEndTime+'</p>'
+												+'<p>'+index+'회차</p>'
+											+'</div>'
+										+'</a>'
+									+'</div>'
 								+'</div>'
-							+'</div>'
-						+'</td>'
+							+'</td>'
 					)
 				
 			})
-			
+					}
+				// 등록할 수 있는 시간대
 			$.each(result.canAddMovieTime[i], function(index, item){
 					var test = $('.theater-list[data-theater-no="'+result.resigMovieTime[i][0].theater.theaterCode+'"');
 					test.find('table tr').append(
-							'<td class="" brch-no="1372" play-schdl-no="2003291372004" rpst-movie-no="20007800" theab-no="01" play-de="20200329" play-seq="4">'
+							'<td class="canAddMovieTime" brch-no="1372" play-schdl-no="2003291372004" rpst-movie-no="20007800" theab-no="01" play-de="20200329" play-seq="4">'
 							+'<div class="td-ab">'
 								+'<div class="txt-center">'
-									+'<a href="" title="영화예매하기">'
+									+'<a href="" title="영화예매하기" onclick="return false">'
 										+'<div class="ico-box">'
 											+'<i class="iconset ico-off"></i>'
 										+'</div>'
 										+'<p class="time">'+item.movieStartTime+'</p>'
-										+'<p class="movieName"></p>'
+										+'<p class="movieName"> 등록가능 </p>'
 										+'<div class="play-time">'
-											+'<p>'+item.movieStartTime+'~'+item.movieEndTime+'</p>'
-											+'<p>'+index+'회차</p>'
-										+'</div>'
-									+'</a>'
-								+'</div>'
-							+'</div>'
-						+'</td>'
-					)
-				
-			})
-			
-					
-					
-			}
-			//console.log(item.movieDate);
-			//var date = new Date (item.movieDate, item.movieStartTime);
-				//canAddTime.push( parseFloat( item.movieStartTime ) );
-			
-			
-				//기존 영화
-//				$.each(data,function(index, value){
-//					console.log(value);
-					//console.log(value);
-				/*
-					$('.theater-list-box').append(
-					'<div class="theater-list" data-theater-no="'+value.resigMovieTime[index].theater.theaterCode+'">'
-					+'<div class="theater-tit">'
-						+'<p>'+value.resigMovieTime[index].theater.theaterName+'</p>'
-						+'<p class="infomation">'
-							+'<span>등록하려는 영화 : '+movieName+'</span>/상영시간 '+$('#'+movieName).val()+'분'
-						+'</p>'
-					+'</div>'
-					+'<div class="theater-type-box">'
-						+'<div class="theater-time">'
-							+'<div class="theater-time-box">'
-								+'<table class="time-list-table">'
-									+'<caption>상영시간을 보여주는 표 입니다.</caption>'
-									 +colGroup
-									+'<tbody>'
-										+'<tr>'
-										 
-										+'</tr>'
-									+'</tbody>'
-								+'</table>'
-							+'</div>'
-						+'</div>'
-					+'</div>'
-				+'</div>'
-				//append끝
-					);
-				
-				//var canAddTime = new Array();
-				$.each(value.resigMovieTime, function(index, item){
-					//console.log(item.movieDate);
-					//var date = new Date (item.movieDate, item.movieStartTime);
- 					//canAddTime.push( parseFloat( item.movieStartTime ) );
-					console.log(item);
-					var test = $('.theater-list[data-theater-no="'+value.resigMovieTime[index].theater.theaterCode+'"');
-					test.find('table tr').append(
-							'<td class="" brch-no="1372" play-schdl-no="2003291372004" rpst-movie-no="20007800" theab-no="01" play-de="20200329" play-seq="4">'
-							+'<div class="td-ab">'
-								+'<div class="txt-center">'
-									+'<a href="" title="영화예매하기">'
-										+'<div class="ico-box">'
-											+'<i class="iconset ico-off"></i>'
-										+'</div>'
-										+'<p class="time">'+item.movieStartTime+'</p>'
-										+'<p class="movieName">'+item.movie.movieName+'</p>'
-										+'<div class="play-time">'
-											+'<p>'+item.movieStartTime+'~'+item.movieEndTime+'</p>'
+											+'<p class="movieTime">'+item.movieStartTime+'~'+item.movieEndTime+'</p>'
 											+'<p>'+index+'회차</p>'
 										+'</div>'
 									+'</a>'
@@ -259,21 +285,77 @@ function getTimeTable(){
 						+'</td>'
 					)
 				})
-				*/
 				
-			//each끝
-//				});
-		//ajax끝
+
+				    
+								
+				
+			// 정렬은 했는데 적용 어케하는지 모름 ㅜㅜ
+			var time = $('.timeTable .time-list-table tr > td .time');
+			var timeArray = new Array();
+			time.each(function(index,value){
+				timeArray.push($(this).text())
+			})
+			timeArray.sort();
+			
+			// tablesorter안먹힘 ㅠㅠ
+			$('.time-list-table table').tablesorter();
+			
+			// 인터넷보고했는데 안됨 ㅜㅜ
+			$.each(timeArray,function(index,value){
+				var find = time.find('p:contains('+value+')').closest('tr');
+				find.prev().before(find);
+			})
+			
+// console.log(timeArray);
+			
+			}
+			// console.log(item.movieDate);
+			// var date = new Date (item.movieDate, item.movieStartTime);
+				// canAddTime.push( parseFloat( item.movieStartTime ) );
+			
+			
+				// 기존 영화
+// $.each(data,function(index, value){
+// console.log(value);
+					// console.log(value);
+				/*
+				 * $('.theater-list-box').append( '<div class="theater-list"
+				 * data-theater-no="'+value.resigMovieTime[index].theater.theaterCode+'">' +'<div
+				 * class="theater-tit">' +'<p>'+value.resigMovieTime[index].theater.theaterName+'</p>' +'<p class="infomation">' +'<span>등록하려는
+				 * 영화 : '+movieName+'</span>/상영시간 '+$('#'+movieName).val()+'분' +'</p>' +'</div>' +'<div
+				 * class="theater-type-box">' +'<div class="theater-time">' +'<div
+				 * class="theater-time-box">' +'<table
+				 * class="time-list-table">' +'<caption>상영시간을 보여주는 표 입니다.</caption>'
+				 * +colGroup +'<tbody>' +'<tr>'
+				 *  +'</tr>' +'</tbody>' +'</table>' +'</div>' +'</div>' +'</div>' +'</div>'
+				 * //append끝 );
+				 * 
+				 * //var canAddTime = new Array(); $.each(value.resigMovieTime,
+				 * function(index, item){ //console.log(item.movieDate); //var
+				 * date = new Date (item.movieDate, item.movieStartTime);
+				 * //canAddTime.push( parseFloat( item.movieStartTime ) );
+				 * console.log(item); var test =
+				 * $('.theater-list[data-theater-no="'+value.resigMovieTime[index].theater.theaterCode+'"');
+				 * test.find('table tr').append( '<td class="" brch-no="1372" play-schdl-no="2003291372004" rpst-movie-no="20007800" theab-no="01" play-de="20200329" play-seq="4">' +'<div
+				 * class="td-ab">' +'<div class="txt-center">' +'<a href=""
+				 * title="영화예매하기">' +'<div class="ico-box">' +'<i
+				 * class="iconset ico-off"></i>' +'</div>' +'<p class="time">'+item.movieStartTime+'</p>' +'<p class="movieName">'+item.movie.movieName+'</p>' +'<div
+				 * class="play-time">' +'<p>'+item.movieStartTime+'~'+item.movieEndTime+'</p>' +'<p>'+index+'회차</p>' +'</div>' +'</a>' +'</div>' +'</div>' +'</td>' ) })
+				 */
+				
+			// each끝
+// });
+		// ajax끝
 		})	
-		
 		
 	})
 }
-/*	$(document).on("click","#masterTheater .list-section #tab10 button",function(event){
-var target = $(event.target);
-console.log(target);
-targetAddClassOn(target);
-})*/
+/*
+ * $(document).on("click","#masterTheater .list-section #tab10
+ * button",function(event){ var target = $(event.target); console.log(target);
+ * targetAddClassOn(target); })
+ */
 function targetAddClassOn(target){
 	if( target.hasClass('on') == false){
 		// 브랜치 클릭 시 on Class 추가
@@ -305,11 +387,11 @@ function selectBranch(){
 			
 			// 상영관 선택탭에 브랜치명 추가
 			var branchName = target.text();
-			/*$('#masterTheater .tab-list-choice ul').append(
-					'<li><a href="" '
-					+'title=" 강북구지점 선택" data-area-cd="'+data[0].branch.branchCode+'0" onclick = "return false"'
-					+'>'+branchName+'</a></li>'
-			);*/
+			/*
+			 * $('#masterTheater .tab-list-choice ul').append( '<li><a href="" '
+			 * +'title=" 강북구지점 선택" data-area-cd="'+data[0].branch.branchCode+'0"
+			 * onclick = "return false"' +'>'+branchName+'</a></li>' );
+			 */
 			
 			
 			// 상영관 선택탭 안에 브랜치 추가되면 해당 브랜치의 상영관 추가
@@ -335,7 +417,7 @@ function selectBranch(){
 						+'>'+branchName+'</a></li>'
 				);
 				
-				// 상영관 탭에서 브랜치마다 상영관 영역 append.   사실 여기서 ul 밑에 $.each로 해주고 싶었음 ㅠㅠ
+				// 상영관 탭에서 브랜치마다 상영관 영역 append. 사실 여기서 ul 밑에 $.each로 해주고 싶었음 ㅠㅠ
 				$('#masterTheater .list-section').append(
 						'<div id="tab'+data[0].branch.branchCode+'0" class="tab-layer-cont">'
 						+'<div class="scroll m-scroll">'
@@ -378,58 +460,6 @@ function selectLocation(){
 	})
 }
 
-function movieAddBranchAndTheater(){
-	$('.managerButton').on('click', function(event){
-		
-		var movieName = $('#masterMovie').find('.list .on').val();
-		var branch = $('#masterBrch').find('.list-section ul').find('.on');
-		var branchName = new Array();
-		$.each(branch, function(index, value){
-			branchName.push($(this).text());
-		})
-		
-		var theater = $('#masterTheater').find('.list-section ul').find('.on');
-		var theaterName = new Array();
-		$.each(theater, function(index, value){
-			theaterName.push($(this).text());
-		})
-		
-		var movieStartTime = new Array();
-		movieStartTime.push('16:48');
-		movieStartTime.push('20:48');
-		movieStartTime.push('22:48');
-		console.log(movieName);
-		console.log(branchName);
-		console.log(theaterName);
-		console.log(movieStartTime);
-
-
-//		var data = {};
-//		data["movieName"] = movieName;
-//		data["branchName"] =branchName;
-//		data["theaterName"] =  theaterName;
-//		data["movieStartTime"] = movieStartTime;
-
-//		$.ajaxSettings.traditional = true;
-		
-		$.ajax({
-			url:"/movieAddBranchAndTheater",
-			type:"POST",
-			traditional : true,
-			data : {
-				movieName : movieName,
-				branchName : branchName,
-				theaterName : theaterName,
-				movieStartTime : movieStartTime
-			}
-		}).done(function(result){
-			console.log("ajax 성공 !");
-		})
-		
-		
-	})
-}
-
 /*
  * function selectLocation(){ $('.tab-list-choice
  * a').on('click',function(event){ $.ajax({ url : $(this).attr('href'), success :
@@ -467,8 +497,8 @@ function selectWhereRegiste(){
 		var dataArea = $('.ltab-layer-wrap > .on').find('.tab-list-choice li').find('.on').attr('data-area-cd');
 		$('.ltab-layer-wrap > .on').find('.list-section > #tab'+dataArea).addClass('on');
 		// $(event.target).closest('.tab-layer-cont').addClass('on');
-		//var dataArea = $(event.target).attr('data-area-cd');
-		//contentsTarget.find($('#tab'+dataArea) ).addClass('on');
+		// var dataArea = $(event.target).attr('data-area-cd');
+		// contentsTarget.find($('#tab'+dataArea) ).addClass('on');
 	})
 	
 }

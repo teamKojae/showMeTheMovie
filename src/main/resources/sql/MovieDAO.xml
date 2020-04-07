@@ -91,7 +91,7 @@
 		<!-- View로 처리좀 하고싶은데.. 강사님 HELP !! -->
 		SELECT movie.movieCode, movie.movieName, movie.movieAudience,
 		movie.movieUpdate, movie.movieSynopsis,
-		movie.moviePoster,
+		movie.moviePoster,movie.movieTime,
 		movie.moviePosterBG, movie.movieImages,
 		ranking.movieTicketRate,
 		rankPersent.movieTicketRatePersent

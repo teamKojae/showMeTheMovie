@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,7 +29,9 @@ import com.google.gson.GsonBuilder;
 import com.show.movie.model.domain.Location;
 import com.show.movie.model.domain.Movie;
 import com.show.movie.model.domain.MovieInfo;
+import com.show.movie.model.domain.Theater;
 import com.show.movie.model.service.ManagerService;
+import com.show.movie.model.service.MovieService;
 import com.show.movie.util.calc.Time;
 import com.show.movie.util.parse.Parser;
 
@@ -47,7 +50,9 @@ public class ManagerController {
 
 	@Autowired
 	ManagerService managerService;
-
+	@Autowired
+	MovieService movieService;
+	
 	@GetMapping("/addMovie")
 	public void addMovie() {
 	}
@@ -93,24 +98,50 @@ public class ManagerController {
 
 	@PostMapping(value = "/getTheatersTimeTable", produces = "application/json; charset=utf8")
 	@ResponseBody
-	public String getTheatersTimeTable(Model model, @RequestParam List<String> theaterNo, String timeSchedule) {
+	public String getTheatersTimeTable(Model model, 
+			@RequestParam List<String> theaterNo, String timeSchedule, String movieName) {
 
-		List<List<MovieInfo>> resigMovieTime = managerService.getTimeScheduleInTheater(theaterNo, timeSchedule);
-		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
-
-		List<List<MovieInfo>> canAddMovieTime = new Time<List<List<MovieInfo>>>().calcMovieTime(resigMovieTime);
-//		List<Object> canAddMovieTime = new Time<List<List<MovieInfo>>>().calcMovieTime(resigMovieTime);
+		
+		//		List<Object> canAddMovieTime = new Time<List<List<MovieInfo>>>().calcMovieTime(resigMovieTime);
 //		for(Object test :  canAddMovieTime ) {
 //			System.out.println( ( (MovieInfo) test) );
 //		}
-		
+		//상영관별로 등록되어 있는 영화정보 갖고오기 
+		List<List<MovieInfo>> resigMovieTime = managerService.getTimeScheduleInTheater(theaterNo, timeSchedule);
+		//java.sql.date를   yyyy-MM-dd 형식에 맞게 바인딩
+		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+		// 상영관에 등록되지 않은 시간 계산해서 바인딩
+		List<List<MovieInfo>> canAddMovieTime = new Time<List<List<MovieInfo>>>().calcMovieTime(resigMovieTime);
+		System.out.println("아ㅏㅏㅏ   "+resigMovieTime);
+		System.out.println("으아아아악      "+canAddMovieTime);
+			//결과값이 없으면 등록되지 않은 시간 전체값 구하기
+				if(canAddMovieTime == null ) {
+					canAddMovieTime = new ArrayList<List<MovieInfo>>();
+					for(int i = 0 ; i < theaterNo.size(); i++) {
+					try {
+						
+						canAddMovieTime.add( new Time<List<List<MovieInfo>>>()
+								.calcCanAddMovieFor24Hour("09:00", 
+										movieService.getMovie(movieName).getMovieTime(), new ArrayList<MovieInfo>()));
+						
+						}catch(Exception e) {
+							e.printStackTrace();
+						}
+				}	
+		}		
+			
+			//디버그
+			for(List<MovieInfo> list : canAddMovieTime) {
+				for(MovieInfo info: list ) {
+					System.out.println(info.getMovieStartTime()+"  :  "+info.getMovieEndTime());
+				}
+			}
+			//디버그
 		for(List<MovieInfo> test :  canAddMovieTime ) {
 			System.out.println("controller   : "+ test );
 		}
 		
 		Map<String,Object> map = new HashMap<String,Object>();
-		
-		
 		map.put("resigMovieTime", resigMovieTime);
 		map.put("canAddMovieTime", canAddMovieTime);
 		System.out.println("리스트사이즈   :  "+ ((List<List<MovieInfo>> )map.get("resigMovieTime")).size());

@@ -66,10 +66,24 @@ public class ManagerServiceImpl implements ManagerService {
 		if (managerDAO.isViewTimeSchedule() == 0) {
 			managerDAO.createViewTimeSchedule();
 		}
-
+		
 		List<List<MovieInfo>> list = new ArrayList<List<MovieInfo>>();
+		try {
 		for (String theaterNo : theaterNumbers) {
-			list.add(managerDAO.getTimeScheduleInTheater(theaterNo, timeSchedule));
+			List<MovieInfo> movieInfoList = managerDAO.getTimeScheduleInTheater(theaterNo, timeSchedule);
+			if(movieInfoList.size() == 0 ) {
+				MovieInfo movieInfo = new MovieInfo();
+				Theater theater = new Theater();
+				theater.setTheaterCode(Integer.parseInt(theaterNo));
+				movieInfo.setTheater(theater);
+				movieInfoList.add(movieInfo);
+				list.add(movieInfoList);
+			}else {
+				list.add(movieInfoList);
+			}
+		}
+		}catch (Exception e) {
+			e.printStackTrace();
 		}
 		return list;
 	}
