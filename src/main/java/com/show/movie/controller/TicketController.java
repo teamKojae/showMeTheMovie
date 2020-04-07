@@ -62,7 +62,7 @@ public class TicketController {
 		model.addAttribute("seatList", movieService.getSeatList(seat));
 		//log.info(seat.getSeatName());
 		
-
+		
 
 		
 		

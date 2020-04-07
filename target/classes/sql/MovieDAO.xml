@@ -85,8 +85,7 @@
 
  
  	<select id="reservedSeat" resultType="seat">
- 	INSERT INTO seat(seatStatus)
-		VALUES (1)
+ 	update seat set seatStatus=1 where seatName=#{seatName}
  	</select>
  
 	<select id="getMovie" resultMap="movie">

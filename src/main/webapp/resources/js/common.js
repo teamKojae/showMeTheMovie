@@ -28,31 +28,30 @@ $(document).on("click",".row__seat",function(event){
 	
 	if($(this).attr('data-area')==0){
 	
-    if($(event.target).hasClass('row__seat--reserved')){
-    	$(this).removeClass('row__seat--reserved');
-    	
-    	var seatName = $(event.target).text();
-    	$('#test > p:contains('+seatName+') ').remove();
-    	
-    }else{
-    
-    	
-    		if(count>3){
-    			
-    			$(this).prop('checked', false);
-    			
-    			$(this).addClass('row__seat--reserved');
-    			$("#test").append(
-    					'<p>'+$(event.target).text()+'</p>'
-    					+'<input type="hidden" name="seatName" value="'+$(event.target).text()+'">'
-    			);
-    			
-    		}
-    		
-    	
-    }
+	    if($(event.target).hasClass('row__seat--reserved')){
+	    	$(this).removeClass('row__seat--reserved');
+	    	
+	    	var seatName = $(event.target).text();
+	    	$('#test > p:contains('+seatName+') ').remove();
+	    	
+	    }else{
+	    
+	    	
+	    	
+	    			
+	    			$(this).addClass('row__seat--reserved');
+	    			$("#test").append(
+	    					'<p>'+$(event.target).text()+'</p>'
+	    					+'<input type="hidden" name="seatName" value="'+$(event.target).text()+'">'
+	    			);
+	    			
+	    		
+	    		
+	    	
+	    	}
     
 	} else{
+	
 		false;
 	}
 

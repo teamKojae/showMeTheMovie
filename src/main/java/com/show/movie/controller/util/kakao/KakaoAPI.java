@@ -37,7 +37,7 @@ public class KakaoAPI {
 			sb.append("&client_id=e7a638f0535094326fe38f8ae0fc6bde");
 
 //			sb.append("&redirect_uri=http://localhost:5000/kakaoCallback");
-			sb.append("&redirect_uri=http://192.168.0.17:5000/kakaoCallback");
+			sb.append("&redirect_uri=http://192.168.0.154:5000/kakaoCallback");
 
 			sb.append("&code=" + authorize_code);
 			bw.write(sb.toString());
@@ -48,7 +48,7 @@ public class KakaoAPI {
 			System.out.println("responseCode : " + responseCode);
 
 			// 요청을 통해 얻은 JSON타입의 Response 메세지 읽어오기
-			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(),"UTF-8"));
 			String line = "";
 			String result = "";
 
@@ -94,7 +94,7 @@ public class KakaoAPI {
 			int responseCode = conn.getResponseCode();
 			System.out.println("responseCode : " + responseCode);
 
-			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(),"UTF-8") );
 
 			String line = "";
 			String result = "";

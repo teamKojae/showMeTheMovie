@@ -9,7 +9,7 @@
 
 	<!-- Root Context: defines shared resources visible to all other web components -->
   <!-- @ResponseBody로 String 처리할때 한글처리 -->
-	<!--  <mvc:annotation-driven>
+	  <mvc:annotation-driven>
 		    <mvc:message-converters>
 		        <bean class="org.springframework.http.converter.StringHttpMessageConverter">
 		            <property name="supportedMediaTypes">
@@ -19,5 +19,5 @@
 		            </property>
 		        </bean>
 		    </mvc:message-converters>
-		</mvc:annotation-driven>  -->
+		</mvc:annotation-driven>  
 </beans>
