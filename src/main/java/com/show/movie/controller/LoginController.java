@@ -51,22 +51,7 @@ public class LoginController {
 	@Autowired
 	UserService userService;
 
-	//  일반로그인
-	/*@RequestMapping(value="/loginSuccess", method = RequestMethod.GET)
-	public String longinGet(@ModelAttribute("User") User user) {
-		
-		
-		return "/"; 
-		
-	}
-	*/
-	/* 암호화 메소드 로그인 처리
-	private String hashPassword(User user) { 
-		return BCrypt.hashpw(user.getUserPassword(), BCrypt.gensalt()); 
-		}
-	*/
-	
-	
+
 	  @RequestMapping(value = "/loginPost", method = RequestMethod.POST) 
 	  public String loginPost(User user,User login, HttpServletRequest request,HttpSession httpSession, Model model) { 
 		  log.info("param : "+login);
@@ -76,23 +61,7 @@ public class LoginController {
 		  log.info("return login : " + login);
 		  log.info("return user : " + user);
 		  
-		  //httpSession.setAttribute("user", user);
-		   
-		  //user.setUserPassword(hashedPassword);
-		 // 회원가입 비밀번호 userPassword, 암호화 hashedPassword -> db 저장, -> 로그인 id 받아온 값 , db 받아온 값 비교  select id, pw where -> userService.getlogin(login)
-		//login = userService.getLogin(login.getUserId());
-		  /* 안되는 부분
-		  String plainPassword = login.getUserPassword();
-				 
-		  //String plainPassword = user.getUserPassword();
-		  log.info("plainPassword" + plainPassword);
-		  
-		  String hashedPassword = BCrypt.hashpw(plainPassword, BCrypt.gensalt());
-		  log.info("hashedPassword : " + hashedPassword);
-		  //해시 insert
-		      */
-		  
-		 // 안되는 부분  userService.encrypt(login);/* 안되는 부분 || BCrypt.checkpw(plainPassword, hashedPassword)==false */
+
 		if (login == null ) {
 			  return "login";
 		  }else {
@@ -100,21 +69,6 @@ public class LoginController {
 			  model.addAttribute("user",user);
 			  return "redirect:/";
 		  }
-		  
-		//   해시코드 로그인 
-		  
-		  /*
-		   
-		  
-		         // 일반 로그인
-		  if(login==null) {
-			  model.addAttribute("user", null);
-			  return "login";
-		  }else {
-			  model.addAttribute("user",user);
-			  return "index";
-		  }
-		 */
 		  
 	  }
 	  

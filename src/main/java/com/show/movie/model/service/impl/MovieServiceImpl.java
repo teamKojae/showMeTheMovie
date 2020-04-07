@@ -66,6 +66,14 @@ public class MovieServiceImpl implements MovieService {
 	}
 
 	@Override
+	public List<Movie> moviePageList(Movie movie) {
+		return movieDAO.moviePageList();
+	}
+
+	@Override
+	public List<Movie> getIndexMovie(Movie movie) {
+		return movieDAO.getIndexMovie();
+	}
 	public Map<String, Object> getMovieAllList(String movieDate) {
 		Map<String,Object> map = new HashMap<String, Object>();
 		map.put("movieList", movieDAO.getMovieAllList());

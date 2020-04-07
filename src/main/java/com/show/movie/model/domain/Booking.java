@@ -1,5 +1,9 @@
 package com.show.movie.model.domain;
 
+import java.sql.Date;
+
+import org.apache.ibatis.type.Alias;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -8,27 +12,24 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-
 @Configuration
-@Getter 
-@Setter 
+@Alias("booking")
+@Getter
+@Setter
 @ToString
-
 public class Booking {
 	private int bookingCode;
-	private int bookingDate;
+	private Date bookingDate;
 	private String bookingSeat;
 	private int bookingPeople;
 	private int bookingPrice;
 	private int bookingState;
-	//외래키는 써주지 않음
 	
-	/*
-	 * @Bean("bookingVO") 
-	 * public Booking getAllBooking()
-	 *  { return new Booking(); 
-	 * 어노테이션 때문에 썼다는데 모르겠음 
-	 * }
-	 */
+	@Autowired(required = false)
+	private Movie movie;
+	@Autowired(required = false)
+	private MovieInfo movieInfo;
+	@Autowired(required = false)
+	private Branch branch;
 
 }

@@ -92,3 +92,5 @@
 			pointcut-ref="requiredTx" />
 	</aop:config>
 </beans>
+
+

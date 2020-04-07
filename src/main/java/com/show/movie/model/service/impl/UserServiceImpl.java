@@ -57,5 +57,11 @@ public class UserServiceImpl implements UserService {
 		return userDAO.encrypt(login);
 	}*/
 
+	@Override
+	public int userIdCheck(User user) {
+		int result = userDAO.userIdCheck(user);
+		return result;
+	}
+
 
 }

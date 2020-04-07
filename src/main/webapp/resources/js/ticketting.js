@@ -20,7 +20,6 @@ function getMovieForDate(){
 			}
 		}).done(function(result){
 			$('.movie-choice .list #mCSB_1_container > ul').empty();
-
 			$.each(result.movieList,function(index,value){
 				$('#mCSB_21_container').attr('style','display:none');
 				$('#playScheduleNonList').attr('style','display:block');
@@ -68,7 +67,7 @@ function requestKakaoPay() {
 	$('.button').on('click', function(event) {
 		$('#kakaoPay').submit();
 	})
-	
+
 }
 
 function changeChoiseMovie(){
@@ -79,7 +78,7 @@ function changeChoiseMovie(){
 		$('.result').find('ul').empty();
 		$('#movie-schedule-area').attr('style', 'display:none');
 		$('#playScheduleNonList').attr('style', 'display:block');
-		
+
 	})
 }
 
@@ -91,7 +90,6 @@ function getMovieName() {
 	}
 }
 
-
 function clickMovie() {
 	$('#mCSB_1_container ul').on('click','button',function(event){
 		addOnClass(event);
@@ -99,7 +97,6 @@ function clickMovie() {
 		$('.theater-choice .depth').attr('style','display:none');
 	})
 }
-
 
 function clickTheater() {
 	$('.theater-choice .mCSB_container').bind('click', function(event) {
@@ -124,7 +121,7 @@ function addOnClass(event) {
 		targetButton.removeClass('on has-issue');
 	}
 }
-
+// 69-106 theater
 function getTheater(event) {
 	event.preventDefault();
 	addOnClass(event);
@@ -135,7 +132,8 @@ function getTheater(event) {
 				contentType : "application/x-www-form-urlencoded; charset=UTF-8",
 				dataType : 'JSON',
 				data : {
-					locationName : $(event.target).closest('button').find('span').text()
+					locationName : $(event.target).closest('button').find(
+							'span').text()
 				/*
 				 * movieLocation : $(this).children().text()
 				 */
@@ -156,8 +154,12 @@ function getTheater(event) {
 									result,
 									function(index, item) {
 										theater
-												.append('<li><button class="locationForTheater" id="btn" type="button" value="'+item+'">'
-														+ '<span>'+item+'</span>'
+												.append('<li><button class="locationForTheater" id="btn" type="button" value="'
+														+ item
+														+ '">'
+														+ '<span>'
+														+ item
+														+ '</span>'
 														+ '</button></li>');
 									})
 									
@@ -169,34 +171,34 @@ function getTheater(event) {
 }
 
 function getMovieInfoAndTime(event) {
-	
+
 	var dataArray = new Array();
-	$.each($(".on"), function(key, value){
-		if($(this).val() != ""){
-		dataArray.push($(this).val());
+	$.each($(".on"), function(key, value) {
+		if ($(this).val() != "") {
+			dataArray.push($(this).val());
 		}
 	})
-	if(dataArray.length < 3){
+	if (dataArray.length < 3) {
 		alert('영화, 극장을 모두 선택해주세요');
 		return;
 	}
-	
+
 	addOnClass(event);
-	
-	if(dataArray.length > 3 ){
-	dataArray.pop();
+
+	if (dataArray.length > 3) {
+		dataArray.pop();
 	}
-	
+
 	dataArray.push($(event.target).closest('button').val());
 	console.log(dataArray);
-		
+
 	$
 			.ajax({
 				url : "/getMovieInfoAndTime",
 				type : 'GET',
 				contentType : "application/x-www-form-urlencoded; charset=UTF-8",
 				dataType : 'JSON',
-			
+
 				data : {
 					/*'movieDate' : dataArray[0],*/
 					'movieDate' : $('#formDeList > div .on').val(),
@@ -204,8 +206,7 @@ function getMovieInfoAndTime(event) {
 					'branch.location.locationName' : dataArray[2],
 					'branch.branchName' : dataArray[3]
 				},
-			
-				
+
 				success : function(result) {
 					console.log(result.length);
 					$('.result0').attr('style','display:none');
@@ -216,11 +217,16 @@ function getMovieInfoAndTime(event) {
 					}
 					
 					$('.result').find('ul').empty();
-					$.each(result,function(index, item) {
-										$('.result').find('ul').append(
+					$
+							.each(
+									result,
+									function(index, item) {
+										$('.result')
+												.find('ul')
+												.append(
 														'<li>'
-														+'<form action="/getSelectScreen" method="post">'
-														+'<button type="submit" class="btn" >'
+																+ '<form action="/getSelectScreen" method="post">'
+																+ '<button type="submit" class="btn" >'
 																+ '<div class="legend"></div>'
 																+ '<span class="time"><strong title="상영 시작">'
 																+ item.movieStartTime
@@ -238,7 +244,8 @@ function getMovieInfoAndTime(event) {
 																+ item.branch.branchName
 																+ '">'
 																+ item.branch.branchName
-																+ '<br>'+item.theater.theaterName
+																+ '<br>'
+																+ item.theater.theaterName
 																+ '</span><span class="seat"><strong class="now" title="잔여 좌석">'
 																+ item.theater.theaterLeftSeat
 																+ '</strong>'
@@ -246,14 +253,25 @@ function getMovieInfoAndTime(event) {
 																+ item.theater.theaterAllSeat
 																+ '</em></span>'
 																+ '</div></button>'
-																+'<input type="hidden" name="movie.movieName" value="'+item.movie.movieName+'" >'
-																+'<input type="hidden" name="movie.moviePoster" value="'+item.movie.moviePoster+'" >'
-																+'<input type="hidden" name="movieStartTime" value="'+item.movieStartTime+'" >'
-																+'<input type="hidden" name="movieEndTime" value="'+item.movieEndTime+'" >'
-																+'<input type="hidden" name="branch.branchName" value="'+item.branch.branchName+'" >'
-																+'<input type="hidden" name="theater.theaterName" value="'+item.theater.theaterName+'" ></form>'
-																+'</li>'
-												);
+																+ '<input type="hidden" name="movie.movieName" value="'
+																+ item.movie.movieName
+																+ '" >'
+																+ '<input type="hidden" name="movie.moviePoster" value="'
+																+ item.movie.moviePoster
+																+ '" >'
+																+ '<input type="hidden" name="movieStartTime" value="'
+																+ item.movieStartTime
+																+ '" >'
+																+ '<input type="hidden" name="movieEndTime" value="'
+																+ item.movieEndTime
+																+ '" >'
+																+ '<input type="hidden" name="branch.branchName" value="'
+																+ item.branch.branchName
+																+ '" >'
+																+ '<input type="hidden" name="theater.theaterName" value="'
+																+ item.theater.theaterName
+																+ '" ></form>'
+																+ '</li>');
 									})
 				}
 			})

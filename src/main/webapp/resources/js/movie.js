@@ -7,12 +7,9 @@ $(function(){
 	tabListSynopsis();
 	
 })
-
-
 function totalWon(){
-	
+	//var o = document.querySelectorAll('li');
 }
-
 function infoMore(){
 $('.btn').on('click',function(event){
 	if($('.btn-more').hasClass("on") == true){
@@ -76,7 +73,7 @@ function slidSynopsis(){
 			$('.synopsis').slideDown();
 			$('.btn-more').addClass('on');
 		}
-		
+	
 		
 	})
 }*/

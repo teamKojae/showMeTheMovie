@@ -18,6 +18,7 @@ public interface MovieDAO {
 	public String getMovieImages(String movieName);
 	public int isView();
 	public void createViewGetMovieInfo();
+	public List<Movie> getIndexMovie();
 	public List<Movie> getMovieAllList();
 	public List<Movie> getNotRegisMovie(@Param("movieDate") String movieDate);
 	
@@ -28,8 +29,10 @@ public interface MovieDAO {
 			"(SELECT movieCode, movieAudience, @curRank := @curRank + 1 AS 'rank' from movie, (select @curRank := 0 ) r ) movieRank\r\n" + 
 			"where movie.movieCode = movieRank.movieCode;")
 	public List<Movie> getMovieList();
-	
+		
 	public List<Seat> getSeatList();
 	
+	//예나
+	public List<Movie> moviePageList();
 	
 }
