@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
-import com.show.movie.controller.util.parse.Parser;
 import com.show.movie.model.domain.Movie;
 import com.show.movie.model.service.MovieService;
+import com.show.movie.util.parse.Parser;
 
 import lombok.extern.log4j.Log4j;
 

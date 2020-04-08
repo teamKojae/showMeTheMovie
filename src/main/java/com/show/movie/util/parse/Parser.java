@@ -1,4 +1,4 @@
-package com.show.movie.controller.util.parse;
+package com.show.movie.util.parse;
 
 import java.io.File;
 import java.io.IOException;
