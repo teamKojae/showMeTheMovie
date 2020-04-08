@@ -57,9 +57,9 @@ public class KakaoPay {
 	        // ↓고정
 
 
-	        params.add("approval_url", "http://192.168.0.23:5000/kakaoPaySuccess");		
-	        params.add("cancel_url", "http://192.168.0.23:5000/kakaoPayCancel");
-	        params.add("fail_url", "http://192.168.0.23:5000/kakaoPaySuccessFail");
+	        params.add("approval_url", "http://192.168.0.154:5000/kakaoPaySuccess");		
+	        params.add("cancel_url", "http://192.168.0.154:5000/kakaoPayCancel");
+	        params.add("fail_url", "http://192.168.0.154:5000/kakaoPaySuccessFail");
 
 //	        params.add("approval_url", "http://localhost:5000/kakaoPaySuccess");		
 //	        params.add("cancel_url", "http://localhost:5000/kakaoPayCancel");

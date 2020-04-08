@@ -26,6 +26,13 @@
 			<result column="branchName" property="branchName" />
 		</association>
 	</resultMap>
+	
+	<resultMap id="seat" type="seat">
+		<id column="seatCode" property="seatCode" />
+		<result column="movieInfoCode" property="movieInfoCode" />
+		<result column="seatName" property="seatName" />
+		<result column="seatStatus" property="seatStatus" />
+	</resultMap>
 
 	<select id="getAllbooking" resultMap="booking"
 		parameterType="string">
@@ -36,6 +43,16 @@
 		where userId=#{userId}
 		AND bookingState = 0
 	</select>
+	 
+	 <update id="updateSeatStatus" parameterType="seat">
+ 		update seat set seatStatus=1 where seatName = #{seatName}
+ 	</update>
+	 
+ 	<insert id="insertBookingInfo" parameterType="booking">
+ 	 	INSERT INTO booking (userId, movieInfoCode, bookingDate, bookingSeat, bookingPeople, bookingPrice,bookingState)
+ 		 values ( #{user.userId} , #{movieInfo.moiveInfoCode} ,now(), #{bookingSeat}, #{bookingPeople}, #{bookingPrice}, 0);
+ 	</insert>
+	
 	<!-- booking code 추가 -->
 </mapper>
 
@@ -44,7 +61,7 @@ Create View getBooking AS SELECT
 booking.bookingCode, 
 booking.bookingState,
 movie.movieName, 
-movie.moviePoster
+movie.moviePoster,
 branch.branchName, 
 theater.theaterName, 
 movieInfo.movieDate, 

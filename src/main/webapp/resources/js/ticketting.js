@@ -253,6 +253,9 @@ function getMovieInfoAndTime(event) {
 																+ item.theater.theaterAllSeat
 																+ '</em></span>'
 																+ '</div></button>'
+																+ '<input type="hidden" name="moiveInfoCode" value="'
+																+ item.moiveInfoCode
+																+ '" >'
 																+ '<input type="hidden" name="movie.movieName" value="'
 																+ item.movie.movieName
 																+ '" >'

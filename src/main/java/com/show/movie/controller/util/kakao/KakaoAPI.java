@@ -38,7 +38,7 @@ public class KakaoAPI {
 
 //			sb.append("&redirect_uri=http://localhost:5000/kakaoCallback");
 
-			sb.append("&redirect_uri=http://192.168.0.23:5000/kakaoCallback");
+			sb.append("&redirect_uri=http://192.168.0.154:5000/kakaoCallback");
 
 
 			sb.append("&code=" + authorize_code);

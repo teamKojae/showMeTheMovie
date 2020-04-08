@@ -72,14 +72,14 @@
 											<div class="row">
 												<c:forEach items="${seatList}" var="seat"  begin="0" end="9">
 												<div class="row__seat " id="${seat.seatName}" 
-													data-area="${seat.seatStatus}"> ${seat.seatName}</div>
+													data-area="${seat.seatStatus}">${seat.seatName}</div>
 											</c:forEach>
 											</div>
 	
 											<div class="row">
 												<c:forEach items="${seatList}" var="seat"  begin="10" end="19">
 												<div class="row__seat " id="${seat.seatName}" 
-													data-area="${seat.seatStatus}"> ${seat.seatName}</div>
+													data-area="${seat.seatStatus}">${seat.seatName}</div>
 											</c:forEach>
 											</div>
 	
@@ -88,78 +88,52 @@
 											<div class="row">
 												<c:forEach items="${seatList}" var="seat"  begin="20" end="29">
 												<div class="row__seat " id="${seat.seatName}" 
-													data-area="${seat.seatStatus}"> ${seat.seatName}</div>
+													data-area="${seat.seatStatus}">${seat.seatName}</div>
 											</c:forEach>
 											</div>
 											<div class="row">
 												<c:forEach items="${seatList}" var="seat"  begin="30" end="39">
 												<div class="row__seat " id="${seat.seatName}" 
-													data-area="${seat.seatStatus}"> ${seat.seatName}</div>
+													data-area="${seat.seatStatus}">${seat.seatName}</div>
 											</c:forEach>
 											</div>
 											<div class="row">
 												<c:forEach items="${seatList}" var="seat"  begin="40" end="49">
 												<div class="row__seat " id="${seat.seatName}" 
-													data-area="${seat.seatStatus}"> ${seat.seatName}</div>
+													data-area="${seat.seatStatus}">${seat.seatName}</div>
 											</c:forEach>
 											</div>
 											<div class="row">
 												<c:forEach items="${seatList}" var="seat"  begin="50" end="59">
 												<div class="row__seat " id="${seat.seatName}" 
-													data-area="${seat.seatStatus}"> ${seat.seatName}</div>
+													data-area="${seat.seatStatus}">${seat.seatName}</div>
 											</c:forEach>
 											</div>
 											<div class="row">
 												<c:forEach items="${seatList}" var="seat"  begin="60" end="69">
 												<div class="row__seat " id="${seat.seatName}" 
-													data-area="${seat.seatStatus}"> ${seat.seatName}</div>
+													data-area="${seat.seatStatus}">${seat.seatName}</div>
 											</c:forEach>
 											</div>
 											<div class="row">
 												<c:forEach items="${seatList}" var="seat"  begin="70" end="79">
 												<div class="row__seat " id="${seat.seatName}" 
-													data-area="${seat.seatStatus}"> ${seat.seatName}</div>
+													data-area="${seat.seatStatus}">${seat.seatName}</div>
 											</c:forEach>
 											</div>
 											<div class="row">
 												<c:forEach items="${seatList}" var="seat"  begin="80" end="89">
 												<div class="row__seat " id="${seat.seatName}" 
-													data-area="${seat.seatStatus}"> ${seat.seatName}</div>
+													data-area="${seat.seatStatus}">${seat.seatName}</div>
 											</c:forEach>
 											</div>
 											<div class="row">
 												<c:forEach items="${seatList}" var="seat"  begin="90" end="99">
 												<div class="row__seat " id="${seat.seatName}" 
-													data-area="${seat.seatStatus}" > ${seat.seatName}</div>
+													data-area="${seat.seatStatus}" >${seat.seatName}</div>
 											</c:forEach>
 											</div>
-											
-	
-	
-	
-	
-<!-- 											<div class="row">
-												<div class="row__seat B1">B1</div>
-												<div class="row__seat B2">B2</div>
-												<div class="row__seat B3">B3</div>
-												<div class="row__seat B4"></div>
-												<div class="row__seat B5"></div>
-												<div class="row__seat B6"></div>
-												<div class="row__seat B7"></div>
-												<div class="row__seat B8"></div>
-												<div class="row__seat row__seat--reserved"></div>
-												<div class="row__seat row__seat--reserved"></div>
-												<div class="row__seat B11"></div>
-												<div class="row__seat B12"></div>
-												<div class="row__seat B13"></div>
-												<div class="row__seat B14"></div>
-												<div class="row__seat B15"></div>
-												<div class="row__seat B16"></div>
-												<div class="row__seat B17"></div>
-												<div class="row__seat B18"></div>
-											</div>
-
-										</div>
+							
 	
 										<!-- /rows -->
 										<ul class="legend">

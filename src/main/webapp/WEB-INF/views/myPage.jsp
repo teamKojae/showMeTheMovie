@@ -94,7 +94,7 @@
 															<th scope="row" class="a-r">관람일시</th>
 															<td>${booking.movieInfo.movieDate}</td>
 															<th scope="row">관람좌석</th>
-															<td>추가예정</td>
+															<td>${booking.bookingSeat}</td>
 														</tr>
 
 													</tbody>

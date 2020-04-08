@@ -23,7 +23,6 @@ public interface MovieDAO {
 	public List<Movie> getNotRegisMovie(@Param("movieDate") String movieDate);
 	
 	
-	
 	//순위까지 가져오는 쿼리문
 	@Select("SELECT movie.movieName, movie.movieAudience, movieRank.rank FROM movie movie, \r\n" + 
 			"(SELECT movieCode, movieAudience, @curRank := @curRank + 1 AS 'rank' from movie, (select @curRank := 0 ) r ) movieRank\r\n" + 
