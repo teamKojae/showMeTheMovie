@@ -58,10 +58,10 @@
 										<input type="hidden" id="bookingCode" name="bookingCode" value="${booking.bookingCode }" >
 										<li sell-tran-no="13722003170094915348">
 											<div class="round" >           <!-- 여기에 추가 :) ->  -->                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
-												<a href="/movie-detail?rpstMovieNo=20003000" class="img"
-													title="다크 워터스 "><img
-													src=" /img/${booking.movie.moviePosterBG} "
-													alt="다크 워터스" onerror="noImg(this)"></a>
+												<a href="" class="img" onclick="return false"
+													title="${booking.movie.movieName } "><img
+													src=" /img/${booking.movie.moviePoster} "
+													alt="이미지없어요" ></a>
 												<table class="table">
 													<colgroup>
 														<col style="width: 75px;">
@@ -94,7 +94,7 @@
 															<th scope="row" class="a-r">관람일시</th>
 															<td>${booking.movieInfo.movieDate}</td>
 															<th scope="row">관람좌석</th>
-															<td>추가예정</td>
+															<td>${booking.bookingSeat}</td>
 														</tr>
 
 													</tbody>

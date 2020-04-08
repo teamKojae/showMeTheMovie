@@ -96,7 +96,7 @@ public class KakaoAPI {
 			int responseCode = conn.getResponseCode();
 			System.out.println("responseCode : " + responseCode);
 
-			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(),"UTF-8") );
+			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(),"UTF-8"));
 
 			String line = "";
 			String result = "";

@@ -78,7 +78,7 @@
 												<div class="preview">
 													<p class="tit">기대평</p>
 													<p class="number">
-														9.${status.count*2+2}<span class="ir">점</span>
+														9.${status.count*2+1}<span class="ir">점</span>
 													</p>
 												</div>
 												<!--
@@ -96,7 +96,7 @@
 												<div class="review">
 													<p class="tit">관람평</p>
 													<p class="number">
-													${status.count+(2.3)*2}<span class="ir">점</span>
+													${(9.5) - (status.count*0.1) }<span class="ir">점</span>
 													</p>
 												</div>
 											</div>
@@ -142,45 +142,6 @@
 	
 <script src="/js/movie.js"></script>
 
-    <script>
- 			// 1번 div
-        $(document).ready(function() {
-        	( $("#imgOver1").on('mouseover', function(){
-        		$("#wrap1").attr("style","display:block");
-        	}))
-            $("#imgOver1").on('mouseout', function(){
-            	$("#wrap1").attr("style","display:none");
-            })
-        });
-            // 2번 div
-        $(document).ready(function() {
-            ( $("#imgOver2").on('mouseover', function(){
-        		$("#wrap2").attr("style","display:block");
-        	}))
-            $("#imgOver2").on('mouseout', function(){
-            	$("#wrap2").attr("style","display:none");
-            })
-        });
-            // 3번 div
-        $(document).ready(function() {
-            ( $("#imgOver3").on('mouseover', function(){
-        		$("#wrap3").attr("style","display:block");
-        	}))
-            $("#imgOver3").on('mouseout', function(){
-            	$("#wrap3").attr("style","display:none");
-            })
-        });
-            // 4번 div
-        $(document).ready(function() {
-            ( $("#imgOver4").on('mouseover', function(){
-        		$("#wrap4").attr("style","display:block");
-        	}))
-            $("#imgOver4").on('mouseout', function(){
-            	$("#wrap4").attr("style","display:none");
-            })
-        });
-        
-    </script>
 	
 </body>
 </html>

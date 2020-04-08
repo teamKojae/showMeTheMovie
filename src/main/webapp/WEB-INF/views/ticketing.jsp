@@ -625,9 +625,9 @@
 								
 								<div class="result0 no-result" id="playScheduleNonList" style="display:none">
 									
-									 <i class="iconset ico-tab-theater"></i>
+									 <!-- <i class="iconset ico-tab-theater"></i> -->
 									 <!-- <i class="iconset ico-tab-special"></i> --> 
-									<!-- <i class="iconset ico-tab-movie"></i> -->
+									 <i class="iconset ico-tab-movie"></i>
 
 									<p class="txt">죄송합니다. 극장에 해당 영화를 상영중이지 않습니다.<br></p>
 								</div>

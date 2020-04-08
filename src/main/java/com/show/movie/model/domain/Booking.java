@@ -18,6 +18,7 @@ import lombok.ToString;
 @Setter
 @ToString
 public class Booking {
+	
 	private int bookingCode;
 	private Date bookingDate;
 	private String bookingSeat;
@@ -25,6 +26,8 @@ public class Booking {
 	private int bookingPrice;
 	private int bookingState;
 	
+	@Autowired(required = false)
+	User user;
 	@Autowired(required = false)
 	private Movie movie;
 	@Autowired(required = false)

@@ -1,13 +1,14 @@
 package com.show.movie.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.show.movie.model.dao.CancellationDAO;
-import com.show.movie.model.domain.Cancellation;
+import com.show.movie.model.domain.User;
 import com.show.movie.model.service.BookingService;
 
 import lombok.extern.log4j.Log4j;
@@ -27,8 +28,10 @@ public class BookingController {
 	 */
 	
 	@RequestMapping(value = "/myPage", method = RequestMethod.GET)
-	public String getMyPage(Model model) {
-		model.addAttribute("bookingList", bookingService.getMyPage("jeongmin"));
+	public String getMyPage(Model model, HttpSession session) {
+		model.addAttribute("bookingList", bookingService.getMyPage(
+				( (User) session.getAttribute("user")).getUserId()
+				));
 		return "myPage";
 	}
 	//수정

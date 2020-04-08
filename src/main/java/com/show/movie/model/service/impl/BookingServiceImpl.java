@@ -11,6 +11,7 @@ import com.show.movie.model.dao.BookingDAO;
 import com.show.movie.model.dao.CancellationDAO;
 import com.show.movie.model.domain.Booking;
 import com.show.movie.model.domain.Cancellation;
+import com.show.movie.model.domain.Seat;
 import com.show.movie.model.service.BookingService;
 
 @Service("bookingService")
@@ -50,7 +51,25 @@ public class BookingServiceImpl implements BookingService {
 
 	@Override
 	public void insertBookingInfo(Booking booking) {
+		try {
+		System.out.println("booking   " + booking);
 		bookingDAO.insertBookingInfo(booking);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void updateSeatStatus(Seat seat) {
 		
-	};
+		try {
+			System.out.println("seat   " + seat);
+			bookingDAO.updateSeatStatus(seat);
+			}
+			catch(Exception e) {
+				e.printStackTrace();
+			}
+	}
+
 }

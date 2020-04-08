@@ -20,26 +20,8 @@ function getMovieForDate(){
 			}
 		}).done(function(result){
 			$('.movie-choice .list #mCSB_1_container > ul').empty();
-		/*	
-			<c:when test="${status.index % 4 eq 0}">
-			<span class="movie-grade small age-12">12세이상관람가</span>
-		</c:when>
-		
-		<c:when test="${status.index % 4 eq 2}">
-			<span class="movie-grade small age-15">15세이상관람가</span>
-		</c:when>
-		
-		<c:when test="${status.index % 8 eq 5}">
-			<span class="movie-grade small age-19">19세이상관람가</span>
-		</c:when>
-		
-		<c:otherwise>
-			<span class="movie-grade small age-all">전체관람가</span>
-		</c:otherwise>*/
-			
 			$.each(result.movieList,function(index,value){
 				$('#mCSB_21_container').attr('style','display:none');
-//				$('.result #mCSB_21_container ul').empty();
 				$('#playScheduleNonList').attr('style','display:block');
 				$('.theater-choice .list .on').removeClass('on');
 				$('.theater-choice .depth li').empty();
@@ -94,14 +76,6 @@ function changeChoiseMovie(){
 		$('.theater-choice .on').removeClass('on has-issue');
 		$('.theater-choice').find('.all-list > button').addClass('on');
 		$('.result').find('ul').empty();
-		/*$.ajax({
-			url:"",
-			data:{
-				movieName: $(event.target).val()
-			}
-		
-		}).done(function(result){})
-		*/
 		$('#movie-schedule-area').attr('style', 'display:none');
 		$('#playScheduleNonList').attr('style', 'display:block');
 
@@ -279,6 +253,9 @@ function getMovieInfoAndTime(event) {
 																+ item.theater.theaterAllSeat
 																+ '</em></span>'
 																+ '</div></button>'
+																+ '<input type="hidden" name="moiveInfoCode" value="'
+																+ item.moiveInfoCode
+																+ '" >'
 																+ '<input type="hidden" name="movie.movieName" value="'
 																+ item.movie.movieName
 																+ '" >'

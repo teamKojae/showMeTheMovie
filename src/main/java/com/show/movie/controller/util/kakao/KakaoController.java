@@ -19,6 +19,7 @@ import com.show.movie.model.domain.MovieInfo;
 import com.show.movie.model.domain.Seat;
 import com.show.movie.model.domain.User;
 import com.show.movie.model.domain.kakao.KakaoPayApprovalVO;
+import com.show.movie.model.service.BookingService;
 import com.show.movie.model.service.UserService;
 
 import lombok.extern.log4j.Log4j;
@@ -36,6 +37,8 @@ public class KakaoController {
 	User user;
 	@Autowired
 	UserService userService;
+	@Autowired
+	BookingService bookingService;
 
 	@RequestMapping(value = "/kakaoCallback")
 	public String kakaoLogin(Model model, String code, HttpSession session) {
@@ -56,7 +59,7 @@ public class KakaoController {
 		//영화선택한  정보값을 스크린선택 컨트롤러에 전달
 		String view = null;
 		if (session.getAttribute("kakaoPay") == null) {
-			view = "index";
+			view = "redirect:/";
 		}else if(session.getAttribute("kakaoPay") != null) {
 			model.addAttribute("movieInfo", session.getAttribute("screenInfo"));
 			session.removeAttribute("kakaoPay");
@@ -68,8 +71,9 @@ public class KakaoController {
 
 	// 카카오 페이 결제 완료 후 정보 갖고오기
 	@GetMapping("/kakaoPaySuccess")
-	public String kakaoPay(Model model, @RequestParam("pg_token") String pg_token, HttpSession session, Seat seat,
-			Booking booking) {
+	public String kakaoPay(Model model, @RequestParam("pg_token") String pg_token, HttpSession session) {
+		
+		
 		log.info("kakaoPaySuccess ............................................");
 		log.info("kakaoPaySuccess pg_token : " + pg_token);
 //			JSP 기준
@@ -86,15 +90,28 @@ public class KakaoController {
 		log.info("kakaoInfo :  " + kakaoInfo);
 
 		model.addAttribute("kakaoInfo", kakaoInfo);
-
+		
+		Seat seat = (Seat) session.getAttribute("seatList");
 		kakaoInfo.getPartner_user_id();
 		kakaoInfo.getAmount().getTotal();
 		MovieInfo movieInfo = (MovieInfo)session.getAttribute("screenInfo");
 		//Seat seatList = (Seat)
 		log.info("movieInfo  : "+ movieInfo);
+		log.info("Seat : "+seat);
 		//movieName, theaterName, branchName,movieStartTime, movieEndTime
-
+		//bookingService.insertBookingInfo(booking);
+		Booking booking = new Booking();
+		booking.setUser(user);
+		booking.getUser().setUserId(kakaoInfo.getPartner_user_id());
+		booking.setMovieInfo(movieInfo);
+		booking.setBookingSeat(seat.getSeatName());
+		booking.setBookingPeople(kakaoInfo.getQuantity());
+		booking.setBookingPrice(kakaoInfo.getAmount().getTotal());
+		booking.setBookingState(0);
+		bookingService.insertBookingInfo(booking);
+		
 		model.addAttribute("booking", booking);
+		model.addAttribute("seat",seat);
 		
 //			 컨트롤러 기준
 

@@ -5,6 +5,7 @@ $(function(){
 	infoMore();
 	tabListStilCut();
 	tabListSynopsis();
+	preview();
 	
 })
 function totalWon(){
@@ -78,10 +79,22 @@ function slidSynopsis(){
 	})
 }*/
 
+function preview(){
+	 $('li[name="li_boxoRankList"] a').on('mouseover', function(event){
+     	console.log($(event.target));
+ 		$(event.target).closest('a').find('.wrap').attr("style","display:block");
+ 	});
+      
+      $('li[name="li_boxoRankList"] a').on('mouseout', function(event){
+      	console.log($(event.target));
+  		$(event.target).closest('a').find('.wrap').attr("style","display:none");
+  	}); 
+}
+
 
 function getMovieDetail(){
 	$('.movie-list-info').on('click',function(event){
-		const movieName = $(event.target).parent().find('.movie-info-hidden').val();
+		const movieName = $(event.target).closest('li').find('input[type="hidden"]').val();
 		$(location).attr('href', '/movieDetail?movieName='+movieName);
 	})
 }

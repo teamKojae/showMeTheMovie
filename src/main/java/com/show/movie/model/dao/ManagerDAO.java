@@ -20,7 +20,7 @@ public interface ManagerDAO {
 	public List<Branch> getBranchList(Location location);
 	public List<Theater> getTheaterList(String branchName);
 	public void insertTheater(@Param("movieName")String movieName, @Param("theaterName") List<String> theaterName);
-	public List<MovieInfo> getTimeScheduleInTheater(@Param("theaterNo") String theaterNo , @Param("timeSchedule") Date timeSchedule);
+	public List<MovieInfo> getTimeScheduleInTheater(@Param("theaterNo") String theaterNo , @Param("timeSchedule") String timeSchedule);
 	public int isViewTimeSchedule();
 	public void createViewTimeSchedule();
 	

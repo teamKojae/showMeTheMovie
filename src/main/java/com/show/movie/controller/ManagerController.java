@@ -5,11 +5,15 @@ import java.sql.Date;
 import java.sql.Time;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.StringTokenizer;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -47,6 +51,8 @@ public class ManagerController {
 	
 	@Autowired
 	ManagerService managerService;
+	
+
 	
 	@GetMapping("/addMovie")
 	public void addMovie() {}
@@ -93,30 +99,95 @@ public class ManagerController {
 	@PostMapping(value = "/getTheatersTimeTable" , produces = "application/json; charset=utf8")
 	@ResponseBody
 	public String getTheatersTimeTable(Model model, 
-			@RequestParam List<String> theaterNo , Date timeSchedule ) {
+			@RequestParam List<String> theaterNo , String timeSchedule ) {
 		
 		List<List<MovieInfo>> list = managerService.getTimeScheduleInTheater(theaterNo, timeSchedule);
-		
 		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
-		//Time time = new Time();
 		
-		for(List<MovieInfo> mo : list) {
-			int minTotalTime = 0;
-			int minMinus = 0;
-			int temp = 0;
-			for(MovieInfo m : mo) {
-				log.info("BEAN : "+m.getMovieStartTime());
-				String[] parse = m.getMovieStartTime().split(":");
-				minTotalTime =  ( Integer.parseInt(parse[0]) * 60 ) + Integer.parseInt(parse[1]);
-				minMinus  = minTotalTime - minMinus;
-				log.info("분으로 바꾸기 : "+ minTotalTime);
-				log.info("시간계산 : "+ minMinus);
+		try {
+			for(List<MovieInfo> mo : list) {
+				
+				int afterTime = 0;
+				int calcTime = 0;
+				for(int i = 0 ; i < mo.size(); i++) {
+					String[] beforeParse = null;
+					int beforeTime = 0;
+					
+					String[] afterParse = mo.get(i).getMovieStartTime().split(":");
+					afterTime = ( Integer.parseInt(afterParse[0]) * 60 ) + Integer.parseInt(afterParse[1]);
+					
+					if(i != 0 ) {
+					beforeParse = mo.get(i-1).getMovieEndTime().split(":");
+					beforeTime = ( Integer.parseInt(beforeParse[0]) * 60 ) + Integer.parseInt(beforeParse[1]);
+					}else {
+						beforeTime = afterTime;
+					}
+
+					calcTime = afterTime - beforeTime;
+					
+					int movieTime = mo.get(i).getMovie().getMovieTime();
+					System.out.println("-------------------------------------------------------");
+					
+					System.out.println("앞 시간    :  " +afterTime );
+					System.out.println("전 시간    :  " +beforeTime );
+					System.out.println("계산한 시간    :  " +calcTime );
+					System.out.println("영화 시간    :  "+movieTime);
+					System.out.println("지금 상영 시작 시간 :   " +mo.get(i).getMovieStartTime());
+					System.out.println("지금 상영 끝 시간 :   " +mo.get(i).getMovieEndTime());
+					System.out.println("-------------------------------------------------------");
+					int addMovieCount = calcTime / movieTime;
+					if( ( addMovieCount > 0  ) ){
+						
+						System.out.println(" 영화 등록가능 갯수  "+addMovieCount);
+						System.out.println(" 영화 등록할 수 있는 시간은  "+ (10+beforeTime));
+						String hour = String.format("%02d", ( (beforeTime+10) / 60 ) );
+						String min = String.format("%02d", ( (beforeTime+10) % 60 ) ); 
+						System.out.println(" 영화 등록 가능 시간  "+  hour+":"+min);
+					}
+					List<MovieInfo> emptyAddMovie = new ArrayList<MovieInfo>(); 
+					if(i == mo.size()-1 ) {
+						System.out.println("=====================================================");
+						System.out.println("영화 등록 시간 ~~ 24시 이전   "+ mo.get(i).getMovieEndTime() );
+						String[] parse = mo.get(i).getMovieEndTime().split(":");
+						int last = ( Integer.parseInt(parse[0]) * 60 ) + Integer.parseInt(parse[1]);
+						System.out.println("last 시간"+last);
+						int getLast = 1500 - last;
+						int getLastMovie = getLast / movieTime;
+						System.out.println("영화 끝 ~ 24시까지 몇개 등록할 수 있나여  : "+ getLastMovie);
+						for(int j = 0 ; j < getLastMovie; j++) {
+							if( j == 0 ) {
+								last += 10;
+							}else {
+							last += movieTime;
+							}
+							String hour = String.format("%02d", ( (last+10) / 60 ) );
+							String min = String.format("%02d", ( (last+10) % 60 ) ); 
+							String endHour = String.format("%02d", ( (last+10+movieTime) / 60 ) );
+							String endMin = String.format("%02d", ( (last+10+movieTime) / 60 ) );
+							String startTime = hour+":"+min;
+							String endTime = endHour+":"+endMin;
+							System.out.println(" 영화 등록 가능 시작 시간  "+  hour+":"+min);
+							System.out.println(" 영화 등록 가능  끝 시간  "+  endHour+":"+endMin);
+							MovieInfo movieInfo = getMovieInfo();
+							movieInfo.setMovieStartTime(startTime);
+							movieInfo.setMovieEndTime(endTime);
+							emptyAddMovie.add(movieInfo);
+						}
+					}
+				}
 			}
+		}catch(IndexOutOfBoundsException e) {
+			e.printStackTrace();
+		}catch(Exception e) {
+			e.printStackTrace();
 		}
 		
 		return gson.toJson(list);
 	}
-	
+	@Qualifier("getMovieInfoVO")
+	public MovieInfo getMovieInfo() {
+		return new MovieInfo();
+	}
 
 //	public String movieAddBranchAndTheater(@RequestBody Map<String, Object> map) {
 //	public String movieAddBranchAndTheater(@RequestBody HashMap<String, Object> map) {

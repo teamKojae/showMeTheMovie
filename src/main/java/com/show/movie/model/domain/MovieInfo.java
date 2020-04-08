@@ -17,7 +17,6 @@ import lombok.ToString;
 @Alias("movieInfo")
 @Getter @Setter
 @ToString
-
 public class MovieInfo { 
 	@Bean("getMovieInfoVO")
 	public MovieInfo getMovieInfo() {

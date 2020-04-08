@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.show.movie.model.dao.BookingDAO;
 import com.show.movie.model.domain.Booking;
 import com.show.movie.model.domain.Cancellation;
+import com.show.movie.model.domain.Seat;
 
 import lombok.extern.log4j.Log4j;
 
@@ -25,4 +26,5 @@ public interface BookingService {
     
     //정민
     public void insertBookingInfo(Booking booking);
+    public void updateSeatStatus(Seat seat);
 }
