@@ -156,7 +156,9 @@ function selectBranchInTheater(){
 }
 
 
-
+function changeDateInTimeTable(){
+	
+}
 
 
 // 타임테이블 가져오기 ( 등록된 영화 시간대, 등록할수 있는 시간대 둘다 나오게)
@@ -205,7 +207,7 @@ function getTimeTable(){
 			traditional : true,
 			data : {
 				theaterNo : theaterNo,
-				timeSchedule : '2020-04-07',
+				timeSchedule : $('.date-area .on').attr('date-data'),
 				movieName : $('#masterMovie #mCSB_2 ul .on').val()
 // timeSchedule : timeSchedule
 			}

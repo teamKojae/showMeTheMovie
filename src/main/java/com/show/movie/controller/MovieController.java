@@ -24,35 +24,42 @@ public class MovieController {
 	Movie movie;
 	@Autowired
 	MovieService movieService;
-	
-	@RequestMapping(value="/movie" ,method = {RequestMethod.GET, RequestMethod.POST} )
+
+	@RequestMapping(value = "/movie", method = { RequestMethod.GET, RequestMethod.POST })
 	public String movie(Model model, Movie movie) {
-		//여기
+		//검색된 영화이름 찾기  없으면 공백
+		if (movie.getMovieName() != null) {
+			model.addAttribute("movieName", movie.getMovieName());
+		}else {
+			model.addAttribute("movieName","");
+		}
+		// 영화전체리스트 불러오기
 		List<Movie> movies = movieService.moviePageList(movie);
+		log.info("this  Movie :  " + movie.getMovieName());
 		model.addAttribute("movies", movies);
-		
+
 		return "movie";
 	}
-	
-	@GetMapping(value="/movieDetail")
+
+	@GetMapping(value = "/movieDetail")
 	public String movieDetail(Model model, Movie movie) {
-		movie = movieService.getMovie(movie.getMovieName() );
-		model.addAttribute("movie",  movie);
+		movie = movieService.getMovie(movie.getMovieName());
+		model.addAttribute("movie", movie);
 		log.info(new Parser().stringParser(movie.getMovieImages()));
-		model.addAttribute("movieImages",new Parser().stringParser(movie.getMovieImages()));
+		model.addAttribute("movieImages", new Parser().stringParser(movie.getMovieImages()));
 		return "movieDetail";
 	}
-	
-	@GetMapping(value="/getMovieImages" ,  produces = "application/json; charset=utf8")
+
+	@GetMapping(value = "/getMovieImages", produces = "application/json; charset=utf8")
 	@ResponseBody
 	public String getMovieImages(String movieName) {
 		return new Gson().toJson(new Parser().stringParser(movieService.getMovieImages(movieName)));
 	}
-	
-	@GetMapping(value="/getMovieSynopsis" ,  produces = "application/json; charset=utf8")
+
+	@GetMapping(value = "/getMovieSynopsis", produces = "application/json; charset=utf8")
 	@ResponseBody
 	public String getMovieSynopsis(String movieName) {
 		return new Gson().toJson(movieService.getMovieSynopsis(movieName));
 	}
-	
+
 }

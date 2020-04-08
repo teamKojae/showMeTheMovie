@@ -167,7 +167,7 @@
 								<div class="box-alert" >
 									<button type="button" class="managerButton" value="null">시간표보기</button>
 								</div>
-							<div class="timeTable">
+							<div class="timeTable on">
 								<h3 class="tit mt100 width1000">
 									
 								</h3>

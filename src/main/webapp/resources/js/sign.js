@@ -2,20 +2,33 @@
  * 
  */
 
-$(function(){
-	$(".sighUpLogo").on('click',function(event){
-		$(location).attr('href', '/');
 
-	})
-})
 
 $(function(){
 	checkUserId();
 	checkPassword();
 	checkSamePassword();
+	signUpButtonChange();
+	
+	
 })
 
-
+function signUpButtonChange(){
+	$('.board-form tr td').on('keyup','input',function(event){
+		var inputTag = $('table tr td input');
+		var data = new Array();
+		inputTag.each(function(event){
+			console.log("value : "+ $(this).val() );
+			if( $(this).val() != ""){
+				data.push($(this).val());
+			}
+		})
+		console.log(data);
+		if(data.length == 6){
+		$('#btnJoinInfoRegButton').removeClass('disabled');
+		}
+	})
+}
 
 function checkUserId(){
 	$('#ibxJoinInfoRegLoginId').on('keypress',function(event){
