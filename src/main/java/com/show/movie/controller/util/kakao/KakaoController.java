@@ -109,7 +109,7 @@ public class KakaoController {
 		booking.setBookingPrice(kakaoInfo.getAmount().getTotal());
 		booking.setBookingState(0);
 		bookingService.insertBookingInfo(booking);
-		
+		bookingService.updateSeatStatus(seat);
 		model.addAttribute("booking", booking);
 		model.addAttribute("seat",seat);
 		
