@@ -85,7 +85,7 @@
 												로그인<!--네이버로 로그인--></a> <a
 												href="https://kauth.kakao.com/oauth/authorize?client_id=e7a638f0535094326fe38f8ae0fc6bde&
 
-												redirect_uri=http://192.168.0.154:5000/kakaoCallback&response_type=code"
+												redirect_uri=http://192.168.0.23:5000/kakaoCallback&response_type=code"
 
 												lnkgty="KAKAO" title="카카오톡으로 로그인 선택"><img
 												src="/images/ico-kakao.png" alt="카카오톡"> <!--카카오톡-->

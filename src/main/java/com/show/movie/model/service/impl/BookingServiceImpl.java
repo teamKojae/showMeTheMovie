@@ -26,7 +26,7 @@ public class BookingServiceImpl implements BookingService {
 	public Map<String,Object> getMyPage(String userId) {
 		Map<String,Object> map = new HashMap<String, Object>();
 		map.put("booking", bookingDAO.getAllbooking(userId));
-		map.put("cancellationList", cancellationDAO.getAllcancellation(1));
+		map.put("cancellationList", cancellationDAO.getAllcancellation(userId));
 		return map;
 	}
 	
@@ -34,10 +34,10 @@ public class BookingServiceImpl implements BookingService {
 	public List<Booking> getAllBooking(String userId) {
 		return bookingDAO.getAllbooking(userId);
 	}
-	@Override
-	public List<Cancellation> getAllcancellation(int bookingState) {
-		return cancellationDAO.getAllcancellation(bookingState);
-	}
+//	@Override
+//	public List<Cancellation> getAllcancellation(int bookingState) {
+//		return cancellationDAO.getAllcancellation(bookingState);
+//	}
 
 //	public void update(int bookingCode) {
 //		cancellationDAO.update(bookingCode);
@@ -61,15 +61,19 @@ public class BookingServiceImpl implements BookingService {
 	}
 
 	@Override
-	public void updateSeatStatus(Seat seat) {
+	public void updateSeatStatus(String seatName, int theaterCode) {
 		
 		try {
-			System.out.println("seat   " + seat);
-			bookingDAO.updateSeatStatus(seat);
+			bookingDAO.updateSeatStatus(seatName, theaterCode);
 			}
 			catch(Exception e) {
 				e.printStackTrace();
 			}
+	}
+
+	@Override
+	public void insertSeat(int theaterCode, String seatName) {
+			bookingDAO.insertSeat(theaterCode, seatName);
 	}
 
 }

@@ -44,10 +44,21 @@
 		AND bookingState = 0
 	</select>
 	 
-	 <update id="updateSeatStatus" parameterType="seat">
- 		update seat set seatStatus=1 where seatName = #{seatName}
+	 <!-- 시트테이블 만드는 쿼리 -->
+	 <insert id="insertSeat" >
+	 	insert into seat (theaterCode, seatName, seatStatus)
+	 	VALUES ( #{theaterCode}, #{seatName}, 0 )
+	 </insert>
+	 
+	 
+	 <!--  해결해야할 것 2개  -->
+	 <update id="updateSeatStatus" >
+ 		UPDATE seat SET seatStatus=1 
+ 		WHERE seatName = #{seatName} 
+ 		AND  theaterCode = #{theaterCode} 
  	</update>
 	 
+	 <!--  로그볼것 -->
  	<insert id="insertBookingInfo" parameterType="booking">
  	 	INSERT INTO booking (userId, movieInfoCode, bookingDate, bookingSeat, bookingPeople, bookingPrice,bookingState)
  		 values ( #{user.userId} , #{movieInfo.moiveInfoCode} ,now(), #{bookingSeat}, #{bookingPeople}, #{bookingPrice}, 0);

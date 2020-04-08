@@ -53,8 +53,6 @@ public class MovieTime<T> {
 						int calcFirstMovieTimeCount = firstMovie / movieTime;
 						for (int j = 0; j < calcFirstMovieTimeCount; j++) {
 							String[] times = times(firstAddMovieTime, movieTime);
-//							String startTime = transStartTime(firstAddMovieTime);
-//							String endTime = transEndTime(firstAddMovieTime, movieTime);
 							emptyAddMovie.add(setTime(times[0], times[1]));
 							firstAddMovieTime += (10 + movieTime);
 						}
@@ -65,13 +63,7 @@ public class MovieTime<T> {
 					calcTime = afterTime - beforeTime;
 					int addMovieCount = calcTime / movieTime;
 					if ((addMovieCount > 0)) {
-
-//						String startTime = transStartTime(beforeTime);
-//						String endTime = transEndTime(beforeTime, movieTime);
-
 						String[] times = times(beforeTime, movieTime);
-
-						System.out.println("시간 :  " + times[0] + "  ~  " + times[1]);
 						for (int j = 0; j < addMovieCount; j++) {
 							emptyAddMovie.add(setTime(times[0], times[1]));
 						}

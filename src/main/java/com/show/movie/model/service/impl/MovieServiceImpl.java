@@ -60,9 +60,9 @@ public class MovieServiceImpl implements MovieService {
 	}
 	
 	@Override
-	public List<Seat> getSeatList(Seat seat) {
+	public List<Seat> getSeatList(int theaterCode) {
 		//log.info(movieDAO.getSeatList());
-		return movieDAO.getSeatList();
+		return movieDAO.getSeatList(theaterCode);
 	}
 
 	@Override

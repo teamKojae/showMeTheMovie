@@ -30,7 +30,7 @@ public interface MovieDAO {
 			"where movie.movieCode = movieRank.movieCode;")
 	public List<Movie> getMovieList();
 		
-	public List<Seat> getSeatList();
+	public List<Seat> getSeatList(int theaterCode);
 	
 	//예나
 	public List<Movie> moviePageList();

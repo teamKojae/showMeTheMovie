@@ -61,7 +61,7 @@
 	</resultMap>
 
 	<select id="getSeatList" resultType="seat">
-		select * from seat
+		SELECT * FROM seat WHERE theaterCode = #{theaterCode}
 	</select>
 
 	<select id="getMovieAllList" resultType="movie">

@@ -17,9 +17,11 @@ function infoMore(){
 $('.btn').on('click',function(event){
 	if($('.btn-more').hasClass("on") == true){
 		$('.movie-summary .txt').attr('style', "height:140px");
+		$('.btn-more').find('span').text('더보기');
 		$('.btn-more').removeClass('on');
 	}else{
 		$('.movie-summary .txt').attr('style', 'hegith:auto');
+		$('.btn-more').find('span').text('닫기');
 		$('.btn-more').addClass('on');
 	}
 })

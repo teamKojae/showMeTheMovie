@@ -278,6 +278,9 @@ function getMovieInfoAndTime(event) {
 																+ '<input type="hidden" name="branch.branchName" value="'
 																+ item.branch.branchName
 																+ '" >'
+																+ '<input type="hidden" name="theater.theaterCode" value="'
+																+ item.theater.theaterCode
+																+ '" >'
 																+ '<input type="hidden" name="theater.theaterName" value="'
 																+ item.theater.theaterName
 																+ '" ></form>'

@@ -96,7 +96,7 @@ public class KakaoController {
 		kakaoInfo.getAmount().getTotal();
 		MovieInfo movieInfo = (MovieInfo)session.getAttribute("screenInfo");
 		//Seat seatList = (Seat)
-		log.info("movieInfo  : "+ movieInfo);
+		log.info("상영관 코드 받아와야한다 !!   : "+ movieInfo);
 		log.info("Seat : "+seat);
 		//movieName, theaterName, branchName,movieStartTime, movieEndTime
 		//bookingService.insertBookingInfo(booking);
@@ -108,8 +108,10 @@ public class KakaoController {
 		booking.setBookingPeople(kakaoInfo.getQuantity());
 		booking.setBookingPrice(kakaoInfo.getAmount().getTotal());
 		booking.setBookingState(0);
+		
+		//집가서 insert 손보기
 		bookingService.insertBookingInfo(booking);
-		bookingService.updateSeatStatus(seat);
+		bookingService.updateSeatStatus(seat.getSeatName(), movieInfo.getTheater().getTheaterCode());
 		model.addAttribute("booking", booking);
 		model.addAttribute("seat",seat);
 		

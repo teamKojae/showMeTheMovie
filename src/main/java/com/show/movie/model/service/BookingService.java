@@ -18,13 +18,14 @@ import lombok.extern.log4j.Log4j;
 public interface BookingService {
 	public Map<String,Object> getMyPage(String userId);
 	List<Booking> getAllBooking(String userId);
-    List<Cancellation> getAllcancellation(int bookingState);
+//    List<Cancellation> getAllcancellation(String userId);
     void cancelDate(int bookingCode); 
+    void insertSeat(int theaterCode, String seatName);
   //  public void update(int bookingCode) ;
     
    
     
     //정민
     public void insertBookingInfo(Booking booking);
-    public void updateSeatStatus(Seat seat);
+    public void updateSeatStatus(String seatName,int theaterCode);
 }

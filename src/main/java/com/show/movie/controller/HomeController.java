@@ -52,11 +52,7 @@ public class HomeController {
 		return "index";
 	}
 	
-	
-	@RequestMapping(value="/myPage")
-	public String ticketList(Model model) {
-		return "myPage";
-	}
+
 	
 	@RequestMapping(value="/signUp")
 	public String sighUpPage(Model model) {

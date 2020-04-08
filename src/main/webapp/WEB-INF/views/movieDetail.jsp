@@ -93,7 +93,7 @@
 				<div class="txt" style="height:140px;">${movie.movieSynopsis }</div>
 				<div class="btn-more toggle">
 					<button type="button" class="btn">
-						<span>닫기</span> <i class="iconset ico-btn-more-arr"></i>
+						<span>더보기</span> <i class="iconset ico-btn-more-arr"></i>
 					</button>
 				</div>
 
