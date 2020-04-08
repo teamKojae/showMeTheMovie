@@ -24,14 +24,10 @@ SHOW ME THE MOVIE
             <foreach item="time" index="timeIndex" collection="movieStartTime"
             separator=",">
             (
-            (SELECT movieCode FROM movie WHERE movieName =
-            #{movieName}),
-            (SELECT
-            theaterCode FROM theater WHERE theaterName =
-            #{item}),
-            (SELECT
-            date_format(#{movieDate},'%Y-%m-%d') FROM dual)
-            ,#{time}, '${movieEndTime[timeIndex]}'
+            (SELECT movieCode FROM movie WHERE movieName = #{movieName}) ,
+            (SELECT theaterCode FROM theater WHERE theaterName = #{item}) ,
+            (SELECT date_format(#{movieDate},'%Y-%m-%d') FROM dual) ,
+             #{time}, '${movieEndTime[timeIndex]}'
             )
             </foreach>
             
