@@ -7,8 +7,8 @@ import java.util.Map;
 
 import com.show.movie.model.domain.MovieInfo;
 
-public class Time<T> {
-	public Time() {
+public class MovieTime<T> {
+	public MovieTime() {
 	}
 
 	private T t;
@@ -22,9 +22,9 @@ public class Time<T> {
 	}
 
 	public T calcMovieTime(T list) {
-
+		
 		List<List<MovieInfo>> returnValue = new ArrayList<List<MovieInfo>>();
-		// List<Object> returnValue = new ArrayList<Object>();
+		 //List<Object> returnValue = new ArrayList<Object>();
 
 		try {
 

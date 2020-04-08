@@ -36,7 +36,7 @@
 
 	<select id="getAllbooking" resultMap="booking"
 		parameterType="string">
-		select bookingCode , movieName , branchName,
+		select bookingCode ,bookingSeat, movieName , branchName,
 		theaterName, movieDate, moviePoster,
 		bookingDate, bookingPeople
 		from getBooking 

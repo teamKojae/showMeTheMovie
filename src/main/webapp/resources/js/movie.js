@@ -6,7 +6,9 @@ $(function(){
 	tabListStilCut();
 	tabListSynopsis();
 	preview();
-	
+	search();
+	$('#ibxMovieNmSearch').on('change', search);
+	 $('#btnSearch').on('click',search);
 })
 function totalWon(){
 	//var o = document.querySelectorAll('li');
@@ -21,6 +23,24 @@ $('.btn').on('click',function(event){
 		$('.btn-more').addClass('on');
 	}
 })
+}
+
+function search(){
+		    var key =	 $('#ibxMovieNmSearch').val();
+		    console.log("key :  "+key);
+		    
+		    var movieList = $('#movieList > li');
+		 //   var movies = $('li.no-img');
+		    $.each(movieList, function(index, item){
+		        var title = $(this).find(".tit-area .tit").text();
+		        console.log("title :  "+title);
+		        
+		        if( title.includes(key) ){
+		            $(this).show();
+		        }else{
+		            $(this).hide();
+		        }
+		    });
 }
 
 function tabListStilCut(){
