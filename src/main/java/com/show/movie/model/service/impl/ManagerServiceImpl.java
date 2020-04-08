@@ -55,8 +55,9 @@ public class ManagerServiceImpl implements ManagerService {
 	}
 
 	@Override
-	public void insertTheater(String movieName, List<String> theaterName) {
-		managerDAO.insertTheater(movieName, theaterName);
+	public void insertTheater(String movieDate,String movieName, 
+			List<String> theaterName,List<String> movieStartTime, List<String> movieEndTime) {
+		managerDAO.insertTheater(movieDate,movieName, theaterName, movieStartTime, movieEndTime);
 
 	}
 

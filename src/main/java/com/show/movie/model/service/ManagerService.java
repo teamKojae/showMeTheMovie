@@ -16,6 +16,7 @@ public interface ManagerService {
 	public HashMap<String,Object> getMovieList(String managerId);
 	public List<Branch> getBranchList(Location location);
 	public List<Theater> getTheaterList(String branchName);
-	public void insertTheater(String movieName ,List<String> theaterName);
+	public void insertTheater(String movieDate, String movieName ,
+						 	  List<String> theaterName,List<String> movieStartTime, List<String> movieEndTime);
 	public List<List<MovieInfo>> getTimeScheduleInTheater(List<String> theaterNo , String timeSchedule);
 }

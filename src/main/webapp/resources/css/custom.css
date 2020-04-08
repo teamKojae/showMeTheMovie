@@ -140,10 +140,10 @@
 	width : 100%;
 }
 #mCSB_1{
-	overflow-y:scroll; 
+	overflow-y:auto; 
 }
 #mCSB_21{
-	overflow-y:scroll; 
+	overflow-y:auto; 
 }
 .top-100{
     top: -100px;

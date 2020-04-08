@@ -65,7 +65,8 @@
 	</select>
 
 	<select id="getMovieAllList" resultType="movie">
-		select movieName,movieCode from movie
+		SELECT movieName,movieCode FROM movie
+		ORDER BY movieAudience DESC
 	</select>
 
 	<select id="getNotRegisMovie" resultType="movie" >
@@ -74,7 +75,7 @@
 		AND movieInfo.movieDate =
 		<choose>
 			<when test='movieDate == null'>
-				'2020-04-06'
+				'2020-04-10'
 			</when>
 			<otherwise>
 				 #{movieDate}
@@ -115,12 +116,17 @@
 
 	
 	
-	<select id="getBranch" resultType="string">
-		SELECT
-		branch.branchName FROM branch, location
-		WHERE location.locationCode =
-		branch.locationCode
-		AND location.locationName = #{locationName}
+	<select id="getBranch" resultType="branch">
+		SELECT branch.branchName, count(movieInfo.movieInfoCode) movieCount 
+		FROM branch, location,theater , movieInfo,movie
+		WHERE location.locationCode = branch.locationCode 
+		AND theater.branchCode = branch.branchCode
+		AND movieInfo.theaterCode = theater.theaterCode
+		AND movie.movieCode = movieInfo.movieCode
+		AND movieName = #{movieName} 
+		AND movieDate = #{movieDate}
+		AND locationName = #{locationName}
+		GROUP BY branchName;
 	</select>
 
 	<select id="getMovieImages" resultType="string">

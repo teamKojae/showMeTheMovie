@@ -38,7 +38,6 @@ public class MovieTime<T> {
 					try {
 						movieTime = mo.get(i).getMovie().getMovieTime();
 					} catch (NullPointerException e) {
-						System.out.println("여기오겠군 ?");
 						return null;
 					}
 					afterTime = parseTime(mo.get(i).getMovieStartTime());
@@ -87,13 +86,13 @@ public class MovieTime<T> {
 				returnValue.add(emptyAddMovie);
 
 			}
-			for (List<MovieInfo> movieInfos : returnValue) {
-				for (MovieInfo movieInfo : movieInfos) {
-					System.out.println("결과값   =  시작시간 :    " + movieInfo.getMovieStartTime() + "     끝 시간 :    "
-							+ movieInfo.getMovieEndTime());
-
-				}
-			}
+//			for (List<MovieInfo> movieInfos : returnValue) {
+//				for (MovieInfo movieInfo : movieInfos) {
+//					System.out.println("결과값   =  시작시간 :    " + movieInfo.getMovieStartTime() + "     끝 시간 :    "
+//							+ movieInfo.getMovieEndTime());
+//
+//				}
+//			}
 
 		} catch (IndexOutOfBoundsException e) {
 			e.printStackTrace();
@@ -143,7 +142,7 @@ public class MovieTime<T> {
 				if (j == 0) {
 					registeredEndTime += 10;
 				} else {
-					registeredEndTime += movieTime;
+					registeredEndTime += movieTime+10;
 				}
 //			String startTime = transStartTime(registeredEndTime);
 //			String endTime = transEndTime(registeredEndTime, movieTime);

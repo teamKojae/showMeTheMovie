@@ -112,8 +112,6 @@ public class ManagerController {
 		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
 		// 상영관에 등록되지 않은 시간 계산해서 바인딩
 		List<List<MovieInfo>> canAddMovieTime = new MovieTime<List<List<MovieInfo>>>().calcMovieTime(resigMovieTime);
-		System.out.println("아ㅏㅏㅏ   "+resigMovieTime);
-		System.out.println("으아아아악      "+canAddMovieTime);
 			//결과값이 없으면 등록되지 않은 시간 전체값 구하기
 				if(canAddMovieTime == null ) {
 					canAddMovieTime = new ArrayList<List<MovieInfo>>();
@@ -130,22 +128,20 @@ public class ManagerController {
 				}	
 		}		
 			
-			//디버그
-			for(List<MovieInfo> list : canAddMovieTime) {
-				for(MovieInfo info: list ) {
-					System.out.println(info.getMovieStartTime()+"  :  "+info.getMovieEndTime());
-				}
-			}
-			//디버그
-		for(List<MovieInfo> test :  canAddMovieTime ) {
-			System.out.println("controller   : "+ test );
-		}
+//			//디버그
+//			for(List<MovieInfo> list : canAddMovieTime) {
+//				for(MovieInfo info: list ) {
+//					System.out.println(info.getMovieStartTime()+"  :  "+info.getMovieEndTime());
+//				}
+//			}
+//			//디버그
+//		for(List<MovieInfo> test :  canAddMovieTime ) {
+//			System.out.println("controller   : "+ test );
+//		}
 		
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("resigMovieTime", resigMovieTime);
 		map.put("canAddMovieTime", canAddMovieTime);
-		System.out.println("리스트사이즈   :  "+ ((List<List<MovieInfo>> )map.get("resigMovieTime")).size());
-		System.out.println("맵사이즈   :  "+map.size());
 		return gson.toJson(map);
 	}
 
@@ -157,14 +153,18 @@ public class ManagerController {
 
 	@PostMapping(value = "/movieAddBranchAndTheater", produces = "application/json; charset=utf8")
 	@ResponseBody
-	public String movieAddBranchAndTheater(@RequestParam String movieName, @RequestParam List<String> branchName,
-			@RequestParam List<String> theaterName, @RequestParam List<String> movieStartTime) {
+	public String movieAddBranchAndTheater(@RequestParam String movieDate, @RequestParam String movieName,
+			@RequestParam List<String> branchName,
+			@RequestParam List<String> theaterName, 
+			@RequestParam List<String> movieStartTime,
+			@RequestParam List<String> movieEndTime) {
 		log.info(movieName);
 		log.info(branchName);
 		log.info(theaterName);
 		log.info(movieStartTime);
+		log.info(movieEndTime);
 
-		// managerService.insertTheater(movieName, theaterName);
+		 managerService.insertTheater(movieDate, movieName, theaterName,movieStartTime,movieEndTime);
 
 		// log.info(movieStartTime);
 

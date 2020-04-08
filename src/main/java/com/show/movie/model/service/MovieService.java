@@ -10,7 +10,7 @@ import com.show.movie.model.domain.Seat;
 
 public interface MovieService {
 	//재현
-	public List<String> getBranch(String locationName);
+	public List<String> getBranch(String movieDate,String movieName, String locationName);
 	public Movie getMovie(String movieName);
 	public List<MovieInfo> getMovieInfo(MovieInfo movieInfo) ;
 	public String getMovieImages(String movieName);

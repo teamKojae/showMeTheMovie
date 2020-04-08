@@ -11,7 +11,8 @@ import com.show.movie.model.domain.Seat;
 
 public interface MovieDAO {
 	//재현
-	public List<String> getBranch(@Param("locationName")  String locationName);
+	public List<String> getBranch(@Param("movieName")  String movieName,
+			@Param("movieDate") String movieDate, @Param("locationName")  String locationName );
 	public List<MovieInfo> getMovieInfo(MovieInfo movieInfo);
 	public Movie getMovie(String movieName);
 	public String getMovieSynopsis(String movieName);

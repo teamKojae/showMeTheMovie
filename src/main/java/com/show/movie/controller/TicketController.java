@@ -44,9 +44,9 @@ public class TicketController {
 	
 	@RequestMapping(value="/getBranch",  produces = "application/json; charset=utf8")
 	@ResponseBody
-	public String ticketGetBranch(Location location, Model model) {
+	public String ticketGetBranch(String movieDate,String movieName, String locationName , Model model) {
 		return new Gson().toJson(
-				movieService.getBranch(location.getLocationName().split("\\(")[0])
+				movieService.getBranch(movieName, movieDate,locationName)
 				);
 	}
 	

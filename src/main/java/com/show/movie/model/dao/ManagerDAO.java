@@ -19,7 +19,9 @@ public interface ManagerDAO {
 	public List<Branch> getBranchList();
 	public List<Branch> getBranchList(Location location);
 	public List<Theater> getTheaterList(String branchName);
-	public void insertTheater(@Param("movieName")String movieName, @Param("theaterName") List<String> theaterName);
+	public void insertTheater(@Param("movieDate") String movieDate, 
+			@Param("movieName")String movieName, @Param("theaterName") List<String> theaterName,
+			@Param("movieStartTime") List<String> movieStartTime, @Param("movieEndTime") List<String> movieEndTime);
 	public List<MovieInfo> getTimeScheduleInTheater(@Param("theaterNo") String theaterNo , @Param("timeSchedule") String timeSchedule);
 	public int isViewTimeSchedule();
 	public void createViewTimeSchedule();

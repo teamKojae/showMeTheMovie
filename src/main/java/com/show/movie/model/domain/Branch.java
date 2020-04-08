@@ -22,6 +22,7 @@ public class Branch {
 	}
 	private int branchCode;
 	private String branchName;
+	private int movieCount;
 	
 	@Autowired(required = false)
 	private Location location;

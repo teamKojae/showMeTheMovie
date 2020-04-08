@@ -75,8 +75,8 @@
 										</form>
 
 										<div class="link">
-											<a href="/user-find" title="ID/PW 찾기 선택">ID/PW 찾기<!--ID/PW 찾기--></a>
-											<a href="/join" title="회원가입 선택">회원가입<!--회원가입--></a>
+											<a href="/user-find" title="ID/PW 찾기 선택" onclick="return false">ID/PW 찾기<!--ID/PW 찾기--></a>
+											<a href="/signUp" title="회원가입 선택">회원가입<!--회원가입--></a>
 										</div>
 
 										<div class="sns-login">

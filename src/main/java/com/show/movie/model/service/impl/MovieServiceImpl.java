@@ -27,8 +27,8 @@ public class MovieServiceImpl implements MovieService {
 	
 	
 	@Override
-	public List<String> getBranch(String locationName) {
-		return movieDAO.getBranch(locationName);
+	public List<String> getBranch( String movieName,String movieDate, String locationName) {
+		return movieDAO.getBranch(movieName, movieDate,locationName);
 	}
 
 	@Override

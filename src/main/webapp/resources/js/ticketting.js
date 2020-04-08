@@ -125,15 +125,22 @@ function addOnClass(event) {
 function getTheater(event) {
 	event.preventDefault();
 	addOnClass(event);
-	$
-			.ajax({
+	var movieName = $('.movie-choice #mCSB_1_container li').find('.on').val();
+	var movieDate =  $('.date-list .date-area .on').val();
+	var locationName = $(event.target).closest('button').find('span').text();
+	
+	console.log("movieName  "+  movieName);
+	console.log("movieDate  "+movieDate);
+	console.log("locationName  "+locationName);
+	$.ajax({
 				url : "/getBranch",
 				type : 'GET',
 				contentType : "application/x-www-form-urlencoded; charset=UTF-8",
 				dataType : 'JSON',
 				data : {
-					locationName : $(event.target).closest('button').find(
-							'span').text()
+					movieDate : movieDate,
+					movieName : movieName,
+					locationName : locationName
 				/*
 				 * movieLocation : $(this).children().text()
 				 */
@@ -155,16 +162,16 @@ function getTheater(event) {
 									function(index, item) {
 										theater
 												.append('<li><button class="locationForTheater" id="btn" type="button" value="'
-														+ item
+														+ item.branchName
 														+ '">'
 														+ '<span>'
-														+ item
+														+ item.branchName
 														+ '</span>'
+														+ '<span>('
+														+ item.movieCount
+														+ ')</span>'
 														+ '</button></li>');
 									})
-									
-									
-									
 				}
 
 			});
