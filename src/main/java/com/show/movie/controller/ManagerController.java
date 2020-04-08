@@ -32,7 +32,7 @@ import com.show.movie.model.domain.MovieInfo;
 import com.show.movie.model.domain.Theater;
 import com.show.movie.model.service.ManagerService;
 import com.show.movie.model.service.MovieService;
-import com.show.movie.util.calc.Time;
+import com.show.movie.util.calc.MovieTime;
 import com.show.movie.util.parse.Parser;
 
 import lombok.extern.log4j.Log4j;
@@ -111,7 +111,7 @@ public class ManagerController {
 		//java.sql.date를   yyyy-MM-dd 형식에 맞게 바인딩
 		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
 		// 상영관에 등록되지 않은 시간 계산해서 바인딩
-		List<List<MovieInfo>> canAddMovieTime = new Time<List<List<MovieInfo>>>().calcMovieTime(resigMovieTime);
+		List<List<MovieInfo>> canAddMovieTime = new MovieTime<List<List<MovieInfo>>>().calcMovieTime(resigMovieTime);
 		System.out.println("아ㅏㅏㅏ   "+resigMovieTime);
 		System.out.println("으아아아악      "+canAddMovieTime);
 			//결과값이 없으면 등록되지 않은 시간 전체값 구하기
@@ -120,7 +120,7 @@ public class ManagerController {
 					for(int i = 0 ; i < theaterNo.size(); i++) {
 					try {
 						
-						canAddMovieTime.add( new Time<List<List<MovieInfo>>>()
+						canAddMovieTime.add( new MovieTime<List<List<MovieInfo>>>()
 								.calcCanAddMovieFor24Hour("09:00", 
 										movieService.getMovie(movieName).getMovieTime(), new ArrayList<MovieInfo>()));
 						

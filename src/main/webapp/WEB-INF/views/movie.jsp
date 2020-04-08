@@ -53,7 +53,7 @@ $('#btnAddMovie').on('click', function() {
 						<li class="on"><a href="/movie" title="박스오피스 탭으로 이동">상영작</a></li>
 
 
-						<li><a href="/movie/classic" title="클래식소사이어티 탭으로 이동">temp</a></li>
+						<li><a href="/movie/classic" title="클래식소사이어티 탭으로 이동" onclick="return false">큐레이션</a></li>
 
 					</ul>
 				</div>
@@ -101,15 +101,11 @@ $('#btnAddMovie').on('click', function() {
 					<!--// 클래식소사이어티 -->
 
 
-					<!-- 검색결과 없을 때 -->
-					<p class="no-result-count">
-						<strong id="totCnt">99</strong>개의 영화가 검색되었습니다.
-					</p>
-					<!--// 검색결과 없을 때 -->
+					
 
 					<div class="movie-search">
 						<input type="text" title="영화명을 입력하세요" id="ibxMovieNmSearch"
-							name="ibxMovieNmSearch" placeholder="영화명 검색" class="input-text" value="${movieName }">
+							name="ibxMovieNmSearch" placeholder="영화명 검색" class="input-text" value="${movieName}">
 						<button type="button" class="btn-search-input" id="btnSearch">검색</button>
 					</div>
 				</div>
@@ -140,12 +136,30 @@ $('#btnAddMovie').on('click', function() {
 								</div>
 							</div>
 							<div class="tit-area">
-								<p class="movie-grade age-12">,</p>
+								<c:choose>
+									<c:when test="${vs.index % 4 eq 0}">
+										<span class="movie-grade small age-12">12세이상관람가</span>
+									</c:when>
+																						
+									<c:when test="${vs.index % 3 eq 1}">
+										<span class="movie-grade small age-15">15세이상관람가</span>
+									</c:when>
+									<c:when test="${vs.index % 4 eq 2}">
+										<span class="movie-grade small age-15">15세이상관람가</span>
+									</c:when>
+																						
+									<c:when test="${vs.index % 7 eq 5}">
+										<span class="movie-grade small age-19">19세이상관람가</span>
+									</c:when>
+																						
+									<c:otherwise>
+										<span class="movie-grade small age-all">전체관람가</span>
+									</c:otherwise>
+								</c:choose>
 								<p title="${movie.movieName }" class="tit">${movie.movieName }</p>
 							</div>
 							<div class="rate-date">
-								<span class="rate">예매율 ${movie.movieTicketRatePersent}%</span> <span
-									class="date">개봉일 ${movie.movieUpdate }</span>
+								 <span class="date">개봉일 ${movie.movieUpdate }</span>
 							</div>
 							<div class="btn-util">
 								<div class="case movieStat4" style="">
