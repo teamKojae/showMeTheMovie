@@ -55,15 +55,14 @@
 	</select>
 	 
 	 
-	 
-	 <!--  해결해야할 것 2개  -->
+	 <!--  예매완료 후 좌석 상태 업데이트 -->
 	 <update id="updateSeatStatus" >
  		UPDATE seat SET seatStatus=1 
  		WHERE seatName = #{seatName} 
  		AND  movieInfoCode = #{movieInfoCode} 
  	</update>
 	 
-	 <!--  로그볼것 -->
+	 <!--  예매내역 추가 -->
  	<insert id="insertBookingInfo" parameterType="booking">
  	 	INSERT INTO booking (userId, movieInfoCode, bookingDate, bookingSeat, bookingPeople, bookingPrice,bookingState)
  		 values ( #{user.userId} , #{movieInfo.moiveInfoCode} ,now(), #{bookingSeat}, #{bookingPeople}, #{bookingPrice}, 0);

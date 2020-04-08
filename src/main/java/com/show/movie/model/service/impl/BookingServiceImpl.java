@@ -45,6 +45,7 @@ public class BookingServiceImpl implements BookingService {
 
 	@Override
 	public void cancelDate(int bookingCode) {
+		cancellationDAO.updateMovieSeat(bookingCode);
 		cancellationDAO.cancelDate(bookingCode);
 		
 	}

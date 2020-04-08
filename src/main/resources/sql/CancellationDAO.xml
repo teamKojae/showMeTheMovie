@@ -13,6 +13,13 @@
 		SET bookingState = 1 , cancelDate = now()
 		where bookingCode=#{bookingCode}
 	</update>
+	
+	<update id="updateMovieSeat" parameterType="int">
+			UPDATE seat SET seatStatus = 0 
+			WHERE movieInfoCode = (SELECT  movieInfoCode FROM movie.booking WHERE bookingCode = #{bookingCode})
+			AND seatName = (SELECT bookingSeat FROM movie.booking WHERE bookingCode = #{bookingCode})
+	</update>
+	
 <!-- 	<update id="cancelDate">
 		update booking
 		SET updateDate = now()
