@@ -40,6 +40,8 @@ SHOW ME THE MOVIE
    </insert>
    
    ================  DAO  ========================
+   
+   
          public void insertTheater(
                   @Param("movieDate") String movieDate, 
                   @Param("movieName") String movieName, 
@@ -47,6 +49,8 @@ SHOW ME THE MOVIE
                   @Param("movieStartTime") List<String> movieStartTime, 
                   @Param("movieEndTime") List<String> movieEndTime
        );
+       
+       
    ================================================
  
  
