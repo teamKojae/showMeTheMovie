@@ -20,7 +20,7 @@ public interface BookingService {
 	List<Booking> getAllBooking(String userId);
 //    List<Cancellation> getAllcancellation(String userId);
     void cancelDate(int bookingCode); 
-    void insertSeat(int theaterCode, String seatName);
+    void insertSeat();
   //  public void update(int bookingCode) ;
     
    

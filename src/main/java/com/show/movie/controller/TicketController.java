@@ -64,7 +64,7 @@ public class TicketController {
 		session.setAttribute("screenInfo", movieInfo);
 		
 		log.info(session.getAttribute("screenInfo"));
-		model.addAttribute("seatList", movieService.getSeatList(movieInfo.getTheater().getTheaterCode()));
+		model.addAttribute("seatList", movieService.getSeatList(movieInfo.getMoiveInfoCode()));
 		//log.info(seat.getSeatName());
 
 		return "screen";

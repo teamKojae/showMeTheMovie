@@ -98,8 +98,8 @@ public class KakaoController {
 		//Seat seatList = (Seat)
 		log.info("상영관 코드 받아와야한다 !!   : "+ movieInfo);
 		log.info("Seat : "+seat);
-		//movieName, theaterName, branchName,movieStartTime, movieEndTime
-		//bookingService.insertBookingInfo(booking);
+		
+		// 예매내역에 값 넣기
 		Booking booking = new Booking();
 		booking.setUser(user);
 		booking.getUser().setUserId(kakaoInfo.getPartner_user_id());
@@ -109,9 +109,12 @@ public class KakaoController {
 		booking.setBookingPrice(kakaoInfo.getAmount().getTotal());
 		booking.setBookingState(0);
 		
-		//집가서 insert 손보기
 		bookingService.insertBookingInfo(booking);
-		bookingService.updateSeatStatus(seat.getSeatName(), movieInfo.getTheater().getTheaterCode());
+		
+		// 해당 상영 영화의 좌석 변경
+		bookingService.updateSeatStatus(seat.getSeatName(), movieInfo.getMoiveInfoCode());
+		
+		
 		model.addAttribute("booking", booking);
 		model.addAttribute("seat",seat);
 		

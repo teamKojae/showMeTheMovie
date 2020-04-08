@@ -46,16 +46,21 @@
 	 
 	 <!-- 시트테이블 만드는 쿼리 -->
 	 <insert id="insertSeat" >
-	 	insert into seat (theaterCode, seatName, seatStatus)
-	 	VALUES ( #{theaterCode}, #{seatName}, 0 )
+	 	insert into seat (movieInfoCode, seatName, seatStatus)
+	 	VALUES ( #{movieInfoCode}, #{seatName}, 0 )
 	 </insert>
+	 
+	 <select id="countTheater" resultType="int">
+		SELECT count(*) from movieInfo
+	</select>
+	 
 	 
 	 
 	 <!--  해결해야할 것 2개  -->
 	 <update id="updateSeatStatus" >
  		UPDATE seat SET seatStatus=1 
  		WHERE seatName = #{seatName} 
- 		AND  theaterCode = #{theaterCode} 
+ 		AND  movieInfoCode = #{movieInfoCode} 
  	</update>
 	 
 	 <!--  로그볼것 -->

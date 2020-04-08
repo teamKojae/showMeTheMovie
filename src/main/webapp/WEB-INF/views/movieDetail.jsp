@@ -155,7 +155,7 @@
 
 				<div class="stair-slide" id="tab2">
 					<h2 class="tit small">
-						${movie.movieName}에 대한 <span class="font-gblue" id="stilCnt">ㅎㅎ 나중쓰..</span>개의 스틸컷이
+						${movie.movieName}에 대한 <span class="font-gblue" id="stilCnt">${fn:length(movieImages)}</span>개의 스틸컷이
 						있어요!
 					</h2>
 					<div class="stair-slide-list" style="height: 1040px;">

@@ -61,10 +61,10 @@ public class BookingServiceImpl implements BookingService {
 	}
 
 	@Override
-	public void updateSeatStatus(String seatName, int theaterCode) {
+	public void updateSeatStatus(String seatName, int movieInfoCode) {
 		
 		try {
-			bookingDAO.updateSeatStatus(seatName, theaterCode);
+			bookingDAO.updateSeatStatus(seatName, movieInfoCode);
 			}
 			catch(Exception e) {
 				e.printStackTrace();
@@ -72,8 +72,17 @@ public class BookingServiceImpl implements BookingService {
 	}
 
 	@Override
-	public void insertSeat(int theaterCode, String seatName) {
-			bookingDAO.insertSeat(theaterCode, seatName);
+	public void insertSeat() {
+		
+		String data[] = {"A","B","C","D","E","F","G","H","I","J"};
+		
+		for(int i = 1 ; i <= bookingDAO.countTheater(); i++) {
+			for(int j = 0 ; j < 10; j++) {
+				for(int z = 1; z <= 10; z++) {
+					bookingDAO.insertSeat(i, (data[j]+Integer.toString(z))  );
+				}
+			}
+		}
 	}
 
 }

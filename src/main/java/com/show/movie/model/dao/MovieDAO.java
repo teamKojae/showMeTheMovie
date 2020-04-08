@@ -22,7 +22,7 @@ public interface MovieDAO {
 	public List<Movie> getIndexMovie();
 	public List<Movie> getMovieAllList();
 	public List<Movie> getNotRegisMovie(@Param("movieDate") String movieDate);
-	
+	public int getLeftSeat(@Param("movieInfoCode") int movieinfocode);
 	
 	//순위까지 가져오는 쿼리문
 	@Select("SELECT movie.movieName, movie.movieAudience, movieRank.rank FROM movie movie, \r\n" + 
@@ -30,7 +30,7 @@ public interface MovieDAO {
 			"where movie.movieCode = movieRank.movieCode;")
 	public List<Movie> getMovieList();
 		
-	public List<Seat> getSeatList(int theaterCode);
+	public List<Seat> getSeatList(int movieInfoCode);
 	
 	//예나
 	public List<Movie> moviePageList();
