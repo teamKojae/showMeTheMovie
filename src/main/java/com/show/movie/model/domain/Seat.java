@@ -33,7 +33,7 @@ public class Seat {
 
 	
 	private int seatCode;
-	private int theaterCode;
+	private int movieinfocode;
 	private String seatName;
 	private int seatStatus;
 

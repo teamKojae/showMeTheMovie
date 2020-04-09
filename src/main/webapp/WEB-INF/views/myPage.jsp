@@ -46,10 +46,7 @@
 						<a href="" class="ir">예매 탭 화면 입니다.</a>
 						<div id="bokdList">
 							<div class="board-list-util">
-								<p class="result-count pt00">
-									<strong> 총 <b class="font-gblue">1</b>건
-									</strong>
-								</p>
+								
 							</div>
 							<div class="history-reservation">
 								<ul>

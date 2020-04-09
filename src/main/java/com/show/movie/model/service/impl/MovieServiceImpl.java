@@ -42,7 +42,13 @@ public class MovieServiceImpl implements MovieService {
 			if(movieDAO.isView() == 0) {
 				movieDAO.createViewGetMovieInfo();
 			}
-			return movieDAO.getMovieInfo(movieInfo);
+			// 영화정보 가져오기
+			List<MovieInfo> list = movieDAO.getMovieInfo(movieInfo);
+			// 잔여좌석 가져오기
+			for(int i = 0 ; i < list.size(); i++ ) {
+				list.get(i).getTheater().setTheaterLeftSeat(movieDAO.getLeftSeat(list.get(i).getMoiveInfoCode()));
+			}
+			return list;
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -60,9 +66,8 @@ public class MovieServiceImpl implements MovieService {
 	}
 	
 	@Override
-	public List<Seat> getSeatList(int theaterCode) {
-		//log.info(movieDAO.getSeatList());
-		return movieDAO.getSeatList(theaterCode);
+	public List<Seat> getSeatList(int movieInfoCode) {
+		return movieDAO.getSeatList(movieInfoCode);
 	}
 
 	@Override

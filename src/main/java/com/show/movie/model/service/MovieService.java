@@ -15,7 +15,7 @@ public interface MovieService {
 	public List<MovieInfo> getMovieInfo(MovieInfo movieInfo) ;
 	public String getMovieImages(String movieName);
 	public String getMovieSynopsis(String movieName);
-	public List<Seat> getSeatList(int theaterCode);
+	public List<Seat> getSeatList(int movieInfoCode);
 	
 	//예나
 	public List<Movie> moviePageList(Movie movie);

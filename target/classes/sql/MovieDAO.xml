@@ -60,8 +60,10 @@
 
 	</resultMap>
 
+
+
 	<select id="getSeatList" resultType="seat">
-		SELECT * FROM seat WHERE theaterCode = #{theaterCode}
+		SELECT * FROM seat WHERE movieInfoCode = #{movieInfoCode}
 	</select>
 
 	<select id="getMovieAllList" resultType="movie">
@@ -149,7 +151,9 @@
 		AND movieDate = #{movieDate}
 		ORDER BY movieStartTime;
 	</select>
-
+	<select id="getLeftSeat" resultType="int">
+		SELECT Count(*) FROM SEAT WHERE movieInfoCode = #{movieInfoCode} AND seatStatus = 0
+	</select>
 
 	<!-- View Table 있는지 확인 : 있으면 1 리턴 -->
 	<select id="isView" resultType="int">
@@ -165,7 +169,7 @@
 			movieInfo.movieStartTime, movieInfo.movieEndTime, movieInfo.movieInfoCode,
 			branch.branchName, theater.theaterleftSeat,
 			theater.theaterAllSeat,theater.theaterCode,
-			theater.theaterName,movieInfo.movieDate
+			theater.theaterName,movieInfo.movieDate, movieInfo.movieInfoCode
 			FROM movie AS movie , movieInfo AS movieInfo, theater AS theater, branch AS branch
 			WHERE theater.theaterCode = movieinfo.theaterCode
 			AND movieinfo.movieCode = movie.movieCode 

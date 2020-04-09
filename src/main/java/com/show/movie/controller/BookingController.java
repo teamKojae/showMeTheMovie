@@ -30,17 +30,9 @@ public class BookingController {
 	public String getMyPage(Model model, HttpSession session) {
 		// Map 형태로  해당 유저의 예매내역, 취소내역을 담아준다
 		
-		// seat테이블 만드는 로직.  없으면 돌릴것
-//		String data[] = {"A","B","C","D","E","F","G","H","I","J"};
-//		
-//		for(int i = 1 ; i <= 60; i++) {
-//			for(int j = 0 ; j < 10; j++) {
-//				for(int z = 1; z <= 10; z++) {
-//					bookingService.insertSeat(i, (data[j]+Integer.toString(z))  );
-//				}
-//			}
-//		}
-				
+// 		↓ seat테이블 만드는 로직.  없으면 돌릴것
+//		bookingService.insertSeat();
+		
 		
 		model.addAttribute("bookingList", bookingService.getMyPage(
 				( (User) session.getAttribute("user")).getUserId()

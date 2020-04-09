@@ -29,14 +29,10 @@ $('.btn').on('click',function(event){
 
 function search(){
 		    var key =	 $('#ibxMovieNmSearch').val();
-		    console.log("key :  "+key);
-		    
 		    var movieList = $('#movieList > li');
 		 //   var movies = $('li.no-img');
 		    $.each(movieList, function(index, item){
 		        var title = $(this).find(".tit-area .tit").text();
-		        console.log("title :  "+title);
-		        
 		        if( title.includes(key) ){
 		            $(this).show();
 		        }else{
@@ -171,13 +167,11 @@ function getSysnopsis(){
 
 function getStilCutList(){
 	$('.tab-list li:nth-child(2) a').on('click',function(event){
-		// event.preventDefault();
 		$(event.target).closest('li').addClass('on');
 		$('.inner-wrap').empty();
 		$.ajax({
 			url : $(event.target).attr('href')
 		}).done(function (result){
-			var length = result.length;
 				tabList();
 				$('.inner-wrap ul li:nth-child(2)').addClass('on');
 				$('.inner-wrap').append(
