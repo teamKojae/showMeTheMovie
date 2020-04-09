@@ -60,10 +60,12 @@ public class TicketController {
 	@RequestMapping(value="/getSelectScreen" ,method = {RequestMethod.GET, RequestMethod.POST})
 	public String getSelectScreen(Model model, @ModelAttribute("movieInfo") MovieInfo movieInfo, 
 									 Seat seat, HttpSession session) {
-		
-		session.setAttribute("screenInfo", movieInfo);
-		
-		log.info(session.getAttribute("screenInfo"));
+		if(session.getAttribute("movieInfo") == null) {
+		session.setAttribute("movieInfo", movieInfo);
+		}
+		log.info(session.getAttribute("movieInfo"));
+		movieInfo = (MovieInfo)session.getAttribute("movieInfo");
+		model.addAttribute("movieInfo", movieInfo);
 		model.addAttribute("seatList", movieService.getSeatList(movieInfo.getMoiveInfoCode()));
 		//log.info(seat.getSeatName());
 

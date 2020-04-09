@@ -28,11 +28,7 @@
 	private int userCode;
 	 -->
 	 
-	 <!-- 로그인  -->
-	 <insert id = "encrypt" parameterType="login">
-		UPDATE user SET userPassword=#{userPassword} WHERE userId = {userId}
-	</insert>
-	 
+	 <!-- 로그인  -->	 
 	<select id = "getLogin" resultMap="user" parameterType="user">
 		SELECT * FROM user WHERE userId = #{userId} and userPassword = #{userPassword} and userSignupCode = '0'
 	</select>

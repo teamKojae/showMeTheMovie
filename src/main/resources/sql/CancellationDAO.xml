@@ -8,17 +8,22 @@
 		SELECT * FROM cancellation WHERE userId = #{userId};
 	</select>
 	
-		<update id="cancelDate" parameterType="int">
+	<update id="cancelDate" parameterType="int">
 		update booking
 		SET bookingState = 1 , cancelDate = now()
 		where bookingCode=#{bookingCode}
 	</update>
 	
-	<update id="updateMovieSeat" parameterType="int">
+	<update id="updateMovieSeat" >
 			UPDATE seat SET seatStatus = 0 
 			WHERE movieInfoCode = (SELECT  movieInfoCode FROM movie.booking WHERE bookingCode = #{bookingCode})
-			AND seatName = (SELECT bookingSeat FROM movie.booking WHERE bookingCode = #{bookingCode})
+			AND seatName = #{seatName}
 	</update>
+	
+	<select id="getBookingSeat" parameterType="int" resultType="string">
+			SELECT bookingSeat FROM movie.booking WHERE bookingCode = #{bookingCode}
+	</select> 
+	
 	
 <!-- 	<update id="cancelDate">
 		update booking

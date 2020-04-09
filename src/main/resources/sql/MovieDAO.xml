@@ -63,7 +63,8 @@
 
 
 	<select id="getSeatList" resultType="seat">
-		SELECT * FROM seat WHERE movieInfoCode = #{movieInfoCode}
+		SELECT seatCode, movieInfocode AS 'movieInfo.moiveInfoCode', seatName, seatStatus 
+		FROM seat WHERE movieInfoCode = #{movieInfoCode}
 	</select>
 
 	<select id="getMovieAllList" resultType="movie">
@@ -141,6 +142,8 @@
 		SELECT movieSynopsis
 		FROM movie where moviename = #{movieName};
 	</select>
+	
+	
 
 	<select id="getMovieInfo" resultMap="mvInfo"
 		parameterType="movieInfo">
@@ -151,6 +154,8 @@
 		AND movieDate = #{movieDate}
 		ORDER BY movieStartTime;
 	</select>
+	
+	
 	<select id="getLeftSeat" resultType="int">
 		SELECT Count(*) FROM SEAT WHERE movieInfoCode = #{movieInfoCode} AND seatStatus = 0
 	</select>
@@ -169,7 +174,7 @@
 			movieInfo.movieStartTime, movieInfo.movieEndTime, movieInfo.movieInfoCode,
 			branch.branchName, theater.theaterleftSeat,
 			theater.theaterAllSeat,theater.theaterCode,
-			theater.theaterName,movieInfo.movieDate, movieInfo.movieInfoCode
+			theater.theaterName,movieInfo.movieDate
 			FROM movie AS movie , movieInfo AS movieInfo, theater AS theater, branch AS branch
 			WHERE theater.theaterCode = movieinfo.theaterCode
 			AND movieinfo.movieCode = movie.movieCode 

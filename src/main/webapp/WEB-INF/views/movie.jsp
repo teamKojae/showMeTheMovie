@@ -120,7 +120,8 @@ $('#btnAddMovie').on('click', function() {
 				<div class="movie-list">
 					<ol class="list" id="movieList">
 					<c:forEach var="movie" items="${movies }" varStatus="vs"> 
-						<li tabindex="0" class="no-img"><div class="movie-list-info">
+						<li tabindex="0" class="no-img">
+							<div class="movie-list-info">
 								<input type="hidden" name="movieName"
 									value="${movie.movieName }" class="movie-info-hidden">
 								<p class="rank" style="">

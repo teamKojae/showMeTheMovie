@@ -46,7 +46,8 @@ public class MovieServiceImpl implements MovieService {
 			List<MovieInfo> list = movieDAO.getMovieInfo(movieInfo);
 			// 잔여좌석 가져오기
 			for(int i = 0 ; i < list.size(); i++ ) {
-				list.get(i).getTheater().setTheaterLeftSeat(movieDAO.getLeftSeat(list.get(i).getMoiveInfoCode()));
+				list.get(i).getTheater().setTheaterLeftSeat
+				(movieDAO.getLeftSeat(list.get(i).getMoiveInfoCode()));
 			}
 			return list;
 		}catch(Exception e) {

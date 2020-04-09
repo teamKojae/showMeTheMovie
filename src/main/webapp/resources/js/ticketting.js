@@ -110,17 +110,24 @@ function clickLocation() {
 	})
 }
 
-function addOnClass(event) {
-	const targetButton = $(event.target).closest('button');
-	const buttonClassName = targetButton.attr('class');
-	if (targetButton.hasClass("on") == false) {
-		$(event.target).closest('ul').find("button")
-				.removeClass('on has-issue');
-		targetButton.addClass('on has-issue');
-	} else {
-		targetButton.removeClass('on has-issue');
-	}
-}
+		function addOnClass(event) {
+			//타겟의 버튼
+			const targetButton = $(event.target).closest('button');
+			//타겟 버튼의 클래스
+			const buttonClassName = targetButton.attr('class');
+			if (targetButton.hasClass("on") == false) {
+				//기존 버튼의 하이라이트 없애기
+				$(event.target).closest('ul').find("button")
+						.removeClass('on has-issue');
+				//클릭한 버튼 하이라이트
+				targetButton.addClass('on has-issue');
+			} else {
+				//하이라이트 된 것 눌렀을때 하이라이트 삭제
+				targetButton.removeClass('on has-issue');
+			}
+		}
+
+
 // 69-106 theater
 function getTheater(event) {
 	event.preventDefault();
@@ -177,45 +184,42 @@ function getTheater(event) {
 			});
 }
 
-function getMovieInfoAndTime(event) {
-
-	var dataArray = new Array();
-	$.each($(".on"), function(key, value) {
-		if ($(this).val() != "") {
-			dataArray.push($(this).val());
+	function getMovieInfoAndTime(event) {
+	
+		var dataArray = new Array();
+		$.each($(".on"), function(key, value) {
+			if ($(this).val() != "") {
+				// Array에 List형태로 들어감 - 0 : movieDate, 1 : movieName, 2: locationName, 3: branchName
+				dataArray.push($(this).val());
+			}
+		})
+		if (dataArray.length < 3) {
+			alert('영화, 극장을 모두 선택해주세요');
+			return;
 		}
-	})
-	if (dataArray.length < 3) {
-		alert('영화, 극장을 모두 선택해주세요');
-		return;
-	}
+	
+		
+		addOnClass(event);
+	
+		//branchName 중복될 경우 지우고 한개만 다시 넣음
+		if (dataArray.length > 3) {
+			dataArray.pop();
+		}
+		dataArray.push($(event.target).closest('button').val());
 
-	addOnClass(event);
-
-	if (dataArray.length > 3) {
-		dataArray.pop();
-	}
-
-	dataArray.push($(event.target).closest('button').val());
-	console.log(dataArray);
-
-	$
-			.ajax({
+				$.ajax({
 				url : "/getMovieInfoAndTime",
 				type : 'GET',
 				contentType : "application/x-www-form-urlencoded; charset=UTF-8",
 				dataType : 'JSON',
-
 				data : {
-					/*'movieDate' : dataArray[0],*/
 					'movieDate' : $('#formDeList > div .on').val(),
 					'movie.movieName' : dataArray[1],
 					'branch.location.locationName' : dataArray[2],
 					'branch.branchName' : dataArray[3]
 				},
-
 				success : function(result) {
-					console.log(result.length);
+					//영화 골라주세요 랑 영화없어요를 none시키고  결과값을 보여줌
 					$('.result0').attr('style','display:none');
 					$('#playScheduleNonList').attr('style', 'display:none');
 					$('#mCSB_21_container').attr('style', 'display:block');

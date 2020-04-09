@@ -26,4 +26,9 @@ public interface ManagerDAO {
 	public int isViewTimeSchedule();
 	public void createViewTimeSchedule();
 	
+    // SEAT 테이블용 DAO .. (데이터넣기..)
+    void insertSeat(@Param("movieInfoCode") int movieInfoCode, @Param("seatName") String seatName);
+    int countTheater();
+    int lastMovieInfoCode();
+	
 }

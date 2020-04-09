@@ -151,3 +151,7 @@
 .time-list-table .on{
 	color : #ffaf13 !important
 }
+.seat-select-section .seat-result .wrap .btn-group .button{
+	witdh:100% !important;
+}
+

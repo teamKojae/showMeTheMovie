@@ -209,9 +209,8 @@
 											</div>
 										</div>
 										<div class="btn-group">
-											<a href="javaScript:void(0)" class="button" id="pagePrevious"
-												title="이전">이전</a> <a href="" class="button active"
-												onclick="return false" id="pageNext" title="다음">다음</a>
+											 <a href="" class="button active"
+												onclick="return false" id="pageNext" title="결제하기">결제하기</a>
 										</div>                                                                       
 									</div>
 	
@@ -225,6 +224,7 @@
 				</div>
 			</div>
 		</div>
+</div>
 
 		<script src="/js/common.js"></script>
 		<script src="/js/ticketting.js"></script>

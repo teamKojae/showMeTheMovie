@@ -79,8 +79,32 @@
 		transaction-manager="transactionManager">
 		<tx:attributes>
 			<!-- <tx:method name="get*" read-only="true"/> -->
-			<!-- 실험용 .. -->
+			
+		<!--  insert  -->
+			
+			<!-- userDAO  -->
+			<tx:method name="signUpUser" />
 			<tx:method name="insertNewUser" />
+			
+			<!--  bookingDAO -->
+			<tx:method name="insertSeat" />
+			<tx:method name="insertBookingInfo" />
+			
+			<!--  managerDAO -->
+			<tx:method name="insertMovie" />
+			<tx:method name="insertTheater" />
+			
+			
+			
+		<!--  update  -->
+			
+			<!--  canclelationDAO -->
+			<tx:method name="cancelDate" />
+			<tx:method name="updateMovieSeat" />
+			
+			<!-- BookingDAO -->
+			<tx:method name="updateSeatStatus" />
+			
 		</tx:attributes>
 	</tx:advice>
 

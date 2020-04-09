@@ -7,7 +7,7 @@ import java.util.Map;
 
 import com.show.movie.model.domain.MovieInfo;
 
-public class MovieTime<T> {
+public class MovieTime<T> extends MovieTimeParser{
 	public MovieTime() {
 	}
 
@@ -21,7 +21,7 @@ public class MovieTime<T> {
 		return t;
 	}
 
-	public T calcMovieTime(T list) {
+	public T calcMovieTime(T list)  {
 		
 		List<List<MovieInfo>> returnValue = new ArrayList<List<MovieInfo>>();
 		 //List<Object> returnValue = new ArrayList<Object>();
@@ -94,35 +94,7 @@ public class MovieTime<T> {
 		return (T) returnValue;
 	}
 
-	public String transStartTime(int time) {
-		return transFormat(time, 0)[0] + ":" + transFormat(time, 0)[1];
-	}
 
-	public String transEndTime(int time, int movieTime) {
-		return transFormat(time, movieTime)[0] + ":" + transFormat(time, movieTime)[1];
-	}
-
-	/**
-	 * @param time : hour or min , movieTime : EndTime값을 구할때 넣어주고 아니면 0
-	 */
-	public String[] transFormat(int time, int movieTime) {
-		String transStartTimeStringFormat = String.format("%02d", ((time + movieTime + 10) / 60));
-		String transEndTimeStringFormat = String.format("%02d", ((time + movieTime + 10) % 60));
-		String[] returnValue = new String[] { transStartTimeStringFormat, transEndTimeStringFormat };
-		return returnValue;
-	}
-
-	public int parseTime(String time) {
-		String[] parse = time.split(":");
-		return (Integer.parseInt(parse[0]) * 60) + (Integer.parseInt(parse[1]));
-	}
-
-	public MovieInfo setTime(String startTime, String endTime) {
-		MovieInfo movieInfo = new MovieInfo();
-		movieInfo.setMovieStartTime(startTime);
-		movieInfo.setMovieEndTime(endTime);
-		return movieInfo;
-	}
 
 	public List<MovieInfo> calcCanAddMovieFor24Hour(String time, int movieTime, List<MovieInfo> emptyAddMovie) {
 		System.out.println("24 :  " + time);
@@ -136,8 +108,6 @@ public class MovieTime<T> {
 				} else {
 					registeredEndTime += movieTime+10;
 				}
-//			String startTime = transStartTime(registeredEndTime);
-//			String endTime = transEndTime(registeredEndTime, movieTime);
 				String[] times = times(registeredEndTime, movieTime);
 				emptyAddMovie.add(setTime(times[0], times[1]));
 			}
@@ -148,9 +118,5 @@ public class MovieTime<T> {
 		return emptyAddMovie;
 	}
 
-	public String[] times(int time, int movieTime) {
-		String startTime = transStartTime(time);
-		String endTime = transEndTime(time, movieTime);
-		return new String[] { startTime, endTime };
-	}
+
 }

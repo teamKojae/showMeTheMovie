@@ -20,12 +20,12 @@ public interface BookingService {
 	List<Booking> getAllBooking(String userId);
 //    List<Cancellation> getAllcancellation(String userId);
     void cancelDate(int bookingCode); 
-    void insertSeat();
   //  public void update(int bookingCode) ;
     
    
     
     //정민
     public void insertBookingInfo(Booking booking);
+    //public void insertBookingInfo(Booking booking, List<String> seatName);
     public void updateSeatStatus(String seatName,int theaterCode);
 }

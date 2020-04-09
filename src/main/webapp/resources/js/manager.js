@@ -659,7 +659,7 @@ function imageUploadAjax() {
 						event.preventDefault();
 						$('.form-group .selectThumbnail').empty();
 						$('.form-group .selectThumbnail').append(
-								'대표이미지와 배경이미지을 선택해주세요');
+								'첫번째 이미지가 대표이미지, 두번째 이미지가 배경이미지입니다.');
 						var form = document.forms[0];
 						var formData = new FormData(form);
 						// Ajax call for file uploaling
@@ -680,7 +680,6 @@ function imageUploadAjax() {
 															$('.form-group')
 																	.append(
 																			'<div class="thumbNailImages widthImage">'
-																					+ '<input type="checkbox" name="CheckThis" class="CheckThumbNailAndBG">'
 																					+ '<input type="hidden" name="movieImages" value="'
 																					+ result[index]
 																					+ '">'

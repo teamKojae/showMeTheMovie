@@ -85,8 +85,10 @@
 			<!-- <otherwise> WHERE locationCode=1 </otherwise> -->
 		</choose>
 	</select>
-
-
+	
+	<select id="getTheaterCode" resultType="theater">
+	</select>
+	
 	<select id="getTheaterList" resultType="theater">
 		SELECT theaterCode,
 		theaterName, branchCode AS 'branch.branchCode' FROM movie.theater
@@ -143,7 +145,20 @@
 		
 	</insert>
 
-
+	<!-- 시트테이블 만드는 쿼리 -->
+	 <insert id="insertSeat" >
+	 	insert into seat (movieInfoCode, seatName, seatStatus)
+	 	VALUES ( #{movieInfoCode}, #{seatName}, 0 )
+	 </insert>
+	 
+	 <select id="countTheater" resultType="int">
+		SELECT count(*) from movieInfo
+	</select>
+	
+	<select id="lastMovieInfoCode">
+		select MAX(movieInfoCode) from movieInfo 
+	</select>
+	
 
 </mapper> 
   

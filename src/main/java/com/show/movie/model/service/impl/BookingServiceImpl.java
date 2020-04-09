@@ -10,9 +10,8 @@ import org.springframework.stereotype.Service;
 import com.show.movie.model.dao.BookingDAO;
 import com.show.movie.model.dao.CancellationDAO;
 import com.show.movie.model.domain.Booking;
-import com.show.movie.model.domain.Cancellation;
-import com.show.movie.model.domain.Seat;
 import com.show.movie.model.service.BookingService;
+import com.show.movie.util.parse.Parser;
 
 @Service("bookingService")
 public class BookingServiceImpl implements BookingService {
@@ -45,15 +44,17 @@ public class BookingServiceImpl implements BookingService {
 
 	@Override
 	public void cancelDate(int bookingCode) {
-		cancellationDAO.updateMovieSeat(bookingCode);
+		for(String seatName : new Parser().stringParser(cancellationDAO.getBookingSeat(bookingCode))) {
+		cancellationDAO.updateMovieSeat(bookingCode,seatName);
+		}
 		cancellationDAO.cancelDate(bookingCode);
-		
 	}
 
 	@Override
 	public void insertBookingInfo(Booking booking) {
 		try {
 		System.out.println("booking   " + booking);
+		//bookingDAO.insertBookingInfo(booking, seatName);
 		bookingDAO.insertBookingInfo(booking);
 		}
 		catch(Exception e) {
@@ -62,28 +63,19 @@ public class BookingServiceImpl implements BookingService {
 	}
 
 	@Override
-	public void updateSeatStatus(String seatName, int movieInfoCode) {
+	public void updateSeatStatus(String seatNames, int movieInfoCode) {
 		
 		try {
-			bookingDAO.updateSeatStatus(seatName, movieInfoCode);
+		for( String seatName : new Parser().stringParser(seatNames)) {
+				bookingDAO.updateSeatStatus(seatName, movieInfoCode);
+		}
+			
 			}
 			catch(Exception e) {
 				e.printStackTrace();
 			}
 	}
 
-	@Override
-	public void insertSeat() {
-		
-		String data[] = {"A","B","C","D","E","F","G","H","I","J"};
-		
-		for(int i = 1 ; i <= bookingDAO.countTheater(); i++) {
-			for(int j = 0 ; j < 10; j++) {
-				for(int z = 1; z <= 10; z++) {
-					bookingDAO.insertSeat(i, (data[j]+Integer.toString(z))  );
-				}
-			}
-		}
-	}
+
 
 }

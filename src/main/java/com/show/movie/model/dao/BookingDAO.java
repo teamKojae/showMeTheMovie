@@ -11,14 +11,13 @@ public interface BookingDAO {
 	List<Booking> getAllbooking(String userId);
     void update(int bookingCode) ;
     
-    // SEAT 테이블용 DAO .. (데이터넣기..)
-    void insertSeat(@Param("movieInfoCode") int movieInfoCode, @Param("seatName") String seatName);
-    int countTheater();
+
     
+  
     
     //정민
-    public void insertBookingInfo(Booking booking);
-    public void updateSeatStatus(@Param("seatName") String seatName,@Param("movieInfoCode") int movieInfoCode);
+    public void insertBookingInfo(@Param("booking") Booking booking);
+    public void updateSeatStatus(@Param("seatName") String seatName, @Param("movieInfoCode") int movieInfoCode);
 }
 
 

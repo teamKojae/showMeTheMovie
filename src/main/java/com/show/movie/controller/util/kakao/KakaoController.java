@@ -1,6 +1,7 @@
 package com.show.movie.controller.util.kakao;
 
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -21,6 +22,7 @@ import com.show.movie.model.domain.User;
 import com.show.movie.model.domain.kakao.KakaoPayApprovalVO;
 import com.show.movie.model.service.BookingService;
 import com.show.movie.model.service.UserService;
+import com.show.movie.util.parse.Parser;
 
 import lombok.extern.log4j.Log4j;
 
@@ -61,7 +63,6 @@ public class KakaoController {
 		if (session.getAttribute("kakaoPay") == null) {
 			view = "redirect:/";
 		}else if(session.getAttribute("kakaoPay") != null) {
-			model.addAttribute("movieInfo", session.getAttribute("screenInfo"));
 			session.removeAttribute("kakaoPay");
 			view = "redirect:/getSelectScreen";
 		}
@@ -94,7 +95,7 @@ public class KakaoController {
 		Seat seat = (Seat) session.getAttribute("seatList");
 		kakaoInfo.getPartner_user_id();
 		kakaoInfo.getAmount().getTotal();
-		MovieInfo movieInfo = (MovieInfo)session.getAttribute("screenInfo");
+		MovieInfo movieInfo = (MovieInfo)session.getAttribute("movieInfo");
 		//Seat seatList = (Seat)
 		log.info("상영관 코드 받아와야한다 !!   : "+ movieInfo);
 		log.info("Seat : "+seat);
@@ -114,7 +115,7 @@ public class KakaoController {
 		// 해당 상영 영화의 좌석 변경
 		bookingService.updateSeatStatus(seat.getSeatName(), movieInfo.getMoiveInfoCode());
 		
-		
+		session.removeAttribute("movieInfo");
 		model.addAttribute("booking", booking);
 		model.addAttribute("seat",seat);
 		
@@ -131,20 +132,23 @@ public class KakaoController {
 	// 카카오 페이 결제창 요청
 	@PostMapping("/kakaoPay")
 	public String kakaoPay(@ModelAttribute Movie movie, HttpSession session,
-			@ModelAttribute("movieInfo") MovieInfo movieInfo, Seat seat) {
-		log.info("movieInfo :  "+ seat);
+			@ModelAttribute("movieInfo") MovieInfo movieInfo, Seat seat, @RequestParam("seatName") List<String> seatName) {
+		log.info("seat :  "+ new Parser().stringParser(seat.getSeatName()) );
+		log.info("seatName :  "+ seatName);
+		
 		log.info("kakaoPay post............................................");
 		
 		User user = (User) session.getAttribute("user");
+		session.setAttribute("seatList", seat);
 		// 유저아이디 없으면 메인페이지로 리턴
 		try {
 			if (user.getUserId() == null)
-				return "redirect:/notLogin";
+				return "redirect:/login";
 		} catch (NullPointerException e) {
 			session.setAttribute("kakaoPay", "screen");
 			return "redirect:/login";
 		}
-		session.setAttribute("seatList", seat);
+		
 		// 유저에 다른 정보 넣어주려면 User로 파라미터를 받고 필요없으면 session.userId쓰기
 		user.setUserId(user.getUserId());
 		// ↓ 필요한 parameter : 유저아이디, 영화이름, 표개수, 총액

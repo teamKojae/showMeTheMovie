@@ -87,13 +87,13 @@
 .row {
   display: -webkit-flex;
   display: flex;
-  width: 100%;
-  margin-left : 0px !important;
+  width: 60%;
+  margin : auto;
 }
-
+/* 
 .rows--mini .row:nth-child(10) {
 	margin : 0 0 15px 0 !important;
-}
+} */
 
 .rows--large .row {
   left: 0;

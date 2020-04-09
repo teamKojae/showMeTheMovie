@@ -44,16 +44,7 @@
 		AND bookingState = 0
 	</select>
 	 
-	 <!-- 시트테이블 만드는 쿼리 -->
-	 <insert id="insertSeat" >
-	 	insert into seat (movieInfoCode, seatName, seatStatus)
-	 	VALUES ( #{movieInfoCode}, #{seatName}, 0 )
-	 </insert>
-	 
-	 <select id="countTheater" resultType="int">
-		SELECT count(*) from movieInfo
-	</select>
-	 
+
 	 
 	 <!--  예매완료 후 좌석 상태 업데이트 -->
 	 <update id="updateSeatStatus" >
@@ -63,10 +54,19 @@
  	</update>
 	 
 	 <!--  예매내역 추가 -->
- 	<insert id="insertBookingInfo" parameterType="booking">
+ 	<insert id="insertBookingInfo" >
  	 	INSERT INTO booking (userId, movieInfoCode, bookingDate, bookingSeat, bookingPeople, bookingPrice,bookingState)
- 		 values ( #{user.userId} , #{movieInfo.moiveInfoCode} ,now(), #{bookingSeat}, #{bookingPeople}, #{bookingPrice}, 0);
+ 	    VALUES
+ 		  ( #{booking.user.userId} , #{booking.movieInfo.moiveInfoCode} ,now(), #{booking.bookingSeat}, #{booking.bookingPeople}, #{booking.bookingPrice}, 0)
  	</insert>
+	
+<!-- 	<insert id="insertBookingInfo" >
+ 	 	INSERT INTO booking (userId, movieInfoCode, bookingDate, bookingSeat, bookingPeople, bookingPrice,bookingState)
+ 	    VALUES
+ 		 <foreach item="item" index="index" collection="seatName" separator=",">
+ 		  ( #{booking.user.userId} , #{booking.movieInfo.moiveInfoCode} ,now(), #{item}, #{booking.bookingPeople}, #{booking.bookingPrice}, 0)
+ 		 </foreach>
+ 	</insert> -->
 	
 	<!-- booking code 추가 -->
 </mapper>
