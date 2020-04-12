@@ -87,7 +87,14 @@ public class KakaoController {
 //			 값 가져가고 싶으면 model에 넣으세요 (model.addAttribute(key,value);
 		log.info("pgtoken :  " + pg_token);
 		log.info(((User) session.getAttribute("user")).getUserId());
+		try {
 		kakaoInfo = kakaoPay.kakaoPayInfo(pg_token, ((User) session.getAttribute("user")).getUserId());
+		}catch (NullPointerException e) {
+			   return "/400Error";
+		}catch (Exception e) {
+			   return "/400Error";
+		}
+		
 		log.info("kakaoInfo :  " + kakaoInfo);
 
 		model.addAttribute("kakaoInfo", kakaoInfo);
@@ -152,7 +159,14 @@ public class KakaoController {
 		// 유저에 다른 정보 넣어주려면 User로 파라미터를 받고 필요없으면 session.userId쓰기
 		user.setUserId(user.getUserId());
 		// ↓ 필요한 parameter : 유저아이디, 영화이름, 표개수, 총액
-		return "redirect:" + kakaoPay.kakaoPayReady(movie, user,movieInfo);
+		String kakaoPayUrl = null;
+		try {
+			kakaoPayUrl = "redirect:" + kakaoPay.kakaoPayReady(movie, user,movieInfo);
+		}catch (Exception e) {
+			e.printStackTrace();
+			kakaoPayUrl = "400Error";
+		}
+		return kakaoPayUrl; 
 	}
 
 	@RequestMapping(value = "kakaoPayCancel")

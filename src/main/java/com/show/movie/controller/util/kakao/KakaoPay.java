@@ -76,9 +76,8 @@ public class KakaoPay {
 	            return kakaoPayReadyVO.getNext_redirect_pc_url();
 	 
 	        } catch (RestClientException e) {
-	        	
-	        	System.out.println("restExc");
 	            e.printStackTrace();
+	            return "/400Error";
 	        } catch (URISyntaxException e) {
 	        	System.out.println("urlEx");
 	            e.printStackTrace();
@@ -124,6 +123,7 @@ public class KakaoPay {
 	        } catch (RestClientException e) {
 	        	log.info("여기는 kakaoPayInfo ReslClientException   : ");
 	            e.printStackTrace();
+	            return null;
 	        } catch (URISyntaxException e) {
 	            // TODO Auto-generated catch block
 	            e.printStackTrace();

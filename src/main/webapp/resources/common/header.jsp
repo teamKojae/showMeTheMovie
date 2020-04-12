@@ -18,7 +18,7 @@
 					<li class=""><a href="/ticketing" class="gnb-txt-ticketting"
 						title="예매">예매</a></li>
 					<li class=""><a href="/ticketing" class="gnb-txt-theaters"
-						title="극장">극장</a></li>
+						title="극장" >극장</a></li>
 						<c:choose>
 							<c:when test="${empty user.userId}">
 					<li><a href="/login" class="gnb-txt-login" title="로그인">로그인</a></li>
