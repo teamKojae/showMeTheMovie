@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.show.movie.model.dao.MovieDAO;
+import com.show.movie.model.dao.ViewTableDAO;
 import com.show.movie.model.domain.Branch;
 import com.show.movie.model.domain.Movie;
 import com.show.movie.model.domain.MovieInfo;
@@ -24,6 +25,8 @@ import lombok.extern.log4j.Log4j;
 public class MovieServiceImpl implements MovieService {
 	@Autowired
 	MovieDAO movieDAO;
+	@Autowired
+	ViewTableDAO viewTableDAO;
 	
 	
 	@Override
@@ -39,8 +42,8 @@ public class MovieServiceImpl implements MovieService {
 	@Override
 	public List<MovieInfo> getMovieInfo(MovieInfo movieInfo) {
 		try {
-			if(movieDAO.isView() == 0) {
-				movieDAO.createViewGetMovieInfo();
+			if(viewTableDAO.isView("getMovieInfo") == 0) {
+				viewTableDAO.createViewGetMovieInfo();
 			}
 			// 영화정보 가져오기
 			List<MovieInfo> list = movieDAO.getMovieInfo(movieInfo);
@@ -73,6 +76,10 @@ public class MovieServiceImpl implements MovieService {
 
 	@Override
 	public List<Movie> moviePageList(Movie movie) {
+		if(viewTableDAO.isView("moviePageList") == 0) {
+			viewTableDAO.createViewMoviePageList();
+		}
+		
 		return movieDAO.moviePageList();
 	}
 

@@ -74,6 +74,7 @@
 <!-- 
 Create View getBooking AS SELECT 
 booking.bookingCode, 
+booking.bookingSeat,
 booking.bookingState,
 movie.movieName, 
 movie.moviePoster,

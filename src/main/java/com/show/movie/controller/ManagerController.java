@@ -77,8 +77,8 @@ public class ManagerController {
 
 	@GetMapping("/addMovieInfo")
 	public String addMovieInfo(Model model, HttpSession session) {
-		session.setAttribute("manager", "ko");
-		String managerId = (String) session.getAttribute("manager");
+		session.setAttribute("managerId", "ko");
+		String managerId = (String) session.getAttribute("managerId");
 		model.addAttribute("data", managerService.getMovieList(managerId));
 		return "addMovieInfo";
 	}
@@ -171,6 +171,17 @@ public class ManagerController {
 
 		return "addMovieInfo";
 	}
+	
+	
+	
+	@RequestMapping(value="/addSeatTable")
+		public String addSeatTable() {
+		
+		managerService.insertSeat();
+		
+		return "redirect:/";
+	}
+	
 
 //	@PostMapping(value="/movieAddBranchAndTheater",  produces = "application/json; charset=utf8")
 //	@ResponseBody

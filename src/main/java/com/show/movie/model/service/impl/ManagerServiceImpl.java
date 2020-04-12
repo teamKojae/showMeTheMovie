@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.show.movie.model.dao.ManagerDAO;
 import com.show.movie.model.dao.MovieDAO;
+import com.show.movie.model.dao.ViewTableDAO;
 import com.show.movie.model.domain.Branch;
 import com.show.movie.model.domain.Location;
 import com.show.movie.model.domain.Movie;
@@ -26,7 +27,8 @@ public class ManagerServiceImpl implements ManagerService {
 	ManagerDAO managerDAO;
 	
 	@Autowired
-	MovieDAO movieDAO;
+	ViewTableDAO viewTableDAO;
+	
 
 	@Override
 	public void insertMovie(Movie movie) {
@@ -59,39 +61,43 @@ public class ManagerServiceImpl implements ManagerService {
 	@Override
 	public void insertTheater(String movieDate,String movieName, 
 			List<String> theaterName,List<String> movieStartTime, List<String> movieEndTime) {
+		int lastTheaterCode = managerDAO.lastMovieInfoCode();
+		
 		managerDAO.insertTheater(movieDate,movieName, theaterName, movieStartTime, movieEndTime);
 		
+		// 메소드화 시켰어야됬는데 ㅜㅜ  시간이 없옹 . 하드코딩  ON !
 		String data[] = {"A","B","C","D","E","F","G","H","I","J"};
-		
-		for(int j = 0 ; j < 10; j++) {
-				for(int z = 1; z <= 10; z++) {
-					managerDAO.insertSeat(managerDAO.lastMovieInfoCode(), (data[j]+Integer.toString(z))  );
+		for(int i = 1 ; i <= managerDAO.countTheater()-lastTheaterCode; i++) {
+			for(int j = 0 ; j < 10; j++) {
+					for(int z = 1; z <= 10; z++) {
+						managerDAO.insertSeat(lastTheaterCode+i, (data[j]+Integer.toString(z))  );
+					}
 				}
 		}
 		
 	}
 
 	
-//	@Override
-//	public void insertSeat() {
-//		
-//		String data[] = {"A","B","C","D","E","F","G","H","I","J"};
-//		
-//		for(int i = 1 ; i <= bookingDAO.countTheater(); i++) {
-//			for(int j = 0 ; j < 10; j++) {
-//				for(int z = 1; z <= 10; z++) {
-//					bookingDAO.insertSeat(i, (data[j]+Integer.toString(z))  );
-//				}
-//			}
-//		}
-//	}
+	@Override
+	public void insertSeat() {
+		
+		String data[] = {"A","B","C","D","E","F","G","H","I","J"};
+		
+		for(int i = 1 ; i <= managerDAO.countTheater(); i++) {
+			for(int j = 0 ; j < 10; j++) {
+				for(int z = 1; z <= 10; z++) {
+					managerDAO.insertSeat(i, (data[j]+Integer.toString(z))  );
+				}
+			}
+		}
+	}
 	
 	
 	@Override
 	public List<List<MovieInfo>> getTimeScheduleInTheater(List<String> theaterNumbers, String timeSchedule) {
 
-		if (managerDAO.isViewTimeSchedule() == 0) {
-			managerDAO.createViewTimeSchedule();
+		if (viewTableDAO.isView("timeSchedule") == 0) {
+			viewTableDAO.createViewTimeSchedule();
 		}
 		
 		List<List<MovieInfo>> list = new ArrayList<List<MovieInfo>>();
