@@ -18,7 +18,7 @@ import lombok.ToString;
 @Getter @Setter
 @ToString
 public class MovieInfo { 
-	@Bean("getMovieInfoVO")
+	@Bean("movieInfoVO")
 	public MovieInfo getMovieInfo() {
 		return new MovieInfo();
 	}
