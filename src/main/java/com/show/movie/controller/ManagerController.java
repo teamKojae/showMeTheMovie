@@ -69,7 +69,7 @@ public class ManagerController {
 
 	}
 
-	@RequestMapping(value = "/fileUpload", produces = "application/json; charset=utf8")
+	@PostMapping(value = "/fileUpload", produces = "application/json; charset=utf8")
 	@ResponseBody
 	public String fileUpload(MultipartHttpServletRequest multipartHttpServletRequest, Model model) throws IOException {
 		return new Parser().fileParser(multipartHttpServletRequest);
@@ -106,6 +106,7 @@ public class ManagerController {
 //		for(Object test :  canAddMovieTime ) {
 //			System.out.println( ( (MovieInfo) test) );
 //		}
+		
 		//상영관별로 등록되어 있는 영화정보 갖고오기 
 		List<List<MovieInfo>> resigMovieTime = managerService.getTimeScheduleInTheater(theaterNo, timeSchedule);
 		//java.sql.date를   yyyy-MM-dd 형식에 맞게 바인딩
@@ -128,12 +129,12 @@ public class ManagerController {
 				}	
 		}		
 			
-//			//디버그
-//			for(List<MovieInfo> list : canAddMovieTime) {
-//				for(MovieInfo info: list ) {
-//					System.out.println(info.getMovieStartTime()+"  :  "+info.getMovieEndTime());
-//				}
-//			}
+			//디버그
+			for(List<MovieInfo> list : canAddMovieTime) {
+				for(MovieInfo info: list ) {
+					System.out.println(info.getMovieStartTime()+"  :  "+info.getMovieEndTime());
+				}
+			}
 //			//디버그
 //		for(List<MovieInfo> test :  canAddMovieTime ) {
 //			System.out.println("controller   : "+ test );

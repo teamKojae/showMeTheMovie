@@ -78,13 +78,13 @@ public class MovieTime<T> extends MovieTimeParser{
 				returnValue.add(emptyAddMovie);
 
 			}
-//			for (List<MovieInfo> movieInfos : returnValue) {
-//				for (MovieInfo movieInfo : movieInfos) {
-//					System.out.println("결과값   =  시작시간 :    " + movieInfo.getMovieStartTime() + "     끝 시간 :    "
-//							+ movieInfo.getMovieEndTime());
-//
-//				}
-//			}
+			for (List<MovieInfo> movieInfos : returnValue) {
+				for (MovieInfo movieInfo : movieInfos) {
+					System.out.println("결과값   =  시작시간 :    " + movieInfo.getMovieStartTime() + "     끝 시간 :    "
+							+ movieInfo.getMovieEndTime());
+
+				}
+			}
 
 		} catch (IndexOutOfBoundsException e) {
 			e.printStackTrace();
