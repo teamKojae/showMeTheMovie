@@ -1,12 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<% request.setCharacterEncoding("UTF-8"); %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>영화 그 이상의 감동, 쇼 미더 무비</title>
 <link href="/css/megabox.min.css" rel="stylesheet">
 <link href="/css/main.css" rel="stylesheet">
 <link href="/css/custom.css" rel="stylesheet">

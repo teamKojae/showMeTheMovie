@@ -153,7 +153,9 @@ public class ManagerController {
 
 	@PostMapping(value = "/movieAddBranchAndTheater", produces = "application/json; charset=utf8")
 	@ResponseBody
-	public String movieAddBranchAndTheater(@RequestParam String movieDate, @RequestParam String movieName,
+	public String movieAddBranchAndTheater(
+			@RequestParam String movieDate, 
+			@RequestParam String movieName,
 			@RequestParam List<String> branchName,
 			@RequestParam List<String> theaterName, 
 			@RequestParam List<String> movieStartTime,

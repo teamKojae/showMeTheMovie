@@ -66,6 +66,7 @@ public class LoginController {
 			  return "login";
 		  }else {
 			  request.getSession().setAttribute("user",user);
+			  httpSession.removeAttribute("kakaoPay");
 			  model.addAttribute("user",user);
 			  return "redirect:/";
 		  }

@@ -54,16 +54,15 @@ public class KakaoController {
 			userService.insertNewUser(user);
 		}
 		// 클라이언트의 이메일이 존재할 때 세션에 해당 이메일과 토큰 등록
-		if (user.getUserId() != null) {
+	//	if (user.getUserId() != null) {
 			session.setAttribute("user", user);
-		}
+	//	}
 		//스크린창에서 로그인창으로 돌아온 경우에만 해당부분 실행 (스크린선택창에서 온게 아니면 메인페이지로 이동)
 		//영화선택한  정보값을 스크린선택 컨트롤러에 전달
 		String view = null;
 		if (session.getAttribute("kakaoPay") == null) {
 			view = "redirect:/";
 		}else if(session.getAttribute("kakaoPay") != null) {
-			session.removeAttribute("kakaoPay");
 			view = "redirect:/getSelectScreen";
 		}
 		return view;
@@ -95,7 +94,7 @@ public class KakaoController {
 		Seat seat = (Seat) session.getAttribute("seatList");
 		kakaoInfo.getPartner_user_id();
 		kakaoInfo.getAmount().getTotal();
-		MovieInfo movieInfo = (MovieInfo)session.getAttribute("movieInfo");
+		MovieInfo movieInfo = (MovieInfo)session.getAttribute("movieInfoSession");
 		//Seat seatList = (Seat)
 		log.info("상영관 코드 받아와야한다 !!   : "+ movieInfo);
 		log.info("Seat : "+seat);
@@ -115,7 +114,7 @@ public class KakaoController {
 		// 해당 상영 영화의 좌석 변경
 		bookingService.updateSeatStatus(seat.getSeatName(), movieInfo.getMoiveInfoCode());
 		
-		session.removeAttribute("movieInfo");
+		session.removeAttribute("movieInfoSession");
 		model.addAttribute("booking", booking);
 		model.addAttribute("seat",seat);
 		

@@ -45,9 +45,7 @@ public class TicketController {
 	@RequestMapping(value="/getBranch",  produces = "application/json; charset=utf8")
 	@ResponseBody
 	public String ticketGetBranch(String movieDate,String movieName, String locationName , Model model) {
-		return new Gson().toJson(
-				movieService.getBranch(movieName, movieDate,locationName)
-				);
+		return new Gson().toJson(movieService.getBranch(movieName, movieDate,locationName));
 	}
 	
 	@RequestMapping(value="/getMovieInfoAndTime",  produces = "application/json; charset=utf8")
@@ -55,18 +53,32 @@ public class TicketController {
 	public String getMovieInfoAndTime(Model model, MovieInfo movieInfo) {
 		return new Gson().toJson(movieService.getMovieInfo(movieInfo));
 	}
+	
+	@GetMapping(value="/getMovieForDate", produces = "application/json; charset=utf8")
+	@ResponseBody
+	public String getMovieForDate(Model model, String movieDate) {
+		return new Gson().toJson(movieService.getMovieAllList(movieDate));
+	}
+	
 
-
+	
+	
 	@RequestMapping(value="/getSelectScreen" ,method = {RequestMethod.GET, RequestMethod.POST})
-	public String getSelectScreen(Model model, @ModelAttribute("movieInfo") MovieInfo movieInfo, 
+	public String getSelectScreen(Model model, MovieInfo movieInfo, 
 									 Seat seat, HttpSession session) {
-		if(session.getAttribute("movieInfo") == null) {
-		session.setAttribute("movieInfo", movieInfo);
-		}
-		log.info(session.getAttribute("movieInfo"));
-		movieInfo = (MovieInfo)session.getAttribute("movieInfo");
-		model.addAttribute("movieInfo", movieInfo);
+		
+		if(session.getAttribute("kakaoPay") == null) {
+		model.addAttribute("movieInfo",movieInfo);
 		model.addAttribute("seatList", movieService.getSeatList(movieInfo.getMoiveInfoCode()));
+		session.setAttribute("movieInfoSession", movieInfo);
+		}else {
+
+			model.addAttribute("movieInfo", session.getAttribute("movieInfoSession"));
+			model.addAttribute("seatList", movieService.getSeatList( ( (MovieInfo)session.getAttribute("movieInfoSession") ).getMoiveInfoCode()));
+			session.removeAttribute("kakaoPay");
+			session.removeAttribute("movieInfoSession");
+		}
+		
 		//log.info(seat.getSeatName());
 
 		return "screen";
@@ -78,11 +90,7 @@ public class TicketController {
 		return "ticketing";
 	}
 	
-	@GetMapping(value="/getMovieForDate", produces = "application/json; charset=utf8")
-	@ResponseBody
-	public String getMovieForDate(Model model, String movieDate) {
-		return new Gson().toJson(movieService.getMovieAllList(movieDate));
-	}
+
 
 	
 	

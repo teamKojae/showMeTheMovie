@@ -120,30 +120,32 @@
 	</select>
 
 
-	<!-- INSERT -->
 
-	<insert id="insertTheater">
-		INSERT INTO
-		movieInfo(movieCode, theaterCode,movieDate,movieStartTime, movieEndTime)
-		VALUES 
-		<foreach item="item" index="index" collection="theaterName"
-			separator=",">
-			<foreach item="time" index="timeIndex" collection="movieStartTime"
-			separator=",">
-			(
-			(SELECT movieCode FROM movie WHERE movieName =
-			#{movieName}),
-			(SELECT
-			theaterCode FROM theater WHERE theaterName =
-			#{item}),
-			(SELECT
-			date_format(#{movieDate},'%Y-%m-%d') FROM dual)
-			,#{time}, '${movieEndTime[timeIndex]}'
-			)
-			</foreach>
-		</foreach>
-		
-	</insert>
+
+				<!-- INSERT -->
+			
+				<insert id="insertTheater">
+					INSERT INTO
+					movieInfo(movieCode, theaterCode,movieDate,movieStartTime, movieEndTime)
+					VALUES 
+					<foreach item="item" index="index" collection="theaterName"
+						separator=",">
+						<foreach item="time" index="timeIndex" collection="movieStartTime"
+						separator=",">
+						(
+						(SELECT movieCode FROM movie WHERE movieName = #{movieName} ),
+						(SELECT theaterCode FROM theater WHERE theaterName = #{item} ),
+						(SELECT date_format(#{movieDate},'%Y-%m-%d') FROM dual) ,#{time},
+						 '${movieEndTime[timeIndex]}'
+						)
+						</foreach>
+					</foreach>
+				</insert>
+
+
+
+
+
 
 	<!-- 시트테이블 만드는 쿼리 -->
 	 <insert id="insertSeat" >

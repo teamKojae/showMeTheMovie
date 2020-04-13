@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.web.client.RestTemplate;
+
 import com.show.movie.model.domain.MovieInfo;
 
 public class MovieTime<T> extends MovieTimeParser{

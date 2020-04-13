@@ -1,14 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%
-	request.setCharacterEncoding("UTF-8");
-%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>영화 그 이상의 감동, 쇼 미더 무비</title>
 <link href="/css/megabox.min.css" rel="stylesheet">
 <link href="/css/main.css" rel="stylesheet">
 <link href="/css/custom.css" rel="stylesheet">
@@ -155,7 +152,7 @@
 												style="pointer-events: none; display: inline-block">일</span><span
 												class="day-en" style="pointer-events: none; display: none">Sun</span>
 										</button>
-										<button class="" type="button" value="2020-04-20">
+										<button class="disabled" type="button" value="2020-04-20">
 											<span class="ir">2020년 4월</span><em
 												style="pointer-events: none;">20<span
 												style="pointer-events: none;" class="ir">일</span></em><span
@@ -163,7 +160,7 @@
 												style="pointer-events: none; display: inline-block">월</span><span
 												class="day-en" style="pointer-events: none; display: none">Mon</span>
 										</button>
-										<button class="" type="button" value="2020-04-21"
+										<button class="disabled" type="button" value="2020-04-21"
 											month="4">
 											<span class="ir">2020년 4월</span><em
 												style="pointer-events: none;">21<span
@@ -172,7 +169,7 @@
 												style="pointer-events: none; display: inline-block">화</span><span
 												class="day-en" style="pointer-events: none; display: none">Tue</span>
 										</button>
-										<button class="" type="button" value="2020-04-22"
+										<button class="disabled" type="button" value="2020-04-22"
 											month="4">
 											<span class="ir">2020년 4월</span><em
 												style="pointer-events: none;">22<span
@@ -181,7 +178,7 @@
 												style="pointer-events: none; display: inline-block">수</span><span
 												class="day-en" style="pointer-events: none; display: none">Wen</span>
 										</button>
-										<button class="" type="button" value="2020-04-23"
+										<button class="disabled" type="button" value="2020-04-23"
 											month="4">
 											<span class="ir">2020년 4월</span><em
 												style="pointer-events: none;">23<span

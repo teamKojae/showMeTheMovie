@@ -42,7 +42,7 @@ public class SignUpController {
 		}
 		model.addAttribute("user", user);
 		System.out.println("회원가입 컨트롤러 왔다감");
-		return "redirect:/";
+		return "login";
 	}
 	
 	@RequestMapping(value = "/userIdCheck", method = RequestMethod.POST,  produces = "application/json; charset=utf8")

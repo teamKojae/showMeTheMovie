@@ -65,6 +65,11 @@ function movieNotRegis(){
 
 function requestKakaoPay() {
 	$('.button').on('click', function(event) {
+		var countPeople = $("#selectBox option:selected").val();
+		if(countPeople == 'select'){
+    		alert("인원과 좌석을 선택해주세요");
+    		return;
+    	}
 		$('#kakaoPay').submit();
 	})
 
