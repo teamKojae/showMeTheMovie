@@ -57,9 +57,9 @@ public class KakaoPay {
 	        // ↓고정
 
 
-	        params.add("approval_url", "http://192.168.0.23:5000/kakaoPaySuccess");		
-	        params.add("cancel_url", "http://192.168.0.23:5000/kakaoPayCancel");
-	        params.add("fail_url", "http://192.168.0.23:5000/kakaoPaySuccessFail");
+	        params.add("approval_url", "http://127.0.0.1:5000/kakaoPaySuccess");		
+	        params.add("cancel_url", "http://127.0.0.1:5000/kakaoPayCancel");
+	        params.add("fail_url", "http://127.0.0.1:5000/kakaoPaySuccessFail");
 
 //	        params.add("approval_url", "http://localhost:5000/kakaoPaySuccess");		
 //	        params.add("cancel_url", "http://localhost:5000/kakaoPayCancel");
@@ -76,9 +76,8 @@ public class KakaoPay {
 	            return kakaoPayReadyVO.getNext_redirect_pc_url();
 	 
 	        } catch (RestClientException e) {
-	        	
-	        	System.out.println("restExc");
 	            e.printStackTrace();
+	            return "/400Error";
 	        } catch (URISyntaxException e) {
 	        	System.out.println("urlEx");
 	            e.printStackTrace();
@@ -124,6 +123,7 @@ public class KakaoPay {
 	        } catch (RestClientException e) {
 	        	log.info("여기는 kakaoPayInfo ReslClientException   : ");
 	            e.printStackTrace();
+	            return null;
 	        } catch (URISyntaxException e) {
 	            // TODO Auto-generated catch block
 	            e.printStackTrace();

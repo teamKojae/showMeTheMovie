@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.show.movie.model.dao.BookingDAO;
 import com.show.movie.model.dao.CancellationDAO;
+import com.show.movie.model.dao.ViewTableDAO;
 import com.show.movie.model.domain.Booking;
 import com.show.movie.model.service.BookingService;
 import com.show.movie.util.parse.Parser;
@@ -20,9 +21,19 @@ public class BookingServiceImpl implements BookingService {
 	private BookingDAO bookingDAO;
 	@Autowired 
 	private CancellationDAO cancellationDAO;
-	
+	@Autowired
+	ViewTableDAO viewTableDAO;
+		
 	@Override
 	public Map<String,Object> getMyPage(String userId) {
+		if(viewTableDAO.isView("getBooking") == 0) {
+			viewTableDAO.createViewGetBooking();
+		}
+		
+		if(viewTableDAO.isView("cancellation ") == 0) {
+			viewTableDAO.createViewCancellation();
+		}
+		
 		Map<String,Object> map = new HashMap<String, Object>();
 		map.put("booking", bookingDAO.getAllbooking(userId));
 		map.put("cancellationList", cancellationDAO.getAllcancellation(userId));

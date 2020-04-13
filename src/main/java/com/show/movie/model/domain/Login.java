@@ -13,7 +13,7 @@ import lombok.ToString;
 @Getter @Setter @ToString
 
 public class Login {
-	@Bean(name="userVO2")
+	@Bean(name="loginVO")
 	public Login getLogin() {
 		return new Login();
 	}

@@ -19,4 +19,5 @@ public interface ManagerService {
 	public void insertTheater(String movieDate, String movieName ,
 						 	  List<String> theaterName,List<String> movieStartTime, List<String> movieEndTime);
 	public List<List<MovieInfo>> getTimeScheduleInTheater(List<String> theaterNo , String timeSchedule);
+	public void insertSeat();
 }

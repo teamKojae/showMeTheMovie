@@ -46,17 +46,15 @@ public class HomeController {
 		List<Movie> list = movieService.getIndexMovie(movie);
 		model.addAttribute("movie",  movie);
 		model.addAttribute("indexMovie", list);
-		
-		
-		
 		return "index";
 	}
-	
-
 	
 	@RequestMapping(value="/signUp")
 	public String sighUpPage(Model model) {
 		return "signUp";
 	}
+
+	
+	
 
 }

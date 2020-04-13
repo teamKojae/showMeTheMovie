@@ -17,8 +17,7 @@ public interface MovieDAO {
 	public Movie getMovie(String movieName);
 	public String getMovieSynopsis(String movieName);
 	public String getMovieImages(String movieName);
-	public int isView();
-	public void createViewGetMovieInfo();
+
 	public List<Movie> getIndexMovie();
 	public List<Movie> getMovieAllList();
 	public List<Movie> getNotRegisMovie(@Param("movieDate") String movieDate);

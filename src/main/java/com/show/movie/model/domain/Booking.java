@@ -19,6 +19,10 @@ import lombok.ToString;
 @ToString
 public class Booking {
 	
+	@Bean("bookingVO")
+	public Booking getBooking() {
+		return new Booking();
+	}
 	private int bookingCode;
 	private Date bookingDate;
 	private String bookingSeat;

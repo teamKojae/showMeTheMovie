@@ -15,7 +15,7 @@ import lombok.ToString;
 @Getter @Setter @ToString
 public class Seat {
 	
-	@Bean(name="getSeatVO")
+	@Bean(name="seatVO")
 	public Seat getSeat(Seat seat) {
 		return new Seat();
 	}
